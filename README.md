@@ -364,11 +364,24 @@ Free for any use — personal, commercial, production, research. Use it, modify 
 
 ## Contact
 
-**Jeff Phillips** -- Quietfire AI
+**Jeff Phillips** — Quietfire AI
 - Email: support@telsonbase.com
 - Website: [telsonbase.com](https://telsonbase.com)
+- ORCID: [0009-0000-1375-1725](https://orcid.org/0009-0000-1375-1725)
 - Support the project: [buymeacoffee.com/jphillips](https://buymeacoffee.com/jphillips)
 
+---
+
+## Cite This Work
+
+If you use TelsonBase in research, a paper, or a published project, a `CITATION.cff` file is included in the root of this repository. GitHub generates a formatted citation automatically — click **"Cite this repository"** on the right side of the repo page.
+
+Manual citation:
+```
+Phillips, J. (2026). TelsonBase (v9.0.0B). Quietfire AI.
+https://github.com/QuietFireAI/TelsonBase
+ORCID: https://orcid.org/0009-0000-1375-1725
+```
 
 ---
 
