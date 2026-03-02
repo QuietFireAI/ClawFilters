@@ -201,6 +201,7 @@ This isn't a roadmap. This is shipped code with tests.
 | **Session Management** | HIPAA-compliant idle timeout, privileged role limits | 6 |
 | **Federation** | Cross-instance trust with mTLS, RSA-4096 signatures | 5 |
 | **Kill Switch** | Instant suspension, Redis-persisted, survives restarts | 7 |
+| **MCP Gateway (Goose)** | 13 tools exposed via MCP, trust-gated sessions, native Goose / Claude Desktop integration | live |
 
 **Total: 720 tests passing. 1 skipped. 0 high-severity findings across 37,921 lines scanned.**
 
@@ -289,6 +290,56 @@ docker compose exec mcp_server python -m pytest tests/ -v --tb=short
 | **MCP Gateway** | http://localhost:8000/mcp | Goose / Claude Desktop agent interface |
 | **Open-WebUI** | http://localhost:3000 | Chat with local LLMs |
 | **Grafana** | http://localhost:3001 | Monitoring dashboards |
+
+---
+
+## Connecting Goose (or Any MCP Client)
+
+TelsonBase ships a native MCP gateway at `/mcp`. [Goose](https://github.com/block/goose) by Block connects to it out of the box. No plugin, no glue code, no n8n. The configuration file is included.
+
+**Three steps:**
+
+```bash
+# 1. Copy the included config to Goose's config directory
+cp goose.yaml ~/.config/goose/config.yaml
+
+# 2. Set your API key in the config (the key from your .env MCP_API_KEY)
+# Edit ~/.config/goose/config.yaml — replace REPLACE_WITH_YOUR_TELSONBASE_API_KEY
+
+# 3. Start a Goose session
+goose session start
+```
+
+Goose will discover all 13 tools automatically via MCP tool discovery. From there, natural language:
+
+```
+> What is the TelsonBase system status?
+> List all pending approval requests
+> Show me the agents in quarantine
+> Approve request req_abc123
+```
+
+**13 MCP Tools available to connected clients:**
+
+| Tool | Category | Min Trust Level |
+|---|---|---|
+| `get_health` | System | Any |
+| `system_status` | System | Any |
+| `register_as_agent` | Agents | Any |
+| `list_agents` | Agents | QUARANTINE+ |
+| `get_agent` | Agents | QUARANTINE+ |
+| `get_audit_chain_status` | Audit | QUARANTINE+ |
+| `verify_audit_chain` | Audit | QUARANTINE+ |
+| `get_recent_audit_entries` | Audit | QUARANTINE+ |
+| `list_pending_approvals` | Approvals | QUARANTINE+ |
+| `list_tenants` | Tenancy | PROBATION+ |
+| `create_tenant` | Tenancy | PROBATION+ |
+| `list_matters` | Tenancy | PROBATION+ |
+| `approve_tool_request` | Approvals | PROBATION+ |
+
+**How the session gate works:** When `OPENCLAW_ENABLED=true`, first-time MCP sessions automatically self-register in QUARANTINE. Tools that require PROBATION+ trust level return a structured response directing the operator to request a trust promotion. Trust is earned the same way as any other agent — sequential, human-approved.
+
+Claude Desktop works identically — point it at `http://localhost:8000/mcp` with your API key as a Bearer token.
 
 ---
 
