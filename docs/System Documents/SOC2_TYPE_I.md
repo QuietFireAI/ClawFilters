@@ -6,7 +6,7 @@
 # REM: Architect: ::Quietfire AI Project::
 # REM: AI Model Collaborators: Claude Opus 4.6
 # REM: Date: February 23, 2026
-# REM: Version: 7.3.0CC
+# REM: Version: 9.1.0B
 # REM: Classification: Auditor-Ready Documentation
 # REM: =======================================================================================
 
@@ -14,11 +14,13 @@
 
 ## 1. Management Assertion Statement
 
-The management of TelsonBase asserts that the accompanying description of the TelsonBase Zero-Trust AI Agent Security Platform, version 6.3.0CC, fairly presents the system as designed and implemented as of February 11, 2026. The description includes the principal service commitments and system requirements, and the controls stated in the description were suitably designed to provide reasonable assurance that the principal service commitments and system requirements would be achieved based on the applicable Trust Service Criteria set forth in TSP Section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy (AICPA, Trust Services Criteria), if the controls operated effectively throughout the specified period, and if the complementary user entity controls and complementary subservice organization controls described herein operated effectively throughout the specified period.
+The management of TelsonBase asserts that the accompanying description of the TelsonBase Zero-Trust AI Agent Security Platform, version 9.1.0B, fairly presents the system as designed and implemented as of March 6, 2026. The description includes the principal service commitments and system requirements, and the controls stated in the description were suitably designed to provide reasonable assurance that the principal service commitments and system requirements would be achieved based on the applicable Trust Service Criteria set forth in TSP Section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy (AICPA, Trust Services Criteria), if the controls operated effectively throughout the specified period, and if the complementary user entity controls and complementary subservice organization controls described herein operated effectively throughout the specified period.
+
+This assertion covers TelsonBase as an open-source, self-hosted platform. Management makes no assertion regarding any individual deployment of TelsonBase, which remains entirely under the control of the deploying organization. See `DISCLAIMER.md` for the full limitation of liability applicable to this software.
 
 **Responsible Party:** Jeff Phillips, Architect and Principal
 **Contact:** security@telsonbase.com
-**Date of Assertion:** February 11, 2026
+**Date of Assertion:** March 6, 2026
 
 ---
 
@@ -323,12 +325,12 @@ The following matrix maps TelsonBase controls to the AICPA 2017 Trust Services C
 | Field | Value |
 |-------|-------|
 | Document Title | TelsonBase SOC 2 Type I -- Trust Service Criteria Control Mapping |
-| Version | 1.0 |
-| Date | February 11, 2026 |
+| Version | 1.1 |
+| Date | March 6, 2026 |
 | Classification | Auditor-Ready Documentation |
-| Platform Version | 6.3.0CC |
-| Author | Jeff Phillips (Architect), Claude Opus 4.6 (AI Model Collaborator) |
-| Review Status | Initial draft -- pending auditor review |
+| Platform Version | 9.1.0B |
+| Author | Jeff Phillips (Architect), Claude Sonnet 4.6 (AI Model Collaborator) |
+| Review Status | Updated for public release -- pending independent auditor review |
 | Next Review | Prior to Type II engagement or upon material system change |
 
 ---
@@ -343,3 +345,4 @@ The following matrix maps TelsonBase controls to the AICPA 2017 Trust Services C
 - [Incident Response](INCIDENT_RESPONSE.md) -- Incident handling procedures
 - [Legal Compliance](LEGAL_COMPLIANCE.md) -- Regulatory compliance mapping
 - [Healthcare Compliance](HEALTHCARE_COMPLIANCE.md) -- HIPAA/HITECH/HITRUST guidance
+- [Disclaimer and Terms of Use](../../DISCLAIMER.md) -- Limitation of liability, no warranty, AI platform disclaimer
