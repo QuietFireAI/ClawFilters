@@ -34,7 +34,7 @@
 
 **This is a community preview release.** The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional and covered by 720 passing tests. Everything described in this README is built and running — not a roadmap, not a mockup.
 
-We're publishing early because building in public with a community beats building in isolation. That means rough edges exist. APIs will evolve. Some tabs in the dashboard pull live data, others surface demo data until backend endpoints catch up (they're documented inline). The integration guide covers the full OpenClaw flow end-to-end and has been verified by a first user on a fresh machine.
+We're publishing early because building in public with a community beats building in isolation. That means rough edges exist. APIs will evolve. Some tabs in the dashboard pull live data, others surface demo data until backend endpoints catch up (they're documented inline). The integration guide covers the full OpenClaw flow end-to-end and has been verified across multiple clean-slate deployments.
 
 **What's stable and tested:**
 Trust governance pipeline · Cryptographic audit chain · RBAC (140+ endpoints) · Human-in-the-loop approval gates · Kill switch · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
@@ -337,7 +337,7 @@ Goose will discover all 13 tools automatically via MCP tool discovery. From ther
 | `list_matters` | Tenancy | PROBATION+ |
 | `approve_tool_request` | Approvals | PROBATION+ |
 
-**How the session gate works:** When `OPENCLAW_ENABLED=true`, first-time MCP sessions automatically self-register in QUARANTINE. Tools that require PROBATION+ trust level return a structured response directing the operator to request a trust promotion. Trust is earned the same way as any other agent — sequential, human-approved.
+**How the session gate works:** When `OPENCLAW_ENABLED=true`, MCP tool calls are gated on the connecting session's trust level. A first-time session has no registration — tools above the "Any" gate return a structured message directing the operator to call `register_as_agent` first. That call starts the session at QUARANTINE. From there, an admin promotes trust through the dashboard exactly like any other agent — sequential, human-approved.
 
 Claude Desktop works identically — point it at `http://localhost:8000/mcp` with your API key as a Bearer token.
 
