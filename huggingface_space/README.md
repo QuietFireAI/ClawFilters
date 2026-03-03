@@ -3,7 +3,9 @@ title: TelsonBase
 emoji: 🦞
 colorFrom: purple
 colorTo: indigo
-sdk: static
+sdk: gradio
+sdk_version: "4.0.0"
+app_file: app.py
 pinned: true
 license: apache-2.0
 tags:
@@ -17,47 +19,39 @@ tags:
   - human-in-the-loop
   - kill-switch
   - audit-trail
-short_description: Zero-trust governance platform for autonomous AI agents. Self-hosted. No cloud dependencies.
+short_description: Live demo — zero-trust governance for autonomous AI agents. Real pipeline, real decisions.
 ---
 
-# TelsonBase
+# TelsonBase — Live Governance Demo
 
 **Zero-trust governance for autonomous AI agents. Self-hosted. No cloud AI. Every action earned.**
 
-TelsonBase is the security layer that should have existed before anyone gave an AI agent access to a file system.
+This Space connects to a **live TelsonBase server** running the real governance pipeline.
+Select a demo agent, pick an action, and see an actual governance decision in real time.
 
-## What It Does
+## What the Demo Shows
 
-Autonomous AI agents are powerful and ungoverned. TelsonBase wraps every agent in a deterministic governance layer — trust levels, kill switches, human-in-the-loop approval gates, cryptographic audit chains, and behavioral anomaly detection — without modifying the agent itself.
+- **Governance pipeline evaluation** — 8 steps, real decisions, real server
+- **Three trust tiers** — QUARANTINE / RESIDENT / CITIZEN, each with different permissions
+- **Kill switch** — suspend an agent, watch Step 2 reject every subsequent action instantly
+- **HITL gating** — some actions held for human approval regardless of trust level
 
-Every agent starts at **Quarantine** and earns trust through demonstrated behavior. Promotion is sequential and human-approved. Demotion is instant and automatic.
+## Trust Tier Flow
 
 ```
 QUARANTINE ──► PROBATION ──► RESIDENT ──► CITIZEN ──► AGENT
  (all gated)  (internal ok) (read/write)  (autonomous)  (apex)
 ```
 
-## Key Facts
-
-- **720 tests passing** · 0 high-severity findings · 37,921 lines scanned
-- **Native MCP gateway** — Goose and Claude Desktop connect out of the box
-- **Self-hosted** — your hardware, your data, no external API calls in the default stack
-- **8-step governance pipeline** — kill switch at Step 2, before trust levels, before everything
-- **Apache 2.0** — free for any use
+Every agent starts at Quarantine. Trust is earned through demonstrated behavior.
+Demotion is instant and automatic. The kill switch is always available to a human.
 
 ## Full Repository
 
 **→ [github.com/QuietFireAI/TelsonBase](https://github.com/QuietFireAI/TelsonBase)**
 
 Source code, documentation, proof sheets, quick start, and full test suite.
-
-## Who This Is For
-
-Developers building agent pipelines who need governance infrastructure. Organizations in regulated industries (legal, healthcare, insurance, accounting) deploying autonomous agents. Security engineers who want deterministic enforcement outside the model.
-
-## Built With
-
-Human-AI collaboration. Jeff Phillips (Quietfire AI) as architect. Claude (Anthropic) as primary development partner. Every AI model engaged as a collaborator, not a code generator.
+720 tests passing. 0 high-severity findings. Apache 2.0.
 
 ---
 
