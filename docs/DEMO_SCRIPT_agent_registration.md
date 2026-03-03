@@ -386,4 +386,4 @@ If any step fails during dry run, stop and fix before recording. The worst thing
 
 ---
 
-*Demo Script v1.0 | TelsonBase v9.0.0B | March 1, 2026 | Quietfire AI*
+*Demo Script v1.0 | TelsonBase v10.0.0Bminus | March 1, 2026 | Quietfire AI*

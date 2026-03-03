@@ -86,4 +86,4 @@ The customer owns their infrastructure, their data, and their AI platform. Telso
 
 ---
 
-*TelsonBase v6.3.0 | telsonbase.com | support@telsonbase.com*
+*TelsonBase v10.0.0Bminus | telsonbase.com | support@telsonbase.com*

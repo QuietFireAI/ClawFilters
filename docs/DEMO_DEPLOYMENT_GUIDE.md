@@ -1,7 +1,7 @@
 # TelsonBase Demo Page — Deployment Guide
 
-**Version:** 9.0.0B
-**Last Updated:** March 1, 2026
+**Version:** 10.0.0Bminus
+**Last Updated:** March 3, 2026
 **Purpose:** Step-by-step setup for the private demo page at telsonbase.online
 **Audience:** Jeff Phillips — self-deploy reference
 
@@ -334,4 +334,4 @@ exactly what TelsonBase has registered.
 
 ---
 
-*TelsonBase v9.0.0B — Quietfire AI — support@telsonbase.com*
+*TelsonBase v10.0.0Bminus — Quietfire AI — support@telsonbase.com*

@@ -313,4 +313,4 @@ docker compose up -d --build
 
 ---
 
-*TelsonBase v7.4.0CC — Protecting the telson through human-AI collaboration.*
+*TelsonBase v10.0.0Bminus — Protecting the telson through human-AI collaboration.*

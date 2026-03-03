@@ -1,4 +1,4 @@
-# TelsonBase v7.1.0CC — Admin Console UI Test Plan
+# TelsonBase v10.0.0Bminus — Admin Console UI Test Plan
 
 **Date:** 2026-02-12
 **Tester:** Jeff
@@ -12,7 +12,7 @@
 | # | Test | Expected | Pass? |
 |---|------|----------|-------|
 | 1.1 | Open `/dashboard` in browser | Page loads without console errors, dark theme renders |  |
-| 1.2 | Header shows version | "v7.1.0CC" visible next to Quietfire AI |  |
+| 1.2 | Header shows version | "v10.0.0Bminus" visible next to Quietfire AI |  |
 | 1.3 | DEMO badge visible | Amber "DEMO" badge shows in header when disconnected |  |
 | 1.4 | Tab bar renders all 15 tabs | Scroll horizontally if needed — all visible: Overview → Users & Roles → Sessions → Agents → Approvals → Anomalies → Audit Trail → Tenants → Compliance → Security → Toolroom → LLM / Chat → Federation → QMS Log → Sovereign |  |
 | 1.5 | Tab overflow scrolls | On narrow window, tab bar scrolls horizontally without breaking layout |  |

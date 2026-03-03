@@ -1,7 +1,7 @@
 # TelsonBase + OpenClaw: Governance Integration Guide
 
-**Version:** 9.0.0B
-**Date:** March 1, 2026
+**Version:** 10.0.0Bminus
+**Date:** March 3, 2026
 **Author:** Quietfire AI
 **Time to complete:** 30–45 minutes
 
@@ -726,5 +726,5 @@ Trust report:       GET  /v1/openclaw/{id}/trust-report
 
 ---
 
-*TelsonBase v9.0.0B — OpenClaw Integration | Quietfire AI*
+*TelsonBase v10.0.0Bminus — OpenClaw Integration | Quietfire AI*
 *Questions: support@telsonbase.com*

@@ -225,7 +225,7 @@ Description on all three: Link to GitHub, link to telsonbase.online, one-sentenc
 cff-version: 1.2.0
 message: "If you use TelsonBase in your research, please cite it using this metadata."
 title: "TelsonBase"
-version: 9.0.0B
+version: 10.0.0Bminus
 date-released: 2026-03-06
 authors:
   - name: "Quietfire AI"
@@ -243,7 +243,7 @@ keywords:
 
 **Zenodo** (zenodo.org) — free CERN-hosted archive. Connects directly to GitHub:
 - [ ] Create Zenodo account, link GitHub
-- [ ] On GitHub: create a release tagged v9.0.0B on drop day
+- [ ] On GitHub: create a release tagged v10.0.0Bminus on drop day
 - [ ] Zenodo auto-archives it and issues a DOI (e.g. `10.5281/zenodo.XXXXXXX`)
 - [ ] Add that DOI badge to the README
 - [ ] Now TelsonBase is permanently citable in academic literature, forever, regardless of what happens to GitHub
@@ -286,4 +286,4 @@ That sentence gets attention from EU compliance teams in a way that the general 
 
 ---
 
-*TelsonBase v9.0.0B · Quietfire AI · March 2, 2026*
+*TelsonBase v10.0.0Bminus · Quietfire AI · March 2, 2026*
