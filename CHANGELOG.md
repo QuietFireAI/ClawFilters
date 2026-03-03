@@ -6,6 +6,26 @@ Format: [Semantic Versioning](https://semver.org/)
 
 ---
 
+## [9.6.0B] — 2026-03-03 (First green CI — verified build milestone)
+
+**Status:** 720 passed, 1 skipped, 0 failed — CI green for the first time in repo history
+**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
+
+### Milestone
+- **CI green** — TelsonBase CI passes all 5 stages on every push for the first time
+- All 26 prior CI runs were red; fixed root causes rather than symptoms
+
+### Fixed
+- `core/openclaw.py` — multi-worker Redis eviction: `evaluate_action()` local_fallback rescue, `_persist_instance()` always writes local cache, mutation methods no longer use destructive pop
+- `toolroom/foreman.py` + `toolroom/executor.py` — `TOOLROOM_PATH` hardcoded to `/app/toolroom/tools`; now env-var configurable (same pattern as `CAGE_PATH`)
+- `.github/workflows/ci.yml` — Docker Build missing `.env` file; added `cp .env.example .env`; added `TOOLROOM_PATH=/tmp/telsonbase_toolroom` to all test env sections
+
+### Security
+- `gateway/requirements.txt` — upgraded fastapi 0.109.2 → 0.125.0, httpx 0.26.0 → 0.28.1, pydantic 2.6.1 → 2.9.2; added `starlette>=0.47.2` floor (closes Dependabot HIGH #3, MODERATE #4)
+- `requirements.txt` — explicit `starlette>=0.47.2` floor added (closes Dependabot HIGH #3, MODERATE #4 on main app)
+
+---
+
 ## [9.5.0B] — 2026-03-03 (HuggingFace live demo + distribution strategy)
 
 **Status:** 720 tests, 1 skipped, 0 failed — OPENCLAW enabled on DO, all 5 demo agents live
