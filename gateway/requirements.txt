@@ -1,6 +1,9 @@
 # TelsonBase/gateway/requirements.txt
 # REM: Minimal dependencies for the egress gateway
-fastapi==0.109.2
+fastapi==0.125.0
 uvicorn[standard]==0.27.1
-httpx==0.26.0
-pydantic==2.6.1
+httpx==0.28.1
+pydantic==2.9.2
+# REM: Explicit starlette floor — closes Dependabot DoS alerts (#3, #4).
+# REM: fastapi 0.125.0 resolves to starlette 0.50.0 in practice.
+starlette>=0.47.2
