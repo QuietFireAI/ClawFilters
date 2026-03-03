@@ -1,7 +1,7 @@
 # TelsonBase Disaster Recovery Test Procedure
 
-**Version:** 9.0.0B
-**Last Updated:** February 23, 2026
+**Version:** 10.0.0Bminus
+**Last Updated:** March 3, 2026
 **Architect:** Jeff Phillips — support@telsonbase.com
 **Script:** `scripts/dr_test.sh`
 

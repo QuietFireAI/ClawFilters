@@ -503,4 +503,4 @@
 # REM:           to .github/workflows/ci.yml for docker compose config validation
 # REM: =======================================================================================
 
-__version__ = "9.6.0B"
+__version__ = "10.0.0Bminus"

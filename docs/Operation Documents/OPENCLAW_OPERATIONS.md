@@ -1,6 +1,6 @@
 # OpenClaw Operations Guide
 
-## TelsonBase v7.4.0CC — "Control Your Claw"
+## TelsonBase v10.0.0Bminus — "Control Your Claw"
 
 **Architecture:** TelsonBase acts as a governed MCP proxy. OpenClaw is never modified — TelsonBase wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
 
@@ -366,4 +366,4 @@ curl -s -H "X-API-Key: $env:MCP_API_KEY" "http://localhost:8000/v1/audit/chain/e
 
 ---
 
-*TelsonBase v7.4.0CC — OpenClaw Governance | Quietfire AI*
+*TelsonBase v10.0.0Bminus — OpenClaw Governance | Quietfire AI*

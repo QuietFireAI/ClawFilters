@@ -102,7 +102,7 @@ Let it sit on screen for 1–2 seconds. Then press Enter.
 **Step 4 — Read the result**
 You should see something like:
 ```json
-{"status":"healthy","version":"9.0.0B","services":{"redis":"connected","database":"connected"}}
+{"status":"healthy","version":"10.0.0Bminus","services":{"redis":"connected","database":"connected"}}
 ```
 
 **What success looks like:** `"status":"healthy"` is present. That's the only thing that matters here.
@@ -676,4 +676,4 @@ If you do a second take, increment all nonces: `demo-nonce-101`, `demo-nonce-102
 
 ---
 
-*Walkthrough v1.0 | TelsonBase v9.0.0B | March 1, 2026 | Quietfire AI*
+*Walkthrough v1.0 | TelsonBase v10.0.0Bminus | March 1, 2026 | Quietfire AI*

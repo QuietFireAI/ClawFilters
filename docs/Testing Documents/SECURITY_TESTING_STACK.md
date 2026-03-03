@@ -1,6 +1,6 @@
 # TelsonBase Security Testing Stack
 
-**Version 9.0.0B | March 1, 2026**
+**Version 10.0.0Bminus | March 3, 2026**
 **Classification: Public — Intended for Prospect Distribution**
 
 ---
@@ -228,7 +228,7 @@ These tests exercise complete user workflows through the real FastAPI applicatio
 | Test | Workflow |
 |------|----------|
 | Tenant matter lists are isolated | Create Tenant A + B + matter under A -> list B's matters -> Tenant A matter absent |
-| **Cross-tenant access rejected (v9.0.0B)** | Admin creates tenant -> register User B (viewer) -> User B GET tenant → **HTTP 403** |
+| **Cross-tenant access rejected (v10.0.0Bminus)** | Admin creates tenant -> register User B (viewer) -> User B GET tenant → **HTTP 403** |
 
 ### TestSecurityEndpoints (6 tests)
 
@@ -620,8 +620,8 @@ Every security control in this document maps to a testable source file:
 
 ---
 
-**TelsonBase v9.0.0B**
+**TelsonBase v10.0.0Bminus**
 Architect: Jeff Phillips — security@telsonbase.com
-March 1, 2026
+March 3, 2026
 
 *Every claim in this document is backed by tested, running code.*

@@ -78,4 +78,4 @@ Both call the same backend endpoint. Both produce the same audit trail.
 
 ---
 
-*Reference Sheet | TelsonBase v9.0.0B | March 1, 2026 | Quietfire AI*
+*Reference Sheet | TelsonBase v10.0.0Bminus | March 1, 2026 | Quietfire AI*

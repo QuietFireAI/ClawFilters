@@ -1,6 +1,6 @@
 # TelsonBase User Guide
 
-**Version:** 9.0.0B
+**Version:** 10.0.0Bminus
 **For:** Solopreneurs, small teams, and anyone running TelsonBase for the first time
 
 ---
@@ -76,14 +76,21 @@ This starts 10 containers:
 | **prometheus** | Metrics collection | 9090 |
 | **grafana** | Monitoring dashboards | 3000 |
 
-### Step 4: Verify It's Running
+### Step 4: Initialize the Database
+
+```bash
+# Required on first run — API returns 500s without this:
+docker compose exec mcp_server alembic upgrade head
+```
+
+### Step 5: Verify It's Running
 
 ```bash
 # Health check:
 curl http://localhost:8000/health
 
 # Expected response:
-# {"status": "healthy", "version": "9.0.0B", ...}
+# {"status": "healthy", "version": "10.0.0Bminus", ...}
 ```
 
 ---
@@ -246,7 +253,7 @@ QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT
 | **Quarantine** | New/untrusted agent. Cannot execute any actions. Under review. |
 | **Probation** | Limited permissions. Actions are logged with extra scrutiny. |
 | **Resident** | Standard operating level. Can execute authorized actions. |
-| **Citizen** | Highest trust. Can perform supervisor-level operations. |
+| **Citizen** | High autonomy. Can perform all standard operations autonomously. |
 | **Agent** | Apex tier. Full autonomy (300 actions/min), all tools allowed, no approval required. Human-approved designation. |
 
 New agents start at **Quarantine** and must be promoted by an admin. Trust levels can be revoked instantly via the kill switch.
@@ -455,17 +462,18 @@ The kill switch is instant, Redis-persisted, and checked before any cryptographi
 # List users:
 curl -H "X-API-Key: YOUR_KEY" http://localhost:8000/v1/auth/users
 
-# Create a tenant:
+# Create a tenant (requires admin:config — valid types: law_firm, insurance, real_estate,
+#   healthcare, small_business, personal, general):
 curl -X POST -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"name": "Acme Realty", "tier": "professional"}' \
-  http://localhost:8000/v1/tenants
+  -d '{"name": "Acme Realty", "tenant_type": "real_estate"}' \
+  http://localhost:8000/v1/tenancy/tenants
 
-# Assign user to tenant:
+# Grant a user access to a tenant (admin-only):
 curl -X POST -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"user_id": "user-123", "tenant_id": "tenant-456"}' \
-  http://localhost:8000/v1/tenants/assign
+  -d '{"user_id": "user-123"}' \
+  http://localhost:8000/v1/tenancy/tenants/TENANT_ID/grant-access
 ```
 
 ---
@@ -481,10 +489,10 @@ These are in your `.env` file. The critical ones:
 | `REDIS_URL` | Where Redis is | `redis://redis:6379/0` |
 | `DATABASE_URL` | PostgreSQL connection | `postgresql://...` |
 | `OLLAMA_BASE_URL` | Where Ollama is | `http://ollama:11434` |
-| `CORS_ORIGINS` | Who can call the API | `["*"]` (lock down in prod) |
+| `CORS_ORIGINS` | Who can call the API | `["http://localhost:8000", "http://localhost:3000"]` |
 | `TELSONBASE_ENV` | `development` or `production` | `development` |
 | `IDENTICLAW_ENABLED` | Enable DID identity integration | `false` |
-| `RATE_LIMIT_PER_MINUTE` | API rate limit | `60` |
+| `RATE_LIMIT_PER_MINUTE` | API rate limit | `300` |
 
 See `docs/System Documents/ENV_CONFIGURATION.md` for the complete list.
 
@@ -530,7 +538,7 @@ curl -H "X-API-Key: YOUR_KEY" http://localhost:8000/v1/llm/health
 
 1. **Change the default secrets.** The `.env.example` has placeholder values. Replace them. Use `scripts/generate_secrets.sh` or generate random 48-character hex strings with `openssl rand -hex 32`.
 
-2. **Lock down CORS in production.** Change `CORS_ORIGINS=["*"]` to your actual domain.
+2. **Lock down CORS in production.** Set `CORS_ORIGINS` to your actual domain (e.g., `["https://yourdomain.com"]`).
 
 3. **The Foreman is the only agent that touches the internet.** All other agents are network-isolated. If you see any other agent making external requests, that's an anomaly.
 
@@ -607,7 +615,7 @@ telsonbase/
 ├── gateway/                 # Egress proxy (domain whitelist)
 ├── monitoring/              # Prometheus, Grafana, Mosquitto configs
 ├── alembic/                 # Database migrations
-├── tests/                   # 673+ test suite
+├── tests/                   # 720 test suite
 ├── docs/                    # Documentation
 ├── licenses/                # Third-party license texts
 ├── MANNERS.md                  # Agent safety principles
@@ -635,4 +643,4 @@ TelsonBase was created by Jeff Phillips (Quietfire AI) and built through collabo
 
 ---
 
-*Last updated: March 1, 2026 — v9.0.0B*
+*Last updated: March 3, 2026 — v10.0.0Bminus*

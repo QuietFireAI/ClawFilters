@@ -1,4 +1,4 @@
-# Third-Party Notices — TelsonBase v9.0.0B
+# Third-Party Notices — TelsonBase v10.0.0Bminus
 
 TelsonBase incorporates and depends on open-source software. This document
 lists all third-party dependencies, their licenses, and the corresponding
@@ -13,8 +13,8 @@ license files in this directory.
 | FastAPI | 0.125.0 | MIT | [MIT.txt](MIT.txt) |
 | Uvicorn | 0.27.1 | BSD-3-Clause | [BSD-3-Clause.txt](BSD-3-Clause.txt) |
 | Gunicorn | 25.0.3 | MIT | [MIT.txt](MIT.txt) |
-| Pydantic | 2.6.1 | MIT | [MIT.txt](MIT.txt) |
-| pydantic-settings | 2.1.0 | MIT | [MIT.txt](MIT.txt) |
+| Pydantic | 2.9.2 | MIT | [MIT.txt](MIT.txt) |
+| pydantic-settings | 2.6.1 | MIT | [MIT.txt](MIT.txt) |
 | Celery | 5.3.6 | BSD-3-Clause | [BSD-3-Clause.txt](BSD-3-Clause.txt) |
 | redis (Python) | 5.0.1 | MIT | [MIT.txt](MIT.txt) |
 | paho-mqtt | 1.6.1 | EPL-2.0 / EDL-1.0 | [EPL-2.0.txt](EPL-2.0.txt) |
@@ -24,7 +24,9 @@ license files in this directory.
 | pyotp | 2.9.0 | MIT | [MIT.txt](MIT.txt) |
 | python-json-logger | 2.0.7 | BSD-2-Clause | [BSD-2-Clause.txt](BSD-2-Clause.txt) |
 | prometheus-client | 0.20.0 | Apache-2.0 | [Apache-2.0.txt](Apache-2.0.txt) |
-| httpx | 0.27.0 | BSD-3-Clause | [BSD-3-Clause.txt](BSD-3-Clause.txt) |
+| httpx | 0.28.1 | BSD-3-Clause | [BSD-3-Clause.txt](BSD-3-Clause.txt) |
+| starlette | >=0.47.2 | BSD-3-Clause | [BSD-3-Clause.txt](BSD-3-Clause.txt) |
+| mcp | >=1.2.0 | MIT | [MIT.txt](MIT.txt) |
 | cryptography | 46.0.5 | Apache-2.0 / BSD-3 | [Apache-2.0.txt](Apache-2.0.txt) |
 | SQLAlchemy | 2.0.36 | MIT | [MIT.txt](MIT.txt) |
 | psycopg2-binary | 2.9.10 | LGPL-3.0 | [LGPL-3.0.txt](LGPL-3.0.txt) |
@@ -52,7 +54,6 @@ license files in this directory.
 | eclipse-mosquitto | 2 | EPL-2.0 / EDL-1.0 | [EPL-2.0.txt](EPL-2.0.txt) | MQTT broker |
 | prom/prometheus | v2.49.1 | Apache-2.0 | [Apache-2.0.txt](Apache-2.0.txt) | Metrics collection |
 | grafana/grafana | 10.3.1 | AGPL-3.0 | [AGPL-3.0.txt](AGPL-3.0.txt) | See usage notes |
-| ~~n8nio/n8n~~ | — | — | — | **Removed** — replaced by MCP gateway (Feb 2026). n8n_data volume preserved. |
 | open-webui | main | MIT | [MIT.txt](MIT.txt) | LLM chat UI |
 
 ---
@@ -81,7 +82,6 @@ license files in this directory.
 | [EPL-2.0.txt](EPL-2.0.txt) | Eclipse Public License 2.0 | Mosquitto, paho-mqtt |
 | [AGPL-3.0.txt](AGPL-3.0.txt) | GNU AGPL 3.0 | Grafana (unmodified, separate service) |
 | [LGPL-3.0.txt](LGPL-3.0.txt) | GNU LGPL 3.0 | psycopg2-binary (dynamically linked) |
-| [N8N-Sustainable-Use.txt](N8N-Sustainable-Use.txt) | n8n Sustainable Use | n8n (optional component, see restrictions) |
 
 ---
 
@@ -91,11 +91,7 @@ license files in this directory.
    Docker container. No Grafana code is embedded in or distributed with
    TelsonBase. AGPL copyleft is not triggered for TelsonBase's source code.
 
-2. **n8n (Sustainable Use License)**: n8n has been **removed** from the TelsonBase stack
-   as of v8.0.2 (Feb 2026) and confirmed removed in v9.0.0B (Mar 2026). It has been replaced by the native MCP gateway (`api/mcp_gateway.py`)
-   which exposes TelsonBase tools to Goose, Claude Desktop, and any MCP-compatible agent.
-   The `N8N-Sustainable-Use.txt` license file is retained for historical reference.
-   The `n8n_data` Docker volume is preserved to allow workflow recovery if needed.
+2. **n8n**: Removed from the TelsonBase stack as of Feb 2026. Replaced by the native MCP gateway (`api/mcp_gateway.py`). License file removed.
 
 3. **psycopg2 (LGPL-3.0)**: Used as a dynamically-linked Python library.
    This constitutes "use of the Library" under LGPL, not a derivative work.

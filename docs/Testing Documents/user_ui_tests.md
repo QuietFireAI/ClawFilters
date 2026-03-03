@@ -1,4 +1,4 @@
-# TelsonBase v7.1.0CC — User Console UI Test Plan
+# TelsonBase v10.0.0Bminus — User Console UI Test Plan
 
 **Date:** 2026-02-12
 **Tester:** Jeff
@@ -14,7 +14,7 @@
 |---|------|----------|-------|
 | 1.1 | Open `/console` in browser | Page loads without console errors, dark theme renders |  |
 | 1.2 | Header shows "User Console" label | Indigo "User Console" badge next to TelsonBase title |  |
-| 1.3 | Header shows version | "v7.1.0CC" visible under Quietfire AI |  |
+| 1.3 | Header shows version | "v10.0.0Bminus" visible under Quietfire AI |  |
 | 1.4 | DEMO badge visible | Amber "DEMO" badge shows in header when disconnected |  |
 | 1.5 | Current user displayed | "kparker" with "operator" role badge visible in header |  |
 | 1.6 | System health dot | Green pulsing dot visible in header (healthy) |  |
@@ -213,7 +213,7 @@
 | 12.8 | Welcome card on Home | Dashboard-style welcome — not present in Admin Console |  |
 | 12.9 | Quick action cards | 3 clickable action cards — unique to User Console |  |
 | 12.10 | No admin features | No Users & Roles, Sessions, Tenants, Compliance, Security, Toolroom, Federation, Sovereign, or QMS filter tabs |  |
-| 12.11 | Footer present | "TelsonBase User Console v7.1.0CC" footer at bottom |  |
+| 12.11 | Footer present | "TelsonBase User Console v10.0.0Bminus" footer at bottom |  |
 
 ---
 

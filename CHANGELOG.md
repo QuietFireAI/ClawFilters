@@ -6,6 +6,21 @@ Format: [Semantic Versioning](https://semver.org/)
 
 ---
 
+## [10.0.0Bminus] — 2026-03-03 (Full documentation audit — 34 stale files corrected)
+
+**Status:** Documentation accuracy pass complete. All public-facing docs audited and corrected.
+**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
+
+### Changed
+- Full audit of all docs, licenses, HuggingFace space, USER_GUIDE, README, and proof sheets
+- 34 stale documents corrected: version headers, test counts, trust tier counts, n8n references removed, tenant API paths corrected
+- `licenses/N8N-Sustainable-Use.txt` removed — n8n removed from stack Feb 2026
+- `licenses/THIRD_PARTY_NOTICES.md` updated: Pydantic 2.9.2, httpx 0.28.1, starlette >=0.47.2, mcp >=1.2.0, n8n row removed
+- `huggingface_space/README.md` and `app.py` corrected: five trust tiers (not three), AGENT as apex
+- `USER_GUIDE.md`: alembic step added, CORS/rate-limit defaults corrected, tenant API paths corrected, trust tier descriptions corrected
+
+---
+
 ## [9.6.0B] — 2026-03-03 (First green CI — verified build milestone)
 
 **Status:** 720 passed, 1 skipped, 0 failed — CI green for the first time in repo history

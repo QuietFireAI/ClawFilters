@@ -32,7 +32,7 @@ Select a demo agent, pick an action, and see an actual governance decision in re
 ## What the Demo Shows
 
 - **Governance pipeline evaluation** — 8 steps, real decisions, real server
-- **Three trust tiers** — QUARANTINE / RESIDENT / CITIZEN, each with different permissions
+- **Five trust tiers** — QUARANTINE / PROBATION / RESIDENT / CITIZEN / AGENT, each with different permissions
 - **Kill switch** — suspend an agent, watch Step 2 reject every subsequent action instantly
 - **HITL gating** — some actions held for human approval regardless of trust level
 
@@ -55,4 +55,4 @@ Source code, documentation, proof sheets, quick start, and full test suite.
 
 ---
 
-*TelsonBase v9.1.0B · Quietfire AI · Apache 2.0*
+*TelsonBase v10.0.0Bminus · Quietfire AI · Apache 2.0*

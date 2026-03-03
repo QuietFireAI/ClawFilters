@@ -1,6 +1,6 @@
 # TelsonBase — Frequently Asked Questions
 
-**Version:** 9.0.0B
+**Version:** 10.0.0Bminus
 **Maintained by:** Quietfire AI — support@telsonbase.com
 
 Every answer here traces to source code. Where a verification command exists, it's provided.
@@ -672,4 +672,4 @@ Open an issue on GitHub or email support@telsonbase.com
 
 ---
 
-*TelsonBase v9.0.0B — Quietfire AI — support@telsonbase.com*
+*TelsonBase v10.0.0Bminus — Quietfire AI — support@telsonbase.com*

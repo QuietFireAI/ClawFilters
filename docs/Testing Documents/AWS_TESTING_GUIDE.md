@@ -1,7 +1,7 @@
 # TelsonBase — AWS Live Testing Guide
 
-**Version:** 9.0.0B
-**Date:** March 1, 2026
+**Version:** 10.0.0Bminus
+**Date:** March 3, 2026
 **Purpose:** Validate the complete TelsonBase stack on real cloud infrastructure
 
 ---
@@ -28,7 +28,7 @@ This is not a deployment. It's a validation session.
 
 **Region:** us-east-1 (cheapest, most availability)
 
-### What's New in v9.0.0B
+### What's New in v10.0.0Bminus
 
 Nothing on the AWS side — pricing is stable. What changed is your stack:
 
@@ -44,7 +44,7 @@ Nothing on the AWS side — pricing is stable. What changed is your stack:
 - **mosquitto MOSQUITTO_PASSWORD env var** — docker-compose.yml now passes the env var to the mosquitto container so its health check uses the real generated password.
 - **open-webui healthcheck** — Changed from `wget` (not in image) to `curl -sf`. Reliable health detection.
 - **5 isolated Docker networks** — compose file is heavier; validate it builds cleanly on fresh hardware.
-- **OpenClaw governance verified on DigitalOcean** — Full 8-step pipeline live-tested March 1, 2026. All governance tiers (quarantine → probation), kill switch, and audit chain confirmed.
+- **OpenClaw governance verified on DigitalOcean** — Full 8-step pipeline live-tested March 3, 2026. All governance tiers (quarantine → probation), kill switch, and audit chain confirmed.
 
 ---
 
@@ -90,10 +90,10 @@ tar --exclude='.git' \
     --exclude='*/__pycache__' \
     --exclude='*.pyc' \
     --exclude='./monitoring/mosquitto/password_file' \
-    -czf backups/telsonbase_v9.0.0B_aws_test_$(date +%Y%m%d).tar.gz .
+    -czf backups/telsonbase_v10.0.0Bminus_aws_test_$(date +%Y%m%d).tar.gz .
 
 # Verify it was created and has a reasonable size (should be 5-20 MB)
-ls -lh backups/telsonbase_v9.0.0B_aws_test_*.tar.gz
+ls -lh backups/telsonbase_v10.0.0Bminus_aws_test_*.tar.gz
 ```
 
 Note the exact filename — you'll need it in the next step.
@@ -115,12 +115,12 @@ docker compose version  # Should show v2.x
 # In a SEPARATE terminal on your local machine — upload your tarball
 # (replace the filename with the one you just created above)
 scp -i your-key.pem \
-  /c/claude_code/Telsonbase/backups/telsonbase_v9.0.0B_aws_test_YYYYMMDD.tar.gz \
+  /c/claude_code/Telsonbase/backups/telsonbase_v10.0.0Bminus_aws_test_YYYYMMDD.tar.gz \
   ubuntu@<public-ip>:~/
 
 # Back on the EC2 instance — extract and enter the project
 mkdir telsonbase
-tar -xzf telsonbase_v9.0.0B_aws_test_*.tar.gz -C telsonbase/
+tar -xzf telsonbase_v10.0.0Bminus_aws_test_*.tar.gz -C telsonbase/
 cd telsonbase/
 ```
 

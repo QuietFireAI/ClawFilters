@@ -24,7 +24,7 @@ DEMO_AGENTS = {
     "QUARANTINE — every action gated or blocked":         "60b364aacef04beb",
     "PROBATION — read autonomous, external gated":        "2c2ce1b0a2364c50",
     "RESIDENT  — read/write autonomous, external gated":  "e64a3549463c48f6",
-    "CITIZEN   — autonomous except financial":            "9856076620944eeb",
+    "CITIZEN   — fully autonomous, all categories":       "9856076620944eeb",
     "AGENT     — apex tier, fully autonomous":            "db59ef829ac04d9e",
 }
 
@@ -87,7 +87,7 @@ def _format_decision(data: dict, tool_name: str) -> str:
         f"  Approval ID   {approval_id}",
         f"  QMS Status    {qms_status}",
         bar,
-        f"  {_ts()} UTC · TelsonBase v9.5.0B",
+        f"  {_ts()} UTC · TelsonBase v10.0.0Bminus",
     ]
     return "\n".join(lines)
 
@@ -235,7 +235,7 @@ Every tier was **earned**. AGENT is the result of demonstrated behavior, sequent
 """
 
 KILLSWITCH_DESCRIPTION = """
-**demo_citizen** is a pre-registered agent at the CITIZEN (apex autonomous) tier.
+**demo_citizen** is a pre-registered agent at the CITIZEN tier (tier 4 of 5 — one below the apex AGENT tier).
 
 Hit **Kill Switch** to suspend it. Then hit **Test Action on Suspended Agent** to see
 Step 2 of the pipeline fire — instant rejection, before trust levels, before everything.
@@ -313,7 +313,7 @@ with gr.Blocks(
 
     gr.Markdown(
         "---\n"
-        "*TelsonBase v9.5.0B · [GitHub](https://github.com/QuietFireAI/TelsonBase) · "
+        "*TelsonBase v10.0.0Bminus · [GitHub](https://github.com/QuietFireAI/TelsonBase) · "
         "Quietfire AI · Apache 2.0 · "
         "Built with human-AI collaboration (Jeff Phillips + Claude, Anthropic)*"
     )

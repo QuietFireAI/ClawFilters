@@ -2,7 +2,7 @@
 
 **Audit Date:** March 2, 2026
 **Auditor:** Claude Code (engineering) + Jeff Phillips (review)
-**Version Audited:** 9.0.0B
+**Version Audited:** 10.0.0Bminus
 **Trigger:** Pre-GitHub-drop integrity check — every public claim verified against live code and live test output before repository goes public.
 
 ---
@@ -284,4 +284,4 @@ All findings resolved. Version bumped to 9.1.0B. 720 tests still passing.
 
 ---
 
-*TelsonBase v9.1.0B · Quietfire AI · March 2, 2026*
+*TelsonBase v10.0.0Bminus · Quietfire AI · March 3, 2026*

@@ -1,7 +1,7 @@
 # TelsonBase Deployment Guide
 
-**Version:** 9.0.0B
-**Last Updated:** March 1, 2026
+**Version:** 10.0.0Bminus
+**Last Updated:** March 3, 2026
 **Audience:** IT administrators, managed service providers (MSPs), and systems integrators deploying TelsonBase on customer premises for law firms and professional services organizations.
 
 ---
