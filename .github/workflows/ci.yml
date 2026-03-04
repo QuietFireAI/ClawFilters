@@ -325,7 +325,7 @@ jobs:
         run: |
           VERSION_PY=$(python -c "exec(open('version.py').read()); print(__version__)")
           VERSION_CONFIG=$(grep "^VERSION" core/config.py | head -1 | grep -oP '"[^"]*"' | tr -d '"')
-          VERSION_CHANGELOG=$(grep -m1 '^\#\# \[' CHANGELOG.md | grep -oP '\d+\.\d+\.\d+[A-Z]*')
+          VERSION_CHANGELOG=$(grep -m1 '^\#\# \[' CHANGELOG.md | grep -oP '(?<=\[)[^\]]+')
           echo "version.py:  $VERSION_PY"
           echo "config.py:   $VERSION_CONFIG"
           echo "CHANGELOG:   $VERSION_CHANGELOG"
