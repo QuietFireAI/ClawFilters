@@ -251,15 +251,17 @@ Every control references a source file and a passing test. Run `proof_sheets/` t
 
 ## Who This Is For
 
-**Law firms.** Your data has no configured path to leave your network — there are no external API calls in the default stack, no cloud inference, no third-party dependencies that receive client data. No cloud provider can be subpoenaed for data they never received. ABA Model Rules mapping is included and documented.
+**Anyone running AI agents who wants to stay in control of their data.**
 
-**Healthcare organizations.** PHI is encrypted with AES-256-GCM, de-identified using all 18 HIPAA Safe Harbor identifiers, and not transmitted externally by the platform under default configuration. HIPAA Security Rule mapping is documented and structured for independent auditor review.
+That starts with individuals and households. Your own agents, local inference via Ollama, everything on your hardware. No subscription. No data harvesting. No terms that change. Access it from your home network or your phone. It's your personal AI infrastructure — governed the same way a HIPAA-compliant clinic governs theirs, because it was built to that standard from the start.
 
-**Insurance companies.** SOC 2 controls are documented and tested. Data classification with minimum-necessary enforcement. Audit trails that survive litigation.
+It runs on a $200 mini-PC, a Raspberry Pi, a homelab server, or a cloud VM. The direction is toward home smart device integration, edge clusters, and remote management from your phone. Your own AI cloud. The data stays where you put it.
 
-**Accounting firms.** Financial data stays on your hardware. SOX compliance risk from AI agents is substantially reduced — every action is governed, every permission is earned, and every decision is logged to a tamper-evident chain.
+Small businesses get the same platform. Five employees or fifty — every agent action is governed, every decision logged, every permission earned. No enterprise contract required.
 
-**Anyone who uses autonomous AI agents and can't afford a security incident.**
+The regulated industries — law firms, healthcare, insurance, accounting — TelsonBase was built against the standards they operate under. HIPAA. SOC 2. HITRUST. CJIS. GDPR. PCI DSS. ABA Model Rules. The compliance mappings are in the repository because if it holds up to those frameworks, it works everywhere below them.
+
+The platform that qualifies for a law firm's security review runs on the same Docker Compose as your home server. That's intentional.
 
 ---
 
