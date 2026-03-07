@@ -6,7 +6,7 @@
   <strong>v10.0.0Bminus</strong> &nbsp;|&nbsp;
   <strong>720 tests passing</strong> &nbsp;|&nbsp;
   <strong>51 SOC 2 controls</strong> &nbsp;|&nbsp;
-  <strong>140+ RBAC endpoints</strong> &nbsp;|&nbsp;
+  <strong>177 RBAC endpoints</strong> &nbsp;|&nbsp;
   <strong>0 data shared</strong>
 </p>
 
@@ -25,26 +25,28 @@
   &nbsp;
   <img src="https://img.shields.io/badge/python-3.11-blue?style=flat&logo=python&logoColor=white" alt="Python 3.11">
   &nbsp;
+  <a href="https://huggingface.co/spaces/QuietfireAI/TelsonBase"><img src="https://img.shields.io/badge/Live%20Demo-HuggingFace-ff6b35?style=flat&logo=huggingface&logoColor=white" alt="Live Demo on HuggingFace"></a>
+  &nbsp;
   <a href="https://buymeacoffee.com/jphillips"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support%20the%20project-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"></a>
 </p>
 
 ---
 
-## Status: Beta
+## Status: Live
 
-**This is a community preview release.** The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional and covered by 720 passing tests. Everything described in this README is built and running - not a roadmap, not a mockup.
+**720 tests passing. 0 high-severity findings. Everything described in this README is built and running - not a roadmap, not a mockup.**
 
-We're publishing early because building in public with a community beats building in isolation. That means rough edges exist. APIs will evolve. Some tabs in the dashboard pull live data, others surface demo data until backend endpoints catch up (they're documented inline). The integration guide covers the full OpenClaw flow end-to-end and has been verified across multiple clean-slate deployments.
+The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional. The integration guide covers the full OpenClaw flow end-to-end and has been verified across multiple clean-slate deployments.
+
+**Try the live demo:** [huggingface.co/spaces/QuietfireAI/TelsonBase](https://huggingface.co/spaces/QuietfireAI/TelsonBase)
 
 **What's stable and tested:**
-Trust governance pipeline · Cryptographic audit chain · RBAC (140+ endpoints) · Human-in-the-loop approval gates · Kill switch · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
+Trust governance pipeline · Cryptographic audit chain · RBAC (177 endpoints) · Human-in-the-loop approval gates · Kill switch · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
 
 **What's actively being worked on:**
 User management live endpoint · QMS real-time log feed · Audit chain PostgreSQL archival beyond 100K entries · Agent actor attribution in approval decisions
 
 If something is broken, [open an issue](../../issues). If something is missing that you need, [start a discussion](../../discussions). If you want to contribute, read [CONTRIBUTING.md](CONTRIBUTING.md).
-
-> *Beta doesn't mean broken. It means we're building with you, not for you.*
 
 ---
 
