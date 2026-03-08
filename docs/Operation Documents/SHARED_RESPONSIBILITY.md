@@ -1,12 +1,6 @@
-# TelsonBase - Shared Responsibility Matrix
+# TelsonBase — Shared Responsibility Matrix
 
-# REM: =======================================================================================
-# REM: SHARED RESPONSIBILITY MATRIX
-# REM: =======================================================================================
-# REM: Architect: ::Quietfire AI Project::
-# REM: AI Model Collaborators: Claude Opus 4.6
-# REM: Date: February 23, 2026
-# REM: =======================================================================================
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 ## Model Overview
 
@@ -43,5 +37,9 @@ TelsonBase is self-hosted software deployed on customer-controlled infrastructur
 
 - [Encryption at Rest Guide](ENCRYPTION_AT_REST.md) -- Volume encryption guidance, application-level cryptography, compliance mapping
 - [Backup & Recovery Guide](BACKUP_RECOVERY.md) -- Backup scripts, restore procedures, RPO/RTO targets
-- [Deployment Guide](DEPLOYMENT_GUIDE.md) -- Installation, configuration, Docker Compose setup (forthcoming)
+- [Deployment Guide](DEPLOYMENT_GUIDE.md) -- Installation, configuration, Docker Compose setup
 - [SOC 2 Type I Documentation](SOC2_TYPE_I.md) -- 51 controls, Trust Service Criteria, Complementary User Entity Controls
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
