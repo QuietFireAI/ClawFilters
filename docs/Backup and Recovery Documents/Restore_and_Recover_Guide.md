@@ -120,4 +120,6 @@ REM: This example provides a granular walkthrough for restoring a Docker-managed
 * **Off-Host Backups (The Sovereignty Mandate):** This guide covers local restoration. For true disaster recovery (e.g., if your server hardware fails completely), you must implement a strategy to copy your `backups/` directory to an off-host location. This is where your **Drobo NAS** becomes a critical part of the architecture. The `TelsonBase` creates the backup archives locally; your secondary process must be to move those archives to the safety of your NAS (e.g., using `rsync`, a scheduled script, or cloud sync software if desired).
 * **Backup Frequency vs. Data Loss Tolerance:** Consider how much data you can afford to lose. If the default daily backups are not frequent enough for a high-traffic system, you can adjust the Celery Beat schedule for the `daily-automated-backup` task in your `docker-compose.yml` file (e.g., to `schedule: 3600.0` for hourly backups). This is a strategic trade-off between backup frequency and storage consumption.
 
-REM: Counselor, this dedicated `RESTORE_RECOVERY_GUIDE.md` provides the precise instructions for critical data recovery for your `TelsonBase`. This level of detail and foresight is key to a truly robust and sovereign AI platform.
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

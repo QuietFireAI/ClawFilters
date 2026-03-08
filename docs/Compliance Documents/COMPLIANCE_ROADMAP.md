@@ -1,11 +1,8 @@
-# TelsonBase -- Compliance Certification Roadmap
+# TelsonBase — Compliance Certification Roadmap
 
-**Version:** 10.0.0Bminus
+**Version:** v11.0.1 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 **Platform:** Zero-Trust AI Agent Security Platform
-**Target Markets:** Law Firms (Primary Revenue) | Real Estate Brokerages (Entry Market) | Healthcare-Adjacent
-**Last Updated:** February 10, 2026
-**Architect:** Jeff Phillips (Quietfire AI)
-**Contact:** support@telsonbase.com
+**Target Markets:** Law Firms · Insurance · Healthcare · Real Estate · Accounting
 
 ---
 
@@ -385,7 +382,7 @@ If a future TelsonBase module processes cardholder data (e.g., client billing in
 | Identify users and authenticate access | 8.x | Unique user IDs, MFA, bcrypt password hashing, session management | Aligned |
 | Restrict physical access | 9.x | Customer responsibility (shared model) | Customer scope |
 | Log and monitor all access | 10.x | SHA-256 hash-chained audit, 47 event types, Prometheus alerting | Aligned |
-| Test security regularly | 11.x | 720 tests (588 core + 96 security + 29 E2E + 7 contract), CI/CD pipeline | Aligned |
+| Test security regularly | 11.x | 720 tests (96 security, 115 QMS, 129 toolroom, 55 OpenClaw, 29 E2E, 7 contract), CI/CD pipeline | Aligned |
 | Support information security with policies | 12.x | Compliance documentation, training module, incident response | Aligned |
 
 ### Recommendation
@@ -554,3 +551,7 @@ Every control listed above is implemented in TelsonBase today. The primary gap a
 ---
 
 *This document is intended for executive leadership, compliance officers, and security assessors evaluating TelsonBase's certification roadmap. It provides a phased, budget-aware path to achieving the compliance certifications required for enterprise law firm sales, healthcare-adjacent practice support, and regulated industry deployment. For technical implementation details, refer to the referenced source files and companion compliance documents.*
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

@@ -1,7 +1,6 @@
 # TelsonBase Incident Response Plan
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
-**AI Model Collaborators:** ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
 
 ---
 
@@ -33,7 +32,7 @@ This plan applies to:
 
 ### Automated Response Triggers
 
-TelsonBase v10.0.0Bminus includes automated threat response. These actions are taken automatically:
+TelsonBase includes automated threat response. These actions are taken automatically:
 
 | Indicator | Threat Level | Automatic Action |
 |-----------|--------------|------------------|
@@ -265,3 +264,8 @@ curl -H "X-API-Key: $KEY" http://localhost:8000/v1/audit/chain/verify
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | Feb 2026 | J. Phillips | Initial release |
+| 1.1 | Mar 8, 2026 | Quietfire AI | Version updated to v11.0.1 |
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
