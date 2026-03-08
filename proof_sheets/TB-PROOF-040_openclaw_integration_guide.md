@@ -3,8 +3,8 @@
 **Sheet ID:** TB-PROOF-040
 **Claim Source:** docs/Operation Documents/OPENCLAW_INTEGRATION_GUIDE.md
 **Status:** VERIFIED
-**Last Verified:** March 1, 2026
-**Version:** 9.0.0B
+**Last Verified:** March 8, 2026
+**Version:** v11.0.1
 
 ---
 

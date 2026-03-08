@@ -3,8 +3,8 @@
 **Sheet ID:** TB-PROOF-039
 **Claim Source:** telsonbase.com - Control Your Claw
 **Status:** VERIFIED
-**Last Verified:** February 23, 2026
-**Version:** 7.4.0CC
+**Last Verified:** March 8, 2026
+**Version:** v11.0.1
 
 ---
 
