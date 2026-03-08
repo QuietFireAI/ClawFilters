@@ -8,13 +8,13 @@ These Terms of Use govern access to and use of TelsonBase software, documentatio
 
 **Note:** Prior to v11.0.1, this document was named `DISCLAIMER.md`. References to `DISCLAIMER.md` in existing documentation, code comments, or earlier versions of this repository refer to this document.
 
-The Developer is Jeff Phillips. All references to "Developer," "Quietfire AI," or "we" in these Terms refer to Jeff Phillips, individually and operating as Quietfire AI, including its subsidiaries and partners where applicable.
+The Developer is Jeff Phillips. All references to "Developer," "Quietfire AI," or "we" in these Terms refer to Jeff Phillips, individually and operating as Quietfire AI, including its subsidiaries and partners where applicable. "You" or "User" refers to any individual or organization accessing or using TelsonBase in any capacity.
 
 ---
 
 ## Plain Language Summary
 
-TelsonBase is open-source software provided as-is. You are responsible for your deployment. You are responsible for how you configure and use AI agents. You are responsible for the outcomes. Neither the Developer nor Quietfire AI accepts any liability for anything that happens as a result of using TelsonBase.
+TelsonBase is open-source software provided as-is. You are responsible for your deployment, your configuration, and your outcomes. The Developer does not accept liability for what happens as a result of using TelsonBase. If you misuse it and someone comes after the Developer for it, you are responsible for that too.
 
 ---
 
@@ -47,17 +47,46 @@ THIS LIMITATION APPLIES REGARDLESS OF THE THEORY OF LIABILITY, INCLUDING CONTRAC
 
 ---
 
-## 3. AI Platform Tools - No Liability
+## 3. Indemnification
 
-TelsonBase was developed by the Developer using consumer subscription tools offered by AI platform providers, including but not limited to Claude (Anthropic), ChatGPT (OpenAI), and Gemini (Google). These tools were used in the same manner as any software development tool - as utilities accessed through standard consumer subscription agreements.
+You agree to indemnify, defend, and hold harmless the Developer, Quietfire AI, and their respective subsidiaries, partners, affiliates, officers, and agents from and against any claims, liabilities, damages, losses, costs, and expenses, including reasonable legal fees, arising out of or in any way connected with:
 
-No AI platform, AI company, parent company, or technology provider whose consumer tools were used during development bears any responsibility for this software, its behavior, its documentation, or any outcomes resulting from its use. The use of a consumer subscription tool to assist in software development does not constitute a contribution to, endorsement of, or any involvement in the resulting software by that platform or company.
+- Your use or misuse of TelsonBase
+- Your deployment, configuration, or operation of the software
+- Your violation of these Terms
+- Your violation of any applicable law, regulation, or third-party right
+- The actions or outputs of any AI agent you operate through TelsonBase
+- Any claim by a third party resulting from your use of TelsonBase
 
-Anthropic, OpenAI, and Google are not parties to these Terms. They did not design, build, review, approve, or certify TelsonBase. A user of Microsoft Word who writes a contract is not partnered with Microsoft. The same principle applies here.
+This obligation survives termination of your use of TelsonBase.
 
 ---
 
-## 4. Not Legal, Compliance, or Professional Advice
+## 4. Acceptable Use
+
+You may use TelsonBase for any lawful purpose consistent with the Apache 2.0 license. You may not use TelsonBase to:
+
+- Facilitate illegal activity, including unauthorized access to systems, data theft, or violations of privacy law
+- Govern agents in ways designed to circumvent compliance obligations rather than support them
+- Misrepresent TelsonBase's certification status, compliance guarantees, or capabilities to regulators, auditors, clients, or the public
+- Remove or alter copyright, license, or attribution notices
+- Represent Quietfire AI, the Developer, or any AI platform provider as a party to, endorser of, or guarantor of your deployment
+
+---
+
+## 5. AI Development Tools - Legal Clarification
+
+The following clarification is legal in nature and does not diminish the genuine role that AI tools played in building TelsonBase. The collaboration between the Developer and AI platforms was real, substantive, and acknowledged throughout this repository. The README and commit history reflect that fully.
+
+The legal point is narrow: TelsonBase was built by the Developer using consumer subscription tools offered by AI platform providers, including Claude (Anthropic), ChatGPT (OpenAI), and Gemini (Google). These tools were accessed through standard consumer agreements, in the same manner as any software development utility.
+
+No AI platform, AI company, or parent company whose consumer tools were used during development is a party to these Terms, bears responsibility for this software, or has endorsed, certified, or reviewed TelsonBase. The use of a consumer subscription tool to assist in software development does not create legal involvement by that provider in the resulting work. Anthropic, OpenAI, and Google did not design, build, approve, or certify TelsonBase.
+
+The contribution of those tools to this project is real. Their legal exposure is zero. Both are true.
+
+---
+
+## 6. Not Legal, Compliance, or Professional Advice
 
 Nothing in TelsonBase, including its source code, documentation, proof sheets, compliance framework mappings, or any other content, constitutes:
 
@@ -73,7 +102,7 @@ TelsonBase may support your compliance program. It does not guarantee it.
 
 ---
 
-## 5. Your Responsibility as a Deploying Organization
+## 7. Your Responsibility as a Deploying Organization
 
 When you deploy TelsonBase, you assume full responsibility for:
 
@@ -88,7 +117,7 @@ TelsonBase gives you the tools to govern AI agents. What you do with those tools
 
 ---
 
-## 6. Open Source License
+## 8. Open Source License
 
 TelsonBase is licensed under the Apache License, Version 2.0. The full text is in [`LICENSE`](LICENSE).
 
@@ -96,19 +125,37 @@ The Apache 2.0 license independently contains a disclaimer of warranties and lim
 
 ---
 
-## 7. Release Status
+## 9. Release Status
 
 TelsonBase v11.0.1 is a community preview release. Preview software may contain bugs, incomplete features, or behaviors that change without notice. Do not deploy preview software in production environments where failures would result in harm to persons or regulatory violations without independent validation appropriate to that environment.
 
 ---
 
-## 8. Governing Law
+## 10. Modifications to These Terms
+
+The Developer reserves the right to modify these Terms at any time. Changes will be reflected in an updated version number and effective date at the top of this document. Continued use of TelsonBase following a posted update constitutes acceptance of the revised Terms. It is your responsibility to review these Terms periodically.
+
+---
+
+## 11. Severability
+
+If any provision of these Terms is found to be unenforceable or invalid under applicable law, that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions will continue in full force and effect.
+
+---
+
+## 12. Entire Agreement
+
+These Terms, together with the Apache License, Version 2.0, constitute the entire agreement between you and the Developer with respect to TelsonBase and supersede all prior or contemporaneous representations, understandings, or agreements, written or oral, relating to the subject matter herein.
+
+---
+
+## 13. Governing Law
 
 These Terms are governed by and construed in accordance with the laws of the State of Ohio, United States, without regard to its conflict of law principles. Any disputes arising out of or relating to these Terms or TelsonBase shall be subject to the exclusive jurisdiction of the courts located in the State of Ohio.
 
 ---
 
-## 9. Contact
+## 14. Contact
 
 Security concerns: security@telsonbase.com
 General support: support@telsonbase.com
