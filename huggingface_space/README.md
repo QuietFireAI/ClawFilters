@@ -51,7 +51,7 @@ Demotion is instant and automatic. The kill switch is always available to a huma
 **→ [github.com/QuietFireAI/TelsonBase](https://github.com/QuietFireAI/TelsonBase)**
 
 Source code, documentation, proof sheets, quick start, and full test suite.
-720 tests passing. 0 high-severity findings. Apache 2.0.
+746 tests passing. 0 high-severity findings. Apache 2.0.
 
 ---
 
