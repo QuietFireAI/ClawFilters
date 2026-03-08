@@ -97,6 +97,18 @@ TelsonBase is a **self-hosted, governance-first security platform** for autonomo
 
 ---
 
+## A Solution, Not THE Solution
+
+TelsonBase is not the definitive answer to AI agent governance. It is one answer — the approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less.
+
+Open-sourcing it converts a personal decision into a public contribution. The conversation about how autonomous agents should earn trust, prove behavior, and stay accountable to the humans they work for is just beginning. TelsonBase is one position in that conversation. Fork it. Break it. Build something better from it. The goal was never to own this problem — it was to model one way to solve it seriously and put that model where others can use it.
+
+The platform will keep evolving. Formal certifications — HIPAA, HITRUST, SOC 2 Type II — are on the roadmap, and that work will be open source as well. The compliance infrastructure already baked in is the foundation. The certifications are the credential that proves it holds up under external review. Both matter. Both will ship.
+
+If you are building agents for your company and you want a governance layer you control completely, this is built for that. If you are researching AI safety and want a real implementation to study, test, or critique, this is built for that too. If you see gaps, the issues tab is open.
+
+---
+
 ## See It Working
 
 Everything below is a live local instance. No mocks. No scripted responses. Real governance pipeline, real audit chain, real decisions.
@@ -374,19 +386,48 @@ Claude Desktop works identically - point it at `http://localhost:8000/mcp` with 
 
 ## Proof Sheets
 
-The `proof_sheets/` directory contains 42 evidence sheets. Each one documents an exact claim, provides source code files, test files, and a verification command. No marketing. Just traceable evidence.
+The `proof_sheets/` directory contains **773 evidence documents**.
+
+This is not a marketing decision. If we preach governance, we have to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed — not hidden.
+
+**Two tiers:**
+
+| Tier | Format | Count | Purpose |
+|---|---|---|---|
+| **Claim-level** | `TB-PROOF-NNN` | 52 sheets | One sheet per logical claim — source files, verdict, verification command |
+| **Individual test** | `TB-TEST-[CODE]-NNN` | 721 sheets | One sheet per test function — single-command verification, class cross-reference |
+
+```
+proof_sheets/
+  INDEX.md                          ← master index, all 52 claim sheets
+  TB-PROOF-001_tests_passing.md
+  TB-PROOF-035_openclaw_governance.md
+  TB-PROOF-043_security_auth.md     ← 9 security battery category sheets
+  ...
+  individual/
+    sec/    (96)   TB-TEST-SEC-001 through TB-TEST-SEC-096
+    qms/    (115)  TB-TEST-QMS-001 through TB-TEST-QMS-115
+    tool/   (129)  TB-TEST-TOOL-001 through TB-TEST-TOOL-129
+    ocl/    (55)   TB-TEST-OCL-001 through TB-TEST-OCL-055
+    ...            (15 domains total)
+```
+
+```bash
+# Check a specific claim
+cat proof_sheets/TB-PROOF-037_openclaw_kill_switch.md
+
+# Check one specific test — the exact docker command is inside
+cat proof_sheets/individual/sec/TB-TEST-SEC-001_test_api_key_hash_uses_sha256.md
+
+# Verify any test yourself
+docker compose exec mcp_server python -m pytest \
+  tests/test_security_battery.py::TestAuthSecurity::test_api_key_hash_uses_sha256 \
+  -v --tb=short
+```
 
 Browse the full index: [`proof_sheets/INDEX.md`](proof_sheets/INDEX.md)
 
-```bash
-# Verify any claim - the filename tells you what's inside
-cat proof_sheets/TB-PROOF-001_tests_passing.md
-cat proof_sheets/TB-PROOF-035_openclaw_governance.md
-cat proof_sheets/TB-PROOF-037_openclaw_kill_switch.md
-cat proof_sheets/TB-PROOF-039_earned_trust_model.md
-```
-
-Every claim on the website maps to a sheet. Every sheet maps to source code, tests, and a verification command. Question a claim? Run the command.
+Question any claim. Run the command. That's the point.
 
 ---
 
@@ -482,7 +523,7 @@ On March 3, 2026, I read this README in full - every section, every table, every
 | **177 API endpoints** | FastAPI route introspection on live server |
 | **13 MCP tools (names and gate levels)** | Read against `api/mcp_gateway.py` line by line |
 | **v11.0.1** | Confirmed consistent across `version.py`, `core/config.py`, `CHANGELOG.md` |
-| **42 proof sheets** | Counted by file |
+| **773 proof documents** (52 claim-level + 721 individual) | Counted by file |
 | **37,921 lines scanned, 0 High Bandit findings** | Live Bandit scan output |
 | **goose.yaml install path** | Verified against `goose.yaml` header |
 | **Apache 2.0 license** | `LICENSE` file confirmed |
