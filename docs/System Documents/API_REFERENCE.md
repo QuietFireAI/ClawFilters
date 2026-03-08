@@ -528,9 +528,9 @@ All errors follow this format:
 
 ---
 
-## QMS Status Codes
+## QMS™ Status Codes
 
-Responses include a `qms_status` field following the Qualified Message Standard:
+Responses include a `qms_status` field following the Qualified Message Standard (QMS™):
 
 | Status | Meaning |
 |--------|---------|

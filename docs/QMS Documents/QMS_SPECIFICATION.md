@@ -1,10 +1,15 @@
-# Qualified Message Standard (QMS) — Specification Reference
+# Qualified Message Standard (QMS™) — Specification Reference
 
 ## Version: 2.1.6 | Protocol: AI Audit Chain
 
 **Architect:** Jeff Phillips — Quietfire AI
 **Canonical Reference:** qms.codes  
 **License:** Open Standard (MIT)
+**Trademark:** QMS™ is a trademark of Quietfire AI / Jeff Phillips. Registration pending.
+
+---
+
+> **QMS is optional.** TelsonBase runs fully without it. No governance feature, approval gate, trust tier, audit chain, or platform function depends on QMS being present. QMS is a log format and security watermark -- a layer of observability and provenance on top of a platform that works whether you use it or not. Adopt it when it adds value. Skip it when it does not.
 
 ---
 

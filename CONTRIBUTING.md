@@ -45,7 +45,7 @@ Use REM comments to explain:
 - **Security implications** of the code
 - **Dependencies** between components
 
-### 2. QMS (Qualified Message Standard)
+### 2. QMS™ (Qualified Message Standard)
 
 All agent-to-agent communication uses QMS suffixes:
 
