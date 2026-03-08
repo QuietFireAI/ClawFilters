@@ -117,17 +117,33 @@ You should see files including `telsonbase_mcp_api_key`. That file's contents ar
 cat secrets/telsonbase_mcp_api_key
 ```
 
-### Step 3 - Review .env (optional but recommended)
+### Step 3 - Enable the governance pipeline
 
-Open `.env` in any editor and review the values. The defaults work for local development. The one setting you may want to change:
+**This step is required** to use agent governance features (trust levels, kill switch, Manners compliance, approval gates). Run this command before starting TelsonBase.
 
-```env
-# Enable the full 8-step governance pipeline
-# Set to true to use OpenClaw agent governance features
-OPENCLAW_ENABLED=true
+**In Git Bash:**
+```bash
+sed -i 's/OPENCLAW_ENABLED=false/OPENCLAW_ENABLED=true/' .env
 ```
 
-Set `OPENCLAW_ENABLED=true` if you want the full governance pipeline active (trust levels, kill switch, Manners compliance). Leave it `false` if you are exploring the platform for the first time — the platform runs fine without it, but agent governance features will not fire.
+**In PowerShell:**
+```powershell
+(Get-Content .env) -replace 'OPENCLAW_ENABLED=false', 'OPENCLAW_ENABLED=true' | Set-Content .env
+```
+
+Verify it took effect:
+
+**Git Bash:**
+```bash
+grep OPENCLAW_ENABLED .env
+```
+
+**PowerShell:**
+```powershell
+Select-String -Path .env -Pattern "OPENCLAW_ENABLED"
+```
+
+Expected output: `OPENCLAW_ENABLED=true`
 
 ---
 
@@ -382,10 +398,17 @@ netstat -ano | findstr :8000
 taskkill /PID 1234 /F
 ```
 
-Alternatively, edit `docker-compose.yml` to use a different host port:
-```yaml
-ports:
-  - "8001:8000"  # access via localhost:8001 instead
+Alternatively, switch TelsonBase to port 8001 instead. Run this in **Git Bash** from the TelsonBase directory:
+
+```bash
+sed -i 's/"8000:8000"/"8001:8000"/' docker-compose.yml
+```
+
+Then access TelsonBase at `http://localhost:8001` instead of `http://localhost:8000`.
+
+To switch back:
+```bash
+sed -i 's/"8001:8000"/"8000:8000"/' docker-compose.yml
 ```
 
 ### Containers keep restarting
