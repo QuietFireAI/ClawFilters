@@ -1,10 +1,8 @@
 # TelsonBase - Healthcare Compliance Security Profile (HIPAA/HITECH/HITRUST)
 
-**Version:** 10.0.0Bminus
+**Version:** v11.0.1 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 **Platform:** Zero-Trust AI Agent Security Platform
-**Target Markets:** Real Estate Professionals | Legal Professionals (Healthcare-Ready Infrastructure)
-**Last Updated:** February 10, 2026
-**Architect:** Jeff Phillips (Quietfire AI)
+**Target Markets:** Healthcare · Legal · Insurance · Real Estate · Accounting
 
 ---
 
@@ -283,7 +281,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 | **Agent Trust Levels** | Five-tier progression: Quarantine > Probation > Resident > Citizen > Agent. Agents handling PHI require minimum Resident trust level. Automatic demotion on policy violations. PHI access capability requires explicit grant - never inherited from trust level alone | `core/trust_levels.py` |
 | **Human-in-the-Loop (HITL) Approval Gates** | All PHI disclosure, PHI export, and PHI de-identification operations require human approval before execution. Configurable approval timeout with automatic denial on expiry. Approval audit trail with approver identity and justification | `core/approval.py` |
 | **Capability-Based Sandboxing** | Each agent declares capabilities (filesystem scope, allowed domains, MQTT topics, inter-agent access). PHI access is a distinct capability - agents without PHI capability cannot read, write, or process PHI regardless of trust level. Unauthorized attempts audit-logged and trigger anomaly detection | `core/capabilities.py` |
-| **QMS™ Message Validation** | Qualified Message Standard (QMS™) v2.2.0 - all agent communication follows structured formatting with provenance tracking. Messages containing PHI flagged and routed through encrypted channels only. Message schema validation prevents PHI leakage via malformed messages | `core/qms.py` |
+| **QMS™ Message Validation** | Qualified Message Standard (QMS™) v2.1.6 - all agent communication follows structured formatting with provenance tracking. Messages containing PHI flagged and routed through encrypted channels only. Message schema validation prevents PHI leakage via malformed messages | `core/qms.py` |
 | **Behavioral Anomaly Detection** | Six anomaly types monitored: rate spikes, new resources, new actions, unusual timing, enumeration patterns, error spikes. PHI-specific anomaly rules: bulk PHI access detection, after-hours PHI access alerting, PHI access frequency deviation from baseline | `core/anomaly.py` |
 | **Cryptographic Message Signing** | HMAC-SHA256 signing of all inter-agent messages, 5-minute replay window, constant-time signature comparison. Prevents message forgery that could trick agents into unauthorized PHI disclosure | `core/signing.py` |
 
@@ -540,8 +538,12 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 - **Security Policy:** `SECURITY.md` in project root
 - **Vulnerability Reporting:** Responsible disclosure process documented
 - **Response Times:** Critical (24h), High (7d), Medium (30d), Low (next release)
-- **Architect:** Jeff Phillips - support@telsonbase.com
+- **Contact:** support@telsonbase.com
 
 ---
 
 *This document is intended for healthcare compliance evaluators, HIPAA security auditors, HITRUST assessors, and enterprise procurement teams assessing TelsonBase for deployment in healthcare-adjacent or healthcare-ready environments. TelsonBase does not currently process PHI in production - this document demonstrates infrastructure readiness for HIPAA/HITECH/HITRUST compliance. For current production compliance details covering real estate and legal markets, see `LEGAL_COMPLIANCE.md`. For technical implementation details, refer to the referenced source files.*
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

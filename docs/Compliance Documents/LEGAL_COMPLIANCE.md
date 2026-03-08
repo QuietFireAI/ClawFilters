@@ -1,10 +1,8 @@
 # TelsonBase - Legal & Regulatory Compliance Security Profile
 
-**Version:** 10.0.0Bminus
+**Version:** v11.0.1 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 **Platform:** Zero-Trust AI Agent Security Platform
-**Target Markets:** Real Estate Professionals | Legal Professionals
-**Last Updated:** February 10, 2026
-**Architect:** Jeff Phillips (Quietfire AI)
+**Target Markets:** Legal · Real Estate · Insurance · Accounting
 
 ---
 
@@ -303,7 +301,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 | **Agent Trust Levels** | Five-tier progression: Quarantine > Probation > Resident > Citizen > Agent. Automatic promotion based on behavior, automatic demotion on violations | `core/trust_levels.py` |
 | **Behavioral Anomaly Detection** | Six anomaly types monitored: rate spikes, new resources, new actions, unusual timing, enumeration patterns, error spikes | `core/anomaly.py` |
 | **Cryptographic Message Signing** | HMAC-SHA256 signing of all inter-agent messages, 5-minute replay window, constant-time signature comparison | `core/signing.py` |
-| **QMS™ Protocol** | Qualified Message Standard (QMS™) v2.2.0 - all agent communication follows structured formatting with provenance tracking | `core/qms.py` |
+| **QMS™ Protocol** | Qualified Message Standard (QMS™) v2.1.6 - all agent communication follows structured formatting with provenance tracking | `core/qms.py` |
 
 ### Regulatory Mapping
 
@@ -397,8 +395,12 @@ This document maps TelsonBase's security architecture to the compliance framewor
 - **Security Policy:** `SECURITY.md` in project root
 - **Vulnerability Reporting:** Responsible disclosure process documented
 - **Response Times:** Critical (24h), High (7d), Medium (30d), Low (next release)
-- **Architect:** Jeff Phillips - support@telsonbase.com
+- **Contact:** support@telsonbase.com
 
 ---
 
 *This document is intended for compliance evaluators, security auditors, and enterprise procurement teams assessing TelsonBase for deployment in regulated industries. For technical implementation details, refer to the referenced source files.*
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
