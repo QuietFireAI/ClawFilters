@@ -6,6 +6,8 @@
 
 These Terms of Use govern access to and use of TelsonBase software, documentation, and related materials published at https://github.com/QuietFireAI/TelsonBase. By downloading, cloning, deploying, or using TelsonBase in any form, you agree to these terms. If you do not agree, do not use the software.
 
+**Note:** Prior to v11.0.1, this document was named `DISCLAIMER.md`. References to `DISCLAIMER.md` in existing documentation, code comments, or earlier versions of this repository refer to this document.
+
 The Developer is Jeff Phillips. All references to "Developer," "Quietfire AI," or "we" in these Terms refer to Jeff Phillips, individually and operating as Quietfire AI, including its subsidiaries and partners where applicable.
 
 ---
