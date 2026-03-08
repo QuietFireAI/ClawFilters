@@ -9,7 +9,7 @@
 
 Two things you need in hand:
 
-1. **Your platform API key** — the key generated when you ran `generate_secrets.sh`. Find it any time with:
+1. **Your platform API key** — the key generated when you ran `generate_secrets.sh`. Find it any time by running this in **Git Bash** from the TelsonBase directory:
    ```bash
    cat secrets/telsonbase_mcp_api_key
    ```
@@ -77,10 +77,17 @@ An agent at QUARANTINE cannot do useful work. Promote it one level to PROBATION 
 3. Enter a brief reason: `Initial setup, reviewed and approved`
 4. Trust level updates to **PROBATION**
 
-**Or from the terminal:**
+**Or from Git Bash** (run these from the TelsonBase directory):
+
+First, set your API key as a variable so you don't have to paste it repeatedly:
+```bash
+API_KEY=$(cat secrets/telsonbase_mcp_api_key)
+```
+
+Then promote — replace `YOUR_INSTANCE_ID` with the ID from the OpenClaw tab:
 ```bash
 curl -X POST http://localhost:8000/v1/openclaw/YOUR_INSTANCE_ID/promote \
-  -H "X-API-Key: $(cat secrets/telsonbase_mcp_api_key)" \
+  -H "X-API-Key: $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"new_level": "probation", "reason": "Initial setup, reviewed and approved"}'
 ```
@@ -94,16 +101,23 @@ curl -X POST http://localhost:8000/v1/openclaw/YOUR_INSTANCE_ID/promote \
 
 ## Step 5 — Verify the Loop
 
-Confirm your agent is wired up by submitting a test action. Replace `YOUR_INSTANCE_ID` with the ID from the OpenClaw tab:
+Open **Git Bash** from the TelsonBase directory. If you have not set your API key variable yet, do it now:
 
 ```bash
+API_KEY=$(cat secrets/telsonbase_mcp_api_key)
+```
+
+Replace `YOUR_INSTANCE_ID` with the ID shown on the agent card in the OpenClaw tab.
+
+**Test 1 — Read action (should be allowed at PROBATION):**
+```bash
 curl -X POST http://localhost:8000/v1/openclaw/YOUR_INSTANCE_ID/action \
-  -H "X-API-Key: $(cat secrets/telsonbase_mcp_api_key)" \
+  -H "X-API-Key: $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"tool_name": "read_file", "tool_args": {"path": "/docs/report.txt"}}'
 ```
 
-**Expected response (PROBATION, read action):**
+**Expected response:**
 ```json
 {
   "allowed": true,
@@ -116,10 +130,10 @@ curl -X POST http://localhost:8000/v1/openclaw/YOUR_INSTANCE_ID/action \
 }
 ```
 
-Now test an external call — this should be gated (not blocked, not allowed — held for your review):
+**Test 2 — External call (should be gated — held for your review, not blocked):**
 ```bash
 curl -X POST http://localhost:8000/v1/openclaw/YOUR_INSTANCE_ID/action \
-  -H "X-API-Key: $(cat secrets/telsonbase_mcp_api_key)" \
+  -H "X-API-Key: $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"tool_name": "http_post", "tool_args": {"url": "https://api.example.com/data"}}'
 ```
