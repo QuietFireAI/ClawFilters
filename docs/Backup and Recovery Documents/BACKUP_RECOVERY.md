@@ -1,7 +1,6 @@
 # TelsonBase Backup & Recovery Guide
 
-**Architect:** Jeff Phillips - support@telsonbase.com
-**Last Updated:** February 23, 2026
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -141,3 +140,7 @@ rsync -av backups/ nas:/volume1/telsonbase-backups/
 | Redis dump is empty | Normal for fresh instances with no data; not a failure |
 | Restore exceeds 15-min RTO | Consider pruning old data or upgrading hardware |
 | Services fail after restore | Check `docker compose logs`; secrets mismatch may require re-running `generate_secrets.sh` |
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
