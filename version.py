@@ -503,4 +503,33 @@
 # REM:           to .github/workflows/ci.yml for docker compose config validation
 # REM: =======================================================================================
 
-__version__ = "10.0.0Bminus"
+# REM: =======================================================================================
+# REM: 10.0.0Bminus - Final beta audit + HuggingFace live demo (March 3-7, 2026):
+# REM:         - CI fixed: version consistency regex corrected (was cutting 10.0.0Bminus)
+# REM:         - Frontend improvements: chain ID copyable, trust tier pills responsive,
+# REM:           agent name truncation, verify result preserved on banner dismiss
+# REM:         - FUNDING.yml created (GitHub Sponsors, Ko-fi, Buy Me a Coffee)
+# REM:         - Demo GIFs recorded (4 total: governance-blocked, kill-switch,
+# REM:           hitl-approve, hitl-reject) and uploaded to YouTube
+# REM:         - HuggingFace Space live: QuietfireAI/TelsonBase (Gradio 6.x)
+# REM:           All 5 tiers + kill switch demo connecting to DO live server
+# REM:         - Website: Beta dropped, HubSpot wired, YouTube demo section,
+# REM:           pull quote added, Live Demo nav link, 177 endpoints updated
+# REM:         - README: Status Live, HF badge, demo links, Beta language removed
+# REM: =======================================================================================
+# REM: 11.0.1 - Final drop prep — document review pass (March 8, 2026):
+# REM:         - Version bump drops Bminus: production release designation
+# REM:         - PROJECT_STRUCTURE.md: full rewrite to match actual codebase
+# REM:           (60+ core modules, all agent/api/test files, 12 docker services,
+# REM:           new directories: toolroom, alembic, monitoring, proof_sheets,
+# REM:           huggingface_space, website, screenshots)
+# REM:         - docs/Operation Documents/DEVELOPER_GUIDE.md: REM header removed,
+# REM:           Python 3.10+ → 3.11+, claude-3 → claude-sonnet-4-6,
+# REM:           OpenClaw integration path note added
+# REM:         - proof_sheets/INDEX.md: version corrected (9.0.0B → v11.0.1),
+# REM:           RBAC 140+ → 177, TB-PROOF-040 PENDING → VERIFIED
+# REM:         - CITATION.cff: version corrected (was still on 9.0.0B)
+# REM:         - Document review tracking: version string in each doc = reviewed
+# REM: =======================================================================================
+
+__version__ = "11.0.1"
