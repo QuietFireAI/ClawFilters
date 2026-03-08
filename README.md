@@ -3,7 +3,7 @@
 ### Control Your Claw. Trust Is Earned.
 
 <p align="center">
-  <strong>v10.0.0Bminus</strong> &nbsp;|&nbsp;
+  <strong>v11.0.1</strong> &nbsp;|&nbsp;
   <strong>720 tests passing</strong> &nbsp;|&nbsp;
   <strong>51 SOC 2 controls</strong> &nbsp;|&nbsp;
   <strong>177 RBAC endpoints</strong> &nbsp;|&nbsp;
@@ -461,7 +461,7 @@ If you use TelsonBase in research, a paper, or a published project, a `CITATION.
 
 Manual citation:
 ```
-Phillips, J. (2026). TelsonBase (v10.0.0Bminus). Quietfire AI.
+Phillips, J. (2026). TelsonBase (v11.0.1). Quietfire AI.
 https://github.com/QuietFireAI/TelsonBase
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```
@@ -481,7 +481,7 @@ On March 3, 2026, I read this README in full - every section, every table, every
 | **720 tests passing** | Live `pytest` run on DigitalOcean: `720 passed, 1 skipped, 0 failed` |
 | **177 API endpoints** | FastAPI route introspection on live server |
 | **13 MCP tools (names and gate levels)** | Read against `api/mcp_gateway.py` line by line |
-| **v10.0.0Bminus** | Confirmed consistent across `version.py`, `core/config.py`, `CHANGELOG.md` |
+| **v11.0.1** | Confirmed consistent across `version.py`, `core/config.py`, `CHANGELOG.md` |
 | **42 proof sheets** | Counted by file |
 | **37,921 lines scanned, 0 High Bandit findings** | Live Bandit scan output |
 | **goose.yaml install path** | Verified against `goose.yaml` header |
