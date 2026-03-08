@@ -12,7 +12,7 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **Observability and Metrics Test Suite**: 40 tests across 6 classes covering 40 tests across 6 classes verifying TelsonBase observability infrastructure: Prometheus metrics collection.
+This sheet proves the **Observability and Metrics Test Suite**: 40 tests across 6 classes verifying TelsonBase observability infrastructure: Prometheus counter/gauge/histogram labeling, agent event emission, MQTT bus publish/subscribe/reconnect behavior, singleton safety, monitoring configuration for all 12 Docker services, and the /metrics endpoint.
 
 ## Verdict
 

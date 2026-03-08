@@ -1,4 +1,4 @@
-# Third-Party Notices — TelsonBase v10.0.0Bminus
+# Third-Party Notices — TelsonBase v11.0.1
 
 TelsonBase incorporates and depends on open-source software. This document
 lists all third-party dependencies, their licenses, and the corresponding
@@ -82,6 +82,18 @@ license files in this directory.
 | [EPL-2.0.txt](EPL-2.0.txt) | Eclipse Public License 2.0 | Mosquitto, paho-mqtt |
 | [AGPL-3.0.txt](AGPL-3.0.txt) | GNU AGPL 3.0 | Grafana (unmodified, separate service) |
 | [LGPL-3.0.txt](LGPL-3.0.txt) | GNU LGPL 3.0 | psycopg2-binary (dynamically linked) |
+
+---
+
+## Optional External Integrations
+
+These services are not bundled with TelsonBase. They are optional integrations enabled by operator configuration. No code from these services is distributed with TelsonBase.
+
+| Service | Provider | License / Terms | Notes |
+|---|---|---|---|
+| OpenClaw | OpenClaw project | Provider terms | Autonomous AI agent. TelsonBase acts as a governed MCP proxy — OpenClaw is not modified. Optional integration. |
+| Goose | Block, Inc. | Apache-2.0 | Open-source MCP agent operator. Optional integration. |
+| Identiclaw | vouched.id | Provider terms | DID-based agent identity. Planned future integration. Runs on operator's own Cloudflare account. |
 
 ---
 

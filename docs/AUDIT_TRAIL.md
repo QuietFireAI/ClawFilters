@@ -1,4 +1,5 @@
 # TelsonBase Audit Trail
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 Every governance decision made by TelsonBase is written to a hash-chained audit record. Not logged to a file. Not stored in a table. **Hash-chained** — each entry cryptographically binds to the one before it. You can hand this record to a regulator, opposing counsel, or a forensic investigator and prove that nothing was altered after the fact.
 
@@ -6,7 +7,7 @@ This document covers the implementation, the API, the real-time stream, and the 
 
 ---
 
-## Why hash chaining matters for AI agent governance
+## Why Hash Chaining Matters for AI Agent Governance
 
 Conventional log files can be edited. A compromised system can append to them, truncate them, or rewrite them. This is an obvious problem when the thing being logged is an AI agent with file system access.
 
@@ -16,7 +17,7 @@ The genesis entry uses a 64-character zero hash (`0000...0000`) as its `previous
 
 ---
 
-## What the chain captures
+## What the Chain Captures
 
 The chain records every event that matters to governance and compliance. Not infrastructure noise — not health checks, not Redis PING/PONG — governance events.
 
@@ -27,7 +28,7 @@ The chain records every event that matters to governance and compliance. Not inf
 | `auth.failure` | Failed authentication attempt |
 | `auth.token_issued` | JWT issued to a user |
 
-### Agent governance (OpenClaw)
+### Agent Governance (OpenClaw)
 | Event Type | Triggered by |
 |---|---|
 | `openclaw.registered` | New agent instance registered |
@@ -39,14 +40,14 @@ The chain records every event that matters to governance and compliance. Not inf
 | `openclaw.suspended` | Kill switch activated |
 | `openclaw.reinstated` | Kill switch cleared by a human |
 
-### Approvals & anomalies
+### Approvals & Anomalies
 | Event Type | Triggered by |
 |---|---|
 | `approval.granted` | Human approved a gated action |
 | `anomaly.detected` | Behavioral anomaly flagged (rate spike, capability probe, enumeration) |
 | `capability.check` | Agent capability enforcement check |
 
-### Agent identity (Identiclaw)
+### Agent Identity (Identiclaw)
 | Event Type | Triggered by |
 |---|---|
 | `identity.registered` | New DID agent registered |
@@ -65,7 +66,7 @@ The chain records every event that matters to governance and compliance. Not inf
 | `tool.quarantined` | Tool flagged for security review |
 | `tool.hitl_gate` | HITL approval required for tool operation |
 
-### System & tasks
+### System & Tasks
 | Event Type | Triggered by |
 |---|---|
 | `system.startup` / `system.shutdown` | Container lifecycle |
@@ -76,7 +77,7 @@ The chain records every event that matters to governance and compliance. Not inf
 
 ---
 
-## Actor types
+## Actor Types
 
 Every entry records not just *who* acted, but *what kind of actor* they are. This satisfies HIPAA 45 CFR 164.312(a)(2)(i) unique user identification requirements.
 
@@ -90,7 +91,7 @@ Every entry records not just *who* acted, but *what kind of actor* they are. Thi
 
 ---
 
-## Entry structure
+## Entry Structure
 
 Every chain entry has the same shape:
 
@@ -119,7 +120,7 @@ The `entry_hash` is SHA-256 of the canonical JSON of `sequence + timestamp + eve
 
 ---
 
-## Storage architecture
+## Storage Architecture
 
 | Layer | Capacity | Persistence |
 |---|---|---|
@@ -135,11 +136,11 @@ The `entry_hash` is SHA-256 of the canonical JSON of `sequence + timestamp + eve
 
 ---
 
-## API reference
+## API Reference
 
 All audit endpoints require the `view:audit` permission. Authentication via `X-API-Key` header or `Authorization: Bearer` token.
 
-### Get chain status
+### Get Chain Status
 ```
 GET /v1/audit/chain/status
 ```
@@ -160,7 +161,7 @@ curl -H "X-API-Key: $API_KEY" http://localhost:8000/v1/audit/chain/status
 }
 ```
 
-### Get recent entries
+### Get Recent Entries
 ```
 GET /v1/audit/chain/entries?limit=50
 ```
@@ -170,7 +171,7 @@ Returns the most recent N entries (default: 50, max: 500), oldest first.
 curl -H "X-API-Key: $API_KEY" "http://localhost:8000/v1/audit/chain/entries?limit=100"
 ```
 
-### Verify chain integrity
+### Verify Chain Integrity
 ```
 GET /v1/audit/chain/verify?limit=100
 ```
@@ -209,7 +210,7 @@ A failed verification response includes the break details:
 }
 ```
 
-### Export chain
+### Export Chain
 ```
 GET /v1/audit/chain/export?start_sequence=0
 ```
@@ -223,7 +224,7 @@ curl -H "X-API-Key: $API_KEY" \
 
 ---
 
-## Real-time stream (SSE)
+## Real-Time Stream (SSE)
 
 ```
 GET /v1/audit/stream?api_key=YOUR_KEY&last_sequence=0
@@ -285,7 +286,7 @@ The stream sends `: keepalive` comment lines when no new entries arrive. These m
 
 ---
 
-## Dashboard integration
+## Dashboard Integration
 
 The TelsonBase admin dashboard (`/dashboard` → Audit Trail tab) connects to the SSE stream when you're on the tab and authenticated. You'll see a pulsing green indicator labeled **"Live stream · entries pushed in real-time"** when the EventSource connection is open. If the SSE endpoint is unreachable, it falls back to a 10-second poll and shows **"Polling · refreshing every 10s"** in amber.
 
@@ -293,7 +294,7 @@ The **Verify Chain** button in the dashboard calls `POST /v1/audit/chain/verify`
 
 ---
 
-## Verify an entry offline
+## Verify an Entry Offline
 
 You don't need the TelsonBase API to verify a single entry. The hash is deterministic and reproducible:
 
@@ -323,7 +324,7 @@ The fields hashed are: `sequence`, `timestamp`, `event_type`, `message`, `actor`
 
 ---
 
-## Extending the chain
+## Extending the Chain
 
 To log a custom event from your own code:
 
@@ -345,7 +346,7 @@ The `qms_status` parameter appends a QMS suffix to the message (`_Thank_You`, `_
 
 ---
 
-## Known limitations
+## Known Limitations
 
 **100K Redis cap**: The default `AUDIT_MAX_REDIS_ENTRIES=100000` is hit in approximately 12 hours under active governance load. Once hit, oldest entries are trimmed. If you need long-term retention, export the chain on a schedule and archive externally. PostgreSQL archival is on the active development roadmap.
 
@@ -355,10 +356,14 @@ The `qms_status` parameter appends a QMS suffix to the message (`_Thank_You`, `_
 
 ---
 
-## Proof sheet
+## Proof Sheet
 
-`proof_sheets/TB-PROOF-001_tests_passing.md` — 11 tests covering chain creation, hash verification, tamper detection, and persistence. Run:
+`proof_sheets/TB-PROOF-009_audit_chain_sha256.md` — SHA-256 hash-chained audit trail verification. `proof_sheets/TB-PROOF-046_security_audit_trail.md` — audit trail integrity tests from the security battery: chain creation, hash verification, tamper detection, and UTC timestamp enforcement. Run:
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_audit.py -v
 ```
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

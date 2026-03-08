@@ -1,13 +1,14 @@
-# Security Policy — TelsonBase
+# TelsonBase — Security Policy
 
-**Version:** v11.0.1 | **Updated:** March 8, 2026
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI — security@telsonbase.com
 
 ## Supported Versions
 
 | Version | Supported |
 |---|---|
-| 11.0.1 | Yes (current) |
-| < 11.0.1 | No |
+| **v11.0.1** (Current) | ✅ Active — full support |
+| v10.0.0Bminus | ✅ Security updates only |
+| < v10.0.0Bminus | ❌ Not supported |
 
 Only the latest minor release receives security patches. Upgrade to the current version before reporting.
 
@@ -57,7 +58,7 @@ Only the latest minor release receives security patches. Upgrade to the current 
 
 ## Security Architecture
 
-TelsonBase is built on a zero-trust model. See [docs/SECURITY_ARCHITECTURE.md](docs/System%20Documents/SECURITY_ARCHITECTURE.md) for the full design.
+TelsonBase is built on a zero-trust model. See [docs/System Documents/SECURITY_ARCHITECTURE.md](docs/System%20Documents/SECURITY_ARCHITECTURE.md) for the full design.
 
 ### Key Security Controls
 
@@ -129,3 +130,7 @@ We recommend enabling [GitHub Dependabot](https://docs.github.com/en/code-securi
 ## Bug Bounty
 
 TelsonBase does not currently operate a paid bug bounty program. Security researchers who report valid vulnerabilities will be credited in release notes and the CONTRIBUTORS section of the repository.
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

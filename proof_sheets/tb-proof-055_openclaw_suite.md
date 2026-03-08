@@ -1,4 +1,4 @@
-# TB-PROOF-055 -- OpenClaw Governance Engine Test Suite
+# TB-PROOF-055 -- OpenClaw Agent Governance Test Suite
 
 **Sheet ID:** TB-PROOF-055
 **Claim Source:** tests/test_openclaw.py
@@ -12,11 +12,11 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **OpenClaw Governance Engine Test Suite**: 55 tests across 9 classes covering 55 tests across 9 classes verifying the OpenClaw governance engine: agent registration.
+This sheet proves the **OpenClaw Agent Governance Test Suite**: 55 tests across 9 classes verifying TelsonBase's governance wrapper around OpenClaw — the third-party autonomous AI agent. TelsonBase wraps OpenClaw as a governed MCP proxy, enforcing trust-tier access control, HITL gates, kill-switch suspension, and Manners compliance scoring on every agent action.
 
 ## Verdict
 
-VERIFIED -- All 55 tests pass. OpenClaw correctly governs every agent action: blocking restricted operations, gating HITL-required actions, allowing authorized operations. Trust promotions and demotions follow the tier ladder. The kill switch suspends agents immediately. Manners score violations trigger automatic demotion. Permission matrix enforces capability boundaries by trust tier.
+VERIFIED -- All 55 tests pass. TelsonBase's OpenClaw governance wrapper correctly controls every agent action: blocking restricted operations, gating HITL-required actions, allowing authorized operations. Trust promotions and demotions follow the tier ladder with no skips on promotion. The kill switch suspends agents immediately and hard-blocks all further actions. Manners score violations trigger automatic demotion to QUARANTINE. The permission matrix enforces capability boundaries by trust tier across all 6 action categories.
 
 ## Test Classes
 

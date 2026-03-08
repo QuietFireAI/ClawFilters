@@ -12,7 +12,7 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **Capability Enforcement Test Suite**: 15 tests across 3 classes covering 15 tests across 3 classes verifying TelsonBase capability enforcement: Capability object construction.
+This sheet proves the **Capability Enforcement Test Suite**: 15 tests across 3 classes verifying TelsonBase capability enforcement: Capability object construction and validation, CapabilitySet union/intersection/containment, and CapabilityEnforcer allow/deny decisions with audit-ready denial records.
 
 ## Verdict
 

@@ -265,10 +265,11 @@ class ForemanAgent:
         # REM: Step 3 — Trust level check
         # REM: Uses actual AgentTrustLevel enum values (lowercase) for correct comparison
         _trust_hierarchy = [
-            AgentTrustLevel.QUARANTINE,   # "quarantine"
-            AgentTrustLevel.PROBATION,    # "probation"
-            AgentTrustLevel.RESIDENT,     # "resident"
-            AgentTrustLevel.CITIZEN,      # "citizen"
+            AgentTrustLevel.QUARANTINE,   # "quarantine"  index 0
+            AgentTrustLevel.PROBATION,    # "probation"   index 1
+            AgentTrustLevel.RESIDENT,     # "resident"    index 2
+            AgentTrustLevel.CITIZEN,      # "citizen"     index 3
+            AgentTrustLevel.AGENT,        # "agent"       index 4  (apex tier)
         ]
         
         # REM: Normalize to lowercase for comparison — handles both "RESIDENT" and "resident"

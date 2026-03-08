@@ -1,13 +1,6 @@
-# TelsonBase Security Architecture
+# TelsonBase — Security Architecture
 
-# REM: =======================================================================================
-# REM: SECURITY ARCHITECTURE FOR TELSONBASE v10.0.0Bminus
-# REM: =======================================================================================
-# REM: Architect: ::Quietfire AI Project::
-# REM: AI Model Collaborators: ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
-# REM: Date: February 23, 2026
-# REM: Updated: 2026-02-04 (v4.3.3CC - Documentation completeness)
-# REM: =======================================================================================
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 # Security Architecture
 
@@ -268,17 +261,19 @@ All external API calls go through a whitelist-enforcing gateway:
 
 **Implementation:** `gateway/egress_proxy.py`
 
-### Layer 8: Agent Trust Levels (v4.2.0CC)
+### Layer 8: Agent Trust Levels
 
-Agents progress through trust levels based on behavior:
+Agents progress through five trust levels based on behavior:
 
 ```
-QUARANTINE → PROBATION → RESIDENT → CITIZEN
-    │           │           │          │
-    │           │           │          └── Full capabilities, 95% success rate required
-    │           │           └────────────── Standard caps, periodic re-verification
-    │           └────────────────────────── Limited caps, closely monitored
-    └────────────────────────────────────── Severely restricted, manual review required
+QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT
+    │           │           │          │          │
+    │           │           │          │          └── Apex designation, 99.9% success required,
+    │           │           │          │               zero anomaly tolerance, re-verify every 3 days
+    │           │           │          └──────────── Full capabilities, 95% success rate required
+    │           │           └──────────────────────── Standard caps, periodic re-verification
+    │           └──────────────────────────────────── Limited caps, closely monitored
+    └──────────────────────────────────────────────── Severely restricted, manual review required
 ```
 
 **Promotion Criteria:**
@@ -295,7 +290,7 @@ QUARANTINE → PROBATION → RESIDENT → CITIZEN
 
 **Implementation:** `core/trust_levels.py`
 
-### Layer 9: Encryption at Rest (v4.3.0CC)
+### Layer 9: Encryption at Rest
 
 Sensitive data in Redis is encrypted with AES-256-GCM:
 
@@ -327,7 +322,7 @@ Sensitive data in Redis is encrypted with AES-256-GCM:
 
 **Implementation:** `core/secure_storage.py`
 
-### Layer 10: Automated Threat Response (v4.3.0CC)
+### Layer 10: Automated Threat Response
 
 Critical threats trigger automatic containment:
 
@@ -391,7 +386,7 @@ Every security-relevant action is logged with cryptographic hash chaining (v4.3.
 }
 ```
 
-### Cryptographic Hash Chaining (v4.3.0CC)
+### Cryptographic Hash Chaining
 
 Each audit entry includes:
 - **sequence**: Monotonically increasing entry number
@@ -428,9 +423,9 @@ Each audit entry includes:
 - Anomaly detection
 - Approval requests and decisions
 - Federation trust changes
-- Threat response actions (v4.3.0CC)
-- Agent trust level changes (v4.2.0CC)
-- Re-verification results (v4.3.0CC)
+- Threat response actions
+- Agent trust level changes
+- Re-verification results
 
 **Implementation:** `core/audit.py`
 
@@ -483,7 +478,7 @@ Instance A                                    Instance B
    export GRAFANA_ADMIN_PASSWORD=$(openssl rand -hex 16)
    ```
 
-   > **Note:** As of v4.0.2, the system warns at startup if JWT_SECRET_KEY uses an insecure default.
+   > **Note:** The system warns at startup if JWT_SECRET_KEY uses an insecure default.
 
 2. **Restrict CORS origins** via environment variable:
    ```bash
@@ -524,7 +519,7 @@ Instance A                                    Instance B
 4. Review federation audit logs regularly
 5. Revoke trust immediately if suspicious activity detected
 
-### Encryption at Rest (v4.3.0CC)
+### Encryption at Rest
 
 1. **Set encryption key:**
    ```bash
@@ -542,7 +537,7 @@ Instance A                                    Instance B
    - Decrypt/re-encrypt data with new key
    - Test recovery procedures
 
-### Audit Chain Integrity (v4.3.0CC)
+### Audit Chain Integrity
 
 1. **Regular verification:**
    ```bash
@@ -559,7 +554,7 @@ Instance A                                    Instance B
    - Check for unauthorized access
    - Document in incident report
 
-### Threat Response (v4.3.0CC)
+### Threat Response
 
 1. **Review automated actions:**
    - Check `/v1/threats/recent` daily
@@ -686,3 +681,7 @@ Quick reference:
 - [Disaster Recovery Plan](DISASTER_RECOVERY.md)
 - [Developer Guide](DEVELOPER_GUIDE.md)
 - [API Reference](API_REFERENCE.md)
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

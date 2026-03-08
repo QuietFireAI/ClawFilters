@@ -12,7 +12,7 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **Enum Contract and Operational Test Suite**: 7 tests across 4 classes covering 7 tripwire contract tests across 4 classes that enforce stability of core.
+This sheet proves the **Enum Contract and Operational Test Suite**: 7 tripwire tests across 4 classes enforcing enum stability: TenantType has exactly 7 valid categories, AgentTrustLevel has exactly 5 tiers in QUARANTINE-to-AGENT order, version string format, and operational invariants for minimum trust on sensitive operations.
 
 ## Verdict
 

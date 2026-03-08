@@ -12,7 +12,7 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **Cross-System Integration Test Suite**: 26 tests across 9 classes covering 26 tests across 9 classes verifying cross-system integration: federation handshake between TelsonBase.
+This sheet proves the **Cross-System Integration Test Suite**: 26 tests across 9 classes verifying cross-system integration: federation handshake with cryptographic verification, egress gateway blocking, approval workflow routing, QMS-formatted cross-agent messaging, anomaly detection trigger, key revocation propagation, audit chain continuity, threat response isolation, and secure storage round-trip.
 
 ## Verdict
 
