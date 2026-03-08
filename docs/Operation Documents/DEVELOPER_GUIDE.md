@@ -450,9 +450,9 @@ class BackupAgent(SecureBaseAgent):
 
 ---
 
-## QMS Logging Conventions
+## QMS™ Logging Conventions
 
-The TelsonBase uses the Qualified Message Standard (QMS) in logs for human readability:
+The TelsonBase uses the Qualified Message Standard (QMS™) in logs for human readability:
 
 | Suffix | Meaning | Example |
 |--------|---------|---------|

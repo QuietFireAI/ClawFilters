@@ -32,7 +32,7 @@ Every AI agent operates under a cryptographic identity and behavioral enforcemen
 - **Egress Gateway:** All outbound network requests from agents pass through a controlled gateway with domain whitelisting. Agents cannot phone home, exfiltrate data, or contact unauthorized endpoints.
 - **Audit Trail with Hash Chain:** Every security event is logged with a cryptographic hash chain (each entry includes the hash of the previous entry). Tampered or deleted audit entries break the chain and are detectable.
 
-### 2. Qualified Message Standard (QMS)
+### 2. Qualified Message Standard (QMS™)
 
 QMS is a communication protocol that embeds human semantics directly into machine-parseable messages. It's not just a naming convention — it's a formal specification (v2.1.6) with grammar rules, priority levels, and inline data tagging.
 

@@ -303,7 +303,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 | **Agent Trust Levels** | Five-tier progression: Quarantine > Probation > Resident > Citizen > Agent. Automatic promotion based on behavior, automatic demotion on violations | `core/trust_levels.py` |
 | **Behavioral Anomaly Detection** | Six anomaly types monitored: rate spikes, new resources, new actions, unusual timing, enumeration patterns, error spikes | `core/anomaly.py` |
 | **Cryptographic Message Signing** | HMAC-SHA256 signing of all inter-agent messages, 5-minute replay window, constant-time signature comparison | `core/signing.py` |
-| **QMS Protocol** | Qualified Message Standard v2.2.0 — all agent communication follows structured formatting with provenance tracking | `core/qms.py` |
+| **QMS™ Protocol** | Qualified Message Standard (QMS™) v2.2.0 — all agent communication follows structured formatting with provenance tracking | `core/qms.py` |
 
 ### Regulatory Mapping
 

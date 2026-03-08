@@ -168,7 +168,7 @@ Identifier format used throughout the toolroom for QMS parseability: `CHKOUT-{uu
 
 ## Q
 
-### QMS (Qualified Message Standard)
+### QMS™ (Qualified Message Standard)
 TelsonBase's internal messaging convention (v2.1.6) that embeds human-readable semantics into agent communications. Uses suffixes (`_Please`, `_Thank_You`, etc.), field markers (`::value::`), and formal chain syntax. See `core/qms.py` and `QMS_SPECIFICATION.md`.
 
 ### QMS Chain

@@ -268,9 +268,9 @@ Agents can't install software or download tools on their own. They request tools
 
 Think of it like a machine shop: workers sign tools out, use them, sign them back in. Everything is logged.
 
-### QMS — How Agents Talk
+### QMS™ — How Agents Talk
 
-QMS (Qualified Message Standard) is TelsonBase's internal messaging format. You'll see it in logs:
+QMS™ (Qualified Message Standard) is TelsonBase's internal messaging format. You'll see it in logs:
 
 ```
 Tool_Checkout_Please ::backup_agent:: ::tool_pgcli::
