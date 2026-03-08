@@ -1,6 +1,6 @@
 # OpenClaw Operations Guide
 
-## TelsonBase v10.0.0Bminus - "Control Your Claw"
+## TelsonBase v11.0.1 - "Control Your Claw"
 
 **Architecture:** TelsonBase acts as a governed MCP proxy. OpenClaw is never modified - TelsonBase wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
 
@@ -170,6 +170,7 @@ Valid promotion targets per current level:
 - `quarantine` → `probation`
 - `probation` → `resident`
 - `resident` → `citizen`
+- `citizen` → `agent`
 
 ### Demote a Claw (Any Lower Level)
 
@@ -366,4 +367,4 @@ curl -s -H "X-API-Key: $env:MCP_API_KEY" "http://localhost:8000/v1/audit/chain/e
 
 ---
 
-*TelsonBase v10.0.0Bminus - OpenClaw Governance | Quietfire AI*
+*TelsonBase v11.0.1 · OpenClaw Governance · Quietfire AI · March 8, 2026*

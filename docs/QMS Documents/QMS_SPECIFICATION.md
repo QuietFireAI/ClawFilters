@@ -2,7 +2,7 @@
 
 ## Version: 2.1.6 | Protocol: AI Audit Chain
 
-**Architect:** Jeff Phillips - Quietfire AI
+**Maintainer:** Quietfire AI
 **Canonical Reference:** qms.codes  
 **License:** Open Standard (MIT)
 **Trademark:** QMS™ is a trademark of Quietfire AI / Jeff Phillips. Registration pending.
@@ -511,4 +511,8 @@ Legacy functions (`format_qms()`, `parse_qms()`, `is_qms_formatted()`, `validate
 
 ---
 
-*QMS is an open standard. "Just because our cows eat their cabbage a certain way does not mean yours have to." - Quietfire AI*
+*QMS is an open standard. "Just because our cows eat their cabbage a certain way does not mean yours have to." — Quietfire AI*
+
+---
+
+*TelsonBase v11.0.1 · QMS™ v2.1.6 · Quietfire AI · March 8, 2026*
