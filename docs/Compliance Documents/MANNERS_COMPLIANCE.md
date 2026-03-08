@@ -1,5 +1,7 @@
 # Manners Compliance Guide - TelsonBase
 
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+
 ## Overview
 
 TelsonBase implements **Manners** - a runtime
@@ -154,3 +156,7 @@ For SOC 2 and regulatory audits, Manners provides:
 - Anthropic: [Framework for Developing Safe and Trustworthy Agents](https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents)
 - Anthropic: [Core Views on AI Safety](https://www.anthropic.com/news/core-views-on-ai-safety)
 - Anthropic: [Responsible Scaling Policy](https://www.anthropic.com/rsp-updates)
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

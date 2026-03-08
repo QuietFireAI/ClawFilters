@@ -1,7 +1,6 @@
 # TelsonBase Deployment Guide
 
-**Version:** 10.0.0Bminus
-**Last Updated:** March 3, 2026
+**Version:** v11.0.1 · **Updated:** March 8, 2026
 **Audience:** IT administrators, managed service providers (MSPs), and systems integrators deploying TelsonBase on customer premises for law firms and professional services organizations.
 
 ---
@@ -550,7 +549,7 @@ For a full DR cycle (backup, stop, restore, verify):
 ./scripts/dr_test.sh --full
 ```
 
-See `docs/DISASTER_RECOVERY_TEST.md` for details on automated DR testing.
+See `docs/Testing Documents/DISASTER_RECOVERY_TEST.md` for details on automated DR testing.
 
 ### Backup Retention
 
@@ -874,7 +873,7 @@ docker compose stop open-webui
 | Backup & Recovery | `docs/BACKUP_RECOVERY.md` | Backup procedures, restore steps, RPO/RTO |
 | Secrets Management | `docs/SECRETS_MANAGEMENT.md` | Secret generation, rotation, validation |
 | Encryption at Rest | `docs/ENCRYPTION_AT_REST.md` | Volume encryption, compliance mapping |
-| Disaster Recovery Test | `docs/DISASTER_RECOVERY_TEST.md` | Automated DR test procedures |
+| Disaster Recovery Test | `docs/Testing Documents/DISASTER_RECOVERY_TEST.md` | Automated DR test procedures |
 | HA Architecture | `docs/HA_ARCHITECTURE.md` | Scaling to Docker Swarm / Kubernetes |
 | Security Architecture | `docs/SECURITY_ARCHITECTURE.md` | Zero-trust model, network segmentation |
 | SOC 2 Type I | `docs/SOC2_TYPE_I.md` | 51 controls across 5 Trust Service Criteria |
@@ -920,3 +919,7 @@ For deployment assistance, contact your TelsonBase account representative or vis
 ---
 
 *This document is part of the TelsonBase deployment package. Keep it updated when infrastructure changes are made.*
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
