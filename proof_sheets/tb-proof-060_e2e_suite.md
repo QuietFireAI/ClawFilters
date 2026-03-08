@@ -12,7 +12,7 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **End-to-End Integration Test Suite**: 29 tests across 6 classes covering 29 end-to-end tests across 6 classes exercising complete user and tenant workflows.
+This sheet proves the **End-to-End Integration Test Suite**: 29 tests across 6 classes exercising complete user and tenant workflows through the full API stack: registration through verified login, tenant lifecycle, cross-tenant rejection, auth enforcement, audit chain integrity, and error response sanitization.
 
 ## Verdict
 

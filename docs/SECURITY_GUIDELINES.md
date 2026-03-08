@@ -1,6 +1,5 @@
-# Security Policy
-
-## TelsonBase Security Model
+# TelsonBase — Security Policy
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI — security@telsonbase.com
 
 TelsonBase is built on zero-trust principles. Every agent message is cryptographically signed, every action requires declared capabilities, and behavioral anomalies trigger automatic quarantine.
 
@@ -10,12 +9,11 @@ TelsonBase is built on zero-trust principles. Every agent message is cryptograph
 
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 10.0.0Bminus  | :white_check_mark: (Current) |
-| 4.0.x   | :white_check_mark: |
-| 3.0.x   | :warning: Security updates only |
-| < 3.0   | :x:                |
+| Version | Supported |
+|---|---|
+| **v11.0.1** (Current) | ✅ Active — full support |
+| v10.0.0Bminus | ✅ Security updates only |
+| < v10.0.0Bminus | ❌ Not supported |
 
 ---
 
@@ -40,7 +38,7 @@ Include:
 - **Acknowledgment**: Within 48 hours
 - **Initial Assessment**: Within 7 days
 - **Resolution Timeline**: Depends on severity
-  - Critical: 24-72 hours
+  - Critical: 24–72 hours
   - High: 7 days
   - Medium: 30 days
   - Low: Next release
@@ -56,9 +54,11 @@ In-scope vulnerabilities:
 - SQL/NoSQL injection
 - Remote code execution
 - Data exfiltration paths
+- Trust tier bypass or privilege escalation
+- QMS™ validation bypass in the Foreman agent
 
 Out of scope:
-- Denial of service (unless trivial)
+- Denial of service (unless trivially reproducible)
 - Social engineering
 - Physical access attacks
 - Issues in dependencies (report upstream)
@@ -67,23 +67,51 @@ Out of scope:
 
 ## Security Architecture Overview
 
-See `docs/SECURITY_ARCHITECTURE.md` for detailed documentation of:
+TelsonBase's security model is documented across the following sources. There is no single architecture document — the architecture is verified through proof sheets and explained through the technical reference.
 
-- Zero-trust verification chain
-- Cryptographic message signing (HMAC-SHA256)
-- Capability-based permission system
-- Behavioral anomaly detection
-- Approval gates for sensitive operations
-- Egress firewall and domain whitelisting
-- Federation trust protocols (RSA-4096)
+| Document | What It Covers |
+|---|---|
+| `docs/AUDIT_TRAIL.md` | Hash-chained audit trail: entry structure, storage architecture, API, real-time stream, verification, offline verification |
+| `docs/TOOLROOM_TRUST_MATRIX.md` | Tool access control: `min_trust_level`, `requires_api_access` HITL gate, designation by category |
+| `docs/FAQ.md` | 8-step governance pipeline, Manners compliance, trust promotion, egress control |
+| `proof_sheets/INDEX.md` | 788 proof documents — every security claim traced to source code and a verification command |
 
-### v4.0.2 Security Hardening
+**Security-specific proof sheets:**
 
-- **JWT Secret Validation**: Warns at startup if using insecure default secrets
-- **Configurable CORS**: Lock down origins via `CORS_ORIGINS` environment variable
-- **Input Validation**: Federation trust_level and expires_in_hours validated
-- **Exception Handling**: Removed bare `except:` handlers that could mask errors
-- **Memory Management**: Improved cleanup of replay protection caches
+| Sheet | Claim |
+|---|---|
+| `TB-PROOF-009` | SHA-256 hash-chained audit trail |
+| `TB-PROOF-013` | Cryptographic message signing (HMAC-SHA256) |
+| `TB-PROOF-019` | Human-in-the-loop approval gates |
+| `TB-PROOF-020` | Behavioral anomaly detection |
+| `TB-PROOF-027` | Static analysis — 0 high-severity findings |
+| `TB-PROOF-028` | Zero data leaves the network |
+| `TB-PROOF-035` | OpenClaw 8-step governance pipeline |
+| `TB-PROOF-037` | Kill switch — instant agent suspension |
+| `TB-PROOF-038` | Manners auto-demotion |
+| `TB-PROOF-043` | Authentication security battery |
+| `TB-PROOF-044` | Encryption integrity battery |
+| `TB-PROOF-045` | Access control battery |
+| `TB-PROOF-046` | Audit trail integrity battery |
+| `TB-PROOF-047` | Network security battery |
+
+---
+
+## v11.0.1 Security Posture
+
+Current verified security status as of March 8, 2026:
+
+- **720 tests passing** — 0 failures, 1 expected skip (Alembic idempotency test, requires live DB)
+- **96 dedicated security tests** — authentication, encryption, access control, audit trail, network, data protection, compliance, cryptography, runtime boundaries
+- **Bandit static analysis** — 0 high-severity findings across 37,921 lines of source code
+- **Server errors under fuzzing** — 657 reduced to 0 across hardening sessions
+- **QMS™ validation as security gate** — non-QMS messages to the Foreman are discarded and logged as `NON_QMS_MESSAGE` anomaly events; never processed
+- **8-step governance pipeline** — every agent action evaluated on all 8 steps with no bypass path
+- **AGENT apex tier** — 99.9% success rate, zero anomaly tolerance, re-verification every 3 days; anomalies at this tier are advisory, not gating
+- **Hash-chained audit trail** — Redis WATCH/MULTI/EXEC; race-free under any worker count
+- **Manners auto-demotion** — agents dropping below 50% behavioral compliance score are demoted to QUARANTINE automatically, no human delay
+- **CAPTCHA replay protection** — challenges consumed on first redemption, preventing automation bypass
+- **Secret isolation** — all secrets in Docker secrets files, never in environment variables, never in container layers
 
 ---
 
@@ -91,8 +119,8 @@ See `docs/SECURITY_ARCHITECTURE.md` for detailed documentation of:
 
 We follow responsible disclosure practices:
 
-1. Reporter contacts us privately
-2. We confirm and assess the vulnerability
+1. Reporter contacts us privately at security@telsonbase.com
+2. We confirm and assess the vulnerability within 7 days
 3. We develop and test a fix
 4. We release the fix
 5. We credit the reporter (unless they prefer anonymity)
@@ -102,7 +130,7 @@ We follow responsible disclosure practices:
 
 ## Bug Bounty
 
-Currently no formal bug bounty program. However, significant security findings will be acknowledged in the CHANGELOG and, where appropriate, with a thank-you in project documentation.
+No formal bug bounty program currently. Significant security findings will be acknowledged in the CHANGELOG and, where appropriate, with a thank-you in project documentation.
 
 ---
 
@@ -111,8 +139,10 @@ Currently no formal bug bounty program. However, significant security findings w
 Security patches are announced via:
 - GitHub Security Advisories
 - CHANGELOG.md entries marked with `[SECURITY]`
-- Email to registered security contacts (future)
+- Email to registered security contacts
 
 ---
 
 *"Data sovereignty is security sovereignty."* — Quietfire AI
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

@@ -1,6 +1,6 @@
 # TelsonBase — What's Next
 
-**Version:** 10.0.0Bminus (Beta) · **Launch:** March 6, 2026 · **Maintainer:** Quietfire AI
+**Version:** v11.0.1 · **Launch:** March 6, 2026 · **Maintainer:** Quietfire AI
 
 This document is an honest account of where TelsonBase stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact — things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
 
@@ -92,13 +92,15 @@ These are the first things that get worked on after launch:
 Full governance proxy integration is live. Every action evaluated through the 8-step pipeline. Trust levels, Manners, anomaly detection, kill switch, approval gates — all working.
 
 ### Identiclaw (Post-Launch)
-DID-based agent identity with Ed25519 and verifiable credentials is implemented in `core/identiclaw.py` with 50 passing tests. Full integration with OpenClaw governance (agent identity binding to trust levels) is scheduled for the first post-launch sprint.
+TelsonBase's W3C DID identity engine (`core/identiclaw.py`) is built and tested — Ed25519 keypairs, verifiable credentials, local verification with no external calls. The engine is framework-agnostic by design.
+
+The next step is binding that engine to the Identiclaw service (vouched.id) specifically: agent identity issuance via their Cloudflare-based DID infrastructure, credential flow into the governance pipeline, trust level binding on registration. That integration is scheduled for the first post-launch sprint. Identiclaw was chosen for its inherent convention alignment with how TelsonBase thinks about agent identity.
 
 ### Goose (Current — Native MCP)
 Goose by Block connects natively via the MCP gateway at `/mcp`. All 13 TelsonBase tools are available. Configuration via `goose.yaml`.
 
 ### Other Agent Frameworks
-OpenClaw is TelsonBase's built-in governance proxy module — the 8-step pipeline that evaluates every agent action against trust level, Manners score, anomaly detection, kill switch, and HITL gates. It is not a separate product; it lives in `core/openclaw.py`.
+OpenClaw is a third-party autonomous AI agent. TelsonBase's governance proxy code (`core/openclaw.py`) wraps it at the MCP layer — every action evaluated through the 8-step pipeline before execution. OpenClaw itself is never modified. The claw doesn't know it's on a leash.
 
 Any MCP-compatible agent framework can connect to TelsonBase without modification. The governance proxy wraps the agent at the MCP layer — the agent never needs to know TelsonBase exists. Post-launch evaluation will include Claude Desktop and other Goose integrations as compatible frameworks mature.
 
@@ -125,4 +127,4 @@ If you find something broken, open an issue. If something is missing, start a di
 
 ---
 
-*TelsonBase 10.0.0Bminus · March 6, 2026 · Quietfire AI*
+*TelsonBase v11.0.1 · March 6, 2026 · Quietfire AI*

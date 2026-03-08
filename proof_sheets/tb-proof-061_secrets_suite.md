@@ -12,7 +12,7 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **Secrets Management Test Suite**: 48 tests across 7 classes covering 48 tests across 7 classes verifying TelsonBase secrets management: SecretValue construction and.
+This sheet proves the **Secrets Management Test Suite**: 48 tests across 7 classes verifying TelsonBase secrets management: SecretValue masking in repr/logs, Docker secrets file resolution, environment variable fallback, production startup guard, and generate_secrets.sh script correctness.
 
 ## Verdict
 

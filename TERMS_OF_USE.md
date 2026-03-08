@@ -155,7 +155,21 @@ These Terms are governed by and construed in accordance with the laws of the Sta
 
 ---
 
-## 14. Contact
+## 14. Optional External Integrations
+
+TelsonBase supports optional integrations with third-party services. These integrations are disabled by default and must be explicitly enabled by the deploying operator.
+
+**OpenClaw** is a third-party autonomous AI agent. TelsonBase acts as a governed MCP proxy for OpenClaw — intercepting and evaluating every action against the governance pipeline before execution. OpenClaw itself is not modified. OpenClaw operates under its own license and terms.
+
+**Goose** (Block, Inc.) is an open-source MCP-compatible agent operator that may be used to operate TelsonBase-governed agents. Goose operates under its own license and terms published at https://github.com/block/goose.
+
+**Identiclaw** (vouched.id) is a DID-based agent identity service planned for integration in a future release. When integrated, agent identity credentials will be issued by Identiclaw and stored on Cloudflare infrastructure under the user's own account. Identiclaw operates under its own terms published at https://kya.vouched.id/identiclaw.
+
+When optional integrations are enabled, data may be transmitted to and processed by those third-party services. Quietfire AI makes no warranty regarding the availability, security, compliance posture, or fitness for purpose of any third-party integration. You are responsible for reviewing and accepting the terms of any external service you connect to TelsonBase.
+
+---
+
+## 15. Contact
 
 Security concerns: security@telsonbase.com
 General support: support@telsonbase.com

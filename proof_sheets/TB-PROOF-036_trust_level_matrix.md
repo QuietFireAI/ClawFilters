@@ -82,6 +82,10 @@ grep -n "TRUST_PERMISSION_MATRIX\|VALID_PROMOTIONS\|VALID_DEMOTIONS\|TrustLevel.
 
 5 trust levels in enum. VALID_PROMOTIONS includes `TrustLevel.CITIZEN: [TrustLevel.AGENT]` and `TrustLevel.AGENT: []`. TRUST_PERMISSION_MATRIX includes AGENT entry with all 6 categories autonomous.
 
+## Toolroom Access by Trust Tier
+
+For how trust levels govern tool checkout eligibility, `min_trust_level` designation, and the `requires_api_access` gate, see [`docs/TOOLROOM_TRUST_MATRIX.md`](../docs/TOOLROOM_TRUST_MATRIX.md).
+
 ---
 
-*Sheet TB-PROOF-036 | TelsonBase v9.0.0B | Updated March 1, 2026*
+*Sheet TB-PROOF-036 | TelsonBase v11.0.1 | Updated March 8, 2026*

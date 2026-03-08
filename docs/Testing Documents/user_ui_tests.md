@@ -4,7 +4,7 @@
 **Tester:** Jeff
 **URL:** `http://localhost:8000/console`
 **Mode:** Start in Demo, then repeat key tests in Live
-**Companion file:** `security_ui_tests.md` (Admin Console tests)
+**Companion file:** `security_ui_tests.md` (Admin Console tests — retained locally, not in repo)
 
 ---
 

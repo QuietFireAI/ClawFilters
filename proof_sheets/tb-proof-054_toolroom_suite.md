@@ -12,52 +12,55 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **Toolroom and Foreman Agent Test Suite**: 129 tests across 28 classes covering 129 tests across 28 classes verifying the Toolroom and Foreman agent: tool.
+This sheet proves the **Toolroom and Foreman Agent Test Suite**: 129 tests across 28 classes verifying the Toolroom and Foreman agent: tool registry CRUD, trust-level checkout authorization, HITL approval gates, manifest validation, function tool execution, semantic version comparison, and full REST endpoint coverage.
 
 ## Verdict
 
-VERIFIED -- All 129 tests pass. The Toolroom correctly gates external tool access by agent trust level. The Foreman agent enforces checkout authorization, triggers HITL approval for API-class tools, validates install sources, and manages the tool manifest. Function tools execute with proper authorization checks and return structured results.
+VERIFIED -- All 129 tests pass. The Toolroom correctly gates external tool access by agent trust level. The Foreman agent enforces checkout authorization, triggers HITL approval for API-class tools, validates install sources against the approved-sources allowlist, and manages the tool manifest lifecycle. Function tools execute with authorization checks and return structured results. REST endpoints enforce authentication across all toolroom operations.
 
 ## Test Classes
 
 | Class | Tests | Proves |
 |---|---|---|
-| `TestToolMetadata` | 4 | ToolMetadata construction, defaults, and round-trip serialization |
+| `TestToolMetadata` | 3 | ToolMetadata construction, defaults, and round-trip serialization |
 | `TestToolCheckout` | 2 | ToolCheckout creation and round-trip serialization |
-| `TestToolRegistry` | 10 | Register, list, checkout, return, and request tools; active checkout filtering |
-| `TestTrustLevelNormalization` | 5 | Accept lowercase, uppercase, and mixed-case trust strings |
-| `TestForemanCheckout` | 5 | Authorize or block checkout by trust level; HITL trigger for API tools |
-| `TestForemanInstall` | 4 | Reject unapproved sources; create approval for approved sources; validate approval |
-| `TestToolroomStore` | 5 | Store singleton existence, required methods, get_store helper |
+| `TestToolRegistry` | 11 | Register, list, checkout, return, and request tools; active checkout filtering |
+| `TestTrustLevelNormalization` | 6 | Accept lowercase, uppercase, mixed-case, and cross-tier trust level strings |
+| `TestForemanCheckout` | 5 | Authorize or block checkout by trust level; HITL trigger for API-access tools |
+| `TestForemanInstall` | 4 | Reject unapproved sources; create approval for approved sources; validate approval state |
+| `TestToolroomStore` | 4 | Store singleton existence, required methods, get_store helper |
 | `TestCeleryConfiguration` | 3 | Foreman in Celery include, daily update in beat schedule, task routing |
-| `TestToolroomAPI` | 3 | Toolroom status, list tools via REST |
-| `TestApprovalIntegration` | 3 | Checkout approved/rejected/pending approval states |
+| `TestToolroomAPI` | 8 | Toolroom status, list tools, get tool, list checkouts, checkout history, list requests, usage report via REST |
+| `TestApprovalIntegration` | 2 | Approval rule registration and configuration validation |
 | `TestToolroomPostCheckout` | 4 | POST /checkout endpoint authorization and response |
-| `TestToolroomPostReturn` | 4 | POST /return endpoint and checkout release |
-| `TestToolroomPostInstallPropose` | 5 | POST /install/propose source validation and approval creation |
-| `TestToolroomPostInstallExecute` | 5 | POST /install/execute approval enforcement and execution |
+| `TestToolroomPostReturn` | 3 | POST /return endpoint and checkout release |
+| `TestToolroomPostInstallPropose` | 4 | POST /install/propose source validation and approval creation |
+| `TestToolroomPostInstallExecute` | 2 | POST /install/execute approval enforcement |
 | `TestToolroomPostRequest` | 4 | POST /request unapproved tool request flow |
-| `TestToolroomPostApiCheckoutComplete` | 4 | POST /checkout/complete HITL API tool completion |
-| `TestToolManifest` | 8 | Manifest structure, tool entries, version fields, category grouping |
-| `TestManifestValidation` | 10 | Validate required fields, type constraints, duplicate detection |
-| `TestManifestFileLoading` | 6 | Load manifest from file, handle missing and malformed files |
-| `TestFunctionToolRegistry` | 9 | Register function tools, lookup by name, list by category |
-| `TestRegisterFunctionToolDecorator` | 4 | Decorator registers function tools with metadata |
-| `TestExecutionResult` | 4 | ExecutionResult construction, success/failure status, output access |
-| `TestFunctionToolExecution` | 8 | Execute function tools with auth, handle errors and timeouts |
-| `TestApprovalStatusLookup` | 9 | Lookup pending, approved, rejected approval status by checkout ID |
-| `TestSemanticVersionComparison` | 5 | Compare semantic versions for tool upgrade eligibility |
-| `TestToolroomExecuteEndpoint` | 5 | POST /execute endpoint dispatch and result formatting |
-| `TestForemanExecution` | 13 | Foreman executes tools, enforces HITL, logs audit events |
-| `TestToolMetadataV460` | 4 | Forward compatibility: v4.6.0 metadata fields and defaults |
+| `TestToolroomPostApiCheckoutComplete` | 3 | POST /checkout/complete HITL API tool completion |
+| `TestToolManifest` | 5 | Manifest structure, defaults, round-trip, JSON round-trip, unknown field handling |
+| `TestManifestValidation` | 13 | Required fields, shell injection prevention, sandbox level, timeout range, network-without-sandbox warning |
+| `TestManifestFileLoading` | 5 | Load from file, handle missing directory, missing manifest file, invalid JSON, invalid manifest |
+| `TestFunctionToolRegistry` | 7 | Register, auto-generate manifest, get by name, get nonexistent, list all, unregister, unregister nonexistent |
+| `TestRegisterFunctionToolDecorator` | 2 | Decorator registers function with metadata and preserves the callable |
+| `TestExecutionResult` | 2 | Success and failure ExecutionResult construction |
+| `TestFunctionToolExecution` | 4 | Execute function tool: success, string return, None return, exception isolation |
+| `TestApprovalStatusLookup` | 4 | Pending, completed, not found, and dict-format approval status lookup |
+| `TestSemanticVersionComparison` | 7 | Newer, v-prefix, same, older, prerelease, v-prefix vs no-prefix, and patch increment |
+| `TestToolroomExecuteEndpoint` | 3 | POST /execute auth enforcement, payload validation, no-active-checkout error |
+| `TestForemanExecution` | 4 | No-checkout fails, function tool execution, no-manifest fails, sync function tools |
+| `TestToolMetadataV460` | 5 | manifest_data field, manifest_data default, execution_type field, execution_type default, round-trip with manifest |
 
 ## Source Files Tested
 
 - `tests/test_toolroom.py`
-- `core/toolroom.py -- ToolMetadata, ToolCheckout, ToolRegistry, Foreman`
-- `core/toolroom.py -- FunctionToolRegistry, ExecutionResult, ToolroomStore`
-- `routers/toolroom.py -- REST endpoints`
-- `core/celery_app.py -- Foreman task routing and beat schedule`
+- `toolroom/registry.py` -- ToolMetadata, ToolCheckout, ToolRegistry
+- `toolroom/foreman.py` -- Foreman agent, handle_checkout_request, trust-level enforcement
+- `toolroom/function_tools.py` -- FunctionToolRegistry, register_function_tool decorator
+- `toolroom/manifest.py` -- ToolManifest schema and validation
+- `toolroom/executor.py` -- ExecutionResult, function and subprocess execution engine
+- `routers/toolroom.py` -- REST endpoints
+- `celery_app/worker.py` -- Foreman task routing and beat schedule
 
 ## Verification Command
 

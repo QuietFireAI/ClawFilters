@@ -6,7 +6,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 
 **Format:** Each sheet follows a standardized format inspired by Safety Data Sheets (SDS). Grab the sheet number, verify the claim, move on.
 
-**Last Verified:** March 8, 2026 | **Version:** v11.0.1 | **Tests Passing:** 720 | **Proof Documents:** 787 (66 class-level + 721 individual)
+**Last Verified:** March 8, 2026 | **Version:** v11.0.1 | **Tests Passing:** 720 (+26 stress) | **Proof Documents:** 788 (67 class-level + 721 individual)
 
 ---
 
@@ -121,7 +121,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 |---|---|---|---|---|
 | [TB-PROOF-053](tb-proof-053_qms_suite.md) | Qualified Message Standard (QMS(TM)) | 13 | 115 | VERIFIED |
 | [TB-PROOF-054](tb-proof-054_toolroom_suite.md) | Toolroom and Foreman Agent | 28 | 129 | VERIFIED |
-| [TB-PROOF-055](tb-proof-055_openclaw_suite.md) | OpenClaw Governance Engine | 9 | 55 | VERIFIED |
+| [TB-PROOF-055](tb-proof-055_openclaw_suite.md) | OpenClaw Agent Governance | 9 | 55 | VERIFIED |
 | [TB-PROOF-056](tb-proof-056_identiclaw_suite.md) | IdentiClaw Identity and Verification | 12 | 50 | VERIFIED |
 | [TB-PROOF-057](tb-proof-057_ollama_suite.md) | Ollama LLM Service | 12 | 49 | VERIFIED |
 | [TB-PROOF-058](tb-proof-058_observability_suite.md) | Observability and Metrics | 6 | 40 | VERIFIED |
@@ -133,6 +133,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 | [TB-PROOF-064](tb-proof-064_signing_suite.md) | Message Signing and Verification | 3 | 13 | VERIFIED |
 | [TB-PROOF-065](tb-proof-065_api_suite.md) | REST API Endpoints | 8 | 19 | VERIFIED |
 | [TB-PROOF-066](tb-proof-066_contracts_suite.md) | Enum Contracts and Operational Invariants | 4 | 7 | VERIFIED |
+| [TB-PROOF-067](tb-proof-067_mqtt_stress_suite.md) | MQTT Bus Load and Stress | 8 | 26 | VERIFIED |
 
 ---
 
