@@ -16,4 +16,4 @@ This file is retained for archival purposes. The dual-license model described in
 
 ---
 
-*TelsonBase 9.0.0B · March 2026 · Quietfire AI*
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

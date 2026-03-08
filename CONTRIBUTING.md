@@ -1,5 +1,7 @@
 # Contributing to TelsonBase
 
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+
 Welcome. TelsonBase is a governance-first security platform for autonomous AI agents. Contributions that strengthen agent governance, data sovereignty, and compliance are valued.
 
 See also: [Ambassador Program](AMBASSADORS.md) for non-code contributions.
@@ -11,16 +13,19 @@ See also: [Ambassador Program](AMBASSADORS.md) for non-code contributions.
 ```bash
 # Clone
 git clone https://github.com/QuietFireAI/TelsonBase.git
-cd telsonbase
+cd TelsonBase
 
-# Copy environment
+# Copy environment, then generate all secrets (run in Git Bash on Windows)
 cp .env.example .env
-# Edit .env with your keys (openssl rand -hex 32)
+bash scripts/generate_secrets.sh
 
 # Start services
 docker compose up --build -d
 
-# Run tests (720+ tests, all must pass)
+# Run migration (required on first start)
+docker compose exec mcp_server alembic upgrade head
+
+# Run tests (720 tests, all must pass)
 docker compose exec mcp_server python -m pytest tests/ -v --tb=short
 ```
 
@@ -99,13 +104,13 @@ AGENT_CAPABILITIES = {
 ### Before Submitting PR
 
 ```bash
-# All tests must pass
-pytest -v tests/
+# All tests must pass (run inside the container)
+docker compose exec mcp_server python -m pytest tests/ -v
 
 # Specific test files
-pytest -v tests/test_api.py
-pytest -v tests/test_signing.py
-pytest -v tests/test_capabilities.py
+docker compose exec mcp_server python -m pytest tests/test_api.py -v
+docker compose exec mcp_server python -m pytest tests/test_signing.py -v
+docker compose exec mcp_server python -m pytest tests/test_capabilities.py -v
 ```
 
 ### Test Categories
@@ -175,7 +180,7 @@ Areas: `[API]`, `[SECURITY]`, `[AGENTS]`, `[FEDERATION]`, `[DOCS]`, `[TESTS]`
 
 ### 3. PR Checklist
 
-- [ ] Tests pass (`pytest -v tests/`)
+- [ ] Tests pass (`docker compose exec mcp_server python -m pytest tests/ -v`)
 - [ ] New code has REM comments explaining design decisions
 - [ ] QMS conventions followed for agent messages
 - [ ] Capabilities explicitly declared (no wildcards)
@@ -267,3 +272,7 @@ See `CODE_OF_CONDUCT.md`. Summary: Be respectful, be constructive, focus on the 
 ---
 
 *"The industry gives AI agents the keys to everything and forgot to build the locks. We built the locks."*
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

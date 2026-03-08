@@ -1,5 +1,7 @@
 # TelsonBase Ambassador Program
 
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+
 ## Why This Exists
 
 TelsonBase was built by one person. Shipping it to the world requires more than one person.
@@ -111,3 +113,7 @@ This project was built as a partnership between a human and AI collaborators. Th
 *"I can't do this alone. I don't want to."*
 
 -- Jeff Phillips, Quietfire AI
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
