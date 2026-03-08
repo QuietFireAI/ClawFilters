@@ -1,23 +1,26 @@
-# TelsonBase Developer Guide
+# TelsonBase - Developer Guide
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
-# Developer Guide: Building Secure Agents
-
 This guide explains how to build AI agents that run within the TelsonBase zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside TelsonBase.
 
-> **External agents (Goose, Claude Desktop, any HTTP client)** use a different integration path - the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
+> **External agents (Goose, Claude Desktop, any HTTP client)** use a different path - the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
+
+---
 
 ## Table of Contents
 
 1. [Quick Start](#quick-start)
 2. [Agent Architecture](#agent-architecture)
-3. [Declaring Capabilities](#declaring-capabilities)
-4. [Using Enforced Resources](#using-enforced-resources)
-5. [Inter-Agent Communication](#inter-agent-communication)
-6. [Requiring Human Approval](#requiring-human-approval)
-7. [Testing Your Agent](#testing-your-agent)
-8. [Common Patterns](#common-patterns)
+3. [Trust Levels and Your Agent](#trust-levels-and-your-agent)
+4. [Declaring Capabilities](#declaring-capabilities)
+5. [Using Enforced Resources](#using-enforced-resources)
+6. [Inter-Agent Communication](#inter-agent-communication)
+7. [Requiring Human Approval](#requiring-human-approval)
+8. [QMS Logging Conventions](#qms-logging-conventions)
+9. [Testing Your Agent](#testing-your-agent)
+10. [Common Patterns](#common-patterns)
+11. [Local Development Without Docker](#local-development-without-docker)
 
 ---
 
@@ -30,55 +33,49 @@ from agents.base import SecureBaseAgent, AgentRequest
 from typing import Dict, Any, Optional
 
 class MyAgent(SecureBaseAgent):
-    """
-    REM: A simple example agent.
-    """
-    
-    # REM: Required: Give your agent a unique name
+    """A simple example agent."""
+
+    # Required: unique name used in audit logs and routing
     AGENT_NAME = "my_agent"
-    
-    # REM: Required: Declare what your agent can do
+
+    # Required: declare exactly what this agent is allowed to do
     CAPABILITIES = [
         "filesystem.read:/app/inputs/*",
         "filesystem.write:/app/outputs/*",
-        "external.none",  # This agent cannot make external API calls
+        "external.none",  # cannot make external API calls
     ]
-    
-    # REM: Optional: Actions that require human approval
+
+    # Optional: actions that pause and wait for human approval
     REQUIRES_APPROVAL_FOR = [
         "delete_file",
-        "send_notification"
+        "send_notification",
     ]
-    
+
     def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
-        """
-        REM: Your agent's logic goes here.
-        """
+        """Route incoming actions to handler methods."""
         action = request.action.lower()
-        
+
         if action == "process_file":
             return self._process_file(request.payload)
         elif action == "delete_file":
             return self._delete_file(request.payload)
         else:
             raise ValueError(f"Unknown action: {action}")
-    
+
     def _process_file(self, payload: Dict[str, Any]) -> Dict[str, Any]:
-        # REM: Use self.filesystem for file operations (capability-enforced)
+        # Use self.filesystem — capability-enforced, not raw Python file I/O
         file_path = payload.get("path")
         content = self.filesystem.read(file_path)
-        
-        # Process content...
+
         processed = content.upper()
-        
+
         output_path = file_path.replace("/inputs/", "/outputs/")
         self.filesystem.write(output_path, processed)
-        
+
         return {"processed": output_path}
-    
+
     def _delete_file(self, payload: Dict[str, Any]) -> Dict[str, Any]:
-        # REM: This action requires approval (see REQUIRES_APPROVAL_FOR)
-        # REM: The request will pause until a human approves it
+        # Only reached after a human approves the request (REQUIRES_APPROVAL_FOR)
         file_path = payload.get("path")
         # ... deletion logic ...
         return {"deleted": file_path}
@@ -88,37 +85,64 @@ class MyAgent(SecureBaseAgent):
 
 ## Agent Architecture
 
-Every agent in TelsonBase inherits from `SecureBaseAgent`, which provides:
+Every agent inherits from `SecureBaseAgent`, which wraps your logic with six enforcement layers:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     SecureBaseAgent                          │
 │                                                              │
-│  ┌────────────────┐  ┌────────────────┐  ┌───────────────┐ │
-│  │ Message Signing│  │   Capability   │  │   Anomaly     │ │
-│  │                │  │   Enforcement  │  │   Monitoring  │ │
-│  └────────────────┘  └────────────────┘  └───────────────┘ │
+│  ┌────────────────┐  ┌────────────────┐  ┌───────────────┐  │
+│  │ Message Signing│  │   Capability   │  │   Anomaly     │  │
+│  │                │  │   Enforcement  │  │   Monitoring  │  │
+│  └────────────────┘  └────────────────┘  └───────────────┘  │
 │                                                              │
-│  ┌────────────────┐  ┌────────────────┐  ┌───────────────┐ │
-│  │ Approval Gates │  │ Audit Logging  │  │   Enforced    │ │
-│  │                │  │                │  │   Resources   │ │
-│  └────────────────┘  └────────────────┘  └───────────────┘ │
+│  ┌────────────────┐  ┌────────────────┐  ┌───────────────┐  │
+│  │ Approval Gates │  │ Audit Logging  │  │   Enforced    │  │
+│  │                │  │                │  │   Resources   │  │
+│  └────────────────┘  └────────────────┘  └───────────────┘  │
 │                                                              │
-│                    ┌────────────────┐                       │
-│                    │  YOUR AGENT    │                       │
-│                    │    LOGIC       │                       │
-│                    └────────────────┘                       │
+│                    ┌────────────────┐                        │
+│                    │  YOUR AGENT    │                        │
+│                    │    LOGIC       │                        │
+│                    └────────────────┘                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-When a request comes in:
+**What happens when a request arrives (embedded Python path):**
 
-1. **Signature Verification** - If the request came from another agent, its cryptographic signature is verified
-2. **Capability Check** - The orchestrator verifies the action is within declared capabilities
-3. **Approval Check** - If the action requires approval, the request pauses until a human approves
-4. **Execution** - Your `execute()` method runs
-5. **Behavior Recording** - The action is recorded for anomaly detection
-6. **Audit Logging** - Everything is logged for compliance
+1. **Signature Verification** - If the request came from another agent, its HMAC-SHA256 signature is verified against the sender's registered key. Unsigned inter-agent messages are rejected. *(proof: tb-proof-064)*
+2. **Capability Check** - The declared `CAPABILITIES` list is checked against the requested action and target. No match means an immediate `PermissionError`, logged to the audit chain. *(proof: tb-proof-063)*
+3. **Approval Check** - If the action is in `REQUIRES_APPROVAL_FOR`, the request pauses and creates a visible approval item. Execution does not continue until a human approves. *(proof: TB-PROOF-019)*
+4. **Execution** - Your `execute()` method runs.
+5. **Behavior Recording** - The action is recorded for anomaly baseline tracking. Deviations from baseline trigger anomaly events. *(proof: tb-proof-059)*
+6. **Audit Logging** - Every request and outcome is written to the hash-chained audit trail. *(proof: TB-PROOF-009)*
+
+> **Note:** External agents connecting via the REST API go through the full 8-step OpenClaw governance pipeline (which adds kill switch, nonce replay, and Manners compliance checks). See `docs/FAQ.md` Q21 for the full pipeline breakdown.
+
+---
+
+## Trust Levels and Your Agent
+
+**New embedded agents start at QUARANTINE.** This is intentional and important.
+
+| Trust Level | What it means for your agent |
+|---|---|
+| QUARANTINE | Severely restricted. Most capabilities blocked. Requires manual review to proceed. |
+| PROBATION | Limited capabilities. Closely monitored. Standard starting point for most deployments. |
+| RESIDENT | Standard capabilities. Periodic re-verification. |
+| CITIZEN | Full capabilities. 95%+ success rate required. |
+| AGENT | Apex tier. 99.9% success rate, zero anomaly tolerance, re-verification every 3 days. |
+
+**Before your agent can do useful work**, an operator must promote it from QUARANTINE via the dashboard or API:
+
+```bash
+# Promote via API
+curl -X POST http://localhost:8000/v1/openclaw/{instance_id}/promote \
+  -H "X-API-Key: $API_KEY" \
+  -d '{"reason": "Initial deployment — reviewed and approved"}'
+```
+
+**Automatic demotion:** If your agent's behavioral compliance score (Manners) drops below 50%, it is automatically demoted to QUARANTINE — no human delay required. Build agents that behave predictably. *(proof: TB-PROOF-038)*
 
 ---
 
@@ -129,7 +153,7 @@ Capabilities follow the format: `resource.action:scope`
 ### Resource Types
 
 | Resource | Description |
-|----------|-------------|
+|---|---|
 | `filesystem` | Local file system access |
 | `external` | External API calls (through egress gateway) |
 | `mqtt` | MQTT pub/sub messaging |
@@ -140,13 +164,13 @@ Capabilities follow the format: `resource.action:scope`
 ### Action Types
 
 | Action | Description |
-|--------|-------------|
+|---|---|
 | `read` | Read/GET operations |
 | `write` | Write/POST/PUT operations |
 | `execute` | Run/invoke operations |
 | `publish` | MQTT publish |
 | `subscribe` | MQTT subscribe |
-| `none` | Explicitly deny all access |
+| `none` | Explicitly deny all access to this resource |
 
 ### Scope Patterns
 
@@ -154,134 +178,154 @@ Scopes support glob patterns:
 
 ```python
 CAPABILITIES = [
-    "filesystem.read:/data/*",           # All files under /data/
-    "filesystem.read:/data/users/*.json", # Only JSON files in users/
-    "filesystem.write:/app/backups/*",    # Write only to backups/
-    "external.read:api.anthropic.com",    # Only Anthropic API
-    "external.none",                       # No external access at all
-    "ollama.execute:*",                    # Any Ollama model
+    "filesystem.read:/data/*",            # all files under /data/
+    "filesystem.read:/data/users/*.json", # only JSON files in users/
+    "filesystem.write:/app/backups/*",    # write only to backups/
+    "external.read:api.anthropic.com",    # only Anthropic API
+    "external.none",                       # no external access at all
+    "ollama.execute:*",                    # any Ollama model
 ]
 ```
 
 ### Deny Rules
 
-Prefix with `!` to explicitly deny:
+Prefix with `!` to explicitly deny a specific path within a broader allow:
 
 ```python
 CAPABILITIES = [
-    "filesystem.read:/data/*",           # Allow all of /data/
-    "!filesystem.read:/data/secrets/*",  # But deny /data/secrets/
+    "filesystem.read:/data/*",           # allow all of /data/
+    "!filesystem.read:/data/secrets/*",  # but deny /data/secrets/
 ]
 ```
+
+Deny rules take precedence over allow rules. *(proof: tb-proof-063)*
 
 ---
 
 ## Using Enforced Resources
 
-Don't use standard Python file operations or HTTP clients directly. Use the enforced wrappers provided by the base class:
+Do not use raw Python file operations (`open()`) or HTTP clients (`requests`, `httpx`) directly. Use the enforced wrappers provided by the base class. Bypassing these wrappers bypasses capability enforcement and audit logging.
 
 ### Filesystem Access
 
 ```python
 def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
-    # REM: Reading a file (capability-checked)
+    # All of these are capability-checked against CAPABILITIES
     content = self.filesystem.read("/data/input.txt")
-    
-    # REM: Writing a file (capability-checked)
     self.filesystem.write("/app/outputs/result.txt", b"processed data")
-    
-    # REM: Listing a directory (capability-checked)
     files = self.filesystem.list_dir("/data/")
-    
+
     return {"files_found": len(files)}
 ```
 
-If your agent tries to access a path outside its declared capabilities, a `PermissionError` is raised and logged.
+If your agent tries to access a path outside its declared capabilities, a `PermissionError` is raised and logged to the audit chain. The request does not silently fail — it fails loudly and on record.
 
 ### External API Access
 
 ```python
-# REM: Declare the capability first
+# Declare the capability first
 CAPABILITIES = [
     "external.read:api.anthropic.com",
     "external.write:api.anthropic.com",
 ]
 
 def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
-    # REM: All external requests go through the egress gateway
+    # All external requests go through the egress gateway
+    # The gateway enforces the ALLOWED_EXTERNAL_DOMAINS system whitelist
+    # as a second check after capability enforcement
     response = self.external.post(
         "https://api.anthropic.com/v1/messages",
         json={"model": "claude-sonnet-4-6", "messages": [...]}
     )
-    
+
     return {"response": response.json()}
 ```
 
-If you try to call a domain not in your capabilities (or not in the system whitelist), the request is blocked.
+Two enforcement layers apply: your agent's `CAPABILITIES` list, and the system-level `ALLOWED_EXTERNAL_DOMAINS` whitelist. A request blocked at either layer is logged.
 
 ---
 
 ## Inter-Agent Communication
 
-Agents can send signed messages to each other:
+Agents communicate by sending signed messages to each other via the MQTT bus. Every message carries an HMAC-SHA256 signature computed from the sender's registered key.
 
 ```python
 def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
-    # REM: Send a signed message to another agent
+    # Send a signed message to another agent
     message = self.send_to_agent(
         target_agent="backup_agent",
         action="perform_backup",
         payload={"volume": "user_data"}
     )
-    
-    # REM: The message is cryptographically signed with our key
-    # REM: The receiving agent will verify the signature
-    
+
+    # The receiving agent verifies the signature before processing.
+    # If verification fails, the message is rejected and an anomaly is logged.
+
     return {"message_sent": message.message_id}
 ```
 
-The receiving agent's `handle_request()` will automatically verify the signature before processing.
+You do not need to sign messages manually. `send_to_agent()` handles signing. You do need to ensure your agent has the `agent.execute:backup_agent` capability (or `agent.execute:*`) in its `CAPABILITIES` list. *(proof: tb-proof-064)*
 
 ---
 
 ## Requiring Human Approval
 
-For sensitive operations, require human approval:
+Add destructive or sensitive actions to `REQUIRES_APPROVAL_FOR`. The framework handles the pause/resume automatically — your `execute()` method only runs after a human approves.
 
 ```python
 class SensitiveAgent(SecureBaseAgent):
     AGENT_NAME = "sensitive_agent"
-    
+
     CAPABILITIES = [
         "filesystem.read:/data/*",
         "filesystem.write:/data/*",
     ]
-    
-    # REM: These actions will pause and wait for human approval
+
+    # These actions pause and wait for a human decision
     REQUIRES_APPROVAL_FOR = [
         "delete_user_data",
         "export_to_external",
         "modify_configuration",
     ]
-    
+
     def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
-        action = request.action
-        
-        # REM: If action is in REQUIRES_APPROVAL_FOR, the framework
-        # REM: has already paused and gotten approval before reaching here
-        
-        if action == "delete_user_data":
-            # REM: We only get here if a human approved this
+        if request.action == "delete_user_data":
+            # Only reached after a human approved this specific request
             return self._delete_user_data(request.payload)
 ```
 
-The approval flow:
+**The full approval flow:**
 
-1. Request comes in for `delete_user_data`
-2. Framework creates approval request (visible in API/dashboard)
-3. Task pauses and waits
-4. Human reviews and clicks "Approve" or "Reject"
-5. If approved, execution continues. If rejected, PermissionError is raised.
+1. Request arrives for `delete_user_data`
+2. Framework creates an approval record — visible in the dashboard and via `GET /v1/approvals`
+3. Task pauses (`threading.Event.wait()`)
+4. Human reviews the payload and clicks Approve or Reject
+5. If approved: execution resumes, your method runs
+6. If rejected or expired: `PermissionError` is raised, logged to audit chain, task fails cleanly
+
+The approval record includes the full payload so the reviewer knows exactly what they are approving. *(proof: TB-PROOF-019)*
+
+---
+
+## QMS Logging Conventions
+
+TelsonBase uses the Qualified Message Standard (QMS™) in logs for human readability. Your agent's base class appends these suffixes automatically. Understanding them helps when reading audit logs.
+
+| Suffix | Meaning | Example |
+|---|---|---|
+| `_Please` | Request initiated | `Backup_Started_Please` |
+| `_Thank_You` | Success | `Backup_Completed_Thank_You` |
+| `_Thank_You_But_No` | Failure or rejection | `Permission_Denied_Thank_You_But_No` |
+| `_Excuse_Me` | More information needed | `Missing_Parameter_Excuse_Me` |
+| `::value::` | Critical inline data | `File ::/data/users.db:: backed up` |
+
+Chains use `-` as a separator and always end with `::`. Example from a live audit entry:
+
+```
+::backup_agent.perform_backup::-::volume:user_data::-::Thank_You::
+```
+
+You do not write QMS manually. The base class and audit logger handle formatting. What you write in your log messages appears inside the `::` blocks. *(proof: tb-proof-053, docs/QMS Documents/QMS_SPECIFICATION.md)*
 
 ---
 
@@ -293,31 +337,32 @@ The approval flow:
 # tests/test_my_agent.py
 
 import pytest
+from unittest.mock import MagicMock, patch
 from agents.my_agent import MyAgent
 from agents.base import AgentRequest
 
 class TestMyAgent:
-    
+
     @pytest.fixture
     def agent(self):
         return MyAgent()
-    
-    def test_process_file_action(self, agent, tmp_path):
-        # REM: Create test file
-        input_file = tmp_path / "input.txt"
-        input_file.write_text("hello world")
-        
+
+    def test_process_file_action(self, agent):
+        # Mock the filesystem wrapper to avoid needing real files
+        agent.filesystem = MagicMock()
+        agent.filesystem.read.return_value = b"hello world"
+
         request = AgentRequest(
             request_id="test-001",
             action="process_file",
-            payload={"path": str(input_file)},
+            payload={"path": "/app/inputs/test.txt"},
             requester="test"
         )
-        
-        # REM: This would need mocking of filesystem access
-        # response = agent.handle_request(request)
-        # assert response.success
-    
+
+        result = agent._process_file(request.payload)
+        assert result["processed"] == "/app/outputs/test.txt"
+        agent.filesystem.write.assert_called_once()
+
     def test_unknown_action_fails(self, agent):
         request = AgentRequest(
             request_id="test-002",
@@ -325,23 +370,25 @@ class TestMyAgent:
             payload={},
             requester="test"
         )
-        
+
         response = agent.handle_request(request)
         assert not response.success
         assert "Unknown action" in response.error
 ```
 
+Mock `self.filesystem`, `self.external`, and `self.send_to_agent` when unit testing. These wrappers call into the enforcement layer — in unit tests you want to test your logic, not the framework.
+
 ### Integration Testing
 
 ```bash
-# Run all tests
-pytest
+# Run all tests inside Docker (full stack available)
+docker compose exec mcp_server python -m pytest -v
 
 # Run with coverage
-pytest --cov=agents --cov-report=html
+docker compose exec mcp_server python -m pytest --cov=agents --cov-report=html
 
 # Run specific test file
-pytest tests/test_my_agent.py -v
+docker compose exec mcp_server python -m pytest tests/test_my_agent.py -v
 ```
 
 ---
@@ -352,30 +399,28 @@ pytest tests/test_my_agent.py -v
 
 ```python
 class ResearchAgent(SecureBaseAgent):
-    """REM: Agent that queries external APIs and saves results."""
-    
+    """Agent that queries external APIs and saves results locally."""
+
     AGENT_NAME = "research_agent"
-    
+
     CAPABILITIES = [
         "external.read:api.perplexity.ai",
         "external.write:api.perplexity.ai",
         "filesystem.write:/app/research/*",
-        "!filesystem.read:/data/*",  # Cannot read sensitive data
+        "!filesystem.read:/data/*",  # explicitly cannot read sensitive data
     ]
-    
+
     def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
         query = request.payload.get("query")
-        
-        # REM: Query external API (through egress gateway)
+
         response = self.external.post(
             "https://api.perplexity.ai/chat/completions",
             json={"query": query}
         )
-        
-        # REM: Save results locally
+
         result_path = f"/app/research/{request.request_id}.json"
         self.filesystem.write(result_path, response.content)
-        
+
         return {"saved_to": result_path}
 ```
 
@@ -383,36 +428,34 @@ class ResearchAgent(SecureBaseAgent):
 
 ```python
 class OrchestratorAgent(SecureBaseAgent):
-    """REM: Agent that coordinates other agents."""
-    
+    """Agent that coordinates other agents."""
+
     AGENT_NAME = "orchestrator"
-    
+
     CAPABILITIES = [
-        "agent.execute:*",  # Can dispatch to any agent
+        "agent.execute:*",  # can dispatch to any registered agent
     ]
-    
+
     REQUIRES_APPROVAL_FOR = [
-        "complex_workflow",  # Multi-agent workflows need approval
+        "complex_workflow",  # multi-agent workflows need human sign-off
     ]
-    
+
     def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
         if request.action == "data_pipeline":
-            # REM: Coordinate multiple agents
-            
-            # Step 1: Tell research agent to gather data
+            # Step 1: tell research agent to gather data
             self.send_to_agent(
                 "research_agent",
                 "gather_data",
                 {"topic": request.payload["topic"]}
             )
-            
-            # Step 2: Tell analysis agent to process
+
+            # Step 2: tell analysis agent to process
             self.send_to_agent(
                 "analysis_agent",
                 "analyze",
                 {"input_dir": "/app/research/"}
             )
-            
+
             return {"pipeline": "initiated"}
 ```
 
@@ -420,75 +463,56 @@ class OrchestratorAgent(SecureBaseAgent):
 
 ```python
 class BackupAgent(SecureBaseAgent):
-    """REM: Agent that manages backups."""
-    
+    """Agent that manages backups. Creates freely, deletes/restores with approval."""
+
     AGENT_NAME = "backup_agent"
-    
+
     CAPABILITIES = [
         "filesystem.read:/data/*",
         "filesystem.write:/app/backups/*",
         "filesystem.read:/app/backups/*",
         "external.none",
     ]
-    
+
     REQUIRES_APPROVAL_FOR = [
-        "delete_backup",   # Destructive
-        "restore_backup",  # Could overwrite data
+        "delete_backup",   # destructive
+        "restore_backup",  # could overwrite live data
     ]
-    
+
     def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
         if request.action == "create_backup":
-            # REM: No approval needed
             return self._create_backup(request.payload)
         elif request.action == "delete_backup":
-            # REM: Approval required - we only get here if approved
+            # Only reached after human approval
             return self._delete_backup(request.payload)
         elif request.action == "restore_backup":
-            # REM: Approval required
+            # Only reached after human approval
             return self._restore_backup(request.payload)
 ```
 
 ---
 
-## QMS™ Logging Conventions
-
-The TelsonBase uses the Qualified Message Standard (QMS™) in logs for human readability:
-
-| Suffix | Meaning | Example |
-|--------|---------|---------|
-| `_Please` | Request initiated | `Backup_Started_Please` |
-| `_Thank_You` | Success | `Backup_Completed_Thank_You` |
-| `_Thank_You_But_No` | Failure/Rejection | `Permission_Denied_Thank_You_But_No` |
-| `_Excuse_Me` | More info needed | `Missing_Parameter_Excuse_Me` |
-| `::value::` | Critical data | `File ::/data/users.db:: backed up` |
-
-Your agent logs will automatically follow these conventions through the base class.
-
----
-
 ## Local Development Without Docker
 
-For quick iteration on agent code or running tests, you can run components locally without Docker.
+For quick iteration on agent code or running unit tests, you can run without the full Docker stack.
 
 ### Prerequisites
 
 ```bash
-# Python 3.11+
+# Python 3.11+ required
 python --version
 
-# Redis (required for state persistence)
-# Install via package manager or run Redis in Docker
+# Redis is required for state persistence
+# Run a dev Redis in Docker while developing locally:
 docker run -d -p 6379:6379 --name redis-dev redis:7-alpine
 ```
 
 ### Setup
 
 ```bash
-# Clone repository
 git clone https://github.com/QuietFireAI/TelsonBase.git
-cd telsonbase
+cd TelsonBase
 
-# Create virtual environment
 python -m venv venv
 
 # Activate (Windows)
@@ -497,14 +521,12 @@ venv\Scripts\activate
 # Activate (Linux/macOS)
 source venv/bin/activate
 
-# Install dependencies
 pip install -r requirements.txt
 ```
 
 ### Environment Configuration
 
 ```bash
-# Copy example environment
 cp .env.example .env
 
 # Minimum required for local development:
@@ -517,82 +539,43 @@ LOG_LEVEL=DEBUG
 ### Running the API Server
 
 ```bash
-# Start FastAPI with auto-reload
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
-
-# Or with specific log level
-LOG_LEVEL=DEBUG uvicorn main:app --reload
 ```
 
 ### Running Tests Only
 
-If you only need to run tests (no server required):
-
 ```bash
-# Install test dependencies
 pip install pytest pytest-asyncio pytest-cov httpx
 
-# Run all tests
 pytest -v tests/
-
-# Run specific test file
 pytest -v tests/test_api.py
-
-# Run with coverage
 pytest --cov=core --cov=agents --cov-report=html tests/
-```
-
-### Minimal Component Testing
-
-For testing a single agent without the full stack:
-
-```python
-# test_my_agent_local.py
-import sys
-sys.path.insert(0, '.')
-
-from agents.base import AgentRequest
-from agents.document_agent import DocumentProcessorAgent
-
-# Create agent instance
-agent = DocumentProcessorAgent()
-
-# Test request (mock - won't actually process files without filesystem setup)
-request = AgentRequest(
-    request_id="test-001",
-    action="get_metadata",
-    payload={"file_path": "/app/test.txt"},
-    requester="test"
-)
-
-# Inspect capabilities
-print(f"Agent: {agent.AGENT_NAME}")
-print(f"Capabilities: {agent.CAPABILITIES}")
-print(f"Requires approval for: {agent.REQUIRES_APPROVAL_FOR}")
 ```
 
 ### What Requires Docker
 
-Some features require the full Docker stack:
-
-| Feature | Local | Docker Required |
-|---------|-------|-----------------|
-| Unit tests | ✅ | - |
-| API endpoint tests | ✅ | Redis |
-| Agent code development | ✅ | - |
-| Federation testing | - | ✅ |
-| Egress gateway testing | - | ✅ |
-| Full integration tests | - | ✅ |
-| Production deployment | - | ✅ |
+| Feature | Local | Needs Docker |
+|---|---|---|
+| Unit tests | Yes | - |
+| API endpoint tests | Yes (needs Redis) | - |
+| Agent code development | Yes | - |
+| Federation testing | - | Yes |
+| Egress gateway testing | - | Yes |
+| Full integration tests | - | Yes |
+| Production deployment | - | Yes |
 
 ---
 
 ## Next Steps
 
 1. Review the example agents in `/agents/`
-2. Run the test suite: `pytest -v`
-3. Check the API documentation at `/docs` when the server is running
-4. Read the Federation Guide if you need cross-instance communication
-5. See [Troubleshooting](TROUBLESHOOTING.md) for common issues
+2. Run the full test suite: `docker compose exec mcp_server python -m pytest -v`
+3. Check live API docs at `http://localhost:8000/docs` when the server is running
+4. Read [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) if you need external agents (Goose, Claude Desktop, HTTP clients)
+5. See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common issues
 
-For questions or issues, contact: support@telsonbase.com
+For questions: support@telsonbase.com
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
