@@ -9,7 +9,9 @@
 
 ---
 
-> **QMS is optional.** TelsonBase runs fully without it. No governance feature, approval gate, trust tier, audit chain, or platform function depends on QMS being present. QMS is a log format and security watermark -- a layer of observability and provenance on top of a platform that works whether you use it or not. Adopt it when it adds value. Skip it when it does not.
+> **QMS is optional at the deployment level.** TelsonBase installs and runs fully without it. No governance feature, approval gate, trust tier, audit chain, or platform function depends on QMS being present. Adopt it when it adds value.
+>
+> **QMS is enforced at the inter-agent communication layer.** Once agents are communicating inside a running TelsonBase, messages that arrive without QMS formatting trigger a `NON_QMS_MESSAGE` anomaly event (MANNERS-2). That is not optional -- that is the platform doing its job. The absence of QMS output from a registered active agent is equally flaggable: the gap in the log IS the signal. An attacker who suppresses logging to cover their tracks does not go quiet -- they go loud, because the silence deviates from the behavioral baseline the platform has already established.
 
 ---
 
@@ -31,18 +33,26 @@ The protocol re-imagines the log file as the primary user interface for system a
 
 The protocol's structure *is* the documentation. Its clarity is its strength.
 
-### 1.1 The Secondary Security Layer
+### 1.1 The Security Layer — Why QMS Was Built
 
-QMS is also a **governance primitive** and a **security watermark**.
+QMS was conceived first and foremost as a **security watermark** and **governance primitive**. The observability and human-readability benefits came from the same design, but the security use case is the origin.
 
-Cryptographic signatures answer: **who sent this?** (identity)  
+Cryptographic signatures answer: **who sent this?** (identity)
 QMS formatting answers: **did this come through a legitimate pathway?** (provenance)
 
-These are independent security questions. An attacker who steals an agent's signing key can forge identity. But if they inject raw commands without QMS chain formatting, the system flags the anomaly before the payload executes. The attacker would need to compromise credentials AND reverse-engineer internal message semantics — two independent knowledge barriers.
+These are independent security questions. An attacker who steals an agent's signing key can forge identity. But if they inject raw commands without QMS chain formatting, the system flags the anomaly before the payload executes.
 
-Think of it like radio comms in a large hotel. Every staff member has a radio with a callsign. If a command comes through without a callsign, or the callsign doesn't match a registered agent — the message is suspect regardless of what it says. No radio, no trust.
+**Three threat vectors that QMS mitigates:**
 
-This is defense in depth that costs almost nothing at runtime (string formatting and a regex check).
+1. **Non-QMS message arrives.** A raw or malformed command injected into the agent communication layer triggers `NON_QMS_MESSAGE` — a MANNERS-2 anomaly event. Logged. Flagged. Investigated.
+
+2. **QMS output goes silent.** A registered active agent that stops producing QMS log entries deviates from its established behavioral baseline. The anomaly detector fires on the gap. An attacker who kills the logging to cover their tracks does not go quiet -- they go loud. Silence is detectable. The absence of the log IS the signal.
+
+3. **QMS formatted but unregistered origin.** A message with correct QMS grammar but an origin ID not in the agent registry triggers an anonymous transmission flag. The message came from something that does not have a callsign. No callsign, no trust.
+
+To successfully inject through all three layers, an attacker must: compromise valid cryptographic credentials AND know the QMS grammar AND know a valid registered agent ID AND generate a plausible correlation ID AND maintain enough output to avoid the silence detector. Each layer is independently verifiable. Each costs almost nothing to check. Together they create compound difficulty that makes casual injection impractical.
+
+Think of it like radio comms in a large facility. Every staff member has a radio with a callsign. If a command comes through without a callsign -- or the callsign is not in the roster -- or a known agent goes silent -- all three are security events. No radio, no trust.
 
 ---
 
