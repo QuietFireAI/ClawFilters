@@ -3,8 +3,8 @@
 **Sheet ID:** TB-PROOF-002
 **Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
-**Last Verified:** March 1, 2026
-**Version:** 9.0.0B
+**Last Verified:** March 8, 2026
+**Version:** v11.0.1
 
 ---
 

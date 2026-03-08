@@ -399,3 +399,7 @@ Non-QMS messages received by the Foreman are rejected and logged as `NON_QMS_MES
 | 4.5.0CC | Prefixed IDs (CHKOUT-, TOOLREQ-, APPR-), 13 API endpoints, 140 tests |
 | 4.6.0CC | Execution engine: manifests, subprocess isolation, function tools, semantic versioning, Redis-backed approval lookup |
 | v11.0.1 | QMS™ validation as Foreman security gate, updated chain syntax throughout |
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

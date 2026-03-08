@@ -254,3 +254,7 @@
 - No pagination on audit entries, QMS log, or agent list
 - Chat model list in demo is hardcoded - live mode queries Ollama API
 - Auto-refresh only fires when connected (demo mode is static)
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

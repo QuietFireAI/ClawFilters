@@ -17,3 +17,7 @@ Screenshots of the TelsonBase admin dashboard and user console.
 | `user-console-agents.png` | User console agent list | Demo data |
 
 To replace with fresh screenshots: capture from `http://localhost:8000/dashboard`, overwrite the relevant file, same filename.
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

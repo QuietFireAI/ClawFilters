@@ -3,8 +3,8 @@
 **Sheet ID:** TB-PROOF-037
 **Claim Source:** telsonbase.com - OpenClaw Integration
 **Status:** VERIFIED
-**Last Verified:** February 23, 2026
-**Version:** 7.4.0CC
+**Last Verified:** March 8, 2026
+**Version:** v11.0.1
 
 ---
 
