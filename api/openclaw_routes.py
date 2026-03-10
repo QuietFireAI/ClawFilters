@@ -20,10 +20,11 @@
 # REM: =======================================================================================
 
 import logging
+import secrets
 from datetime import datetime, timezone
 from typing import Optional, List, Dict, Any
 
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Header
 from pydantic import BaseModel, Field, model_validator
 
 from core.auth import authenticate_request, require_permission, AuthResult
@@ -48,7 +49,10 @@ _OVERRIDE_REASON_MIN_LEN = 10
 class RegisterClawRequest(BaseModel):
     """REM: Request to register a new OpenClaw instance under governance."""
     name: str = Field(..., description="Human-readable name for the claw instance")
-    api_key: str = Field(..., description="The claw's API key (hashed before storage)")
+    api_key: Optional[str] = Field(
+        default=None,
+        description="Deprecated — ignored. TelsonBase generates a unique key per agent at registration."
+    )
     allowed_tools: List[str] = Field(default_factory=list, description="Explicit tool whitelist (empty = all)")
     blocked_tools: List[str] = Field(default_factory=list, description="Explicit tool blacklist")
     metadata: Dict[str, Any] = Field(default_factory=dict, description="Additional metadata")
@@ -153,6 +157,10 @@ class ClawInstanceResponse(BaseModel):
     suspended: bool = False
     registered_at: Optional[str] = None
     last_action_at: Optional[str] = None
+    agent_key: Optional[str] = Field(
+        default=None,
+        description="Per-agent API key — returned ONCE at registration only. Store it securely."
+    )
     qms_status: str = "Thank_You"
 
 
@@ -238,10 +246,14 @@ async def register_claw(
     """
     _check_enabled()
 
+    # REM: Generate a unique per-agent API key. TelsonBase owns key generation —
+    # REM: agents do not supply their own key. Returned once only; store securely.
+    generated_key = secrets.token_hex(32)
+
     manager = _get_manager()
     instance = manager.register_instance(
         name=request.name,
-        api_key=request.api_key,
+        api_key=generated_key,
         allowed_tools=request.allowed_tools,
         blocked_tools=request.blocked_tools,
         registered_by=auth.actor,
@@ -281,6 +293,7 @@ async def register_claw(
         trust_level=instance.trust_level,
         manners_score=instance.manners_score,
         registered_at=instance.registered_at.isoformat(),
+        agent_key=generated_key,  # REM: Returned ONCE. Not stored in plaintext. Not re-retrievable.
     )
 
 
@@ -290,12 +303,37 @@ async def evaluate_action(
     request: ActionRequest,
     auth: AuthResult = Depends(authenticate_request),
     _rl: None = Depends(agent_rate_limit),
+    x_agent_key: Optional[str] = Header(default=None, alias="X-Agent-Key"),
 ):
     """
     REM: Submit an OpenClaw action for governance evaluation.
     REM: The governance pipeline determines if the action is allowed, gated, or blocked.
+    REM:
+    REM: Authentication — two modes:
+    REM:   Admin key (X-API-Key): admin submits on behalf of any instance_id.
+    REM:   Agent key (X-Agent-Key): agent authenticates as itself — instance_id in path
+    REM:     must match the registered instance for that key. Rejected if mismatch.
     """
     _check_enabled()
+
+    # REM: Per-agent key check — if X-Agent-Key is present, verify it matches the instance_id.
+    # REM: Admin key (X-API-Key) alone is still accepted for backward compat and tooling.
+    if x_agent_key:
+        manager = _get_manager()
+        authed_instance = manager.authenticate_instance(x_agent_key)
+        if not authed_instance:
+            raise HTTPException(
+                status_code=401,
+                detail=format_qms("Invalid or revoked agent key", QMSStatus.THANK_YOU_BUT_NO)
+            )
+        if authed_instance.instance_id != instance_id:
+            raise HTTPException(
+                status_code=403,
+                detail=format_qms(
+                    "Agent key does not match the instance_id in the path",
+                    QMSStatus.THANK_YOU_BUT_NO
+                )
+            )
 
     manager = _get_manager()
     result = manager.evaluate_action(

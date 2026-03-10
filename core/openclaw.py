@@ -581,10 +581,23 @@ class OpenClawManager:
             instance.actions_blocked += 1
             instance.last_action_at = datetime.now(timezone.utc)
             self._persist_instance(instance)
+            try:
+                from core.manners import manners_engine, ViolationType
+                manners_engine.record_violation(
+                    agent_name=instance.name,
+                    violation_type=ViolationType.CAPABILITY_VIOLATION,
+                    details=f"Blocked tool: '{tool_name}' is on the blocklist",
+                    action=tool_name,
+                )
+                new_score = manners_engine.evaluate(instance.name).overall_score
+                self.update_manners_score(instance_id, new_score)
+            except Exception as e:
+                logger.warning(f"REM: Manners wire-up error (blocklist): {e}")
             return OpenClawActionResult(
                 allowed=False,
                 reason=f"Tool '{tool_name}' is blocked for this instance",
                 trust_level_at_decision=instance.trust_level,
+                manners_score_at_decision=instance.manners_score,
             )
 
         # REM: Tool allowlist check (if non-empty, only allowed tools pass)
@@ -678,6 +691,21 @@ class OpenClawManager:
             instance.last_action_at = datetime.now(timezone.utc)
             self._persist_instance(instance)
             self._log_action(instance_id, tool_name, "blocked")
+            try:
+                from core.manners import manners_engine, ViolationType
+                manners_engine.record_violation(
+                    agent_name=instance.name,
+                    violation_type=ViolationType.OUT_OF_ROLE_ACTION,
+                    details=(
+                        f"Trust level block: '{trust_level.value}' tier prohibits "
+                        f"'{category.value}' action (tool='{tool_name}')"
+                    ),
+                    action=tool_name,
+                )
+                new_score = manners_engine.evaluate(instance.name).overall_score
+                self.update_manners_score(instance_id, new_score)
+            except Exception as e:
+                logger.warning(f"REM: Manners wire-up error (trust block): {e}")
             return OpenClawActionResult(
                 allowed=False,
                 reason=(
