@@ -373,7 +373,7 @@ docker compose exec mcp_server python -m pytest tests/ -v --tb=short
 | **Dashboard** | `http://localhost:8000/dashboard` | Security management console |
 | **MCP Gateway** | `http://localhost:8000/mcp` | Goose / Claude Desktop agent interface |
 | **Open-WebUI** | `http://localhost:3000` | Chat with local LLMs |
-| **Grafana** | http://localhost:3001 | Monitoring dashboards |
+| **Grafana** | `http://localhost:3001` | Monitoring dashboards |
 
 ---
 
@@ -551,8 +551,6 @@ Phillips, J. (2026). TelsonBase (v11.0.1). Quietfire AI.
 https://github.com/QuietFireAI/TelsonBase
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```
-
----
 
 ---
 
