@@ -232,7 +232,13 @@ async def lifespan(app: FastAPI):
         actor="system",
         qms_status="Thank_You"
     )
-    yield
+    # REM: Start the FastMCP session manager task group so Streamable HTTP requests
+    # REM: to /mcp succeed. streamable_http_app() creates the manager lazily at module
+    # REM: load; run() initialises the anyio task group that handles MCP sessions.
+    # REM: Without this, every /mcp request fails with:
+    # REM:   RuntimeError: Task group is not initialized. Make sure to use run()
+    async with _mcp_server.session_manager.run():
+        yield
     logger.info("REM: TelsonBase API Server shutting down")
     shutdown_mqtt_bus()
     audit.log(
@@ -453,6 +459,11 @@ app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
 import hashlib as _hashlib
 from api.mcp_gateway import mcp as _mcp_server, _mcp_api_key_hash as _mcp_key_ctx
 
+# REM: FastMCP streamable_http_app() defaults to path=/mcp internally.
+# REM: FastAPI app.mount("/mcp", ...) strips the /mcp prefix before passing to the
+# REM: inner ASGI app, so the inner app must listen at / not /mcp.
+# REM: Setting streamable_http_path="/" aligns the inner route with the stripped path.
+_mcp_server.settings.streamable_http_path = "/"
 _mcp_asgi_inner = _mcp_server.streamable_http_app()
 
 
