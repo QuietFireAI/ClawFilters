@@ -88,7 +88,7 @@
           <div class="card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
-          <h3>Transparency</h3>
+          <h3>Transparency <button class="info-trigger info-trigger-sm" aria-label="See what happens behind the curtain" onclick="document.getElementById('pipeline-modal').classList.add('open')">&#9432;</button></h3>
           <p>Every agent action is logged to a cryptographic audit chain. Users see what agents did, why, and what they plan to do next. Nothing is hidden.</p>
         </div>
         <div class="glass-card fade-in">
@@ -765,6 +765,11 @@
           <p>Yes. TelsonBase is open source under the Apache License 2.0. The full codebase  -  every security rule, every governance engine, every audit mechanism  -  is public. Use it for any purpose: personal, commercial, production, research. No paywalls, no commercial license required. Enterprise support and consulting are available through Quietfire AI.</p>
         </details>
 
+        <details class="faq-item glass-card">
+          <summary>What's on the roadmap?</summary>
+          <p>The current release is the governance engine: trust tiers, Manners compliance, kill switch, HITL approval gates, cryptographic audit trail, and the full API. What's next is the interface that makes it approachable without reading API docs. The first build sprint after launch focuses on: a browser-based agent dashboard (trust level, Manners score, violation history, and recent actions in one view), demotion explanation cards (when a score drops, you see exactly which actions caused it and which principle was violated), a guided agent registration flow, and a read-only audit log viewer. The API already exposes everything needed for all of it. The governance engine is done  -  the dashboard catches up next.</p>
+        </details>
+
       </div>
     </div>
   </section>
@@ -914,6 +919,42 @@
         </div>
       </div>
       <p class="cyc-modal-footer-text">Same code. Same security. Whether it's running on a $200 mini-PC in your den or a rack in a SOC 2-certified data center.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       "Behind the Curtain" Governance Pipeline Modal
+       ============================================================ -->
+  <div class="cyc-modal-overlay" id="pipeline-modal" role="dialog" aria-modal="true" aria-label="What happens behind the curtain">
+    <div class="cyc-modal glass-card-glow">
+      <button class="cyc-modal-close" aria-label="Close" onclick="document.getElementById('pipeline-modal').classList.remove('open')">&times;</button>
+      <h2 class="cyc-modal-title">Behind the Curtain</h2>
+      <p class="cyc-modal-intro">Every time an agent tries to do something, TelsonBase runs this pipeline before any tool executes. All 8 steps. Every action. No exceptions.</p>
+
+      <h3 class="cyc-modal-subtitle">The 8-Step Governance Pipeline</h3>
+      <div class="cyc-modal-steps">
+        <div class="cyc-modal-step"><span class="step-num">1</span> <strong>Is this agent registered?</strong> If TelsonBase doesn't recognize the agent, the action is rejected before anything else runs.</div>
+        <div class="cyc-modal-step"><span class="step-num">2</span> <strong>Is the kill switch active?</strong> A suspended agent is rejected here, instantly. Before trust levels, before everything. Only a human can reinstate.</div>
+        <div class="cyc-modal-step"><span class="step-num">3</span> <strong>Replay protection.</strong> Every action includes a nonce. Seen it before? Rejected. Prevents replay attacks at the protocol layer.</div>
+        <div class="cyc-modal-step"><span class="step-num">4</span> <strong>Tool blocklist check.</strong> If the tool is on the agent's blocklist, it's rejected and a Manners violation is recorded against the agent's score.</div>
+        <div class="cyc-modal-step"><span class="step-num">5</span> <strong>Action classification.</strong> The tool is mapped to a category: READ, WRITE, DELETE, EXTERNAL, or FINANCIAL. The category determines what the trust level allows.</div>
+        <div class="cyc-modal-step"><span class="step-num">6</span> <strong>Manners compliance check.</strong> If the agent's Manners score has dropped below the threshold, it is automatically demoted to Quarantine before proceeding.</div>
+        <div class="cyc-modal-step"><span class="step-num">7</span> <strong>Trust level permission check.</strong> Can this tier perform this category of action? If not, rejected  -  and another Manners violation is recorded.</div>
+        <div class="cyc-modal-step"><span class="step-num">8</span> <strong>Anomaly detection.</strong> Does this action fit the agent's behavioral baseline? Anomalies gate the action for human review, or flag it as advisory for apex-tier agents.</div>
+      </div>
+
+      <h3 class="cyc-modal-subtitle">Manners Compliance: Why Scores Move</h3>
+      <p class="cyc-modal-intro">Every agent has a Manners compliance score (0.0 to 1.0) derived from five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. Each blocked action at steps 4 or 7 records a violation against the relevant principle. Violations decay over time but accumulate faster than they heal. Three or more violations in 24 hours triggers auto-suspension pending human review.</p>
+      <p class="cyc-modal-intro">Scores at 0.50 or below demote the agent to Quarantine automatically. Scores above 0.90 are Exemplary. Every decision that moves a score is logged to the audit trail with the violation type, severity, and the specific action that caused it.</p>
+
+      <h3 class="cyc-modal-subtitle">How to See It</h3>
+      <p class="cyc-modal-intro">All of this is exposed via the TelsonBase API. No mystery, no inference:</p>
+      <div class="cyc-modal-steps">
+        <div class="cyc-modal-step"><span class="step-num">&#8250;</span> <code>GET /v1/openclaw/{id}/manners</code>  -  full principle breakdown, violation history, grace period status</div>
+        <div class="cyc-modal-step"><span class="step-num">&#8250;</span> <code>GET /v1/openclaw/{id}/actions</code>  -  recent action log with governance decisions (allowed / gated / blocked)</div>
+        <div class="cyc-modal-step"><span class="step-num">&#8250;</span> <code>GET /v1/openclaw/{id}/trust-report</code>  -  full trust level history, every promotion and demotion with reason and timestamp</div>
+      </div>
+      <p class="cyc-modal-footer-text">A dedicated agent dashboard  -  showing all of this in one view, with demotion explanations and violation drill-down  -  is on the roadmap for the next build sprint.</p>
     </div>
   </div>
 
