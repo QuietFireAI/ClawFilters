@@ -137,21 +137,26 @@ Services only join networks they need. If Redis is compromised, the attacker has
 
 ### Test Coverage
 
-**720 tests across 10 modules. All passing.**
+**746 tests across 16 modules. All passing.**
 
 | Test Module | Tests | Scope |
 |-------------|-------|-------|
-| `test_api.py` | 19 | API endpoints, auth flow, federation surface |
+| `test_qms.py` | 115 | QMS protocol, message parsing, suffix grammar, routing |
+| `test_toolroom.py` | 129 | Tool governance, supply-chain security, foreman approval |
+| `test_security_battery.py` | 96 | 96-test security battery: auth, encryption, RBAC, audit, network |
+| `test_openclaw.py` | 55 | OpenClaw governance pipeline, trust evaluation, kill switch |
+| `test_identiclaw.py` | 50 | Agent identity, DID, Ed25519, verifiable credentials |
+| `test_ollama.py` | 49 | Local LLM inference, Ollama service, model management |
+| `test_observability.py` | 40 | Prometheus metrics, counter/histogram, Grafana |
+| `test_behavioral.py` | 30 | Behavioral baselines, anomaly scoring, drift detection |
+| `test_e2e_integration.py` | 29 | End-to-end integration: full governance loop |
+| `test_mqtt_stress.py` | 26 | MQTT load testing, rapid publish, isolation |
+| `test_integration.py` | 26 | Cross-system integration tests |
+| `test_secrets.py` | 48 | Docker secrets resolution, validation, rotation |
+| `test_api.py` | 19 | REST API endpoints, auth flow |
 | `test_capabilities.py` | 15 | Capability enforcement, permission boundaries |
 | `test_signing.py` | 13 | Cryptographic signing, key management, verification |
-| `test_security.py` | ~60 | Auth, rate limiting, anomaly detection, approval gates |
-| `test_egress.py` | ~30 | Egress gateway, domain whitelisting, blocking |
-| `test_behavioral.py` | ~50 | Behavioral baselines, anomaly scoring, drift detection |
-| `test_metrics.py` | ~40 | Prometheus instrumentation, counter/histogram behavior |
-| `test_mqtt_bus.py` | 26 | MQTT agent communication, topic routing, QMS events |
-| `test_mqtt_stress.py` | 26 | Load testing, rapid publish, priority handling, isolation |
-| `test_secrets.py` | 48 | Docker secrets resolution, validation, rotation |
-| Integration scripts | 2 | Live security flow, federation handshake |
+| `test_contracts.py` | 7 | Enum contract tripwires (TenantType, AgentTrustLevel) |
 
 ### Security Modules (core/)
 
@@ -292,7 +297,7 @@ The rotation serves as a form of cross-validation. Each platform reviews the oth
 
 1. A 42,000-line zero-trust AI agent platform can be built on consumer hardware.
 2. Multi-AI collaborative development produces more robust output than single-platform development.
-3. Data sovereignty is not a marketing term - it's an architecture with 720 passing tests.
+3. Data sovereignty is not a marketing term - it's an architecture with 746 passing tests.
 4. AI-assisted development, directed by a human architect with clear vision, can produce production-grade infrastructure.
 5. QMS makes agent behavior immediately debuggable without specialized tooling.
 6. Local-first AI deployment is not just possible - it's preferable for any organization that takes data ownership seriously.

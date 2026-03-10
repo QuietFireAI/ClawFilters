@@ -153,6 +153,17 @@ telsonbase/
 │   └── mosquitto/
 │       └── mosquitto.conf      # MQTT broker config
 │
+├── .github/                    # GitHub configuration
+│   ├── workflows/
+│   │   ├── ci.yml              # CI pipeline (5 stages: unit, security, docker, integration, quality)
+│   │   ├── codeql.yml          # CodeQL SAST - Python security analysis
+│   │   └── summary.yml         # PR/push summary workflow
+│   ├── ISSUE_TEMPLATE/         # Bug report and feature request templates
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── CODEOWNERS              # Auto-review assignment for security paths
+│   ├── dependabot.yml          # Automated pip + Actions dependency updates
+│   └── FUNDING.yml             # GitHub Sponsors configuration
+│
 ├── scripts/                    # Operational utilities
 │   ├── generate_secrets.sh     # Secret generation + .env sync + mosquitto password
 │   ├── generate_individual_proof_sheets.py  # Generate TB-TEST-* sheets (721 files)
@@ -165,7 +176,7 @@ telsonbase/
 │   ├── test_security_flow.py   # API integration test
 │   └── test_federation.py      # Federation test
 │
-├── tests/                      # Test suite - 720 passing, 1 skipped
+├── tests/                      # Test suite - 746 passing, 1 skipped
 │   ├── conftest.py             # Pytest fixtures + _register_user helper
 │   ├── test_api.py             # API endpoint tests
 │   ├── test_behavioral.py      # Behavioral anomaly tests
@@ -184,8 +195,8 @@ telsonbase/
 │   ├── test_signing.py         # Cryptographic signing tests
 │   └── test_toolroom.py        # Toolroom supply-chain tests
 │
-├── proof_sheets/               # 787 proof documents - every claim and every test, backed by code
-│   ├── INDEX.md                # Full index (787 documents, verification status)
+├── proof_sheets/               # 788 proof documents - every claim and every test, backed by code
+│   ├── INDEX.md                # Full index (788 documents, verification status)
 │   ├── TB-PROOF-001_tests_passing.md
 │   ├── TB-PROOF-002_security_tests.md
 │   ├── ... (TB-PROOF-001 through TB-PROOF-066, class-level evidence)
@@ -260,29 +271,37 @@ telsonbase/
 │       ├── ADDITIONAL_AWS_TESTS.md
 │       ├── DISASTER_RECOVERY_TEST.md
 │       ├── HARDENING_CC.md
-│       ├── TEST_RESULTS_6.0.0CC.md
-│       ├── VALIDATION_REPORT_v7.4.0CC.md
 │       ├── governance_smoke_test_result.txt
 │       └── user_ui_tests.md
 │
 ├── licenses/                   # Third-party license files
 │
 ├── LICENSE                     # Apache License 2.0
-├── README.md                   # Project overview and quick start
-├── AMBASSADORS.md              # Ambassador program
-├── CHANGELOG.md                # Version history
+├── NOTICE                      # Apache 2.0 required attribution
+├── README.md                   # Project overview, GIFs, screenshots, architecture
+├── QUICKSTART.md               # 5-minute path: clone to first governance decision
+├── CHANGELOG.md                # Version history (keepachangelog format)
 ├── CITATION.cff                # Machine-readable citation (GitHub cite button)
 ├── CODE_OF_CONDUCT.md
 ├── COMMERCIAL_LICENSE.md       # Commercial licensing terms
 ├── CONTRIBUTING.md
-├── TERMS_OF_USE.md             # Terms of use, liability, indemnification (replaces DISCLAIMER.md)
-├── GLOSSARY.md                 # Term definitions
-├── MANNERS.md                  # Manners compliance framework documentation
-├── PROJECT_STRUCTURE.md        # This file
-├── SECURITY.md                 # Vulnerability reporting
-├── TESTING.md                  # Test procedures
-├── TRADEMARKS.md               # Trademark policy
-└── USER_GUIDE.md               # End-user guide
+├── GOVERNANCE.md               # Project governance, decisions, release process
+├── SECURITY.md                 # Vulnerability reporting and responsible disclosure
+├── SUPPORT.md                  # Support channels and response times
+├── TRADEMARKS.md               # Trademark policy (TelsonBase, QMS™)
+├── DOC_INDEX.md                # Master navigation index for all 70+ documents
+├── PROOF_INDEX.md              # Entry point for 788 proof documents
+├── Makefile                    # Developer shortcuts: make test, run, lint, clean
+├── requirements.txt            # Runtime Python dependencies (version-pinned)
+├── requirements-dev.txt        # Dev/lint/test tooling (isort, bandit, coverage)
+└── docs/                       # All non-root documentation (see docs/ section above)
+    ├── AMBASSADORS.md          # Ambassador program
+    ├── GLOSSARY.md             # Term definitions
+    ├── MANNERS.md              # Manners compliance framework
+    ├── PROJECT_STRUCTURE.md    # This file
+    ├── TESTING.md              # Test procedures and suite breakdown
+    ├── TERMS_OF_USE.md         # Terms of use, liability, indemnification
+    └── USER_GUIDE.md           # End-user guide to the admin dashboard
 ```
 
 ---
