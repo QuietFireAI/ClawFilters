@@ -232,11 +232,14 @@ async def lifespan(app: FastAPI):
         actor="system",
         qms_status="Thank_You"
     )
-    # REM: Start the FastMCP session manager task group so Streamable HTTP requests
-    # REM: to /mcp succeed. streamable_http_app() creates the manager lazily at module
-    # REM: load; run() initialises the anyio task group that handles MCP sessions.
-    # REM: Without this, every /mcp request fails with:
-    # REM:   RuntimeError: Task group is not initialized. Make sure to use run()
+    # REM: Reset session manager before each lifespan entry so it can be re-entered
+    # REM: cleanly. StreamableHTTPSessionManager.run() can only be called once per
+    # REM: instance. Tests spin up multiple TestClient(app) contexts in the same process,
+    # REM: hitting this lifespan repeatedly. Resetting _session_manager and recreating the
+    # REM: ASGI inner app gives each lifespan a fresh instance.
+    global _mcp_asgi_inner
+    _mcp_server._session_manager = None
+    _mcp_asgi_inner = _mcp_server.streamable_http_app()
     async with _mcp_server.session_manager.run():
         yield
     logger.info("REM: TelsonBase API Server shutting down")
