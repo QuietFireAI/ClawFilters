@@ -1,6 +1,6 @@
 # TelsonBase - Project Overview
 
-**A Zero-Trust AI Agent Security Platform**
+**Earned Autonomy for Autonomous AI Agents**
 **Built for Data Sovereignty. Designed for Local-First Deployment.**
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
@@ -10,25 +10,35 @@
 
 ## What This Is
 
-TelsonBase is a self-hosted AI agent security platform. It provides the infrastructure for running, monitoring, securing, and federating AI agents on hardware you own. Every component runs inside Docker containers on a single machine. No cloud dependencies. No external API calls required. No vendor lock-in.
+TelsonBase is a self-hosted platform for managing autonomous AI agents through earned trust. Agents start at QUARANTINE — no permissions, no record — and advance through five tiers (QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT) by demonstrating compliant behavior. Every promotion requires an explicit human authorization. No tier is skipped. No trust is assumed.
 
-The platform is designed for industries where data cannot leave the premises - legal, healthcare, finance, manufacturing - but the architecture applies to any organization that wants AI capabilities without surrendering data to third parties.
+Every agent carries a live Manners compliance score across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. Score drops trigger automatic demotion. Reinstatement always requires a human.
+
+The compliance and security infrastructure underneath — SOC 2 controls, HIPAA mappings, kill switches, tamper-evident audit trails — is the proof that the earned-trust model holds. It is not the pitch.
+
+Every component runs inside Docker containers on a single machine. No cloud dependencies. No external API calls required. No vendor lock-in. The platform is designed for industries where data cannot leave the premises — legal, healthcare, finance, manufacturing — but the architecture applies to any organization that wants AI capabilities without surrendering control.
 
 ---
 
 ## What Makes This Different
 
-### 1. Zero-Trust Agent Security Model
+### 1. Earned Autonomy Through a Five-Tier Trust Ladder
 
-Every AI agent operates under a cryptographic identity and behavioral enforcement system. This is not "API key authentication." It's a layered security model:
+Agents do not arrive with permissions. They earn them. Every agent starts at QUARANTINE — a new arrival with no record — and advances through five tiers by demonstrating compliant behavior. Every step up requires a human authorization decision. Every step down can happen instantly, automatically, based on behavior.
 
-- **Agent Registration:** Each agent receives an RSA-2048 keypair at registration. The public key is stored; the private key is held by the agent. No shared secrets.
-- **Signed Actions:** Every action an agent takes is cryptographically signed with its private key and verified by the platform before execution. Tampered or unsigned actions are rejected.
+The five tiers: **QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT**
+
+The tiers are citizenship, not security levels. An agent at QUARANTINE is not a threat — it's an unknown. An agent at AGENT tier has a verified record across every check the platform runs.
+
+The behavioral enforcement infrastructure underneath:
+
+- **Manners Compliance Scoring:** Every agent carries a live compliance score (0.0–1.0) across five principles: Human Control, Transparency, Value Alignment, Privacy, Security. Score drops below threshold trigger automatic demotion to QUARANTINE — no human delay, no grace period.
+- **8-Step Governance Pipeline:** Every action passes through registration check, kill switch, nonce replay, Manners compliance, trust level, capability, anomaly detection, and final decision — in that order, on every call.
 - **Capability Enforcement:** Agents declare what they can do at registration. The platform enforces those boundaries at runtime. An agent registered for "document analysis" cannot perform "file system access" even if it tries.
-- **Behavioral Anomaly Detection:** The platform tracks each agent's action patterns (frequency, timing, types) and flags deviations from established baselines. An agent that suddenly makes 100x its normal request rate triggers an alert.
-- **Approval Gates:** Sensitive operations (model deletion, config changes, external network access) require explicit human approval before execution. Requests queue in Redis and wait for sign-off.
-- **Egress Gateway:** All outbound network requests from agents pass through a controlled gateway with domain whitelisting. Agents cannot phone home, exfiltrate data, or contact unauthorized endpoints.
-- **Audit Trail with Hash Chain:** Every security event is logged with a cryptographic hash chain (each entry includes the hash of the previous entry). Tampered or deleted audit entries break the chain and are detectable.
+- **Approval Gates:** Sensitive operations require explicit human approval before execution. Requests queue in Redis and wait for sign-off. Promotion through tiers always requires a human.
+- **Kill Switch:** One API call suspends any agent instantly. Checked at Step 2 of the pipeline — before trust levels, before Manners, before everything except "does this agent exist?"
+- **Egress Gateway:** All outbound network requests pass through a controlled gateway with domain whitelisting. Agents cannot contact unauthorized endpoints.
+- **Audit Trail with Hash Chain:** Every action — allowed, gated, or blocked — is logged with a cryptographic hash chain. Tampered entries break the chain and are detectable.
 
 ### 2. Qualified Message Standard (QMS™)
 
@@ -295,9 +305,9 @@ The rotation serves as a form of cross-validation. Each platform reviews the oth
 
 ## What This Project Proves
 
-1. A 42,000-line zero-trust AI agent platform can be built on consumer hardware.
+1. Earned autonomy is not a philosophy — it's an architecture with 746 passing tests and a live Manners score on every registered agent.
 2. Multi-AI collaborative development produces more robust output than single-platform development.
-3. Data sovereignty is not a marketing term - it's an architecture with 746 passing tests.
+3. Data sovereignty is not a marketing term - it's a 42,000-line platform running on hardware you own, with zero external dependencies.
 4. AI-assisted development, directed by a human architect with clear vision, can produce production-grade infrastructure.
 5. QMS makes agent behavior immediately debuggable without specialized tooling.
 6. Local-first AI deployment is not just possible - it's preferable for any organization that takes data ownership seriously.

@@ -1,6 +1,8 @@
 # TelsonBase - Frequently Asked Questions
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI - support@telsonbase.com
 
+TelsonBase is the platform for managing autonomous AI agents through earned trust. Agents start at QUARANTINE and work their way up — QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT — through demonstrated behavior and explicit human authorization at every step. The compliance infrastructure underneath (audit trails, kill switches, SOC 2 controls) is the proof, not the pitch.
+
 Every answer here traces to source code. Where a verification command exists, it's provided.
 The same standard applies here as in the proof sheets - no claim without a source.
 

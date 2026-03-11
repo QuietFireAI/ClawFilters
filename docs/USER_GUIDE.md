@@ -7,22 +7,22 @@
 
 ## What Is TelsonBase?
 
-TelsonBase is a self-hosted platform for running AI agents on your own hardware. Instead of sending your data to cloud APIs, TelsonBase keeps everything local - your models, your data, your agents, your rules.
+TelsonBase is a self-hosted platform for managing autonomous AI agents through earned trust. Agents start with no permissions and work their way up through five tiers — QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT — by demonstrating compliant behavior. Every promotion requires a human decision. No tier is skipped. No trust is assumed.
 
-It runs as a set of Docker containers on any machine with Docker installed. Agents do work (process documents, manage real estate transactions, run local LLMs, manage backups), and TelsonBase makes sure they only do what you've authorized them to do.
+It runs as a set of Docker containers on any machine with Docker installed. Agents do work (process documents, manage real estate transactions, run local LLMs, manage backups), and TelsonBase tracks their behavior, scores their compliance, and ensures they only do what you've explicitly authorized them to do at their current trust level.
 
 **Key features:**
 
-- **Zero-trust agent governance** - every agent action is authenticated, authorized, and audited
+- **Earned autonomy through trust tiers** - agents advance from QUARANTINE to AGENT by earning it, one human-authorized step at a time
+- **Live Manners compliance scoring** - every agent carries a behavioral score across 5 principles: Human Control, Transparency, Value Alignment, Privacy, Security
+- **Human-in-the-loop approval gates** - high-risk actions require your explicit approval before execution; promotion always requires a human
 - **Local LLM inference** - chat and generate text with Ollama models, no data leaves your machine
-- **Human-in-the-loop approval gates** - high-risk actions require your explicit approval before execution
 - **Three authentication methods** - API key, JWT tokens, and DID-based identity (engine built; Identiclaw service integration is post-launch)
 - **Real estate vertical** - transaction management, compliance monitoring, and document preparation agents
-- **Manners compliance** - runtime enforcement of Anthropic's agent safety principles
 - **Multi-tenancy** - client-matter isolation with per-tenant rate limiting
 - **Immutable audit chain** - SHA-256 hash-linked logs for tamper evidence
 
-**The short version:** It's a secure, governed workbench for AI agents with built-in guardrails.
+**The short version:** Agents earn their autonomy. You authorize it. Everything is on the record.
 
 ---
 
@@ -242,7 +242,7 @@ You don't talk to agents directly. You send requests to the API, and TelsonBase 
 
 ### Agent Trust Levels
 
-Every agent has a trust level that determines what it can do:
+Every agent earns its autonomy through a five-tier ladder. Each step up requires demonstrated behavior and an explicit human authorization decision. Each step down can happen instantly.
 
 ```
 QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT
@@ -250,13 +250,13 @@ QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT
 
 | Level | What It Means |
 |---|---|
-| **Quarantine** | New/untrusted agent. Cannot execute any actions. Under review. |
-| **Probation** | Limited permissions. Actions are logged with extra scrutiny. |
-| **Resident** | Standard operating level. Can execute authorized actions. |
-| **Citizen** | High autonomy. Can perform all standard operations autonomously. |
-| **Agent** | Apex tier. Full autonomy (300 actions/min), all tools allowed, no approval required. Human-approved designation. |
+| **Quarantine** | New arrival. No action permissions. No record yet — not a punishment, a starting point. |
+| **Probation** | Limited permissions. Actions are logged with extra scrutiny. First earned step. |
+| **Resident** | Standard operating level. Can execute authorized actions without approval gates. |
+| **Citizen** | High autonomy. All standard operations permitted autonomously. |
+| **Agent** | Apex tier. Full autonomy (300 actions/min), all tools allowed, no approval gates. The hardest tier to earn — and the only one where anomalies are logged without gating execution. |
 
-New agents start at **Quarantine** and must be promoted by an admin. Trust levels can be revoked instantly via the kill switch.
+New agents start at **Quarantine** and must be promoted by an admin. No tier is skipped on the way up. Demotion can skip levels instantly. Trust levels can be revoked immediately via the kill switch.
 
 ### The Toolroom
 
