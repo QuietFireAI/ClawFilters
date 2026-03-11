@@ -62,7 +62,7 @@ TelsonBase is my interpretation of how AI agents can work together, safely — n
 
 Two things. That's it.
 
-**Agents earn their autonomy.** Every agent starts at zero — no tools, no external access, no assumptions. They work their way up through five trust tiers by demonstrating safe behavior and earning human approval. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT. Promotion is sequential. Demotion is instant and can skip levels. Trust at any level is revocable in a single API call.
+**Agents earn their autonomy.** Every agent starts at zero — no tools, no external access, no assumptions. They work their way up through five trust tiers, but behavior alone doesn't get them there. Demonstrated safe behavior opens the door. A human has to walk them through it. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT. Promotion is sequential and requires explicit human authorization. Demotion is instant and can skip levels. Trust at any level is revocable in a single API call.
 
 **Behavior has a score.** Every agent carries a Manners compliance score — a live measurement across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. The score moves in real time. Blocked actions cost points. Good behavior holds the score. Drop below 50% and the agent is automatically demoted to Quarantine, no human required.
 
