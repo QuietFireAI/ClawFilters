@@ -2,7 +2,7 @@
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
-Welcome. TelsonBase is a governance-first security platform for autonomous AI agents. Contributions that strengthen agent governance, data sovereignty, and compliance are valued.
+Welcome. TelsonBase is a platform for managing autonomous AI agents through earned trust — agents earn autonomy through demonstrated behavior and explicit human authorization, tracked by a live Manners compliance score across five trust tiers. Contributions that strengthen earned-autonomy controls, data sovereignty, and compliance are valued.
 
 See also: [Ambassador Program](docs/AMBASSADORS.md) for non-code contributions.
 

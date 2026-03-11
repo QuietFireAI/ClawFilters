@@ -2,7 +2,7 @@
 
 ## Our Commitment
 
-TelsonBase exists to protect data sovereignty. We extend that respect to our community.
+TelsonBase exists so that autonomous AI agents earn their autonomy — through demonstrated behavior, human authorization, and a trust model that keeps humans in control. We extend that same respect to our community.
 
 ## Standards
 
