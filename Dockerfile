@@ -13,6 +13,10 @@
 # REM:          reduce the installed package footprint to the absolute minimum.
 # REM:
 # REM: CVE MITIGATIONS:
+# REM:   Go stdlib CVEs  (CRIT/HIGH) Traefik upgraded to v3 — ships with patched Go
+# REM:   (CVE-2025-68121, CVE-2025-22871, and ~15 others in Go 1.24.1 / Traefik v2.11)
+# REM:   ubuntu/* CVEs (open-webui, ollama) — third-party images, not in scope
+# REM:
 # REM:   CVE-2026-24049  (HIGH)   wheel upgraded to 0.46.2 (builder + runtime)
 # REM:   CVE-2025-8869   (MED)    pip upgraded to 26.0.1 (builder + runtime)
 # REM:   CVE-2026-1703   (MED)    pip upgraded to 26.0.1 (builder + runtime)
