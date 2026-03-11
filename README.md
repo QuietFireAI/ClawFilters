@@ -54,15 +54,41 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 I'm one person. This project was built over two years on consumer hardware, with standard subscriptions, using three AI platforms — not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated drift and produced what you're looking at now.
 
-TelsonBase is my interpretation of how AI agents can work together, safely — not the answer, but an answer. Specifically, it's the one I'm building on for my own agents. The core idea: agent behavior determines what tools an agent can access. Good behavior is rewarded. Errant actions are caught. Your data stays off cloud provider infrastructure.
+TelsonBase is my interpretation of how AI agents can work together, safely — not the answer, but an answer. Specifically, it's the one I'm building on for my own agents. I'm sharing this freely because the problem is real and one person's solution only goes so far. If this gains traction, community contributions will drive proper vetting and expanded capability — released back openly as it comes.
 
-I'm sharing this freely because the problem is real and one person's solution only goes so far. If this gains traction, community contributions will drive proper vetting and expanded capability — released back openly as it comes. Take it, break it, and let's build this out for everyone.
+---
+
+## The Idea
+
+Two things. That's it.
+
+**Agents earn their autonomy.** Every agent starts at zero — no tools, no external access, no assumptions. They work their way up through five trust tiers by demonstrating safe behavior and earning human approval. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT. Promotion is sequential. Demotion is instant and can skip levels. Trust at any level is revocable in a single API call.
+
+**Behavior has a score.** Every agent carries a Manners compliance score — a live measurement across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. The score moves in real time. Blocked actions cost points. Good behavior holds the score. Drop below 50% and the agent is automatically demoted to Quarantine, no human required.
+
+These two things together are the architecture. Everything else in TelsonBase — the audit trail, the kill switches, the compliance frameworks, the 8-step governance pipeline — exists to support them.
+
+I built this before Anthropic published their agent safety framework. When it came out, the alignment was coincidental — and it confirmed my ideas in someone else's words. TelsonBase is built on a simple belief: AI agents should be held accountable to human values, by humans with good judgment. And with good judgment, autonomous agents should be able to learn from their own actions — like training a dog. Do good, earn more freedom. Do harm, lose the ability to do fun things. Agents that already demonstrate the ability to make decisions can certainly understand that their own actions have consequences. As my dad would say.
+
+The trust tiers aren't arbitrary levels — they're citizenship. An agent at QUARANTINE is a new arrival with no established record. An agent that reaches CITIZEN or AGENT has earned that standing through demonstrated behavior, one verified action at a time. If agents are going to do the work of people, it seems reasonable they should earn the right to do so the same way people do — by showing up, doing the job, and building a record worth trusting.
+
+The tools an agent can access follow the same logic. Not every tool is available to every agent. Authorization requires both the trust level and a demonstrated need. That's not a restriction — that's a credential.
+
+That's why TelsonBase is here, open, now — to lay the foundation of something built one agent at a time. Take it, break it, and let's build this out for everyone.
+
+**Jeff Phillips**
+Quietfire AI
+March 2026
+
+---
+
+## The Problem
 
 Autonomous AI agents are the most significant paradigm shift in computing since the GUI — and the industry handed them the keys to everything before anyone built the locks.
 
 Right now, as you read this:
 
-- **135,000+** OpenClaw instances are exposed to the public internet (Kaspersky)
+- **135,000+** MCP instances are exposed to the public internet (Kaspersky)
 - **88%** of organizations have had confirmed or suspected AI agent security incidents (Gravitee)
 - **1 in 5** agent plugins contain malware (HackerNoon)
 - A **1-click remote code execution** exploit (CVE-2026-25253) let attackers steal auth tokens, disable safety guardrails, escape sandboxes, and take full control of host machines
@@ -71,17 +97,11 @@ Right now, as you read this:
 
 Nobody asked what happens to your data when an AI agent has no one watching it. And while that conversation was missing, a quieter question went unasked too: *where does your data go when you hand it to a cloud AI platform?* Every document you attach, every conversation you have — ingested, stored, processed on infrastructure you don't control, under terms that can change without notice.
 
-TelsonBase is a **governed security layer** between your business and every agent that touches it. Every action evaluated. Every permission earned. Every decision auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
+TelsonBase puts you back in control. Every action evaluated. Every permission earned. Every decision auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
 
 The compliance frameworks aren't on a roadmap — **they're already built.** SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 746 passing tests. 51 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
 Built for the industries that can't afford to get this wrong: **medical, legal, insurance, and accounting.** Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse. Trust is earned, not granted.
-
-Test it. Deploy it. Break it. Tell me what's wrong and what's right. And if you see what I see, **become an ambassador** and help carry this forward.
-
-**Jeff Phillips**
-Quietfire AI
-March 6, 2026
 
 ---
 
