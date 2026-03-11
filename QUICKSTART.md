@@ -1,6 +1,6 @@
 # TelsonBase - Quickstart
 
-**From clone to your first governance decision: under 5 minutes.**
+**From clone to your first earned-autonomy decision: under 5 minutes.**
 
 This guide is for developers and evaluators. It assumes Docker Desktop is installed. If you need the full Windows walkthrough, see `docs/Operation Documents/INSTALLATION_GUIDE_WINDOWS.md`.
 

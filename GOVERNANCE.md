@@ -6,7 +6,7 @@
 
 ## Overview
 
-TelsonBase is a self-hosted, source-available AI agent governance platform maintained by Quietfire AI (Jeff Phillips). This document describes how the project is governed, how decisions are made, and how contributors can participate.
+TelsonBase is a self-hosted, source-available platform for managing autonomous AI agents through earned trust — agents progress from QUARANTINE to AGENT apex tier by demonstrating compliant behavior and receiving explicit human authorization at each step. This document describes how the project is governed, how decisions are made, and how contributors can participate.
 
 ---
 
@@ -68,7 +68,7 @@ The short version:
 - Submit a pull request with a clear description of what changed and why
 - The CI pipeline runs the full test suite on every PR
 
-**What gets merged:** Code that strengthens agent governance, security, compliance, or operational reliability. The platform is governance-first - contributions that weaken controls, bypass audits, or reduce transparency will not be merged regardless of other merit.
+**What gets merged:** Code that strengthens earned-autonomy controls, security, compliance, or operational reliability. The platform is built on the principle that agents earn trust through behavior and human authorization — contributions that weaken controls, bypass audits, or reduce transparency will not be merged regardless of other merit.
 
 **What does not get merged:** Changes that add cloud dependencies, telemetry, or data collection of any kind. TelsonBase's core commitment is zero data leaving the customer's network. This is architectural and non-negotiable.
 

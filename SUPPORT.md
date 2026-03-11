@@ -2,6 +2,8 @@
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
+TelsonBase manages autonomous AI agents through earned trust — every agent carries a live Manners compliance score, starts at QUARANTINE, and advances only when behavior and human authorization align.
+
 ---
 
 ## Before You Ask
