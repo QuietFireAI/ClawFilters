@@ -6,7 +6,7 @@
 
 TelsonBase was built by one person. Shipping it to the world requires more than one person.
 
-This isn't a marketing program. There are no tiers, no point systems, no swag budgets. This is a table of people who understand that autonomous AI agents need governance, who work in industries where getting security wrong has real consequences, and who are willing to help carry this project forward.
+This isn't a marketing program. There are no tiers, no point systems, no swag budgets. This is a table of people who understand that autonomous AI agents need to earn their autonomy — through demonstrated behavior and explicit human authorization — and who are willing to help carry that idea into the industries where it matters most.
 
 If you deploy AI agents in a regulated environment and you're tired of hoping the guardrails hold, this is for you.
 
@@ -96,7 +96,7 @@ Or email directly: **support@telsonbase.com** with subject line "Ambassador Prog
 - This is not a commitment to work for free forever.
 - This is not a corporate partner channel.
 
-This is a group of people who see that autonomous AI agents are the biggest security challenge of the decade, and who want to help build the solution rather than wait for someone else to do it.
+This is a group of people who see that autonomous AI agents without earned trust are the biggest accountability gap of the decade, and who want to help build the answer rather than wait for someone else to do it.
 
 ---
 
