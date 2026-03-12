@@ -14,6 +14,43 @@ If you deploy AI agents in a regulated environment and you're tired of hoping th
 
 ## What Ambassadors Do
 
+### Small Business Ambassadors
+
+You run a small business and you're already using — or thinking about using — AI agents to handle real work. You don't need a compliance team. You need agents that do what they're supposed to do and stay out of things they're not.
+
+TelsonBase gives you that without the enterprise price tag, the cloud dependency, or the vendor lock-in. You own the hardware. You set the rules. The agent earns the right to act.
+
+**What we need from you:**
+- Deploy TelsonBase on whatever hardware you have — a spare PC, a NAS, a mini-PC in a closet
+- Tell us what your agents actually need to do and what you'd never let them touch
+- Report what works, what's confusing, and what's missing for a business your size
+
+**What you get:**
+- A direct line to the developer. Not a ticket queue.
+- Your real-world use cases shape what gets built next.
+- Proof that this works for businesses that aren't law firms or hospitals — which matters for everyone who comes after you.
+
+---
+
+### Student & Developer Ambassadors
+
+You're building agents, studying AI, or just convinced this is the right way to think about the problem. You don't need a business use case. You need access to a production-grade platform and room to experiment.
+
+The earned autonomy model is an idea worth stress-testing. Break it, extend it, argue with it. That's how it gets better.
+
+**What we need from you:**
+- Build something with TelsonBase — an integration, a use case, a tool, a test
+- Open issues when something is wrong or missing
+- Write about what you find — a blog post, a README, a tutorial
+- Bring the next developer in
+
+**What you get:**
+- A real platform to learn on, not a toy
+- Your contributions in the project history
+- The chance to help define how agent accountability works before the industry decides for you
+
+---
+
 ### Industry Ambassadors
 
 You work in one of TelsonBase's target industries and can provide real-world feedback that shapes the platform.
