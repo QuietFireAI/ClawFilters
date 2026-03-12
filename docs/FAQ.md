@@ -404,6 +404,10 @@ It uses StreamableHTTP transport and Bearer token authentication.
 Compatible clients today: Goose (by Block, Apache 2.0), Claude Desktop, and any
 MCP-compliant client built to the MCP specification.
 
+**Note:** Connecting an MCP client is optional. TelsonBase runs and governs agents
+independently. The MCP gateway gives operators a natural-language interface to the
+same governance controls available in the admin panel and REST API.
+
 **Available MCP tools:**
 `system_status` · `get_health` · `list_agents` · `get_agent` · `register_as_agent`
 · `list_tenants` · `create_tenant` · `list_matters` · `get_audit_chain_status`
