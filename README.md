@@ -70,11 +70,11 @@ These two things together are the architecture. Everything else in TelsonBase �
 
 I built this before Anthropic published their agent safety framework. When it came out, the alignment was coincidental — and it confirmed my ideas in someone else's words. TelsonBase is built on a simple belief: AI agents should be held accountable to human values, by humans with good judgment. And with good judgment, autonomous agents should be able to learn from their own actions — like training a dog. Do good, earn more freedom. Act badly, lose the ability to do fun things. Agents that already demonstrate the ability to make decisions can certainly understand that their own actions have consequences. As my dad would say.
 
-The trust tiers aren't arbitrary levels — they're citizenship. An agent at QUARANTINE is a new arrival with no established record. An agent that reaches CITIZEN or AGENT has earned that standing through demonstrated behavior, one verified action at a time. If agents are going to do the work of people, it seems reasonable they should earn the right to do so the same way people do — by showing up, doing the job, and building a record worth trusting.
+The trust tiers aren't arbitrary levels they're earned steps toward citizenship. An agent at QUARANTINE is a new arrival or has no established record on the TelsonBase. An agent that reaches CITIZEN or AGENT has earned that standing through demonstrated behavior, one verified action at a time, and human oversight. If agents are going to do the work of people, it seems reasonable they should earn the right to do so the same way people do, by showing up, doing the job, and building a record worth trusting.
 
 The tools an agent can access follow the same logic. Not every tool is available to every agent. Authorization requires both the trust level and a demonstrated need. That's not a restriction — that's a credential.
 
-That's why TelsonBase is here, open, now — to lay the foundation of something built one agent at a time. Take it, break it, and let's build this out for everyone.
+That's why TelsonBase is being released here, to start a discussion on something built one agent at a time. Join the community and take it, break it, and let's build this out for everyone.
 
 **Jeff Phillips**
 Quietfire AI
@@ -84,7 +84,7 @@ March 2026
 
 ## The Problem
 
-Autonomous AI agents are the most significant paradigm shift in computing since the GUI — and the industry handed them the keys to everything before anyone built the locks.
+Autonomous AI agents are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the locks.
 
 Right now, as you read this:
 
@@ -95,13 +95,13 @@ Right now, as you read this:
 - The Dutch government has formally warned that AI agents pose "major cybersecurity and privacy risks"
 - The Register called it a "security dumpster fire"
 
-Nobody asked what happens to your data when an AI agent has no one watching it. And while that conversation was missing, a quieter question went unasked too: *where does your data go when you hand it to a cloud AI platform?* Every document you attach, every conversation you have — ingested, stored, processed on infrastructure you don't control, under terms that can change without notice.
+Nobody asked what happens to your data when an AI agent has no one watching it. And while that conversation was missing, a quieter question went unasked too: *where does your data go when you hand it to a cloud AI platform?* Every document you attach, every conversation you have are all ingested, stored, processed on infrastructure you don't control, under terms that can change without notice.
 
 TelsonBase puts you back in control. Every action evaluated. Every permission earned. Every decision auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
 
 The compliance frameworks aren't on a roadmap — **they're already built.** SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 746 passing tests. 51 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
-Built for the industries that can't afford to get this wrong: **medical, legal, insurance, and accounting.** Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse. Trust is earned, not granted.
+Built for the industries that can't afford to get this wrong: **small business, real estate, medical, legal, insurance, and accounting.** Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse. Trust is earned, not granted.
 
 ---
 
@@ -109,17 +109,17 @@ Built for the industries that can't afford to get this wrong: **medical, legal, 
 
 TelsonBase is a **self-hosted, governance-first security platform** for autonomous AI agents. It acts as a governed MCP proxy: agents connect to TelsonBase, and every action they attempt is evaluated against trust levels, Manners compliance, anomaly detection, and approval gates before execution. The agent is never modified. TelsonBase wraps it.
 
-**One sentence:** Nobody asked what happens to your data when an AI agent has no one watching it. TelsonBase is the answer.
+**One sentence:** Nobody asked what happens to your data when an AI agent has no one watching it. TelsonBase provides an answer.
 
 ---
 
 ## A Solution, Not THE Solution
 
-TelsonBase is not the definitive answer to AI agent governance. It is one answer - the approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less.
+TelsonBase is not the definitive answer to AI agent governance or learned growth. It is an approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less.
 
-Open-sourcing it converts a personal decision into a public contribution. The conversation about how autonomous agents should earn trust, prove behavior, and stay accountable to the humans they work for is just beginning. TelsonBase is one position in that conversation. Fork it. Break it. Build something better from it. The goal was never to own this problem - it was to model one way to solve it seriously and put that model where others can use it.
+Open-sourcing it converts a personal decision into a public contribution. The conversation about how autonomous agents should earn trust, prove behavior, and stay accountable to the humans they work for is just beginning. TelsonBase is one position in that conversation. Fork it. Break it. Build something better from it. The goal was never to own this problem but rather it was to model one way to solve it seriously and put that model where others can use it.
 
-The platform will keep evolving. Formal certifications - HIPAA, HITRUST, SOC 2 Type II - are on the roadmap, and that work will be open source as well. The compliance infrastructure already baked in is the foundation. The certifications are the credential that proves it holds up under external review. Both matter. Both will ship.
+The platform will keep evolving. Formal certifications - HIPAA, HITRUST, SOC 2 Type II - are on the roadmap, and that work will be open source as well. The compliance infrastructure already baked in is the foundation. The certifications are the credential that proves it holds up under external review. Both matter. Both will ship as the community grows.
 
 If you are building agents for your company and you want a guiding layer you control completely, this is built for that. If you are researching AI safety and want a real implementation to study, test, or critique, this is built for that too. If you see gaps, the issues tab is open.
 
@@ -597,3 +597,4 @@ On March 8, 2026, I read this README in full and verified the code-backed claims
 ---
 
 *"The industry gives AI agents the keys to everything and forgot to build the locks. We built the locks."*
+
