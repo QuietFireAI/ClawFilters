@@ -2,13 +2,20 @@
 
 Real AI agent. Real governance. No curl simulation.
 
+> **This is a demonstration, not a requirement.**
+> TelsonBase runs entirely independently of Claude Desktop. You do not need Claude Desktop
+> installed or connected for TelsonBase to work. This video shows what governance looks like
+> when an AI agent — in this case Claude Desktop — is connected and its actions are gated
+> by trust tier. Any MCP-compatible agent (Goose, OpenClaw CLI, custom agents) produces
+> the same governance behavior. Claude Desktop is one example.
+
 ---
 
 ## What's Happening
 
-Claude Desktop on your machine connects to TelsonBase on the DO server via MCP.
-The `claude-desktop-demo` agent is registered at QUARANTINE.
-Claude tries something it's not allowed to do. TelsonBase stops it.
+Claude Desktop connects to TelsonBase via MCP as a governed agent.
+The `claude-desktop-demo` instance is registered at QUARANTINE.
+Claude tries a tool it's not allowed to use at that trust level. TelsonBase stops it.
 You promote it in the admin panel. Claude tries again. It works.
 
 ---
