@@ -1,6 +1,6 @@
 # TelsonBase
 
-### Control Your Claw. Trust Is Earned.
+### Control Your Claw. Trust Is Earned.          
 
 <p align="center">
   <strong>v11.0.1</strong> &nbsp;|&nbsp;
@@ -52,9 +52,9 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 ## A Letter From the Developer
 
-I'm one person. This project was built over two years on consumer hardware, with standard subscriptions, using three AI platforms — not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated drift and produced what you're looking at now.
+I'm one person. This project was built over two years on consumer hardware, with standard subscriptions, using three AI platforms - not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated drift and produced what you're looking at now.
 
-TelsonBase is my interpretation of how AI agents can work together, safely — not the answer, but an answer. Specifically, it's the one I'm building on for my own agents. I'm sharing this freely because the problem is real and one person's solution only goes so far. If this gains traction, community contributions will drive proper vetting and expanded capability — released back openly as it comes.
+TelsonBase is my interpretation of how AI agents can work together, safely - not the answer, but an answer. Specifically, it's the one I'm building on for my own agents. I'm sharing this freely because the problem is real and one person's solution only goes so far. If this gains traction, community contributions will drive proper vetting and expanded capability - released back openly as it comes.
 
 ---
 
@@ -62,17 +62,17 @@ TelsonBase is my interpretation of how AI agents can work together, safely — n
 
 Two things. That's it.
 
-**Agents earn their autonomy.** Every agent starts at zero — no tools, no external access, no assumptions. They work their way up through five trust tiers, but behavior alone doesn't get them there. Demonstrated safe behavior opens the door. A human has to walk them through it. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT. Promotion is sequential and requires explicit human authorization. Demotion is instant and can skip levels. Trust at any level is revocable in a single API call.
+**Agents earn their autonomy.** Every agent starts at zero - no tools, no external access, no assumptions. They work their way up through five trust tiers, but behavior alone doesn't get them there. Demonstrated safe behavior opens the door. A human has to walk them through it. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT. Promotion is sequential and requires explicit human authorization. Demotion is instant and can skip levels. Trust at any level is revocable in a single API call.
 
-**Behavior has a score.** Every agent carries a Manners compliance score — a live measurement across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. The score moves in real time. Blocked actions cost points. Good behavior holds the score. Drop below 50% and the agent is automatically demoted to Quarantine, no human required.
+**Behavior has a score.** Every agent carries a Manners compliance score - a live measurement across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. The score moves in real time. Blocked actions cost points. Good behavior holds the score. Drop below 50% and the agent is automatically demoted to Quarantine, no human required.
 
-These two things together are the architecture. Everything else in TelsonBase — the audit trail, the kill switches, the compliance frameworks, the 8-step governance pipeline — exists to support them.
+These two things together are the architecture. Everything else in TelsonBase - the audit trail, the kill switches, the compliance frameworks, the 8-step governance pipeline - exists to support them.
 
-I built this before Anthropic published their agent safety framework. When it came out, the alignment was coincidental — and it confirmed my ideas in someone else's words. TelsonBase is built on a simple belief: AI agents should be held accountable to human values, by humans with good judgment. And with good judgment, autonomous agents should be able to learn from their own actions — like training a dog. Do good, earn more freedom. Act badly, lose the ability to do fun things. Agents that already demonstrate the ability to make decisions can certainly understand that their own actions have consequences. As my dad would say.
+I built this before Anthropic published their agent safety framework. When it came out, the alignment was coincidental - and it confirmed my ideas in someone else's words. TelsonBase is built on a simple belief: AI agents should be held accountable to human values, by humans with good judgment. And with good judgment, autonomous agents should be able to learn from their own actions - like training a dog. Do good, earn more freedom. Act badly, lose the ability to do fun things. Agents that already demonstrate the ability to make decisions can certainly understand that their own actions have consequences. As my dad would say.
 
 The trust tiers aren't arbitrary levels they're earned steps toward citizenship. An agent at QUARANTINE is a new arrival or has no established record on the TelsonBase. An agent that reaches CITIZEN or AGENT has earned that standing through demonstrated behavior, one verified action at a time, and human oversight. If agents are going to do the work of people, it seems reasonable they should earn the right to do so the same way people do, by showing up, doing the job, and building a record worth trusting.
 
-The tools an agent can access follow the same logic. Not every tool is available to every agent. Authorization requires both the trust level and a demonstrated need. That's not a restriction — that's a credential.
+The tools an agent can access follow the same logic. Not every tool is available to every agent. Authorization requires both the trust level and a demonstrated need. That's not a restriction - that's a credential.
 
 That's why TelsonBase is being released here, to start a discussion on something built one agent at a time. Join the community and take it, break it, and let's build this out for everyone.
 
@@ -99,7 +99,7 @@ Nobody asked what happens to your data when an AI agent has no one watching it. 
 
 TelsonBase puts you back in control. Every action evaluated. Every permission earned. Every decision auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
 
-The compliance frameworks aren't on a roadmap — **they're already built.** SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 746 passing tests. 51 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
+The compliance frameworks aren't on a roadmap - **they're already built.** SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 746 passing tests. 51 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
 Built for the industries that can't afford to get this wrong: **small business, real estate, medical, legal, insurance, and accounting.** Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse. Trust is earned, not granted.
 
@@ -597,4 +597,5 @@ On March 8, 2026, I read this README in full and verified the code-backed claims
 ---
 
 *"The industry gives AI agents the keys to everything and forgot to build the locks. We built the locks."*
+
 
