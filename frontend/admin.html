@@ -28,16 +28,16 @@
            header: background rgba(8,15,30,0.85); h1 class text-white
            ===================================================================== */
         :root {
-            --bg-base: #e8ecf2;
-            --bg-surface: rgba(255,255,255,0.88);
-            --bg-elevated: rgba(255,255,255,0.96);
-            --bg-sidebar: #1e293b;
-            --border-subtle: rgba(0,0,0,0.08);
-            --border-default: rgba(0,0,0,0.14);
-            --text-primary: #0f172a;
-            --text-secondary: #374151;
-            --text-muted: #6b7280;
-            --accent-cyan: #0891b2;
+            --bg-base: #080f1e;
+            --bg-surface: rgba(255,255,255,0.035);
+            --bg-elevated: rgba(255,255,255,0.06);
+            --bg-sidebar: rgba(255,255,255,0.02);
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-default: rgba(255,255,255,0.10);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #4a6085;
+            --accent-cyan: #22d3ee;
             --glass-blur: blur(18px);
             --sidebar-width: 224px;
         }
@@ -46,8 +46,8 @@
         code, .mono { font-family: 'JetBrains Mono', monospace; }
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.14); }
         @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
         .pulse-ring::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid currentColor; animation: pulse-ring 2s ease-out infinite; }
         @keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -57,9 +57,9 @@
         body::before {
             content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
             background:
-                radial-gradient(ellipse at 15% 40%, rgba(6,182,212,0.06) 0%, transparent 55%),
-                radial-gradient(ellipse at 85% 15%, rgba(99,102,241,0.04) 0%, transparent 50%),
-                radial-gradient(ellipse at 60% 85%, rgba(34,197,94,0.03) 0%, transparent 45%);
+                radial-gradient(ellipse at 15% 40%, rgba(6,182,212,0.09) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 15%, rgba(99,102,241,0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 85%, rgba(34,197,94,0.05) 0%, transparent 45%);
         }
         #root { position: relative; z-index: 1; }
         .card {
@@ -68,10 +68,9 @@
             -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.04);
-            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s, background 0.2s;
         }
-        .card:hover { border-color: rgba(8,145,178,0.2); background: rgba(255,255,255,0.92); box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(8,145,178,0.05); }
+        .card:hover { border-color: rgba(34,211,238,0.2); background: rgba(255,255,255,0.05); }
         .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; }
         @keyframes pulse-pretty { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
         .pulse-pretty { animation: pulse-pretty 1.5s ease-in-out infinite; }
@@ -97,7 +96,7 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #475569;
+            color: var(--text-muted);
         }
         .sidebar-item {
             display: flex;
@@ -268,7 +267,7 @@
         };
         const Icon = ({ name, size = 20, className = '', ...rest }) => { const r = icons[name]; return r ? r({ width: size, height: size, className, ...rest }) : null; };
 
-        const VERSION = '8.0.2B';
+        const VERSION = '11.0.1';
 
         const DEMO = {
             status: { status: 'healthy', version: VERSION, instance_id: 'telsonbase-bellevue-001', services: { redis: 'healthy', mqtt: 'healthy', ollama: 'healthy', celery: 'healthy', toolroom: 'healthy', federation: 'healthy' } },
@@ -1947,14 +1946,13 @@
             const sevColors = { critical:'bg-red-500', high:'bg-orange-500', medium:'bg-yellow-500', low:'bg-blue-400' };
 
             return (<div className="min-h-screen flex flex-col">
-                <header className="sticky top-0 z-50 border-b px-6 py-3" style={{background:'rgba(255,255,255,0.88)',backdropFilter:'blur(18px)',WebkitBackdropFilter:'blur(18px)',borderColor:'var(--border-subtle)'}}>
+                <header className="sticky top-0 z-50 border-b px-6 py-3" style={{background:'rgba(8,15,30,0.85)',backdropFilter:'blur(18px)',WebkitBackdropFilter:'blur(18px)',borderColor:'var(--border-subtle)'}}>
                     <div className="flex items-center justify-between max-w-7xl mx-auto">
                         <div className="flex items-center gap-3">
                             <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{background:'rgba(34,211,238,0.12)'}}><Icon name="shield" size={20} className="text-cyan-400"/></div>
                             <div>
                                 <div className="flex items-center gap-2">
                                     <h1 className="text-lg font-bold leading-tight tracking-tight" style={{color:'var(--text-primary)'}}>TelsonBase</h1>
-                                    <span className="badge" style={{background:'rgba(99,102,241,0.15)',color:'#a5b4fc',border:'1px solid rgba(99,102,241,0.3)',fontSize:'9px',letterSpacing:'0.08em',padding:'2px 7px'}}>BETA</span>
                                 </div>
                                 <p className="text-xs leading-tight" style={{color:'var(--text-muted)'}}><a href="https://quietfireai.com" target="_blank" rel="noopener noreferrer" style={{color:'inherit',textDecoration:'none'}}>Quietfire AI</a> &bull; v{VERSION}</p>
                             </div>
@@ -2892,7 +2890,7 @@
 
                 <footer className="border-t px-6 py-4" style={{background:'rgba(255,255,255,0.02)',borderColor:'var(--border-subtle)'}}>
                     <div className="max-w-7xl mx-auto flex items-center justify-between">
-                        <p className="text-xs" style={{color:'var(--text-muted)'}}>TelsonBase by <a href="https://quietfireai.com" target="_blank" rel="noopener noreferrer" style={{color:'inherit',textDecoration:'none'}}>Quietfire AI</a> &bull; Zero-Trust Agent Security Platform</p>
+                        <p className="text-xs" style={{color:'var(--text-muted)'}}>TelsonBase by <a href="https://quietfireai.com" target="_blank" rel="noopener noreferrer" style={{color:'inherit',textDecoration:'none'}}>Quietfire AI</a> &bull; Earned Autonomy for Autonomous AI Agents</p>
                         <p className="text-xs mono" style={{color:'var(--text-muted)'}}>v{VERSION}</p>
                         <p className="text-xs mono" style={{color:'var(--text-muted)'}}>{lastRefresh?`Last refresh: ${lastRefresh.toLocaleTimeString()}`:(isDemo?'Demo data':'')}</p>
                     </div>
