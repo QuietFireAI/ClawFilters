@@ -1427,8 +1427,8 @@
 
         const NAV_GROUPS = [
             { label: 'System',            items: ['overview', 'chat'],                           sectionTag: null },
-            { label: 'Governance',        items: ['openclaw', 'approvals', 'anomalies', 'toolroom'], sectionTag: 'ai-agents' },
-            { label: 'Identity & Access', items: ['agents', 'identity', 'users', 'sessions'],    sectionTag: null },
+            { label: 'Governance',        items: ['openclaw', 'agents', 'approvals', 'anomalies', 'toolroom'], sectionTag: 'ai-agents' },
+            { label: 'Identity & Access', items: ['identity', 'users', 'sessions'],    sectionTag: null },
             { label: 'Audit',             items: ['audit', 'qms'],                               sectionTag: null },
             { label: 'Legal & Tenancy',   items: ['tenants', 'compliance'],                      sectionTag: 'regulated' },
             { label: 'Platform',          items: ['security', 'sovereign', 'federation'],         sectionTag: null },
@@ -1951,9 +1951,9 @@
                 { id:'overview', label:'Overview', icon:'activity' },
                 { id:'users', label:'Users & Roles', icon:'users' },
                 { id:'sessions', label:'Sessions', icon:'monitor', count:sessions.length },
-                { id:'agents', label:'Agents', icon:'zap', count:agents.length },
+                { id:'agents', label:'Agent Roles', icon:'zap', count:agents.length },
                 { id:'identity', label:'Agent Identity', icon:'key', count:didAgents.length },
-                { id:'openclaw', label:'OpenClaw', icon:'shield', count:(openclawInstances||[]).length },
+                { id:'openclaw', label:'Agent Governance', icon:'shield', count:(openclawInstances||[]).length },
                 { id:'approvals', label:'Approvals', icon:'checkCircle', count:approvals.length+toolProposals.length },
                 { id:'anomalies', label:'Anomalies', icon:'alertTriangle', count:anomalies.length },
                 { id:'audit', label:'Audit Trail', icon:'fileText' },
@@ -2014,7 +2014,7 @@
                             <StatusCard title="System Status" value={status?.status==='healthy'?'Healthy':'Degraded'} icon="server" color={status?.status==='healthy'?'text-green-400':'text-red-400'} delay="fade-in-d1" onClick={()=>navigateTo('security')}/>
                             <StatusCard title="Pending Approvals" value={approvals.length} icon="clock" color={approvals.length>0?'text-orange-600':'text-green-400'} subtitle={approvals.filter(a=>a.priority==='urgent').length>0?`${approvals.filter(a=>a.priority==='urgent').length} urgent`:'None urgent'} delay="fade-in-d2" onClick={()=>navigateTo('approvals')}/>
                             <StatusCard title="Unresolved Anomalies" value={anomalySummary?.total_unresolved||0} icon="alertTriangle" color={anomalySummary?.total_unresolved>0?'text-orange-400':'text-green-400'} subtitle={anomalySummary?.requires_human_review>0?`${anomalySummary.requires_human_review} need review`:'All clear'} delay="fade-in-d3" onClick={()=>navigateTo('anomalies')}/>
-                            <StatusCard title="Registered Agents" value={agents.length} icon="zap" color="text-cyan-400" delay="fade-in-d4" onClick={()=>navigateTo('agents')}/>
+                            <StatusCard title="Registered Agents" value={openclawInstances.length} icon="zap" color="text-cyan-400" delay="fade-in-d4" onClick={()=>navigateTo('openclaw')}/>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             <StatusCard title="Users" value={users.length} icon="users" color="text-indigo-400" subtitle={`${users.filter(u=>u.is_active).length} active`} delay="fade-in-d1" onClick={()=>navigateTo('users')}/>
@@ -2242,7 +2242,8 @@
 
                     {tab === 'openclaw' && (<div className="space-y-4">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-xl font-bold text-white flex items-center gap-2"><Icon name="shield" size={22} className="text-orange-400"/>OpenClaw Governance<span className="text-sm font-normal ml-2" style={{color:'var(--text-muted)'}}>({openclawInstances.length} registered{openclawInstances.filter(c=>c.suspended).length>0 && <span className="text-red-400 ml-1">, {openclawInstances.filter(c=>c.suspended).length} suspended</span>})</span></h2>
+                            <h2 className="text-xl font-bold text-white flex items-center gap-2"><Icon name="shield" size={22} className="text-orange-400"/>Agent Governance<span className="text-sm font-normal ml-2" style={{color:'var(--text-muted)'}}>({openclawInstances.length} registered{openclawInstances.filter(c=>c.suspended).length>0 && <span className="text-red-400 ml-1">, {openclawInstances.filter(c=>c.suspended).length} suspended</span>})</span></h2>
+                            <button onClick={()=>setShowRegisterAgentModal(true)} className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium bg-cyan-700 hover:bg-cyan-600 text-white transition"><Icon name="plus" size={14}/>Register Agent</button>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
                             {[{label:'Total Claws',count:openclawInstances.length,color:'text-white',filter:null},{label:'Quarantine',count:openclawInstances.filter(c=>c.trust_level==='quarantine').length,color:'text-red-400',filter:'quarantine'},{label:'Probation',count:openclawInstances.filter(c=>c.trust_level==='probation').length,color:'text-orange-600',filter:'probation'},{label:'Resident',count:openclawInstances.filter(c=>c.trust_level==='resident').length,color:'text-blue-400',filter:'resident'},{label:'Citizen',count:openclawInstances.filter(c=>c.trust_level==='citizen').length,color:'text-green-400',filter:'citizen'},{label:'Agent',count:openclawInstances.filter(c=>c.trust_level==='agent').length,color:'text-amber-700',filter:'agent'}].map(s=>(
@@ -2940,7 +2941,7 @@
                     fields={[
                         {name:'agent_type', label:'Agent Type', type:'select', required:true, defaultValue:'openclaw',
                          options:[
-                             {value:'openclaw', label:'OpenClaw — Claude / Anthropic MCP agent'},
+                             {value:'openclaw', label:'OpenClaw — MCP-connected agent (Claude, custom, etc.)'},
                              {value:'generic', label:'Generic — any LLM, automation, or custom agent'},
                              {value:'did', label:'DID Agent — decentralized identity (navigate to Identity tab)'},
                          ],
@@ -3068,8 +3069,8 @@
                     onClose={()=>setPendingProposeTool(null)}
                     fields={[
                         {name:'agent_id', label:'Authorize for Agent', type:'select', required:true,
-                         defaultValue:agents[0]?.agent_id||'',
-                         options:agents.length>0?agents.map(a=>({value:a.agent_id,label:a.agent_id})):[{value:'',label:'No agents registered'}],
+                         defaultValue:openclawInstances[0]?.instance_id||'',
+                         options:openclawInstances.length>0?openclawInstances.map(c=>({value:c.instance_id,label:`${c.name||c.instance_id} (${c.trust_level})`})):[{value:'',label:'No agents registered — go to Agent Governance to register one'}],
                          hint:'This tool will be authorized for use by the selected agent only.'}
                     ]}
                     onSubmit={async(vals)=>{
