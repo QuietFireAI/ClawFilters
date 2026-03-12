@@ -619,13 +619,14 @@
             </div>);
         }
 
-        function AgentCard({ agent }) {
+        function AgentCard({ agent, authorizedTools=[] }) {
             const [expanded, setExpanded] = useState(false);
             return (<div className="card p-5 fade-in">
-                <div className="flex items-center justify-between mb-3"><div className="flex items-center gap-3"><div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background:'rgba(34,211,238,0.1)'}}><Icon name="zap" size={20} className="text-cyan-400"/></div><div><h3 className="text-white font-semibold mono text-sm">{agent.agent_id}</h3><p className="text-xs" style={{color:'var(--text-muted)'}}>{agent.capabilities?.length||0} capabilities</p></div></div>
+                <div className="flex items-center justify-between mb-3"><div className="flex items-center gap-3"><div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background:'rgba(34,211,238,0.1)'}}><Icon name="zap" size={20} className="text-cyan-400"/></div><div><h3 className="text-white font-semibold mono text-sm">{agent.agent_id}</h3><p className="text-xs" style={{color:'var(--text-muted)'}}>{agent.capabilities?.length||0} capabilities · {authorizedTools.length} authorized tool{authorizedTools.length!==1?'s':''}</p></div></div>
                 <div className="relative"><div className={`w-3 h-3 rounded-full ${agent.signing_key_registered?'bg-green-400 pulse-ring text-green-400':'bg-red-400'}`} title={agent.signing_key_registered?'Key registered':'No signing key'}/></div></div>
                 {agent.capabilities?.length > 0 && (<><button onClick={()=>setExpanded(!expanded)} className="text-xs flex items-center gap-1 hover:text-white transition" style={{color:'var(--text-muted)'}}><Icon name="chevronDown" size={12} className={`transition-transform ${expanded?'rotate-180':''}`}/>{expanded?'Hide':'Show'} capabilities</button>
                 {expanded && <div className="mt-3 space-y-1">{agent.capabilities.map((c,i)=><div key={i} className="rounded px-2 py-1 border" style={{background:'var(--bg-base)',borderColor:'var(--border-subtle)'}}><code className="text-cyan-400 text-xs mono">{c}</code></div>)}</div>}</>)}
+                {authorizedTools.length > 0 && <div className="mt-3 pt-3 border-t" style={{borderColor:'var(--border-subtle)'}}><p className="text-xs font-medium mb-1.5" style={{color:'var(--text-muted)'}}>Authorized Tools</p><div className="flex flex-wrap gap-1">{authorizedTools.map((t,i)=><span key={i} className="text-xs px-2 py-0.5 rounded-full font-medium" style={{background:'rgba(22,163,74,0.08)',border:'1px solid rgba(22,163,74,0.2)',color:'#16a34a'}}>{t}</span>)}</div></div>}
             </div>);
         }
 
@@ -1681,6 +1682,7 @@
             const [selectedClaw, setSelectedClaw] = useState(null);
             const [securityModal, setSecurityModal] = useState(null);
             const [toolInstallFeedback, setToolInstallFeedback] = useState({});
+            const [pendingProposeTool, setPendingProposeTool] = useState(null);
             const [showFederationModal, setShowFederationModal] = useState(false);
             const [auditVerifyResult, setAuditVerifyResult] = useState(null);
             const [auditStreaming, setAuditStreaming] = useState(false);
@@ -1826,7 +1828,8 @@
                 fetchLiveData();
             };
 
-            const handleProposeToolInstall = async (toolName) => {
+            const handleProposeToolInstall = async (toolName, agentId) => {
+                if(!agentId){ setPendingProposeTool(toolName); return; }
                 setToolInstallFeedback(prev=>({...prev,[toolName]:'pending'}));
                 const finalize = () => {
                     setToolInstallFeedback(prev=>({...prev,[toolName]:'submitted'}));
@@ -1846,7 +1849,7 @@
                     // endpoint may not be live yet — proposal is still recorded locally
                 }
                 finalize();
-                setToolProposals(prev=>[...prev,{request_id:'tool-req-'+Date.now(),agent_id:'dashboard_user',action:'Install_Tool',description:`Install proposal: ${toolName} — awaiting human approval before package enters environment.`,priority:'normal',created_at:new Date().toISOString(),payload:{tool_name:toolName}}]);
+                setToolProposals(prev=>[...prev,{request_id:'tool-req-'+Date.now(),agent_id:agentId,action:'Install_Tool',description:`Install proposal: ${toolName} for agent [${agentId}] — awaiting human approval before package enters environment.`,priority:'normal',created_at:new Date().toISOString(),payload:{tool_name:toolName,agent_id:agentId}}]);
             };
 
             const handleApproveToolInstall = (toolId) => {
@@ -1865,7 +1868,17 @@
             };
 
             const handleApprovalDecision = async (id, approved, notes) => {
+                const toolProposal = toolProposals.find(a=>a.request_id===id);
                 setToolProposals(prev=>prev.filter(a=>a.request_id!==id));
+                if(toolProposal && approved){
+                    const toolName = toolProposal.payload?.tool_name;
+                    const agentId = toolProposal.agent_id;
+                    setToolroomData(prev=>({...prev,
+                        tools:(prev.tools||[]).map(t=>t.name===toolName?{...t,status:'approved'}:t),
+                        checkouts:[...(prev.checkouts||[]),{checkout_id:'co-'+Date.now(),tool_name:toolName,agent_id:agentId,checked_out_at:new Date().toISOString(),status:'active'}]
+                    }));
+                    setToolInstallFeedback(prev=>({...prev,[toolName]:'approved'}));
+                }
                 if (isDemo) { setApprovals(prev=>prev.filter(a=>a.request_id!==id)); return; }
                 try { await createApi(apiUrl).post(`/v1/approvals/${id}/${approved?'approve':'reject'}`, {decided_by:'dashboard_user',notes:notes||undefined}); setApprovals(prev=>prev.filter(a=>a.request_id!==id)); } catch(e){ console.error(e); }
             };
@@ -2177,7 +2190,7 @@
                                 <p className="text-sm mb-5" style={{color:'var(--text-muted)'}}>Connect an agent using credentials from the Connection panel, or pre-register one now to set its ID and starting trust level.</p>
                                 <button onClick={()=>setShowRegisterAgentModal(true)} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium bg-cyan-700 hover:bg-cyan-600 text-white transition"><Icon name="plus" size={16}/>Pre-register Agent</button>
                             </div>
-                        ) : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{agents.map(a=><AgentCard key={a.agent_id} agent={a}/>)}</div>}
+                        ) : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{agents.map(a=><AgentCard key={a.agent_id} agent={a} authorizedTools={(toolroomData.checkouts||[]).filter(c=>c.agent_id===a.agent_id&&c.status==='active').map(c=>c.tool_name||c.tool_id)}/>)}</div>}
                     </div>)}
 
                     {tab === 'identity' && (<div className="space-y-4">
@@ -3036,6 +3049,23 @@
                         const newMatter = {matter_id:'mat-'+Date.now(),tenant_id:vals.tenant_id,name:vals.name,type:vals.matter_type,status:'active',litigation_hold:false,created_at:new Date().toISOString()};
                         setMatters(prev=>[...prev,newMatter]);
                         setTenants(prev=>prev.map(t=>t.tenant_id===vals.tenant_id?{...t,matter_count:(t.matter_count||0)+1}:t));
+                    }}
+                />}
+                {pendingProposeTool && <FormModal
+                    title={`Authorize Tool: ${pendingProposeTool}`}
+                    submitLabel="Submit Proposal"
+                    submitColor="bg-orange-600 hover:bg-orange-500"
+                    onClose={()=>setPendingProposeTool(null)}
+                    fields={[
+                        {name:'agent_id', label:'Authorize for Agent', type:'select', required:true,
+                         defaultValue:agents[0]?.agent_id||'',
+                         options:agents.length>0?agents.map(a=>({value:a.agent_id,label:a.agent_id})):[{value:'',label:'No agents registered'}],
+                         hint:'This tool will be authorized for use by the selected agent only.'}
+                    ]}
+                    onSubmit={async(vals)=>{
+                        if(!vals.agent_id) throw new Error('Select an agent');
+                        setPendingProposeTool(null);
+                        await handleProposeToolInstall(pendingProposeTool, vals.agent_id);
                     }}
                 />}
             </div>);
