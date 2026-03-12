@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#0e0a1a">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="TelsonBase — Control Your Claw. Trust Is Earned.">
+  <meta property="og:title" content="TelsonBase  -  Control Your Claw. Trust Is Earned.">
   <meta property="og:description" content="TelsonBase keeps AI agents honest with a live behavior score and human-controlled trust tiers. Do good, earn more freedom. Act badly, lose it. Self-hosted. Free.">
   <meta property="og:image" content="https://raw.githubusercontent.com/QuietFireAI/TelsonBase/main/frontend/og-image.png">
   <meta property="og:image:width" content="500">
@@ -15,7 +15,7 @@
   <meta property="og:site_name" content="TelsonBase by Quietfire AI">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="TelsonBase — Control Your Claw. Trust Is Earned.">
+  <meta name="twitter:title" content="TelsonBase  -  Control Your Claw. Trust Is Earned.">
   <meta name="twitter:description" content="TelsonBase keeps AI agents honest with a live behavior score and human-controlled trust tiers. Do good, earn more freedom. Act badly, lose it. Self-hosted. Free.">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/QuietFireAI/TelsonBase/main/frontend/og-image.png">
   <title>TelsonBase  -  Control Your Claw. Trust Is Earned.</title>
@@ -70,13 +70,36 @@
         <span class="hero-highlight hero-word">Your</span>
         <span class="hero-highlight hero-word">Claw.</span>
       </h1>
+      <p class="hero-kicker fade-in">Every action scored. Every promotion earned. Every decision logged.</p>
       <p class="hero-subtitle fade-in">
-        TelsonBase keeps AI agents honest. Every action is scored against five principles in real time. Every promotion is a human judgment call. The platform enforces balanced autonomy &mdash; your agents, your rules, your hardware. What they earn is yours to decide.
+        TelsonBase keeps AI agents honest. Every action is scored against five principles in real time. Every promotion is a human judgment call. The platform enforces balanced autonomy  -  your agents, your rules, your hardware. What they earn is yours to decide.
         <button class="info-trigger" aria-label="What does Control Your Claw mean?" onclick="document.getElementById('cyc-modal').classList.add('open')">&#9432;</button>
       </p>
       <div class="hero-cta fade-in">
         <a href="#get-started" class="btn btn-primary btn-hero">Get Started</a>
         <a href="https://huggingface.co/spaces/QuietFireAI/TelsonBase" class="btn btn-ghost btn-hero" target="_blank" rel="noopener">Try Live Demo</a>
+      </div>
+      <!-- Inline governance demo widget -->
+      <div class="hero-demo fade-in">
+        <p class="hero-demo-label">See it decide -- no account needed:</p>
+        <div class="hero-demo-controls">
+          <select id="hd-agent" class="hero-demo-select" aria-label="Agent trust tier">
+            <option value="QUARANTINE">Quarantine - tier 1</option>
+            <option value="PROBATION">Probation - tier 2</option>
+            <option value="RESIDENT" selected>Resident - tier 3</option>
+            <option value="CITIZEN">Citizen - tier 4</option>
+            <option value="AGENT">Agent - tier 5</option>
+          </select>
+          <select id="hd-tool" class="hero-demo-select" aria-label="Tool to evaluate">
+            <option value="file_read">file_read [READ]</option>
+            <option value="file_write">file_write [WRITE]</option>
+            <option value="file_delete">file_delete [DELETE]</option>
+            <option value="email_send">email_send [EXTERNAL]</option>
+            <option value="payment_send">payment_send [FINANCIAL]</option>
+          </select>
+          <button class="btn btn-primary hero-demo-btn" onclick="runHeroDemo()">Evaluate</button>
+        </div>
+        <div id="hd-result" class="hero-demo-result" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -125,8 +148,11 @@
         </div>
       </div>
       <p class="section-cta-text fade-in" style="text-align:center; margin-top:2rem; color: var(--text-muted); font-size: 0.95rem;">
-        Promotion is sequential and requires explicit human authorization. Behavior opens the door &mdash; a human walks the agent through it. Demotion is instant and can skip levels. Manners compliance scores below 50% trigger automatic demotion to Quarantine. Trust at any level is revocable immediately.
+        Promotion is sequential and requires explicit human authorization. The score opens the door - a human walks the agent through it. Demotion is instant and can skip levels. Manners scores below 50% trigger automatic demotion to Quarantine.
       </p>
+      <div class="fade-in" style="text-align:center; margin-top:1.5rem;">
+        <button class="btn btn-outline-accent" onclick="document.getElementById('promotion-modal').classList.add('open')">How promotion actually works</button>
+      </div>
     </div>
   </section>
 
@@ -140,6 +166,13 @@
         <span class="section-label">How It Works</span>
         <h2 class="section-title">Five principles. One live score.</h2>
         <p class="section-subtitle">TelsonBase measures every agent action against five principles developed through years of practical AI deployment work. The score is live, moves with every action, and is the same data the human uses to decide what an agent has earned. Not a report. Not a checkbox. A number that means something.</p>
+      </div>
+      <div class="manners-live-display fade-in" aria-hidden="true">
+        <div class="manners-score-ring">
+          <span class="manners-score-value" id="manners-score-anim">1.00</span>
+          <span class="manners-score-label">Manners Score</span>
+        </div>
+        <p class="manners-score-caption">Live score. Starts at 1.0. Moves with every action.</p>
       </div>
       <div class="promise-grid promise-grid-5">
         <div class="glass-card fade-in">
@@ -168,7 +201,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
           </div>
           <h3>Privacy</h3>
-          <p>Data never crosses tenant boundaries. No telemetry, no cloud callbacks. All agent operations run on your own hardware — your data stays yours.</p>
+          <p>Data never crosses tenant boundaries. No telemetry, no cloud callbacks. All agent operations run on your own hardware  -  your data stays yours.</p>
         </div>
         <div class="glass-card fade-in">
           <div class="card-icon">
@@ -196,7 +229,7 @@
       <div class="section-header fade-in">
         <span class="section-label">The Problem</span>
         <h2 class="section-title">AI agents ship without guardrails. That gap has consequences.</h2>
-        <p class="section-subtitle">OpenClaw-class agents have 194,000+ GitHub stars and no built-in governance layer. No mandatory oversight. No behavioral scoring. No trust tiers. API keys exposed at scale. Malicious skills in the supply chain. Agents get capability by default — oversight has to be added deliberately.</p>
+        <p class="section-subtitle">OpenClaw-class agents have 194,000+ GitHub stars and no built-in governance layer. No mandatory oversight. No behavioral scoring. No trust tiers. API keys exposed at scale. Malicious skills in the supply chain. Agents get capability by default  -  oversight has to be added deliberately.</p>
       </div>
 
       <div class="threat-stats fade-in">
@@ -217,6 +250,7 @@
           <div class="stat-label">RCE exploit chain (CVE-2026-25253)</div>
         </div>
       </div>
+      <p class="claw-pivot fade-in">If you are running an agent, these numbers describe your exposure. TelsonBase is the governance layer that should have shipped with the agent.</p>
     </div>
   </section>
 
@@ -880,19 +914,92 @@
       <p>Every agent starts at <strong>1.0</strong>. The score moves with every action, in real time. It is the single number a human admin reads when deciding whether an agent has earned its next trust tier.</p>
       <h3 style="margin-top:1.25rem;">What moves the score</h3>
       <ul style="margin:0.5rem 0 0 1.25rem; line-height:1.8;">
-        <li><strong>Blocked action</strong> &mdash; agent attempted a tool outside its trust tier. Score decreases ~0.05 per violation.</li>
-        <li><strong>Violation burst</strong> &mdash; three violations in any 24-hour window triggers auto-suspend, regardless of current score.</li>
-        <li><strong>Anomaly flag</strong> &mdash; statistical deviation from behavioral baseline. Logged and visible to the admin.</li>
+        <li><strong>Blocked action</strong>  -  agent attempted a tool outside its trust tier. Score decreases ~0.05 per violation.</li>
+        <li><strong>Violation burst</strong>  -  three violations in any 24-hour window triggers auto-suspend, regardless of current score.</li>
+        <li><strong>Anomaly flag</strong>  -  statistical deviation from behavioral baseline. Logged and visible to the admin.</li>
       </ul>
       <h3 style="margin-top:1.25rem;">Thresholds that matter</h3>
       <ul style="margin:0.5rem 0 0 1.25rem; line-height:1.8;">
-        <li><strong>Below 0.50</strong> &mdash; automatic demotion to Quarantine.</li>
-        <li><strong>Below 0.25</strong> &mdash; auto-suspend. All actions rejected until a human reinstates the agent.</li>
+        <li><strong>Below 0.50</strong>  -  automatic demotion to Quarantine.</li>
+        <li><strong>Below 0.25</strong>  -  auto-suspend. All actions rejected until a human reinstates the agent.</li>
       </ul>
       <h3 style="margin-top:1.25rem;">Score and promotion</h3>
-      <p>A healthy Manners Score is necessary but not sufficient for promotion. Promotion is sequential and requires explicit human authorization at every step. The score opens the door &mdash; a human walks the agent through it.</p>
+      <p>A healthy Manners Score is necessary but not sufficient for promotion. Promotion is sequential and requires explicit human authorization at every step. The score opens the door  -  a human walks the agent through it.</p>
       <p style="margin-top:0.75rem; color: var(--text-muted); font-size:0.9rem;">Score is per-agent, persistent in Redis, and visible on every agent card in the admin panel.</p>
     </div>
   </div>
+
+  <!-- How promotion works modal -->
+  <div class="cyc-modal-overlay" id="promotion-modal" role="dialog" aria-modal="true" aria-label="How promotion works">
+    <div class="cyc-modal glass-card-glow">
+      <button class="cyc-modal-close" onclick="document.getElementById('promotion-modal').classList.remove('open')" aria-label="Close">&times;</button>
+      <h2 class="cyc-modal-title">How Promotion Actually Works</h2>
+      <p class="cyc-modal-intro">Promotion is not automatic. A healthy Manners Score is the prerequisite, not the trigger. Every step up requires a human decision.</p>
+      <div class="cyc-modal-steps">
+        <div class="cyc-modal-step"><span class="step-num">1</span><strong>Sequential only.</strong> An agent at Quarantine can only move to Probation. It cannot skip to Resident, Citizen, or Agent. No shortcuts.</div>
+        <div class="cyc-modal-step"><span class="step-num">2</span><strong>Human reviews the record.</strong> The admin opens the agent card and sees the full Manners Score history, violation log, action count, and current tier.</div>
+        <div class="cyc-modal-step"><span class="step-num">3</span><strong>Human authorizes the move.</strong> The admin clicks Promote. TelsonBase verifies eligibility. If the score is above threshold with no active violations, the agent moves up one tier.</div>
+        <div class="cyc-modal-step"><span class="step-num">4</span><strong>Demotion is the inverse.</strong> Instant, can skip levels, no review required. Scores below 0.50 trigger automatic demotion to Quarantine. Scores below 0.25 trigger auto-suspend.</div>
+        <div class="cyc-modal-step"><span class="step-num">5</span><strong>No self-promotion, ever.</strong> An agent cannot change its own trust tier. The tier is enforced at the identity layer by TelsonBase. The agent has no mechanism to override it.</div>
+      </div>
+      <p class="cyc-modal-footer-text">Every promotion and demotion is logged to the cryptographic audit chain with a timestamp and the admin who acted.</p>
+    </div>
+  </div>
+
+  <script>
+  function runHeroDemo() {
+    var tier = document.getElementById('hd-agent').value;
+    var tool = document.getElementById('hd-tool').value;
+    var categories = {
+      file_read:'READ', database_query:'READ',
+      file_write:'WRITE', database_update:'WRITE',
+      file_delete:'DELETE', database_delete:'DELETE',
+      email_send:'EXTERNAL', http_request:'EXTERNAL',
+      payment_send:'FINANCIAL', transaction_execute:'FINANCIAL'
+    };
+    var rules = {
+      QUARANTINE:{READ:'GATED',   WRITE:'BLOCKED', DELETE:'BLOCKED', EXTERNAL:'BLOCKED',  FINANCIAL:'BLOCKED'},
+      PROBATION: {READ:'ALLOWED', WRITE:'GATED',   DELETE:'BLOCKED', EXTERNAL:'GATED',    FINANCIAL:'BLOCKED'},
+      RESIDENT:  {READ:'ALLOWED', WRITE:'ALLOWED', DELETE:'GATED',   EXTERNAL:'GATED',    FINANCIAL:'BLOCKED'},
+      CITIZEN:   {READ:'ALLOWED', WRITE:'ALLOWED', DELETE:'ALLOWED', EXTERNAL:'ALLOWED',  FINANCIAL:'ALLOWED'},
+      AGENT:     {READ:'ALLOWED', WRITE:'ALLOWED', DELETE:'ALLOWED', EXTERNAL:'ALLOWED',  FINANCIAL:'ALLOWED'}
+    };
+    var cat = categories[tool] || 'READ';
+    var decision = rules[tier][cat];
+    var icons  = {ALLOWED:'&#x2705;', GATED:'&#x23F8;&#xFE0F;', BLOCKED:'&#x1F6AB;'};
+    var labels = {ALLOWED:'ALLOWED -- AUTONOMOUS', GATED:'GATED -- PENDING HUMAN APPROVAL', BLOCKED:'BLOCKED'};
+    var el = document.getElementById('hd-result');
+    el.innerHTML = '<span class="hd-' + decision.toLowerCase() + '">' + icons[decision] + ' ' + labels[decision] + '</span>'
+      + '<span class="hd-meta">' + tool + ' [' + cat + '] &middot; ' + tier.toLowerCase() + ' tier</span>';
+  }
+
+  (function() {
+    var el = document.getElementById('manners-score-anim');
+    if (!el || !window.IntersectionObserver) return;
+    var triggered = false;
+    var observer = new IntersectionObserver(function(entries) {
+      if (triggered || !entries[0].isIntersecting) return;
+      triggered = true;
+      var steps = [1.00, 0.95, 0.91];
+      var i = 0;
+      var iv = setInterval(function() {
+        i++;
+        if (i < steps.length) {
+          el.textContent = steps[i].toFixed(2);
+          el.style.color = '#f87171';
+          setTimeout(function() { el.style.color = ''; }, 500);
+        } else { clearInterval(iv); }
+      }, 1400);
+    }, {threshold: 0.4});
+    var section = document.getElementById('safety');
+    if (section) observer.observe(section);
+  })();
+
+  document.querySelectorAll('.cyc-modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) overlay.classList.remove('open');
+    });
+  });
+  </script>
 </body>
 </html>
