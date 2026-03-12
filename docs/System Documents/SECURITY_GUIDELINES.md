@@ -71,8 +71,8 @@ TelsonBase's security model is documented across the following sources. There is
 
 | Document | What It Covers |
 |---|---|
-| `docs/AUDIT_TRAIL.md` | Hash-chained audit trail: entry structure, storage architecture, API, real-time stream, verification, offline verification |
-| `docs/TOOLROOM_TRUST_MATRIX.md` | Tool access control: `min_trust_level`, `requires_api_access` HITL gate, designation by category |
+| `docs/System Documents/AUDIT_TRAIL.md` | Hash-chained audit trail: entry structure, storage architecture, API, real-time stream, verification, offline verification |
+| `docs/System Documents/TOOLROOM_TRUST_MATRIX.md` | Tool access control: `min_trust_level`, `requires_api_access` HITL gate, designation by category |
 | `docs/FAQ.md` | 8-step governance pipeline, Manners compliance, trust promotion, egress control |
 | `proof_sheets/INDEX.md` | 788 proof documents - every security claim traced to source code and a verification command |
 
