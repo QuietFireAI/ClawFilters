@@ -78,10 +78,11 @@ docs/DEMO_WALKTHROUGH_step_by_step.md
 docs/Testing Documents/PRE_DROP_AUDIT.md
 docs/IDENTICLAW_OPERATIONS.md
 
-# Website (served separately — not part of the GitHub repo)
+# Website / frontend UI (served separately — not part of the GitHub repo)
 website/
 website-demo/
 website-quietfire/
+frontend/
 
 # Session artifact text files in docs
 docs/*.txt
