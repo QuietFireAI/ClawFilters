@@ -240,6 +240,139 @@ a:hover {
   font-weight: 700;
 }
 
+/* --- Hero kicker line --- */
+.hero-kicker {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  letter-spacing: 0.02em;
+  margin: 0.5rem 0 0.25rem;
+  opacity: 0.9;
+}
+
+/* --- Hero mini governance demo widget --- */
+.hero-demo {
+  margin-top: 2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.4rem 1.2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.hero-demo-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.7rem;
+}
+
+.hero-demo-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-demo-select {
+  flex: 1;
+  min-width: 155px;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.48rem 0.7rem;
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.hero-demo-select:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+
+.hero-demo-btn {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.hero-demo-result {
+  margin-top: 0.7rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.88rem;
+  min-height: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hd-allowed { color: #4ade80; font-weight: 700; }
+.hd-gated   { color: #facc15; font-weight: 700; }
+.hd-blocked { color: #f87171; font-weight: 700; }
+.hd-meta    { color: var(--text-muted); font-size: 0.78rem; margin-top: 0.1rem; }
+
+/* --- Manners live score ring (five principles section) --- */
+.manners-live-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.25rem 0 2.25rem;
+}
+
+.manners-score-ring {
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(124, 77, 255, 0.06);
+  box-shadow: 0 0 28px rgba(124, 77, 255, 0.18);
+  margin-bottom: 0.65rem;
+}
+
+.manners-score-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent-light);
+  transition: color 0.4s;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.manners-score-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.manners-score-caption {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+/* --- Claw problem section pivot line --- */
+.claw-pivot {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .btn-outline-accent {
   background: transparent;
   color: var(--accent-light);
