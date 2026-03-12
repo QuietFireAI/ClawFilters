@@ -84,7 +84,7 @@ March 2026
 
 ## The Problem
 
-Autonomous AI agents, specifically Open Claw agents, are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the locks.
+Autonomous AI agents, specifically Open Claw agents, are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the guardrails.
 
 Right now, as you read this:
 
@@ -594,5 +594,5 @@ On March 8, 2026, I read this README in full and verified the code-backed claims
 
 ---
 
-*"The industry gives AI agents the keys to everything and forgot to build the locks. We built the locks."*
+*"The industry gave AI agents the keys to everything before anyone asked who was watching. TelsonBase is the answer."*
 
