@@ -169,8 +169,6 @@ Fresh agent at QUARANTINE attempts `file_write` - blocked outright. Promoted to 
 **Audit Trail - 500 SHA-256 hash-chained entries, tamper-evident and export-ready**
 ![Audit Trail](screenshots/audit-trail.png)
 
-**User Console - the non-admin view. Pending approvals, recent activity, agent list**
-![User Console](screenshots/user-console-home.png)
 
 <details>
 <summary>More screenshots - Approvals, Toolroom, Users & Roles</summary>
