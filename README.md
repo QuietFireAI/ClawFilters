@@ -459,6 +459,8 @@ TelsonBase is my interpretation of how AI agents can work together safely and wi
 
 Fork it. Break it. Build something better from it. The goal was never to own this problem but to model one way to solve it seriously and put that model where others can use it.
 
+A special thanks to Linda and Mike; you saved a dream, and in doing so saved a life.
+
 Jeff Phillips
 Quietfire AI
 March 2026
@@ -544,3 +546,4 @@ ORCID: https://orcid.org/0009-0000-1375-1725
 ---
 
 *"The industry gave AI agents the keys to everything before anyone asked who was watching. TelsonBase is the answer."*
+
