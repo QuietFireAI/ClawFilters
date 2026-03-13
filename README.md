@@ -28,6 +28,8 @@
   <a href="https://huggingface.co/spaces/QuietFireAI/TelsonBase"><img src="https://img.shields.io/badge/Live%20Demo-HuggingFace-ff6b35?style=flat&logo=huggingface&logoColor=white" alt="Live Demo on HuggingFace"></a>
   &nbsp;
   <a href="https://buymeacoffee.com/jphillips"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support%20the%20project-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"></a>
+  &nbsp;
+  <a href="https://doi.org/10.5281/zenodo.19004787"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19004787.svg" alt="DOI"></a>
 </p>
 
 ---
