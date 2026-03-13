@@ -441,7 +441,9 @@ FRONTEND_DIR = Path(__file__).parent / "frontend"
 # REM: Serve vendored JS libraries (React, ReactDOM, Babel) from local files.
 # REM: Eliminates hard-refresh failures caused by slow or unavailable CDN (unpkg.com).
 # REM: Files live at frontend/vendor/ — update them by re-running scripts/update_vendor.sh.
-app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
+# REM: frontend/ is gitignored (served via Docker bind mount); only mount if directory exists.
+if FRONTEND_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
 
 # REM: =======================================================================================
 # REM: MCP GATEWAY — Goose / Claude Desktop / any MCP-compatible agent connects here
