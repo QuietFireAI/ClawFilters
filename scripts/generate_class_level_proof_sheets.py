@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 """
 Generate class-level proof sheets (TB-PROOF-053 through TB-PROOF-066)
 for all non-security-battery test suites.

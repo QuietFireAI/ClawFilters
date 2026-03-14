@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/core/mqtt_bus.py
 # REM: =======================================================================================
 # REM: MQTT AGENT-TO-AGENT COMMUNICATION BUS FOR TELSONBASE

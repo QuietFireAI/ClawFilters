@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/core/breach_notification.py
 # REM: =======================================================================================
 # REM: BREACH ASSESSMENT AND NOTIFICATION TRACKING

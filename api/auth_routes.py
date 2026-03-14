@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/api/auth_routes.py
 # REM: =======================================================================================
 # REM: USER AUTHENTICATION API ENDPOINTS FOR TELSONBASE

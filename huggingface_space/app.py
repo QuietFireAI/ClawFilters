@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 """
 TelsonBase — Live Governance Demo
 Gradio app connecting to the live TelsonBase API.
