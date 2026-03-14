@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/core/contingency.py
 # REM: Alias module — routes import from core.contingency, actual impl is core.contingency_testing
 # REM: v7.2.0CC: Created to resolve module naming mismatch

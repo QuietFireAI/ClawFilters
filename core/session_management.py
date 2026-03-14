@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/core/session_management.py
 # REM: =======================================================================================
 # REM: HIPAA SESSION MANAGEMENT — AUTOMATIC LOGOFF

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # tests/test_openclaw.py
 # REM: =======================================================================================
 # REM: OPENCLAW GOVERNANCE ENGINE TESTS — "CONTROL YOUR CLAW"

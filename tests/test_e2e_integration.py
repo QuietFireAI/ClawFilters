@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/tests/test_e2e_integration.py
 # REM: =======================================================================================
 # REM: END-TO-END INTEGRATION TESTS FOR TELSONBASE

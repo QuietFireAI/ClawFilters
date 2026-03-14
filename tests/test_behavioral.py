@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/tests/test_behavioral.py
 # REM: =======================================================================================
 # REM: BEHAVIORAL SPECIFICATION TESTS FOR AGENT INTERACTIONS

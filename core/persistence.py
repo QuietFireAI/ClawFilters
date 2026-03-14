@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/core/persistence.py
 # REM: =======================================================================================
 # REM: REDIS PERSISTENCE LAYER FOR SECURITY INFRASTRUCTURE

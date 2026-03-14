@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/core/middleware.py
 # REM: =======================================================================================
 # REM: PRODUCTION HARDENING MIDDLEWARE FOR TELSONBASE

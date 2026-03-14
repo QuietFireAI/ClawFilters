@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/core/ollama_service.py
 # REM: =======================================================================================
 # REM: SOVEREIGN AI ENGINE SERVICE — DIRECT OLLAMA REST API CLIENT

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
+# SPDX-License-Identifier: Apache-2.0
 # TelsonBase/scripts/seed_demo_data.py
 # REM: =======================================================================================
 # REM: SEED DEMO DATA - POPULATE DASHBOARD WITH REALISTIC TEST DATA
