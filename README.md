@@ -66,6 +66,8 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 ClawCoat is a **self-hosted, governance-first trust enabled platform** for autonomous AI agents. It acts as a governed MCP proxy: agents connect to ClawCoat, and every action they attempt is evaluated against trust levels, Manners compliance, anomaly detection, and approval gates before execution. The agent is never modified. ClawCoat wraps it.
 
+> **Note:** You will see `telsonbase` in environment variables, Docker container names, directory paths, and internal configuration. TelsonBase is the internal engine name. ClawCoat is the product. No changes to your deployment are required.
+
 ---
 
 ## Quick Start
