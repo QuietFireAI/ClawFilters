@@ -30,15 +30,15 @@ short_description: "Every agent call: allow, gate, or block. Five tiers."
 
 **Every OpenClaw tool call passes through ClawCoat before execution. Allow, gate for human approval, or block. Every time.**
 
-This Space connects to a live ClawCoat server running the real governance pipeline. Select a demo agent, pick an action, and see an actual governance decision in real time.
+This Space connects to a live ClawCoat deployment running the full governance pipeline. Select a demo agent, pick an action, and see an actual governance decision.
 
 ## What You're Seeing
 
-This is not a simulation. The decisions come from a live server running the full ClawCoat stack - trust tier enforcement, Manners Engine scoring, HITL approval gates, and a cryptographic audit chain recording every event.
+This is not a simulation. The decisions come from a live ClawCoat instance running the full stack - trust tier enforcement, Manners Engine scoring in real time, HITL approval gates, and a cryptographic audit chain recording every event.
 
 - **Active decision making** - every call evaluated before execution. Allow, gate, or block.
 - **Five trust tiers** - QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT, earned by behavior
-- **Manners Engine** - 8-factor behavioral score (0.0–1.0) updated on every action
+- **Manners Engine** - 8-factor behavioral score (0.0–1.0) updated in real time on every action
 - **Kill switch** - suspend an agent instantly, every subsequent action rejected
 - **HITL gates** - actions held for human approval regardless of trust tier
 - **Audit chain** - every governance decision recorded, cryptographically chained
