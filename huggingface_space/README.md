@@ -26,22 +26,22 @@ tags:
 short_description: "Every agent call: allow, gate, or block. Five tiers."
 ---
 
-# ClawCoat — Active Decision Making for AI Agents
+# ClawCoat - Active Decision Making
 
-**Every MCP tool call an AI agent makes, ClawCoat evaluates it and decides: allow, gate for human approval, or block. Before execution. Every time.**
+**Every OpenClaw tool call passes through ClawCoat before execution. Allow, gate for human approval, or block. Every time.**
 
 This Space connects to a live ClawCoat server running the real governance pipeline. Select a demo agent, pick an action, and see an actual governance decision in real time.
 
 ## What You're Seeing
 
-This is not a simulation. The decisions come from a live server running the full ClawCoat stack — trust tier enforcement, Manners Engine scoring, HITL approval gates, and a cryptographic audit chain recording every event.
+This is not a simulation. The decisions come from a live server running the full ClawCoat stack - trust tier enforcement, Manners Engine scoring, HITL approval gates, and a cryptographic audit chain recording every event.
 
-- **Active decision making** — every call evaluated before execution. Allow, gate, or block.
-- **Five trust tiers** — QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT, earned by behavior
-- **Manners Engine** — 8-factor behavioral score (0.0–1.0) updated on every action
-- **Kill switch** — suspend an agent instantly, every subsequent action rejected
-- **HITL gates** — actions held for human approval regardless of trust tier
-- **Audit chain** — every governance decision recorded, cryptographically chained
+- **Active decision making** - every call evaluated before execution. Allow, gate, or block.
+- **Five trust tiers** - QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT, earned by behavior
+- **Manners Engine** - 8-factor behavioral score (0.0–1.0) updated on every action
+- **Kill switch** - suspend an agent instantly, every subsequent action rejected
+- **HITL gates** - actions held for human approval regardless of trust tier
+- **Audit chain** - every governance decision recorded, cryptographically chained
 
 ## Trust Tier Flow
 
@@ -54,7 +54,7 @@ No agent arrives at AGENT tier. Every agent starts at QUARANTINE and earns its w
 
 ## The Agent Autonomy SLA
 
-ClawCoat is the working implementation of the Agent Autonomy SLA — a formal per-tier commitment framework defining what an autonomous agent may do, under what conditions, and with what audit trail. Jouneaux et al. identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)). ClawCoat is the answer.
+ClawCoat is the working implementation of the Agent Autonomy SLA - a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux et al. identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)). ClawCoat is the answer.
 
 ## Full Repository
 
