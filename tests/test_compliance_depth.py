@@ -237,7 +237,14 @@ class TestHITRUSTDepth:
         assert "NOT_APPLICABLE" in names
 
     def test_baseline_controls_auto_registered(self):
-        """REM: HITRUSTManager init must auto-register baseline controls (min 10)."""
+        """REM: HITRUSTManager init must auto-register baseline controls (min 10).
+        Requires Redis — skips in unit-test CI where Redis is not started."""
+        import socket
+        try:
+            s = socket.create_connection(("localhost", 6379), timeout=0.5)
+            s.close()
+        except OSError:
+            pytest.skip("Redis not available — run in integration test stage")
         from core.hitrust_controls import HITRUSTManager
         mgr = HITRUSTManager()
         posture = mgr.get_compliance_posture()
