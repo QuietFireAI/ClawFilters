@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-039
 **Claim Source:** clawcoat.com - Control Your Claw
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source; earned trust behavior in TestOpenClaw suite (55 tests)
+**Test Coverage:** VERIFIED -- test_openclaw.py -- default QUARANTINE, sequential promotion required, demotion instant
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -73,7 +73,8 @@ VALID_DEMOTIONS (skip-capable):
 ## Verification Command
 
 ```bash
-grep -n "VALID_PROMOTIONS\|VALID_DEMOTIONS\|default_trust\|register_instance" core/openclaw.py | head -10
+docker compose exec mcp_server python -m pytest \
+  tests/test_openclaw.py -v --tb=short -k "quarantine or promote or demote or register_instance"
 ```
 
 ## Expected Result

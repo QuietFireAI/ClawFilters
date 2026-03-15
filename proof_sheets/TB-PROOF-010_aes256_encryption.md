@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-010
 **Claim Source:** clawcoat.com - Capabilities Section, The Promise Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source only; AES behavior in TestEncryptionIntegrity (11 tests)
+**Test Coverage:** VERIFIED -- TestEncryptionIntegrity -- 11 behavioral tests confirm AES-256-GCM encrypt/decrypt/tamper
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -54,7 +54,8 @@ ciphertext = self._aesgcm.encrypt(nonce, plaintext, None)
 ## Verification Command
 
 ```bash
-grep -n "AESGCM\|KEY_SIZE\|NONCE_SIZE\|encrypt\|decrypt" core/secure_storage.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_security_battery.py::TestEncryptionIntegrity -v --tb=short
 ```
 
 ## Expected Result

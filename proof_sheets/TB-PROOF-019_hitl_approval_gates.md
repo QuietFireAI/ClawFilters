@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-019
 **Claim Source:** clawcoat.com - AI Safety Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep registry.yaml; HITL behavior in TestOpenClaw suite (55 tests)
+**Test Coverage:** VERIFIED -- test_openclaw.py -- HITL gates tested: quarantine holds READ, probation gates EXTERNAL, resident gates destructive
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -52,7 +52,8 @@ VERIFIED - `core/approval.py` implements 7 predefined approval rules. Every agen
 ## Verification Command
 
 ```bash
-grep -c "requires_approval" agents/registry.yaml
+docker compose exec mcp_server python -m pytest \
+  tests/test_openclaw.py -v --tb=short -k "gate or approval or quarantine or probation"
 ```
 
 ## Expected Result

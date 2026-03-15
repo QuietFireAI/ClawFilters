@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-013
 **Claim Source:** clawcoat.com - AI Safety Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source only; signing behavior in TestMessageSigning (13 tests)
+**Test Coverage:** VERIFIED -- test_signing.py -- 13 behavioral tests confirm sign, verify, tamper detection, replay prevention
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -46,7 +46,8 @@ VERIFIED - `core/signing.py` implements HMAC-based message signing for inter-age
 ## Verification Command
 
 ```bash
-grep -n "hmac\|signature\|sign\|verify" core/signing.py | head -15
+docker compose exec mcp_server python -m pytest \
+  tests/test_signing.py -v --tb=short
 ```
 
 ## Expected Result

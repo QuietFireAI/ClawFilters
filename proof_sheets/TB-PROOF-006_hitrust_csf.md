@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-006
 **Claim Source:** clawcoat.com - Compliance Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- 2 tests via TestComplianceInfrastructure; 8 depth tests added March 15
+**Test Coverage:** VERIFIED -- TestHITRUSTDepth -- 8 depth tests cover all 12 domains, all 5 statuses, gap analysis, risk scoring
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -43,7 +43,11 @@ VERIFIED - `core/hitrust.py` and `core/hitrust_controls.py` implement 12 HITRUST
 ## Verification Command
 
 ```bash
-grep -c "class\|domain\|Domain" core/hitrust.py core/hitrust_controls.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_compliance_depth.py::TestHITRUSTDepth \
+  tests/test_security_battery.py::TestComplianceInfrastructure::test_hitrust_controls_registered_and_assessed \
+  tests/test_security_battery.py::TestComplianceInfrastructure::test_hitrust_compliance_posture_calculation \
+  -v --tb=short
 ```
 
 ## Expected Result

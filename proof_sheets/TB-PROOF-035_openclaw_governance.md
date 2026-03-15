@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-035
 **Claim Source:** clawcoat.com - OpenClaw Integration
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source; governance behavior in TestOpenClaw suite (55 tests)
+**Test Coverage:** VERIFIED -- test_openclaw.py -- 55 behavioral tests confirm full governance pipeline
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -52,7 +52,8 @@ VERIFIED - `core/openclaw.py` implements a complete 8-step governance pipeline t
 ## Verification Command
 
 ```bash
-grep -n "evaluate_action\|governance\|OPENCLAW" core/openclaw.py | head -20
+docker compose exec mcp_server python -m pytest \
+  tests/test_openclaw.py -v --tb=short
 ```
 
 ## Expected Result

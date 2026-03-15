@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-016
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source only; session behavior in TestAuthSecurity (19 tests)
+**Test Coverage:** VERIFIED -- TestAuthSecurity -- session timeout, auto-logoff, max duration, and invalidation all tested
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -58,7 +58,8 @@ def _get_idle_timeout(self, role):
 ## Verification Command
 
 ```bash
-grep -n "idle\|PRIVILEGED\|timeout\|164.312" core/session_management.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_security_battery.py::TestAuthSecurity -v --tb=short -k session
 ```
 
 ## Expected Result

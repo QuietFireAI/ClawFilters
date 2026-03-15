@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-049
 **Claim Source:** tests/test_security_battery.py::TestComplianceInfrastructure
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- TestComplianceInfrastructure -- 11 tests (1 per module); depth tests added March 15
+**Test Coverage:** VERIFIED -- 11 battery tests + 90 depth tests across all 11 compliance modules
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -49,13 +49,16 @@ VERIFIED - All 11 tests pass. Sanctions can be imposed, tracked, and resolved. T
 ## Verification Command
 
 ```bash
-docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestComplianceInfrastructure -v --tb=short
+docker compose exec mcp_server python -m pytest \
+  tests/test_security_battery.py::TestComplianceInfrastructure \
+  tests/test_compliance_depth.py \
+  -v --tb=short
 ```
 
 ## Expected Result
 
 ```
-11 passed
+100+ passed
 ```
 
 ---

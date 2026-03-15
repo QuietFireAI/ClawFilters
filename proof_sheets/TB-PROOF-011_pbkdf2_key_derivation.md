@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-011
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source only; PBKDF2 behavior in TestEncryptionIntegrity (11 tests)
+**Test Coverage:** VERIFIED -- TestEncryptionIntegrity -- PBKDF2 iterations, key derivation, and wrong-key rejection tested
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -51,14 +51,14 @@ def _derive_key(self, key_material: str, salt: str) -> bytes:
 ## Verification Command
 
 ```bash
-grep -n "iterations\|PBKDF2" core/secure_storage.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_security_battery.py::TestEncryptionIntegrity -v --tb=short -k pbkdf2
 ```
 
 ## Expected Result
 
 ```
-108:    kdf = PBKDF2HMAC(
-114:        iterations=100000,
+2 passed
 ```
 
 ---
