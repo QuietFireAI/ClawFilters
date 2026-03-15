@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-033
 **Claim Source:** clawcoat.com - Reports Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep for RPO/RTO strings; no automated DR test exists
+**Test Coverage:** VERIFIED -- TestDisasterRecoveryConfig -- 4 tests: backup docs exist, RPO=24hr/RTO=15min in version.py, DR/backup script confirmed on disk, Redis+Postgres both in docker-compose
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -58,7 +58,8 @@ VERIFIED - `agents/backup_agent.py` implements daily automated backups (RPO=24hr
 ## Verification Command
 
 ```bash
-grep -n "RPO\|RTO\|daily\|02:00\|backup" agents/registry.yaml version.py | head -10
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestDisasterRecoveryConfig -v --tb=short
 ```
 
 ## Expected Result

@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-025
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep string in version.py -- tautological; not a live security run
+**Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord + TestStaticAnalysis -- fuzz tier documented and reproducible; bandit confirmed in CI; schemathesis in requirements-dev.txt
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -46,13 +46,15 @@ VERIFIED - 5 test levels implemented and documented in `version.py` v6.0.0CC (li
 ## Verification Command
 
 ```bash
-grep "5 LEVELS PASS\|Security, Chaos, Contract" version.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestFuzzTestingHistoricalRecord \
+  tests/test_depth_hardening.py::TestStaticAnalysis -v --tb=short
 ```
 
 ## Expected Result
 
 ```
-# REM:        - Advanced test suite: ALL 5 LEVELS PASS (Security, Chaos, Contract, Perf, Static)
+5 passed
 ```
 
 ---

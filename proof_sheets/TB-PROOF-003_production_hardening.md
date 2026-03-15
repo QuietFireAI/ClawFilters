@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-003
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep count in source; no automated behavioral test
+**Test Coverage:** VERIFIED -- TestProductionHardeningItems -- 11 behavioral tests: TLS/HSTS middleware, MFA, bcrypt, error handler, Alembic migrations, RBAC count >= 140, Prometheus/Grafana, rate limiter, secrets script, E2E tests, version.py documentation
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -69,9 +69,8 @@ From `version.py` lines 246-248:
 ## Verification Command
 
 ```bash
-grep -c "REM:" version.py | head -1
-# Then verify the 22 items are listed under v7.0.0CC
-grep -A 35 "7.0.0CC - Production Hardening" version.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestProductionHardeningItems -v --tb=short
 ```
 
 ## Expected Result

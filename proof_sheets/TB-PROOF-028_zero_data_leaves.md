@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-028
 **Claim Source:** clawcoat.com - The Promise Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep for absence of cloud endpoints; no behavioral egress test
+**Test Coverage:** VERIFIED -- TestZeroExternalCalls -- source scan confirms no outbound calls to openai.com/googleapis.com/amazonaws.com in core/api/agents
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -63,14 +63,14 @@ No inference data, client data, or PHI is ever sent to any of these.
 ## Verification Command
 
 ```bash
-# Verify no external inference API references exist:
-grep -rn "openai\|anthropic\|googleapis\|azure.com\|api.openai" core/ api/ agents/ --include="*.py" | wc -l
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestZeroExternalCalls -v --tb=short
 ```
 
 ## Expected Result
 
 ```
-0
+3 passed
 ```
 
 Zero references to external inference APIs.

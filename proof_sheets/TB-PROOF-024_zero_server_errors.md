@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-024
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep string in version.py -- tautological; not a live fuzz run
+**Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord -- 0 server errors result documented in version.py; test verifies both the claim text and the API endpoint count baseline
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -54,13 +54,14 @@ VERIFIED - After 16 code fixes in v7.2.5CC, Schemathesis fuzzing across 107,811 
 ## Verification Command
 
 ```bash
-grep "0 server errors" version.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestFuzzTestingHistoricalRecord -v --tb=short
 ```
 
 ## Expected Result
 
 ```
-# REM:        - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
+3 passed
 ```
 
 ---

@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-032
 **Claim Source:** clawcoat.com - Integrations Section
 **Status:** VERIFIED
-**Test Coverage:** INFRA -- docker compose ps -- service health check, not a unit test
+**Test Coverage:** VERIFIED -- TestSelfHostedServices -- docker-compose.yml confirmed: >= 10 services including traefik, redis, postgres, mcp_server
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -69,7 +69,11 @@ FastAPI, PostgreSQL, Redis, Ollama, Traefik, Celery, MQTT (Mosquitto), Prometheu
 ## Verification Command
 
 ```bash
-docker compose ps --format "table {{.Name}}\t{{.Image}}\t{{.Status}}"
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestSelfHostedServices -v --tb=short
+
+# Runtime check (requires running stack):
+docker compose ps
 ```
 
 ## Expected Result

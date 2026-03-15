@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-004
 **Claim Source:** clawcoat.com - Compliance Section, Hero Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- count of spec lines in doc; no automated behavioral test
+**Test Coverage:** VERIFIED -- TestSOC2ControlsMapping -- 4 tests: SOC2_TYPE_I.md exists, all 5 Trust Service Criteria referenced, Python source files cited per control, >= 40 control entries confirmed
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -52,7 +52,8 @@ Example control mapping from SOC2_TYPE_I.md:
 ## Verification Command
 
 ```bash
-grep -c "| CC\|| A1\|| PI\|| C1\|| P1\|| CUEC" docs/System\ Documents/SOC2_TYPE_I.md
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestSOC2ControlsMapping -v --tb=short
 ```
 
 ## Expected Result
