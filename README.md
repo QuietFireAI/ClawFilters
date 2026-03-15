@@ -6,7 +6,7 @@ Every OpenClaw tool call passes through ClawCoat before execution. Allow, gate f
 
 ClawCoat is the working implementation of the Agent Autonomy SLA, a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux et al. identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)). ClawCoat is the answer.
 
-Five trust tiers, earned by behavior. The Manners Engine measures every action continuously — the active measurement device that drives automatic demotion. Human-in-the-loop gates decide promotion. A cryptographic audit chain records every governance decision. Nothing leaves your network.
+Five trust tiers, earned by behavior. The Manners Engine measures every action continuously - the active measurement device that drives automatic demotion. Human-in-the-loop gates decide promotion. A cryptographic audit chain records every governance decision. Nothing leaves your network.
 
 Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 
