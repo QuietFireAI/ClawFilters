@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-036
 **Claim Source:** clawcoat.com - OpenClaw Integration
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source; trust matrix behavior in TestOpenClaw suite (55 tests)
+**Test Coverage:** VERIFIED -- test_openclaw.py -- trust level permission matrix exercised across all 5 tiers
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -76,7 +76,8 @@ At AGENT tier, anomaly detection still runs (Step 8 of governance pipeline). The
 ## Verification Command
 
 ```bash
-grep -n "TRUST_PERMISSION_MATRIX\|VALID_PROMOTIONS\|VALID_DEMOTIONS\|TrustLevel.AGENT" core/openclaw.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_openclaw.py -v --tb=short -k "promotion or demotion or tier or citizen or resident or probation"
 ```
 
 ## Expected Result

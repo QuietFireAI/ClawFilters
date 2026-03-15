@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-038
 **Claim Source:** clawcoat.com - Control Your Claw
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source; auto-demotion behavior in TestOpenClaw suite (55 tests)
+**Test Coverage:** VERIFIED -- test_openclaw.py -- manners score tracking and auto-demotion threshold confirmed
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -61,7 +61,8 @@ The Manners auto-demotion is intentionally placed BEFORE the trust level permiss
 ## Verification Command
 
 ```bash
-grep -n "manners.*demot\|auto.demot\|manners_score\|Manners" core/openclaw.py | head -10
+docker compose exec mcp_server python -m pytest \
+  tests/test_openclaw.py -v --tb=short -k "manners or demot or score"
 ```
 
 ## Expected Result

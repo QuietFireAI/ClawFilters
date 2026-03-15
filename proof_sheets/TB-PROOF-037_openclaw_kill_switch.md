@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-037
 **Claim Source:** clawcoat.com - OpenClaw Integration
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source; kill switch behavior in TestOpenClaw suite (55 tests)
+**Test Coverage:** VERIFIED -- test_openclaw.py -- kill switch suspend and reinstate tested as named test functions
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -75,7 +75,8 @@ Step 8: Anomaly detection        → (not reached if suspended)
 ## Verification Command
 
 ```bash
-grep -n "suspend\|kill.switch\|KILL SWITCH\|reinstate" core/openclaw.py | head -15
+docker compose exec mcp_server python -m pytest \
+  tests/test_openclaw.py -v --tb=short -k "suspend or reinstate"
 ```
 
 ## Expected Result

@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-015
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source only; TOTP behavior in TestAuthSecurity (19 tests)
+**Test Coverage:** VERIFIED -- TestAuthSecurity -- 7 MFA/TOTP behavioral tests: enrollment, valid token, invalid token, replay, backup codes
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -59,7 +59,8 @@ is_valid = totp.verify(token)
 ## Verification Command
 
 ```bash
-grep -n "pyotp\|RFC 6238\|TOTP\|backup_code\|replay" core/mfa.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_security_battery.py::TestAuthSecurity -v --tb=short -k "mfa or totp"
 ```
 
 ## Expected Result

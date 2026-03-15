@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-017
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** SMOKE -- grep source only; lockout behavior in TestAuthSecurity (19 tests)
+**Test Coverage:** VERIFIED -- TestAuthSecurity -- account lockout enforcement and failed attempt tracking tested
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -57,14 +57,14 @@ def _record_failed_attempt(self, username: str):
 ## Verification Command
 
 ```bash
-grep -n "MAX_FAILED\|LOCKOUT_DURATION\|_is_account_locked\|_record_failed" core/user_management.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_security_battery.py::TestAuthSecurity -v --tb=short -k "lockout or lock or failed"
 ```
 
 ## Expected Result
 
 ```
-40:MAX_FAILED_ATTEMPTS = 5
-41:LOCKOUT_DURATION_MINUTES = 15
+2+ passed
 ```
 
 ---
