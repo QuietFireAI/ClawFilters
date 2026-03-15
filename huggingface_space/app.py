@@ -270,7 +270,7 @@ with gr.Blocks(
 ) as demo:
 
     gr.Markdown("← [Back to clawcoat.com](https://clawcoat.com)", elem_classes=["back-link"])
-    gr.Markdown(f"# ClawCoat — Active Decision Making for AI Agents\n{DESCRIPTION}")
+    gr.Markdown(f"# ClawCoat — Active Decision Making\n{DESCRIPTION}")
 
     gr.Markdown("---")
     gr.Markdown("## Governance Pipeline Explorer")
