@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-014
 **Claim Source:** clawcoat.com - Hero Section, Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep count of endpoints; RBAC enforcement tested in TestAccessControl
+**Test Coverage:** VERIFIED -- TestRBACEndpointCount -- require_permission count >= 140 verified by source introspection test
 **Last Verified:** March 10, 2026
 **Version:** v11.0.1
 
@@ -57,19 +57,14 @@ async def list_agents(
 ## Verification Command
 
 ```bash
-grep -c "require_permission" main.py api/*.py core/tenant_rate_limiting.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestRBACEndpointCount -v --tb=short
 ```
 
 ## Expected Result
 
 ```
-main.py:66
-api/compliance_routes.py:40
-api/security_routes.py:20
-api/tenancy_routes.py:12
-api/openclaw_routes.py:2
-api/identiclaw_routes.py:7
-core/tenant_rate_limiting.py:3
+2 passed
 ```
 Total: 150
 

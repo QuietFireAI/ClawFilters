@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-005
 **Claim Source:** clawcoat.com - Compliance Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- ls of module files; verified by source inspection only
+**Test Coverage:** VERIFIED -- TestHIPAASecurityRuleMapping -- 4 tests: HEALTHCARE_COMPLIANCE.md exists, all 12 HIPAA modules present on disk, 45 CFR 164.x citations in source, modules have substantive content (> 1000 bytes)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -51,7 +51,8 @@ VERIFIED - 12 HIPAA/HITECH compliance modules implemented with real enforcement 
 ## Verification Command
 
 ```bash
-ls core/phi*.py core/breach*.py core/baa*.py core/data_*.py core/minimum_necessary.py core/emergency_access.py core/session_management.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestHIPAASecurityRuleMapping -v --tb=short
 ```
 
 ## Expected Result

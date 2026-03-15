@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-031
 **Claim Source:** SECURITY.md - Container Security
 **Status:** VERIFIED
-**Test Coverage:** INFRA -- docker exec whoami -- container runtime check, not a unit test
+**Test Coverage:** VERIFIED -- TestNonRootContainer -- Dockerfile confirmed: aiagent user created, USER instruction switches to non-root before CMD
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -68,13 +68,17 @@ From `.github/workflows/ci.yml`:
 ## Verification Command
 
 ```bash
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestNonRootContainer -v --tb=short
+
+# Runtime check (requires running stack):
 docker compose exec mcp_server whoami
 ```
 
 ## Expected Result
 
 ```
-aiagent
+3 passed (Dockerfile tests) + 'aiagent' (runtime)
 ```
 
 ---

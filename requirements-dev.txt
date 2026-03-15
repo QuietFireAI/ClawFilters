@@ -19,3 +19,6 @@ pytest-cov==4.1.0
 
 # --- Type Checking (optional, run with: mypy core/ api/) ---
 mypy==1.8.0
+
+# --- Fuzz Testing (re-run: schemathesis run http://localhost:8000/openapi.json --auth-type=apikey --header 'X-API-Key: $KEY' --stateful=links) ---
+schemathesis>=3.0.0

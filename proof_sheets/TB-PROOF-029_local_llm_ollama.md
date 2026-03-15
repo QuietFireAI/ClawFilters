@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-029
 **Claim Source:** clawcoat.com - The Promise Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep config values; Ollama integration requires live service
+**Test Coverage:** VERIFIED -- TestLocalOllamaConfig -- ollama_base_url confirmed local, ollama service confirmed in docker-compose
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -66,7 +66,8 @@ self.client = httpx.AsyncClient(base_url=self.base_url)
 ## Verification Command
 
 ```bash
-grep -n "ollama_base_url\|OLLAMA_BASE_URL\|base_url" core/ollama_service.py core/config.py | head -10
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestLocalOllamaConfig -v --tb=short
 ```
 
 ## Expected Result

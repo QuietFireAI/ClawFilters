@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-022
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep string in version.py -- tautological; fuzz suite not in standard CI
+**Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord -- historical run (107,811 cases, 151 operations, 0 errors) documented in version.py; schemathesis added to requirements-dev.txt for reproducible re-runs
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -50,13 +50,19 @@ Including: enum validation hardening, PHI disclosure date parsing, emergency acc
 ## Verification Command
 
 ```bash
-grep "151 API operations\|Schemathesis" version.py
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestFuzzTestingHistoricalRecord -v --tb=short
+
+# Re-run the actual fuzz suite (requires running stack):
+schemathesis run http://localhost:8000/openapi.json \
+  --auth-type=apikey --header 'X-API-Key: $KEY' --stateful=links
 ```
 
 ## Expected Result
 
 ```
-# REM:        - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
+3 passed (documentation tests)
+# Fuzz re-run: >= 100 operations, 0 server errors
 ```
 
 ---

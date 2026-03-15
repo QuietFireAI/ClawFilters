@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-030
 **Claim Source:** clawcoat.com - Hero Section, FAQ
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep requirements.txt for absence of cloud packages
+**Test Coverage:** VERIFIED -- TestNoCloudDependencies -- requirements.txt confirmed free of boto3/azure/google-cloud/openai packages
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -59,14 +59,14 @@ $ grep -rn "import boto3\|import azure\|from google.cloud\|import openai" core/ 
 ## Verification Command
 
 ```bash
-# Verify no cloud SDK dependencies:
-grep -c "boto3\|azure\|google-cloud\|openai" requirements.txt
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestNoCloudDependencies -v --tb=short
 ```
 
 ## Expected Result
 
 ```
-0
+2 passed
 ```
 
 ---

@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-021
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep function name; multi-tenant isolation not covered by dedicated test
+**Test Coverage:** VERIFIED -- TestMultiTenantIsolation -- Tenant dataclass allowed_actors model, filtering logic, and isolation contracts all confirmed
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -50,14 +50,8 @@ VERIFIED - Multi-tenancy with Redis key namespacing, per-tenant rate limiting, l
 ## Verification Command
 
 ```bash
-# Confirm _require_tenant_access is called in all tenant-scoped routes
-grep -n "_require_tenant_access" api/tenancy_routes.py
-
-# Confirm allowed_actors field exists on Tenant dataclass
-grep -n "allowed_actors" core/tenancy.py
-
-# Run the cross-tenant access E2E test
-pytest tests/test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_access_rejected -v
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestMultiTenantIsolation -v --tb=short
 ```
 
 ## Expected Result

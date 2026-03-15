@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-023
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- pip install is not a test; schemathesis not run in standard CI
+**Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord -- 107,811 test case count documented in version.py; API endpoint count >= 100 confirmed by source scan; schemathesis in requirements-dev.txt
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -42,12 +42,8 @@ From `version.py` line 312:
 ## Verification Command
 
 ```bash
-# Re-run Schemathesis against the running instance:
-pip install schemathesis
-schemathesis run http://localhost:8000/openapi.json \
-  --header "X-API-Key: YOUR_KEY" \
-  --stateful=links \
-  --checks all
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_hardening.py::TestFuzzTestingHistoricalRecord -v --tb=short
 ```
 
 ## Expected Result

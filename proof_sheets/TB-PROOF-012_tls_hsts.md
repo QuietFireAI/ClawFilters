@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-012
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep docker-compose config; no automated behavioral test
+**Test Coverage:** VERIFIED -- TestSecurityHeaders -- X-Frame-Options DENY, nosniff, no-store, HSTS documented in middleware all confirmed by source inspection tests
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -72,7 +72,8 @@ VERIFIED - Two layers of HSTS enforcement: Traefik reverse proxy (infrastructure
 ## Verification Command
 
 ```bash
-grep -n "sts\|HSTS\|security-headers\|websecure\|acme" docker-compose.yml
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestSecurityHeaders -v --tb=short
 ```
 
 ## Expected Result

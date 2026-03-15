@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-042
 **Claim Source:** ClawCoat architecture - multi-tenancy security model
 **Status:** VERIFIED
-**Test Coverage:** CODE-ONLY -- grep function name; allowed_actors enforcement not in dedicated test
+**Test Coverage:** VERIFIED -- TestTenantAccessControl -- allowed_actors data model, enforcement function existence, 403 enforcement, and None return for unknown ID all confirmed
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

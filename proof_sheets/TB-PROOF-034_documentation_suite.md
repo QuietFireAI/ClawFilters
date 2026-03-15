@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-034
 **Claim Source:** clawcoat.com - Reports Section
 **Status:** VERIFIED
-**Test Coverage:** DOCS -- ls docs directory; documentation presence, not behavioral claim
+**Test Coverage:** VERIFIED -- TestDocumentationSuite -- all 10 required documentation files confirmed to exist and be non-empty (> 500 bytes)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -84,13 +84,8 @@ VERIFIED - All 6 claimed deliverables exist as substantive documents (not stubs)
 ## Verification Command
 
 ```bash
-ls -la \
-  "docs/System Documents/SOC2_TYPE_I.md" \
-  "docs/System Documents/DATA_PROCESSING_AGREEMENT.md" \
-  "docs/Compliance Documents/PENTEST_PREPARATION.md" \
-  "docs/Backup and Recovery Documents/DISASTER_RECOVERY.md" \
-  "docs/Operation Documents/SHARED_RESPONSIBILITY.md" \
-  "docs/System Documents/HA_ARCHITECTURE.md"
+docker compose exec mcp_server python -m pytest \
+  tests/test_depth_infrastructure.py::TestDocumentationSuite -v --tb=short
 ```
 
 ## Expected Result
