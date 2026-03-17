@@ -13,7 +13,8 @@ def mgr():
     """Fresh DelegationManager with no Redis (in-memory only)."""
     from core.delegation import DelegationManager
     m = DelegationManager()
-    m._redis = None  # force in-memory only
+    # Override _get_redis so lazy init never connects even when Redis is available
+    m._get_redis = lambda: None
     return m
 
 
