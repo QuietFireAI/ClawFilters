@@ -48,7 +48,7 @@ ACTION_SYNONYMS: Dict[str, List[str]] = {
     "execute": ["run", "invoke", "call", "trigger", "start"],
     "list": ["enumerate", "browse", "scan", "index"],
     "send": ["transmit", "post", "push", "emit"],
-    "receive": ["accept", "pull", "fetch"],
+    "receive": ["accept", "pull"],
 }
 
 # REM: Build reverse lookup
@@ -272,6 +272,8 @@ class SemanticMatcher:
 
     def _parse_capability(self, capability: str) -> Optional[Tuple[str, str, str]]:
         """REM: Parse a capability string into (resource, action, path)."""
+        if not capability:
+            return None
         try:
             if ":" in capability:
                 base, path = capability.split(":", 1)
@@ -303,11 +305,11 @@ class SemanticMatcher:
         held_canonical = self.canonicalize_action(held_lower)
         required_canonical = self.canonicalize_action(required_lower)
 
-        if held_canonical == required_canonical:
-            return True, "synonym", required_canonical
-
         if self.strictness == MatchStrictness.STRICT:
             return False, "none", required_canonical
+
+        if held_canonical == required_canonical:
+            return True, "synonym", required_canonical
 
         return False, "none", required_canonical
 
