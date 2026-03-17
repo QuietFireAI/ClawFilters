@@ -634,9 +634,7 @@ async def captcha_generate(
     REM: NOTE: Response does NOT include the answer — only challenge_id and question.
     """
     try:
-        from core.captcha import captcha_manager
-
-        from core.captcha import ChallengeType as _CT
+        from core.captcha import ChallengeType as _CT, captcha_manager
         ct = None
         if request.challenge_type:
             try:
