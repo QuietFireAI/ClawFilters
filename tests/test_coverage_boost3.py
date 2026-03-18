@@ -3,11 +3,18 @@
 # tests/test_coverage_boost3.py
 # REM: Coverage tests for database.py, rotation.py, executor subprocess path.
 
+import sys
+from unittest.mock import patch, MagicMock
+
+if "celery" not in sys.modules:
+    celery_mock = MagicMock()
+    celery_mock.shared_task = lambda *args, **kwargs: (lambda f: f)
+    sys.modules["celery"] = celery_mock
+
 import pytest
 import tempfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from unittest.mock import patch, MagicMock
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
