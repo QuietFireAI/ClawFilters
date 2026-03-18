@@ -10,6 +10,9 @@ if "celery" not in sys.modules:
     celery_mock = MagicMock()
     celery_mock.shared_task = lambda *args, **kwargs: (lambda f: f)
     sys.modules["celery"] = celery_mock
+    sys.modules["celery.schedules"] = MagicMock()
+    sys.modules["celery.utils.log"] = MagicMock()
+    sys.modules["celery.signals"] = MagicMock()
 
 import pytest
 import tempfile
