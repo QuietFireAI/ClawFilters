@@ -6,17 +6,22 @@
 import sys
 from unittest.mock import MagicMock, patch
 
-# REM: Stub prometheus_client and starlette if not installed
-# (CI Docker has them; local dev Python 3.14 may not)
-for _mod in [
-    "prometheus_client",
-    "starlette",
-    "starlette.middleware",
-    "starlette.middleware.base",
-    "fastapi",
+# REM: Stub modules only if they cannot be imported — avoids poisoning sys.modules
+# REM: for subsequent tests (e.g. test_observability.py uses real prometheus_client).
+for _mod, _parent in [
+    ("prometheus_client", None),
+    ("starlette", None),
+    ("starlette.middleware", "starlette"),
+    ("starlette.middleware.base", "starlette.middleware"),
+    ("fastapi", None),
 ]:
     if _mod not in sys.modules:
-        sys.modules[_mod] = MagicMock()
+        try:
+            __import__(_mod)
+        except ImportError:
+            sys.modules[_mod] = MagicMock()
+            if _parent and _parent in sys.modules:
+                setattr(sys.modules[_parent], _mod.rsplit(".", 1)[-1], sys.modules[_mod])
 
 import pytest
 
