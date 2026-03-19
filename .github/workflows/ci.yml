@@ -236,19 +236,18 @@ jobs:
 
       - name: Run full test suite
         run: |
+          SRCROOT=$(pwd)
           python -m coverage run \
-            --include='core/*,api/*,agents/*,toolroom/*' \
-            --omit='core/mqtt_bus.py,core/ollama_service.py,agents/ollama_agent.py' \
+            --include="${SRCROOT}/core/*,${SRCROOT}/api/*,${SRCROOT}/agents/*,${SRCROOT}/toolroom/*" \
+            --omit="${SRCROOT}/core/mqtt_bus.py,${SRCROOT}/core/ollama_service.py,${SRCROOT}/agents/ollama_agent.py" \
             -m pytest tests/ -v --tb=short --no-cov \
             --ignore=tests/test_mqtt_stress.py \
             --ignore=tests/test_e2e_integration.py
-          echo "=== coverage debug config ==="
-          python -m coverage debug config | head -30 || true
-          echo "=== coverage debug data ==="
-          python -m coverage debug data | head -50 || true
+          echo "=== coverage debug data (first 5 files) ==="
+          python -m coverage debug data | head -10 || true
           echo "=== coverage report ==="
-          python -m coverage report --fail-under=80 --ignore-errors
-          python -m coverage xml --ignore-errors
+          python -m coverage report --fail-under=80
+          python -m coverage xml
         env:
           TELSONBASE_ENV: development
           MCP_API_KEY: ci_test_key_not_real_do_not_use_in_production_000000
