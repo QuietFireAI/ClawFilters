@@ -202,11 +202,42 @@ class TestFederationEndpoints:
                 "expires_in_hours": 24
             }
         )
-        
+
         assert response.status_code == 200
         data = response.json()
         assert "invitation" in data
         assert data["qms_status"] == "Please"
+
+    def test_create_trust_invitation_with_name_and_url(self, client, auth_headers):
+        """REM: Test that name/remote_url fields are accepted and relationship is stored."""
+        response = client.post(
+            "/v1/federation/invitations",
+            headers=auth_headers,
+            json={
+                "name": "Acme ClawCoat Node",
+                "remote_url": "https://clawcoat.acme.com",
+                "description": "Branch office",
+                "trust_level": "standard",
+                "expires_in_hours": 48
+            }
+        )
+
+        assert response.status_code == 200
+        data = response.json()
+        assert "invitation" in data
+        assert "relationship_id" in data
+        assert data["relationship_id"] == data["invitation"]["invitation_id"]
+        assert data["qms_status"] == "Please"
+
+        # REM: Verify the pending_outbound relationship appears in the list
+        list_resp = client.get("/v1/federation/relationships", headers=auth_headers)
+        assert list_resp.status_code == 200
+        rels = list_resp.json()["relationships"]
+        inv_id = data["invitation"]["invitation_id"]
+        match = next((r for r in rels if r.get("relationship_id") == inv_id), None)
+        assert match is not None
+        assert match["status"] == "pending_outbound"
+        assert match["remote_identity"]["organization_name"] == "Acme ClawCoat Node"
 
 
 class TestQMSConventions:

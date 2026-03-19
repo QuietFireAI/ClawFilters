@@ -130,6 +130,9 @@ class AnomalyResolution(BaseModel):
 
 # --- Federation Models ---
 class TrustInvitationRequest(BaseModel):
+    name: Optional[str] = None
+    remote_url: Optional[str] = None
+    description: Optional[str] = None
     trust_level: str = "standard"
     allowed_agents: List[str] = ["*"]
     allowed_actions: List[str] = ["message", "query"]
@@ -1523,10 +1526,32 @@ async def create_trust_invitation(
         allowed_actions=request.allowed_actions,
         expires_in_hours=request.expires_in_hours
     )
-    
+
+    # REM: Persist pending_outbound relationship so it appears in the relationships list
+    federation_store.store_relationship({
+        "relationship_id": invitation["invitation_id"],
+        "remote_identity": {
+            "instance_id": request.remote_url or "unknown",
+            "organization_name": request.name or "Remote Instance",
+            "public_key_pem": "",
+            "created_at": invitation["created_at"],
+            "version": "pending",
+            "fingerprint": ""
+        },
+        "trust_level": trust_level.value,
+        "status": "pending_outbound",
+        "allowed_agents": request.allowed_agents,
+        "allowed_actions": request.allowed_actions,
+        "created_at": invitation["created_at"],
+        "description": request.description or "",
+        "remote_url": request.remote_url or "",
+        "invitation_id": invitation["invitation_id"]
+    })
+
     return {
         "invitation": invitation,
-        "instructions": "Share this invitation with the target instance through a secure channel",
+        "relationship_id": invitation["invitation_id"],
+        "instructions": "Share this invitation with the remote instance admin through a secure channel",
         "qms_status": "Please"
     }
 
