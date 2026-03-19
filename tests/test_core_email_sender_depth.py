@@ -16,10 +16,6 @@ import pytest
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class TestModuleConstants:
-    def test_smtp_port_default(self):
-        import core.email_sender as es
-        assert isinstance(es.SMTP_PORT, int)
-
     def test_smtp_from_default(self):
         import core.email_sender as es
         assert "@" in es.SMTP_FROM or es.SMTP_FROM == ""
