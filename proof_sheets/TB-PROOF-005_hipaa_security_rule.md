@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestHIPAASecurityRuleMapping -- 4 tests: HEALTHCARE_COMPLIANCE.md exists, all 12 HIPAA modules present on disk, 45 CFR 164.x citations in source, modules have substantive content (> 1000 bytes)
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -72,4 +72,4 @@ All tests pass. 12 HIPAA compliance modules confirmed present with citations. PH
 
 ---
 
-*Sheet TB-PROOF-005 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-005 | ClawCoat v11.0.3 | March 20, 2026*

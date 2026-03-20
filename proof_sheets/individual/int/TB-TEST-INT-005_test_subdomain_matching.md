@@ -7,7 +7,7 @@
 **Function:** `test_subdomain_matching`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-INT](../../TB-PROOF-INT.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-INT-005 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-INT-005 | TelsonBase v11.0.3 | March 8, 2026*

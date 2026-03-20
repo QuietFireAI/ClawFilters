@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- 9 depth tests added March 15 + 1 security battery test
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -74,4 +74,4 @@ grep "PHIField" core/phi_deidentification.py | head -20
 
 ---
 
-*Sheet TB-PROOF-007 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-007 | ClawCoat v11.0.3 | March 20, 2026*

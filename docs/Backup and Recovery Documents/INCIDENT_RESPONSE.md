@@ -1,6 +1,6 @@
 # ClawCoat Incident Response Plan
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -264,8 +264,8 @@ curl -H "X-API-Key: $KEY" http://localhost:8000/v1/audit/chain/verify
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | Feb 2026 | J. Phillips | Initial release |
-| 1.1 | Mar 8, 2026 | Quietfire AI | Version updated to v11.0.1 |
+| 1.1 | Mar 8, 2026 | Quietfire AI | Version updated to v11.0.3 |
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

@@ -7,7 +7,7 @@
 **Function:** `test_revocation_can_be_cleared`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-013](../../TB-PROOF-013_message_signing.m
 
 ---
 
-*Sheet TB-TEST-INT-014 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-INT-014 | TelsonBase v11.0.3 | March 8, 2026*

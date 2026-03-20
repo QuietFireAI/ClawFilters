@@ -7,7 +7,7 @@
 **Function:** `test_operator_cannot_admin_config`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -44,4 +44,4 @@ Class-level summary: see the [TB-PROOF-045](../../TB-PROOF-045_security_access_c
 
 ---
 
-*Sheet TB-TEST-SEC-032 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-032 | TelsonBase v11.0.3 | March 8, 2026*

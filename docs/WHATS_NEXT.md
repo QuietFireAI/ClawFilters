@@ -1,6 +1,6 @@
 # ClawCoat - What's Next
 
-**Version:** v11.0.1 · **Launch:** March 8, 2026 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Launch:** March 8, 2026 · **Maintainer:** Quietfire AI
 
 This document is an honest account of where ClawCoat stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact - things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
 
@@ -8,7 +8,7 @@ This document is an honest account of where ClawCoat stands at launch and where 
 
 ## What's Shipped and Stable
 
-Everything documented in the README is built, tested, and passing 854 tests. That means:
+Everything documented in the README is built, tested, and passing 6,254 tests. That means:
 
 - Trust governance pipeline (5 tiers: QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT, sequential promotion, instant demotion)
 - Cryptographic audit chain (SHA-256, tamper-evident, 11 tests)
@@ -114,7 +114,7 @@ This section exists because honesty is the whole point.
 - Implemented source code modules mapping to SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, and ABA Model Rules
 - Written 64 SOC 2 controls mapped to specific source files with evidence locations
 - Built behavioral enforcement code: PHI de-identification (18 Safe Harbor identifiers), breach notification (60-day deadline tracking), BAA lifecycle, sanctions tracking, training compliance, minimum necessary enforcement, legal hold, contingency testing
-- Verified all of the above with 854 passing tests — including 90 compliance depth tests added March 15, 2026
+- Verified all of the above with 6,254 passing tests — including 90 compliance depth tests added March 15, 2026
 
 **What ClawCoat has NOT done:**
 - Passed a SOC 2 Type I audit (requires engaging a licensed CPA firm)
@@ -151,4 +151,4 @@ If you find something broken, open an issue. If something is missing, start a di
 
 ---
 
-*ClawCoat v11.0.1 · March 8, 2026 · Quietfire AI*
+*ClawCoat v11.0.3 · March 20, 2026 · Quietfire AI*

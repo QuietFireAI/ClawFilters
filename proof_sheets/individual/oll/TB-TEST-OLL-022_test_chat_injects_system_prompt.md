@@ -7,7 +7,7 @@
 **Function:** `test_chat_injects_system_prompt`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-029](../../TB-PROOF-029_local_llm_ollama.
 
 ---
 
-*Sheet TB-TEST-OLL-022 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-OLL-022 | TelsonBase v11.0.3 | March 8, 2026*

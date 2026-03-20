@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestSelfHostedServices -- docker-compose.yml confirmed: >= 10 services including traefik, redis, postgres, mcp_server
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -82,4 +82,4 @@ docker compose ps
 
 ---
 
-*Sheet TB-PROOF-032 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-032 | ClawCoat v11.0.3 | March 20, 2026*

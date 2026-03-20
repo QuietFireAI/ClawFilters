@@ -1,6 +1,6 @@
 # ClawCoat User Guide
 
-**Version:** v11.0.2 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **For:** Solopreneurs, small teams, and anyone running ClawCoat for the first time
 
 ---
@@ -613,7 +613,7 @@ ClawCoat/
 ├── gateway/                 # Egress proxy (domain whitelist)
 ├── monitoring/              # Prometheus, Grafana, Mosquitto configs
 ├── alembic/                 # Database migrations
-├── tests/                   # 5,777 test suite
+├── tests/                   # 6,254 test suite
 ├── docs/                    # Documentation
 ├── licenses/                # Third-party license texts
 ├── MANNERS.md                  # Agent safety principles
@@ -640,4 +640,4 @@ ClawCoat was created by Jeff Phillips (Quietfire AI). The complete attribution a
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · March 19, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

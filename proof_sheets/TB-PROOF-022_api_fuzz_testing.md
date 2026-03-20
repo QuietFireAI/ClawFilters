@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord -- historical run (107,811 cases, 151 operations, 0 errors) documented in version.py; schemathesis added to requirements-dev.txt for reproducible re-runs
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -67,4 +67,4 @@ schemathesis run http://localhost:8000/openapi.json \
 
 ---
 
-*Sheet TB-PROOF-022 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-022 | ClawCoat v11.0.3 | March 20, 2026*

@@ -1,6 +1,6 @@
 # MANNERS.md - ClawCoat Agent Operating Principles
 
-**Version:** v11.0.1
+**Version:** v11.0.3
 **Effective:** March 8, 2026
 **Author:** Jeff Phillips, Quietfire AI
 
@@ -205,4 +205,4 @@ Built by Quietfire AI. Accountable to our users.
 
 ---
 
-*ClawCoat v11.0.1 - Quietfire AI - March 8, 2026*
+*ClawCoat v11.0.3 - Quietfire AI - March 8, 2026*

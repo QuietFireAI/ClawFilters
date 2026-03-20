@@ -4,7 +4,7 @@
 **Claim Source:** tests/test_observability.py
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -50,4 +50,4 @@ docker compose exec mcp_server python -m pytest tests/test_observability.py -v -
 
 ---
 
-*Sheet TB-PROOF-058 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-058 | ClawCoat v11.0.3 | March 20, 2026*

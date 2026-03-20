@@ -7,7 +7,7 @@
 **Function:** `test_session_invalidation_on_user_deactivation`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -44,4 +44,4 @@ Class-level summary: see the [TB-PROOF-045](../../TB-PROOF-045_security_access_c
 
 ---
 
-*Sheet TB-TEST-SEC-041 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-041 | TelsonBase v11.0.3 | March 8, 2026*

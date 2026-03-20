@@ -7,7 +7,7 @@
 **Function:** `test_health_endpoint_does_not_leak_details`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -44,4 +44,4 @@ Class-level summary: see the [TB-PROOF-047](../../TB-PROOF-047_security_network.
 
 ---
 
-*Sheet TB-TEST-SEC-057 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-057 | TelsonBase v11.0.3 | March 8, 2026*

@@ -7,7 +7,7 @@
 **Function:** `test_grafana_uses_file_based_secret`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-SCRT](../../TB-PROOF-SCRT.md) proof sheet
 
 ---
 
-*Sheet TB-TEST-SCRT-038 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SCRT-038 | TelsonBase v11.0.3 | March 8, 2026*

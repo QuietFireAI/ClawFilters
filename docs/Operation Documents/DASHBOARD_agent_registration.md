@@ -1,6 +1,6 @@
 # Adding Your First Agent - Dashboard Walkthrough
 
-**Version:** v11.0.2 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **Prerequisite:** ClawCoat is running. Docker Desktop is open. You have your API key.
 
 ---
@@ -206,4 +206,4 @@ Same process. Repeat Steps 2-5 with a different name. Each agent gets its own `i
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · March 19, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

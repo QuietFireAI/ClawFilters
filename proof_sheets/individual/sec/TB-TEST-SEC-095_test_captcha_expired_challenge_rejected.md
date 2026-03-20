@@ -7,7 +7,7 @@
 **Function:** `test_captcha_expired_challenge_rejected`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -44,4 +44,4 @@ Class-level summary: see the [TB-PROOF-051](../../TB-PROOF-051_security_runtime_
 
 ---
 
-*Sheet TB-TEST-SEC-095 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-095 | TelsonBase v11.0.3 | March 8, 2026*

@@ -7,7 +7,7 @@
 **Function:** `test_unknown_issuer_rejected`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-IDN](../../TB-PROOF-IDN.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-IDN-015 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-IDN-015 | TelsonBase v11.0.3 | March 8, 2026*

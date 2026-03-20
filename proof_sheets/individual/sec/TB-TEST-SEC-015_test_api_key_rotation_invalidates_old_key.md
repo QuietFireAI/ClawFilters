@@ -7,7 +7,7 @@
 **Function:** `test_api_key_rotation_invalidates_old_key`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -45,4 +45,4 @@ Class-level summary: see the [TB-PROOF-043](../../TB-PROOF-043_security_auth.md)
 
 ---
 
-*Sheet TB-TEST-SEC-015 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-015 | TelsonBase v11.0.3 | March 8, 2026*

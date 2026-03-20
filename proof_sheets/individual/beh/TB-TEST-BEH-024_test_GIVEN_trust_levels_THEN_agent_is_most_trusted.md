@@ -7,7 +7,7 @@
 **Function:** `test_GIVEN_trust_levels_THEN_agent_is_most_trusted`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-BEH](../../TB-PROOF-BEH.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-BEH-024 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-BEH-024 | TelsonBase v11.0.3 | March 8, 2026*

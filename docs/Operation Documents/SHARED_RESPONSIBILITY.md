@@ -1,6 +1,6 @@
 # ClawCoat - Shared Responsibility Matrix
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ## Model Overview
 
@@ -42,4 +42,4 @@ ClawCoat is self-hosted software deployed on customer-controlled infrastructure 
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

@@ -1,6 +1,6 @@
 # ClawCoat Disaster Recovery Test Procedure
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **Last Updated:** March 8, 2026
 **Script:** `scripts/dr_test.sh`
 
@@ -172,4 +172,4 @@ Test results are written to `logs/dr_test_YYYYMMDD.log` and should be retained f
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

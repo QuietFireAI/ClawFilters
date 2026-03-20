@@ -7,7 +7,7 @@
 **Function:** `test_aes256gcm_ciphertext_differs_from_plaintext`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-044](../../TB-PROOF-044_security_encrypti
 
 ---
 
-*Sheet TB-TEST-SEC-020 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-020 | TelsonBase v11.0.3 | March 8, 2026*

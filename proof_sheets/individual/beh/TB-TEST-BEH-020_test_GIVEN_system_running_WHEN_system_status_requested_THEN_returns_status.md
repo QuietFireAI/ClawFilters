@@ -7,7 +7,7 @@
 **Function:** `test_GIVEN_system_running_WHEN_system_status_requested_THEN_returns_status`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-BEH](../../TB-PROOF-BEH.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-BEH-020 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-BEH-020 | TelsonBase v11.0.3 | March 8, 2026*

@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- test_openclaw.py -- manners score tracking and auto-demotion threshold confirmed
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -71,4 +71,4 @@ References to Manners score checking, auto-demotion logic, and threshold compari
 
 ---
 
-*Sheet TB-PROOF-038 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-038 | ClawCoat v11.0.3 | March 20, 2026*

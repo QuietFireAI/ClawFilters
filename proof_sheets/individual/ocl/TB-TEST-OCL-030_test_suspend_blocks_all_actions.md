@@ -7,7 +7,7 @@
 **Function:** `test_suspend_blocks_all_actions`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-037](../../TB-PROOF-037_openclaw_kill_swi
 
 ---
 
-*Sheet TB-TEST-OCL-030 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-OCL-030 | TelsonBase v11.0.3 | March 8, 2026*

@@ -1,6 +1,6 @@
 # ClawCoat - Secrets Management
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -289,4 +289,4 @@ both recommend regular key rotation; the specific interval depends on your risk 
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

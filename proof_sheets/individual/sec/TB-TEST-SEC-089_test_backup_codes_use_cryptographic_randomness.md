@@ -7,7 +7,7 @@
 **Function:** `test_backup_codes_use_cryptographic_randomness`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -45,4 +45,4 @@ Class-level summary: see the [TB-PROOF-050](../../TB-PROOF-050_security_cryptogr
 
 ---
 
-*Sheet TB-TEST-SEC-089 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-089 | TelsonBase v11.0.3 | March 8, 2026*

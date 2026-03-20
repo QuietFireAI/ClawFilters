@@ -4,7 +4,7 @@
 **Claim Source:** tests/test_contracts.py
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -48,4 +48,4 @@ docker compose exec mcp_server python -m pytest tests/test_contracts.py -v --tb=
 
 ---
 
-*Sheet TB-PROOF-066 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-066 | ClawCoat v11.0.3 | March 20, 2026*

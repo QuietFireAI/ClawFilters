@@ -1,6 +1,6 @@
 # ClawCoat - Installation Guide for Windows
 
-**Version:** v11.0.2 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **Target Audience:** Windows users, including those new to Docker
 
 ---
@@ -345,7 +345,7 @@ For the full scoring model, violation types, and API reference: `docs/Compliance
 | API routes depth | 157 | Security, tenancy, auth, and MCP gateway routes |
 | Infrastructure & E2E | 163 | Full agent lifecycle, federation, audit chain integrity, error sanitization |
 | Coverage boost | 549 | Supplemental coverage across miscellaneous modules |
-| **Total** | **5,777** | |
+| **Total** | **6,254** | |
 
 Run the full suite from inside the Docker container:
 
@@ -353,7 +353,7 @@ Run the full suite from inside the Docker container:
 docker compose exec mcp_server python -m pytest tests/ --ignore=tests/test_mqtt_stress.py -q
 ```
 
-Expected result: **5700+ passed, 3 skipped, 0 failed**
+Expected result: **6,254 passed, 54 skipped, 0 failed**
 
 The 3 skips are expected - they are Celery-configuration tests that are skipped when Celery runs under the unit-test stub. Everything else should be green.
 
@@ -489,4 +489,4 @@ This adds MailHog. Access it at `http://localhost:8025` to view emails sent by t
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · March 19, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

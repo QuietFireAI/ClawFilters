@@ -7,7 +7,7 @@
 **Function:** `test_trust_level_promotion_path_intact`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-CTRCT](../../TB-PROOF-CTRCT.md) proof she
 
 ---
 
-*Sheet TB-TEST-CTRCT-004 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-CTRCT-004 | TelsonBase v11.0.3 | March 8, 2026*

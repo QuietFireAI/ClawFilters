@@ -1,6 +1,6 @@
 # ClawCoat Backup & Recovery Guide
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -143,4 +143,4 @@ rsync -av backups/ nas:/volume1/telsonbase-backups/
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

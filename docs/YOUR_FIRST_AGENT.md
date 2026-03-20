@@ -1,6 +1,6 @@
 # Your First Agent
 
-**Version:** v11.0.2 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 **Who this is for:** You just finished installation. ClawCoat is running. This guide walks you through registering your first agent and watching it governed - blocked, promoted, and unblocked - start to finish.
 
@@ -266,4 +266,4 @@ When `X-Agent-Key` is present, ClawCoat verifies the key matches the `instance_i
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · Apache 2.0*
+*ClawCoat v11.0.3 · Quietfire AI · Apache 2.0*

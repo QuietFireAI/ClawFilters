@@ -6,7 +6,7 @@ Every claim made on [clawcoat.com](https://clawcoat.com) has a corresponding evi
 
 **Format:** Each sheet follows a standardized format inspired by Safety Data Sheets (SDS). Grab the sheet number, verify the claim, move on.
 
-**Last Verified:** March 15, 2026 | **Version:** v11.0.2 | **Tests Passing:** 854 | **Proof Documents:** 67 (52 claim-level + 15 test-suite-level)
+**Last Verified:** March 20, 2026 | **Version:** v11.0.3 | **Tests Passing:** 6,254 | **Proof Documents:** 67 (52 claim-level + 15 test-suite-level)
 
 ---
 
@@ -22,7 +22,7 @@ Each sheet carries a **Test Coverage** rating — added March 15, 2026. This is 
 | **INFRA** | Verified through infrastructure/deployment checks (Docker, curl); requires running stack |
 | **DOCS** | Documentation-level claim; source code implements it but no automated test verifies the behavior |
 
-The governance pipeline (trust tiers, manners scoring, HITL gates, audit chain) is VERIFIED — those are the 854 tests. The compliance infrastructure modules (HIPAA, HITRUST, breach, sanctions, BAA) are implemented and now have depth tests added March 15, 2026. Some claim sheets use grep-based verification commands — they are honest about what they verify (source structure, not runtime behavior). This is the starting line, not the finish. See [CONTRIBUTING.md](../CONTRIBUTING.md) for how to add behavioral tests.
+The governance pipeline (trust tiers, manners scoring, HITL gates, audit chain) is VERIFIED — those are the 6,254 tests. The compliance infrastructure modules (HIPAA, HITRUST, breach, sanctions, BAA) are implemented and now have depth tests added March 15, 2026. Some claim sheets use grep-based verification commands — they are honest about what they verify (source structure, not runtime behavior). This is the starting line, not the finish. See [CONTRIBUTING.md](../CONTRIBUTING.md) for how to add behavioral tests.
 
 ---
 
@@ -31,7 +31,7 @@ The governance pipeline (trust tiers, manners scoring, HITL gates, audit chain) 
 ### Test Suite and Code Quality
 | Sheet | Claim | Test Coverage |
 |---|---|---|
-| [TB-PROOF-001](TB-PROOF-001_tests_passing.md) | 854 Tests Passing | VERIFIED |
+| [TB-PROOF-001](TB-PROOF-001_tests_passing.md) | 6,254 Tests Passing | VERIFIED |
 | [TB-PROOF-002](TB-PROOF-002_security_tests.md) | 96 Dedicated Security Tests | VERIFIED |
 | [TB-PROOF-003](TB-PROOF-003_production_hardening.md) | 22 Production Hardening Items Completed | VERIFIED  |
 
@@ -128,7 +128,7 @@ The governance pipeline (trust tiers, manners scoring, HITL gates, audit chain) 
 ### Full Test Suite Manifest
 | Sheet | Claim | Test Coverage |
 |---|---|---|
-| [TB-PROOF-052](TB-PROOF-052_full_test_manifest.md) | Complete 854-Test Suite Manifest - every file, class, and function name | VERIFIED |
+| [TB-PROOF-052](TB-PROOF-052_full_test_manifest.md) | Complete 6,254-Test Suite Manifest - every file, class, and function name | VERIFIED |
 
 ### Test Suite Class-Level Evidence
 *One proof sheet per test suite. Every test class in each suite is listed with its test count and what it proves.*
@@ -168,4 +168,4 @@ docker compose exec mcp_server python -m pytest tests/ -v --tb=short --ignore=te
 
 ---
 
-*Generated February 23, 2026 | ClawCoat v11.0.2 | March 19, 2026*
+*Generated February 23, 2026 | ClawCoat v11.0.3 | March 20, 2026*

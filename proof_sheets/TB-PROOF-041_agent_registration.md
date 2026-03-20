@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- registration, trust transitions, kill switch, manners auto-demotion, and model validator enforcement all covered by test_openclaw.py (55 tests)
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -476,4 +476,4 @@ No. Registration with a trust override uses `promote_trust()` called once per st
 
 ---
 
-*Sheet TB-PROOF-041 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-041 | ClawCoat v11.0.3 | March 20, 2026*

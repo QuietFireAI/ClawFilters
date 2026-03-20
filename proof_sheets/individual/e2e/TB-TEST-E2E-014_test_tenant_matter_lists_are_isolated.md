@@ -7,7 +7,7 @@
 **Function:** `test_tenant_matter_lists_are_isolated`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-042](../../TB-PROOF-042_tenant_access_con
 
 ---
 
-*Sheet TB-TEST-E2E-014 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-E2E-014 | TelsonBase v11.0.3 | March 8, 2026*

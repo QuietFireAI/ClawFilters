@@ -7,7 +7,7 @@
 **Function:** `test_GIVEN_chain_missing_agent_origin_WHEN_validated_THEN_flagged_as_invalid`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-BEH](../../TB-PROOF-BEH.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-BEH-013 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-BEH-013 | TelsonBase v11.0.3 | March 8, 2026*

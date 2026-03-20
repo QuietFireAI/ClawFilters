@@ -7,7 +7,7 @@
 **Function:** `test_parse_chain_embedded_in_text`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-QMS](../../TB-PROOF-QMS.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-QMS-052 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-QMS-052 | TelsonBase v11.0.3 | March 8, 2026*

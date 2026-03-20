@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord -- 107,811 test case count documented in version.py; API endpoint count >= 100 confirmed by source scan; schemathesis in requirements-dev.txt
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -52,4 +52,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-023 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-023 | ClawCoat v11.0.3 | March 20, 2026*
