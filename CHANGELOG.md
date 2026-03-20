@@ -7,6 +7,23 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [11.0.3] - 2026-03-20 (Bug fixes — route ordering, mcp_gateway imports, coverage gate 80%)
+
+**Status:** 6,254 passed, 54 skipped, 0 failed. CI run #367 GREEN. Coverage: ≥80% (gate: 80%).
+**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
+
+### Added
+- Depth tests for: `api/openclaw_routes.py` (~100 tests), `api/identiclaw_routes.py` (46), `api/mcp_gateway.py` (~40), `core/database.py` (12), `core/ollama_service.py` (88), `agents/ollama_agent.py` (50)
+
+### Changed
+- CI coverage gate: 75% → 80% (confirmed passing on run #367)
+
+### Fixed
+- `api/compliance_routes.py`: `GET /breach/overdue` was shadowed by `GET /breach/{assessment_id}` — moved static route above parametric route
+- `api/mcp_gateway.py`: replaced `from core.config import settings` with `get_settings()` in 3 functions; replaced `from core.openclaw import manager` with `openclaw_manager` in 4 functions; moved openclaw import in `register_as_agent` to after trust-level validation so invalid level returns correct error
+
+---
+
 ## [11.0.2] - 2026-03-19 (Sprint 1 complete — deep coverage, RBAC persistence, governance hardening, federation)
 
 **Status:** 5,416 passed, 3 skipped, 0 failed. CI run #325 GREEN. Coverage: 76.13% (gate: 63%).
