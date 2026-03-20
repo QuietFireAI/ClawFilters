@@ -203,10 +203,10 @@ async def system_status() -> dict:
         import redis as redis_lib
 
         from core.audit import audit
-        from core.config import settings
+        from core.config import get_settings
         from core.openclaw import manager as openclaw_manager
 
-        r = redis_lib.from_url(settings.redis_url, decode_responses=True)
+        r = redis_lib.from_url(get_settings().redis_url, decode_responses=True)
         redis_ok = r.ping()
 
         chain_state = audit.get_chain_state()
@@ -237,9 +237,9 @@ async def get_health() -> dict:
     try:
         import redis as redis_lib
 
-        from core.config import settings
+        from core.config import get_settings
 
-        r = redis_lib.from_url(settings.redis_url, decode_responses=True)
+        r = redis_lib.from_url(get_settings().redis_url, decode_responses=True)
         redis_ok = r.ping()
         return {
             "qms_status": "Thank_You",
@@ -337,7 +337,6 @@ async def register_as_agent(
         override_reason:      Justification for starting above quarantine (min 10 chars).
     """
     try:
-        from core.config import settings
         from core.openclaw import manager
 
         _TRUST_LADDER = ["quarantine", "probation", "resident", "citizen"]
