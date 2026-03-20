@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use ClawCoat in your research or work, please cite it using this metadata."
 title: "ClawCoat"
-version: 11.0.2
-date-released: 2026-03-08
+version: 11.0.3
+date-released: 2026-03-20
 license: Apache-2.0
 abstract: >
   ClawCoat is a self-hosted zero-trust AI agent governance platform providing

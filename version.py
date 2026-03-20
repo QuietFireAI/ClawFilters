@@ -541,5 +541,11 @@
 # REM:         - README: certification boundary disclosure, RBAC role count corrected
 # REM:         - proof_sheets: HIPAA/HITRUST/SOC2 rating corrections
 # REM: =======================================================================================
+# REM: 11.0.3 - Bug fixes and coverage gate 80% (March 20, 2026):
+# REM:         - Fix: api/compliance_routes.py — breach/overdue route ordering
+# REM:         - Fix: api/mcp_gateway.py — get_settings() + openclaw_manager imports
+# REM:         - CI coverage gate: 75% → 80% (confirmed ≥80% on run #367)
+# REM:         - 6,254 tests passing
+# REM: =======================================================================================
 
-__version__ = "11.0.2"
+__version__ = "11.0.3"
