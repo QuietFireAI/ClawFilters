@@ -7,7 +7,7 @@
 **Function:** `test_tenant_type_no_duplicates`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-CTRCT](../../TB-PROOF-CTRCT.md) proof she
 
 ---
 
-*Sheet TB-TEST-CTRCT-002 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-CTRCT-002 | TelsonBase v11.0.3 | March 8, 2026*

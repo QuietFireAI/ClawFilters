@@ -1,6 +1,6 @@
 # ClawCoat Glossary
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 Definitions of key terms used throughout ClawCoat documentation and code.
 

@@ -7,7 +7,7 @@
 **Function:** `test_audit_chain_creates_entries`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-009](../../TB-PROOF-009_audit_chain_sha25
 
 ---
 
-*Sheet TB-TEST-INT-015 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-INT-015 | TelsonBase v11.0.3 | March 8, 2026*

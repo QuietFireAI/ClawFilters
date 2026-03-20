@@ -1,5 +1,5 @@
 # ClawCoat - Frequently Asked Questions
-**Version:** v11.0.2 · **Maintainer:** Quietfire AI - support@clawcoat.com
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI - support@clawcoat.com
 
 ClawCoat is the platform for managing OpenClaw agents through earned trust. Agents start at QUARANTINE and work their way up - QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT - through demonstrated behavior and explicit human authorization at every step. The compliance infrastructure underneath (audit trails, kill switches, SOC 2 controls) is the proof, not the pitch.
 
@@ -555,7 +555,7 @@ Results are documented and public:
 - **pip-audit (dependency CVEs):** 1 known CVE - `ecdsa` CVE-2024-23342. No upstream fix
   exists. Accepted risk - ClawCoat uses HS256 (HMAC), not ECDSA. `ecdsa` is an unused
   transitive dependency that has been removed from the production image.
-- **Schemathesis (API contract testing):** 5,777 tests passing. Server errors reduced
+- **Schemathesis (API contract testing):** 6,254 tests passing. Server errors reduced
   from 657 → 0 across hardening sessions.
 - **Pen test preparation documentation:** Full attack surface inventory, OWASP Top 10
   mapping, and scoped test plan available in `docs/PENTEST_PREPARATION.md`.
@@ -584,7 +584,7 @@ and carries no corporate backing or venture influence.
 
 The answer to "why trust it" is not credentials - it is evidence:
 
-- **5,777 passing tests** that you can run yourself in under five minutes
+- **6,254 passing tests** that you can run yourself in under five minutes
 - **788 proof documents** - 67 class-level evidence sheets that map every public claim
   to source code, test classes, and a verification command you can run
 - **0 high-severity findings** in static analysis across 93,893 lines
@@ -594,7 +594,7 @@ The credibility of ClawCoat is not a function of who built it. It is a function 
 whether the claims hold up under inspection. The proof sheets exist precisely so that
 the work speaks for itself.
 
-**Proof sheet:** `proof_sheets/TB-PROOF-001_tests_passing.md` - 5,777 tests, verification command.
+**Proof sheet:** `proof_sheets/TB-PROOF-001_tests_passing.md` - 6,254 tests, verification command.
 
 **Skeptic follow-up:** *"AI wrote this code - how do you know it's trustworthy?"*
 Every AI model was engaged as a collaborator, not a code generator. The architecture,
@@ -872,4 +872,4 @@ Open an issue on GitHub or email support@clawcoat.com
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · March 19, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

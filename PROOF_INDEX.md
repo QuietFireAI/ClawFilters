@@ -2,7 +2,7 @@
 
 **Every claim is backed by evidence.**
 
-**Last Verified:** March 19, 2026 &nbsp;|&nbsp; **Version:** v11.0.2 &nbsp;|&nbsp; **Tests Passing:** 5,416 &nbsp;|&nbsp; **Proof Documents:** 788
+**Last Verified:** March 20, 2026 &nbsp;|&nbsp; **Version:** v11.0.3 &nbsp;|&nbsp; **Tests Passing:** 6,254 &nbsp;|&nbsp; **Proof Documents:** 788
 
 ---
 
@@ -74,4 +74,4 @@ Question any claim. Run the command. That is the point.
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · Apache 2.0*
+*ClawCoat v11.0.3 · Quietfire AI · Apache 2.0*

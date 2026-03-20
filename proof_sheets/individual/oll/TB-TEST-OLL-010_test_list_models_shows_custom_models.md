@@ -7,7 +7,7 @@
 **Function:** `test_list_models_shows_custom_models`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-029](../../TB-PROOF-029_local_llm_ollama.
 
 ---
 
-*Sheet TB-TEST-OLL-010 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-OLL-010 | TelsonBase v11.0.3 | March 8, 2026*

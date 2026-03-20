@@ -7,7 +7,7 @@
 **Function:** `test_secure_storage_dict_encryption`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-010](../../TB-PROOF-010_aes256_encryption
 
 ---
 
-*Sheet TB-TEST-INT-026 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-INT-026 | TelsonBase v11.0.3 | March 8, 2026*

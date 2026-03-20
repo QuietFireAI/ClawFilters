@@ -1,6 +1,6 @@
 # OpenClaw Operations Guide
 
-## ClawCoat v11.0.1 - "Control Your Claw"
+## ClawCoat v11.0.3 - "Control Your Claw"
 
 **Architecture:** ClawCoat acts as a governed MCP proxy. OpenClaw is never modified - ClawCoat wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
 
@@ -367,4 +367,4 @@ curl -s -H "X-API-Key: $env:MCP_API_KEY" "http://localhost:8000/v1/audit/chain/e
 
 ---
 
-*ClawCoat v11.0.1 · OpenClaw Governance · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · OpenClaw Governance · Quietfire AI · March 8, 2026*

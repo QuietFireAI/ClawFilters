@@ -1,5 +1,5 @@
 # ClawCoat - Security Policy
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI - security@clawcoat.com
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI - security@clawcoat.com
 
 ClawCoat is built on zero-trust principles. Every agent message is cryptographically signed, every action requires declared capabilities, and behavioral anomalies trigger automatic quarantine.
 
@@ -11,7 +11,7 @@ ClawCoat is built on zero-trust principles. Every agent message is cryptographic
 
 | Version | Supported |
 |---|---|
-| **v11.0.1** (Current) | ✅ Active - full support |
+| **v11.0.3** (Current) | ✅ Active - full support |
 | v10.0.0Bminus | ✅ Security updates only |
 | < v10.0.0Bminus | ❌ Not supported |
 
@@ -97,7 +97,7 @@ ClawCoat's security model is documented across the following sources. There is n
 
 ---
 
-## v11.0.1 Security Posture
+## v11.0.3 Security Posture
 
 Current verified security status as of March 8, 2026:
 
@@ -145,4 +145,4 @@ Security patches are announced via:
 
 *"Data sovereignty is security sovereignty."* - Quietfire AI
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

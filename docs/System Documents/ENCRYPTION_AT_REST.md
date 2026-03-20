@@ -1,6 +1,6 @@
 # ClawCoat - Encryption at Rest Guide
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ## Overview
 
@@ -274,4 +274,4 @@ For detailed compliance documentation, see [LEGAL_COMPLIANCE.md](LEGAL_COMPLIANC
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

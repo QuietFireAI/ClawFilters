@@ -7,7 +7,7 @@
 **Function:** `test_propose_approved_source_creates_approval`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-TOOL](../../TB-PROOF-TOOL.md) proof sheet
 
 ---
 
-*Sheet TB-TEST-TOOL-058 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-TOOL-058 | TelsonBase v11.0.3 | March 8, 2026*

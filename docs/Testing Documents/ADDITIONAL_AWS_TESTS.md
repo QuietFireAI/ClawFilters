@@ -99,4 +99,4 @@ File the papers March 1st. Then you decide who's worth showing it to.
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

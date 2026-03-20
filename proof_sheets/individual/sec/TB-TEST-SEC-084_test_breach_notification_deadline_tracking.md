@@ -7,7 +7,7 @@
 **Function:** `test_breach_notification_deadline_tracking`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -46,4 +46,4 @@ Class-level summary: see the [TB-PROOF-049](../../TB-PROOF-049_security_complian
 
 ---
 
-*Sheet TB-TEST-SEC-084 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-084 | TelsonBase v11.0.3 | March 8, 2026*

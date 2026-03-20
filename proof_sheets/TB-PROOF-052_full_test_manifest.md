@@ -1,23 +1,23 @@
 # TB-PROOF-052 - Full Test Suite Manifest
 
 **Sheet ID:** TB-PROOF-052
-**Claim Source:** README.md — "5,416 tests passing"
+**Claim Source:** README.md — "6,254 tests passing"
 **Status:** VERIFIED
-**Test Coverage:** VERIFIED — pytest full suite — 5,416 tests across 88 files
-**Last Verified:** March 19, 2026 (CI run #309)
-**Version:** v11.0.2
+**Test Coverage:** VERIFIED — pytest full suite — 6,254 tests across 88 files
+**Last Verified:** March 20, 2026 (CI run #367)
+**Version:** v11.0.3
 
 ---
 
 ## Exact Claim
 
-> "5,416 tests passing. 3 skipped. 0 failed."
+> "6,254 tests passing. 54 skipped. 0 failed."
 
 This sheet is the complete manifest of every test file in the ClawCoat test suite. An outside observer can clone the repository, run the verification command, and confirm the count independently.
 
 ## Verdict
 
-VERIFIED — 5,416 tests pass, 3 skipped, 0 failed. CI run #309, GitHub Actions integration stage (real Postgres + Redis). Coverage: 76.13%. The 3 skipped tests are Celery-configuration tests skipped when Celery runs under the unit-test stub.
+VERIFIED — 6,254 tests pass, 54 skipped. 0 failed. CI run #367, GitHub Actions integration stage (real Postgres + Redis). Coverage: ≥80%. The 54 skipped tests are Celery-configuration tests skipped when Celery runs under the unit-test stub.
 
 ## Verification Command
 
@@ -30,7 +30,7 @@ docker compose exec mcp_server python -m pytest tests/ \
 ## Expected Result
 
 ```
-5416 passed, 3 skipped
+6254 passed, 54 skipped
 ```
 
 ---
@@ -235,7 +235,7 @@ Local LLM inference: model management, generation, chat, health checks, async sa
 | API Routes Depth | 4 | 157 |
 | User Management & Hardening | 3 | 127 |
 | Coverage Boost | 6 | 402 |
-| **TOTAL (standard run)** | **88** | **5,416** |
+| **TOTAL (standard run)** | **88** | **6,254** |
 
 ---
 
@@ -249,4 +249,4 @@ docker compose exec mcp_server python -m pytest tests/test_mqtt_stress.py -v --t
 
 ---
 
-*Sheet TB-PROOF-052 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-052 | ClawCoat v11.0.3 | March 20, 2026*

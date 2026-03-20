@@ -7,7 +7,7 @@
 **Function:** `test_auto_demotion_records_in_history`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-038](../../TB-PROOF-038_manners_auto_demo
 
 ---
 
-*Sheet TB-TEST-OCL-039 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-OCL-039 | TelsonBase v11.0.3 | March 8, 2026*

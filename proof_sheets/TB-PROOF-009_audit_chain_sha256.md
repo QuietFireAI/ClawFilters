@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestAuditTrailIntegrity -- 11 behavioral tests
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -71,4 +71,4 @@ All audit chain tests pass, including tamper detection tests that verify chain b
 
 ---
 
-*Sheet TB-PROOF-009 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-009 | ClawCoat v11.0.3 | March 20, 2026*

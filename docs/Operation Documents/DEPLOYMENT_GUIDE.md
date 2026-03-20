@@ -1,6 +1,6 @@
 # ClawCoat Deployment Guide
 
-**Version:** v11.0.2 · **Updated:** March 19, 2026
+**Version:** v11.0.3 · **Updated:** March 20, 2026
 **Audience:** IT administrators, managed service providers (MSPs), and systems integrators deploying ClawCoat on customer premises for law firms and professional services organizations.
 
 ---
@@ -922,4 +922,4 @@ For deployment assistance, contact your ClawCoat account representative or visit
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · March 19, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

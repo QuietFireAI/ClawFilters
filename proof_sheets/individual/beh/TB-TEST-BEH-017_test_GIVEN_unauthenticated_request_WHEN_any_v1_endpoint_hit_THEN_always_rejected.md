@@ -7,7 +7,7 @@
 **Function:** `test_GIVEN_unauthenticated_request_WHEN_any_v1_endpoint_hit_THEN_always_rejected`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-BEH](../../TB-PROOF-BEH.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-BEH-017 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-BEH-017 | TelsonBase v11.0.3 | March 8, 2026*

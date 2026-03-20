@@ -1,5 +1,5 @@
 # Toolroom Trust Level Matrix
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 This document defines how agent trust levels govern toolroom access. It is the authoritative reference for operators configuring tool designations and for agents understanding what is available at each tier.
 
@@ -197,4 +197,4 @@ AGENT tier re-verification is the strictest: 99.9% success rate required, 0 anom
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

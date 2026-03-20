@@ -7,7 +7,7 @@
 **Function:** `test_approval_workflow_approve`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-019](../../TB-PROOF-019_hitl_approval_gat
 
 ---
 
-*Sheet TB-TEST-INT-006 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-INT-006 | TelsonBase v11.0.3 | March 8, 2026*

@@ -7,7 +7,7 @@
 **Function:** `test_mfa_enrollment`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -44,4 +44,4 @@ Class-level summary: see the [TB-PROOF-E2E](../../TB-PROOF-E2E.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-E2E-018 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-E2E-018 | TelsonBase v11.0.3 | March 8, 2026*

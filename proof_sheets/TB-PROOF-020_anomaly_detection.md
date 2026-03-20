@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- pytest -k anomal -- behavioral anomaly detection tests
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -67,4 +67,4 @@ All anomaly detection tests pass, validating all 7 detection types.
 
 ---
 
-*Sheet TB-PROOF-020 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-020 | ClawCoat v11.0.3 | March 20, 2026*

@@ -1,6 +1,6 @@
 # ClawCoat - API Reference
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 # API Reference
 
@@ -969,4 +969,4 @@ See [MCP Gateway](#mcp-gateway-goose--claude-desktop-integration) for complete G
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

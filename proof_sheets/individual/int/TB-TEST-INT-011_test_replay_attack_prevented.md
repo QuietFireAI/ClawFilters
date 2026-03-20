@@ -7,7 +7,7 @@
 **Function:** `test_replay_attack_prevented`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-013](../../TB-PROOF-013_message_signing.m
 
 ---
 
-*Sheet TB-TEST-INT-011 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-INT-011 | TelsonBase v11.0.3 | March 8, 2026*

@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestTenantAccessControl -- allowed_actors data model, enforcement function existence, 403 enforcement, and None return for unknown ID all confirmed
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -33,10 +33,10 @@ VERIFIED - `Tenant.allowed_actors` is populated on creation with `auth.actor` (t
 
 ### Data Model - `core/tenancy.py`
 
-`Tenant` dataclass has two access control fields added in v11.0.1:
+`Tenant` dataclass has two access control fields added in v11.0.3:
 
 ```python
-# REM: v11.0.1 - Access control: creator and explicitly granted actors only
+# REM: v11.0.3 - Access control: creator and explicitly granted actors only
 created_by: str = "system"
 allowed_actors: List[str] = field(default_factory=list)
 ```
@@ -110,4 +110,4 @@ pytest tests/test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_acc
 
 ---
 
-*Sheet TB-PROOF-042 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-042 | ClawCoat v11.0.3 | March 20, 2026*

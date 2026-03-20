@@ -1,6 +1,6 @@
 # ClawCoat Testing Guide
 
-**Version:** v11.0.1 | **Tests Passing:** 720 (1 skipped*) | **Updated:** March 8, 2026
+**Version:** v11.0.3 | **Tests Passing:** 720 (1 skipped*) | **Updated:** March 8, 2026
 
 *\* The 1 skipped test is intentional - see [The 1 Skipped](#the-1-skipped) below.*
 
@@ -530,4 +530,4 @@ docker compose exec mcp_server alembic upgrade head
 
 ---
 
-*ClawCoat v11.0.1 - Quietfire AI - March 8, 2026*
+*ClawCoat v11.0.3 - Quietfire AI - March 8, 2026*

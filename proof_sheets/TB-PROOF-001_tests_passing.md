@@ -3,19 +3,19 @@
 **Sheet ID:** TB-PROOF-001
 **Claim Source:** clawcoat.com - Hero Section / README.md
 **Status:** VERIFIED
-**Test Coverage:** VERIFIED — pytest full suite (unit + integration) — 5,416 tests
-**Last Verified:** March 19, 2026 (CI run #309)
-**Version:** v11.0.2
+**Test Coverage:** VERIFIED — pytest full suite (unit + integration) — 6,254 tests
+**Last Verified:** March 20, 2026 (CI run #367)
+**Version:** v11.0.3
 
 ---
 
 ## Exact Claim
 
-> "5,416 tests passing. 3 skipped. 0 failed."
+> "6,254 tests passing. 54 skipped. 0 failed."
 
 ## Verdict
 
-VERIFIED — **5,416 passing, 3 skipped, 0 failed**. Verified via CI run #309 (GitHub Actions, real Postgres + Redis integration stage). Coverage: 76.13% (gate: 63%). Includes original governance and security tests plus deep coverage of every core module, agent layer, toolroom, compliance infrastructure, and API routes.
+VERIFIED — **6,254 passing, 54 skipped, 0 failed**. Verified via CI run #367 (GitHub Actions, real Postgres + Redis integration stage). Coverage: ≥80% (gate: 80%). Includes original governance and security tests plus deep coverage of every core module, agent layer, toolroom, compliance infrastructure, and API routes.
 
 ## Evidence
 
@@ -108,7 +108,7 @@ VERIFIED — **5,416 passing, 3 skipped, 0 failed**. Verified via CI run #309 (G
 | `test_capabilities.py` | 15 | Capability profiles and declarations |
 | `test_signing.py` | 13 | RSA/Ed25519 payload signing |
 | `test_contracts.py` | 7 | Enum contract tripwires + version consistency |
-| **TOTAL (standard run)** | **5,416** | **Full governance platform** |
+| **TOTAL (standard run)** | **6,254** | **Full governance platform** |
 
 ### Not Counted: `test_mqtt_stress.py` (26 tests)
 Excluded from the standard run — requires a live MQTT broker. Stress/load test, not a correctness test. Passes when run against a running stack.
@@ -122,7 +122,7 @@ Excluded from the standard run — requires a live MQTT broker. Stress/load test
 | 8.0.2 | 727 | Stability fixes, multi-stage Dockerfile |
 | 9.0.0B | 720 | OpenClaw + AGENT 5th tier |
 | 11.0.1 | 854 | OpenClaw depth, integration tests |
-| **11.0.2** | **5,416** | **Deep coverage: all core modules, agents, toolroom, compliance, API routes** |
+| **11.0.3** | **6,254** | **Deep coverage: all core modules, agents, toolroom, compliance, API routes** |
 
 ## Verification Command
 
@@ -135,9 +135,9 @@ docker compose exec mcp_server python -m pytest tests/ \
 ## Expected Result
 
 ```
-5416 passed, 3 skipped
+6254 passed, 54 skipped
 ```
 
 ---
 
-*Sheet TB-PROOF-001 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-001 | ClawCoat v11.0.3 | March 20, 2026*

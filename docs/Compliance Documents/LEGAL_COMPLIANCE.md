@@ -1,6 +1,6 @@
 # ClawCoat - Legal & Regulatory Compliance Security Profile
 
-**Version:** v11.0.1 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 **Platform:** Zero-Trust AI Agent Security Platform
 **Target Markets:** Legal · Real Estate · Insurance · Accounting
 
@@ -403,4 +403,4 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

@@ -7,7 +7,7 @@
 **Function:** `test_GIVEN_valid_chain_with_all_blocks_WHEN_validated_THEN_passes_validation`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-BEH](../../TB-PROOF-BEH.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-BEH-012 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-BEH-012 | TelsonBase v11.0.3 | March 8, 2026*

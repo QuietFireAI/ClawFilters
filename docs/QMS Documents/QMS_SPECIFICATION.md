@@ -515,4 +515,4 @@ Legacy functions (`format_qms()`, `parse_qms()`, `is_qms_formatted()`, `validate
 
 ---
 
-*ClawCoat v11.0.1 · QMS™ v2.1.6 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · QMS™ v2.1.6 · Quietfire AI · March 8, 2026*

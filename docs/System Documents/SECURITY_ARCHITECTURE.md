@@ -1,6 +1,6 @@
 # ClawCoat - Security Architecture
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 # Security Architecture
 
@@ -684,4 +684,4 @@ Quick reference:
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

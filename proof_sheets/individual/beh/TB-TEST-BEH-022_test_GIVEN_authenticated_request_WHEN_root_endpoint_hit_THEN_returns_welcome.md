@@ -7,7 +7,7 @@
 **Function:** `test_GIVEN_authenticated_request_WHEN_root_endpoint_hit_THEN_returns_welcome`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-BEH](../../TB-PROOF-BEH.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-BEH-022 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-BEH-022 | TelsonBase v11.0.3 | March 8, 2026*

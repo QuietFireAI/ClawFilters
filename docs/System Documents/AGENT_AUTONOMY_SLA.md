@@ -7,7 +7,7 @@
 **Effective Date:** March 2026
 **Author:** Quietfire AI
 **License:** Apache 2.0
-**Status:** Active, reference implementation in ClawCoat v11.0.1
+**Status:** Active, reference implementation in ClawCoat v11.0.3
 
 ---
 
@@ -283,7 +283,7 @@ This specification is the working implementation of the open challenge described
 | **Version** | 1.0.0 |
 | **Date** | March 2026 |
 | **License** | Apache 2.0 |
-| **Implements** | ClawCoat v11.0.1 |
+| **Implements** | ClawCoat v11.0.3 |
 
 ---
 

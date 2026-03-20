@@ -13,7 +13,7 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 > *"The industry gave OpenClaw agents the keys to everything before anyone asked who was watching."*
 
 <p align="center">
-  <strong>v11.0.2</strong> &nbsp;|&nbsp;
+  <strong>v11.0.3</strong> &nbsp;|&nbsp;
   <strong>5,416 tests passing</strong> &nbsp;|&nbsp;
   <strong>64 SOC 2 controls</strong> &nbsp;|&nbsp;
   <strong>161 API endpoints</strong> &nbsp;|&nbsp;
@@ -643,7 +643,7 @@ If you use ClawCoat in research, a paper, or a published project, a `CITATION.cf
 
 Manual citation:
 ```
-Phillips, J. (2026). ClawCoat (v11.0.2). Quietfire AI.
+Phillips, J. (2026). ClawCoat (v11.0.3). Quietfire AI.
 https://github.com/QuietFireAI/ClawCoat
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```

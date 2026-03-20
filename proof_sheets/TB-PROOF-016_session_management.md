@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestAuthSecurity -- session timeout, auto-logoff, max duration, and invalidation all tested
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -68,4 +68,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-016 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-016 | ClawCoat v11.0.3 | March 20, 2026*

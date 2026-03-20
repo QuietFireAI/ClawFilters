@@ -7,7 +7,7 @@
 **Function:** `test_captcha_wrong_answer_blocks_registration`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -44,4 +44,4 @@ Class-level summary: see the [TB-PROOF-E2E](../../TB-PROOF-E2E.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-E2E-020 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-E2E-020 | TelsonBase v11.0.3 | March 8, 2026*

@@ -4,7 +4,7 @@
 **Claim Source:** tests/test_qms.py
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -56,4 +56,4 @@ docker compose exec mcp_server python -m pytest tests/test_qms.py -v --tb=short
 
 ---
 
-*Sheet TB-PROOF-053 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-053 | ClawCoat v11.0.3 | March 20, 2026*

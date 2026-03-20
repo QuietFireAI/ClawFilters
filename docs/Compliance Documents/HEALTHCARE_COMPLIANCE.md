@@ -1,6 +1,6 @@
 # ClawCoat - Healthcare Compliance Security Profile (HIPAA/HITECH/HITRUST)
 
-**Version:** v11.0.1 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 **Platform:** Zero-Trust AI Agent Security Platform
 **Target Markets:** Healthcare · Legal · Insurance · Real Estate · Accounting
 
@@ -546,4 +546,4 @@ When and if ClawCoat pursues healthcare as a target market, the transition will 
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

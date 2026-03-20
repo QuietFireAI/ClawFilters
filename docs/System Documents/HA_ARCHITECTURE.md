@@ -1,8 +1,8 @@
 # ClawCoat High Availability Architecture
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **Status:** Planning Document
-**Applies to:** ClawCoat v11.0.1
+**Applies to:** ClawCoat v11.0.3
 
 ---
 
@@ -583,4 +583,4 @@ For ClawCoat's current trajectory (law firm pilots, self-hosted, compliance-driv
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

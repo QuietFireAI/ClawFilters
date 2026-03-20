@@ -1,6 +1,6 @@
 # ClawCoat - Restore and Recovery Guide
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -122,4 +122,4 @@ REM: This example provides a granular walkthrough for restoring a Docker-managed
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

@@ -1,12 +1,12 @@
 # ClawCoat Terms of Use
 
-**Version:** v11.0.1
+**Version:** v11.0.3
 **Effective Date:** March 6, 2026
 **Issued by:** Jeff Phillips, operating as Quietfire AI
 
 These Terms of Use govern access to and use of ClawCoat software, documentation, and related materials published at https://github.com/QuietFireAI/ClawCoat. By downloading, cloning, deploying, or using ClawCoat in any form, you agree to these terms. If you do not agree, do not use the software.
 
-**Note:** Prior to v11.0.1, this document was named `DISCLAIMER.md`. References to `DISCLAIMER.md` in existing documentation, code comments, or earlier versions of this repository refer to this document.
+**Note:** Prior to v11.0.3, this document was named `DISCLAIMER.md`. References to `DISCLAIMER.md` in existing documentation, code comments, or earlier versions of this repository refer to this document.
 
 The Developer is Jeff Phillips. All references to "Developer," "Quietfire AI," or "we" in these Terms refer to Jeff Phillips, individually and operating as Quietfire AI, including its subsidiaries and partners where applicable. "You" or "User" refers to any individual or organization accessing or using ClawCoat in any capacity.
 
@@ -127,7 +127,7 @@ The Apache 2.0 license independently contains a disclaimer of warranties and lim
 
 ## 9. Release Status
 
-ClawCoat v11.0.1 is a community preview release. Preview software may contain bugs, incomplete features, or behaviors that change without notice. Do not deploy preview software in production environments where failures would result in harm to persons or regulatory violations without independent validation appropriate to that environment.
+ClawCoat v11.0.3 is a community preview release. Preview software may contain bugs, incomplete features, or behaviors that change without notice. Do not deploy preview software in production environments where failures would result in harm to persons or regulatory violations without independent validation appropriate to that environment.
 
 ---
 
@@ -176,4 +176,4 @@ General support: support@clawcoat.com
 
 ---
 
-*ClawCoat v11.0.1 - Quietfire AI - March 8, 2026*
+*ClawCoat v11.0.3 - Quietfire AI - March 8, 2026*

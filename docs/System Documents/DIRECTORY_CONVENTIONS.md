@@ -1,6 +1,6 @@
 # ClawCoat - Directory & Naming Conventions
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ---
 

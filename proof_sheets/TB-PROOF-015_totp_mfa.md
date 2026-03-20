@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestAuthSecurity -- 7 MFA/TOTP behavioral tests: enrollment, valid token, invalid token, replay, backup codes
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -69,4 +69,4 @@ References to pyotp, RFC 6238, TOTP operations, backup codes, and replay prevent
 
 ---
 
-*Sheet TB-PROOF-015 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-015 | ClawCoat v11.0.3 | March 20, 2026*

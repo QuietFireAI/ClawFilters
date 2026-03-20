@@ -7,7 +7,7 @@
 **Function:** `test_sequence_numbers_monotonically_increasing`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-046](../../TB-PROOF-046_security_audit_tr
 
 ---
 
-*Sheet TB-TEST-SEC-053 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-053 | TelsonBase v11.0.3 | March 8, 2026*

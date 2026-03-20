@@ -1,6 +1,6 @@
 # ClawCoat Project Structure
 
-**Version:** v11.0.2 | **Updated:** March 19, 2026
+**Version:** v11.0.3 | **Updated:** March 20, 2026
 
 ```
 telsonbase/
@@ -176,7 +176,7 @@ telsonbase/
 │   ├── test_security_flow.py   # API integration test
 │   └── test_federation.py      # Federation test
 │
-├── tests/                      # Test suite — 5,416 passing, 3 skipped, 0 failed (CI run #309)
+├── tests/                      # Test suite — 6,254 passing, 54 skipped, 0 failed (CI run #367)
 │   ├── conftest.py             # Pytest fixtures + _register_user helper
 │   │
 │   ├── — Core governance & security —

@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestStaticAnalysis -- bandit confirmed in CI workflow with report artifact; bandit run skipped locally when not installed but clean in CI (0 HIGH, 8 accepted MEDIUMs)
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -51,7 +51,7 @@ VERIFIED - Bandit security scan initially found 1 high-severity finding (tarfile
 |---|---|---|
 | v6.0.0CC | HIGH: `tarfile.extractall()` without filter (CWE-22 path traversal) | Identified |
 | v6.1.0CC | Fixed: `tarfile.extractall(filter='data')` | Remediated |
-| v11.0.1 | 0 high-severity findings | Current |
+| v11.0.3 | 0 high-severity findings | Current |
 
 ### Medium Findings (Not High)
 
@@ -82,4 +82,4 @@ bandit -r core/ api/ agents/ -ll --format json | python -c \
 
 ---
 
-*Sheet TB-PROOF-027 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-027 | ClawCoat v11.0.3 | March 20, 2026*

@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestDocumentationSuite -- all 10 required documentation files confirmed to exist and be non-empty (> 500 bytes)
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -72,7 +72,7 @@ VERIFIED - All 6 claimed deliverables exist as substantive documents (not stubs)
 | Incident Response Plan | `docs/Backup and Recovery Documents/INCIDENT_RESPONSE.md` |
 | Security Architecture | `docs/System Documents/SECURITY_ARCHITECTURE.md` |
 
-### Integration Guides (added v8.0.2, updated v11.0.1)
+### Integration Guides (added v8.0.2, updated v11.0.3)
 
 | Document | File Path | Notes |
 |---|---|---|
@@ -94,4 +94,4 @@ All 6 files exist with substantive file sizes (not empty stubs).
 
 ---
 
-*Sheet TB-PROOF-034 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-034 | ClawCoat v11.0.3 | March 20, 2026*

@@ -7,7 +7,7 @@
 **Function:** `test_insecure_default_warns_in_development`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-SCRT](../../TB-PROOF-SCRT.md) proof sheet
 
 ---
 
-*Sheet TB-TEST-SCRT-023 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SCRT-023 | TelsonBase v11.0.3 | March 8, 2026*

@@ -7,7 +7,7 @@
 **Function:** `test_cannot_promote_above_citizen`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-036](../../TB-PROOF-036_trust_level_matri
 
 ---
 
-*Sheet TB-TEST-OCL-026 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-OCL-026 | TelsonBase v11.0.3 | March 8, 2026*

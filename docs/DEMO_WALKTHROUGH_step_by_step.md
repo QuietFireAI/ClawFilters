@@ -1,6 +1,6 @@
 # ClawCoat - Demo Walkthrough
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 **Who this is for:** You. The person running the demo.
 **What it covers:** Every physical action - what to open, what to type, what key to press, what to look for, and what "success" looks like before you move forward.
@@ -679,4 +679,4 @@ If you do a second take, increment all nonces: `demo-nonce-101`, `demo-nonce-102
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

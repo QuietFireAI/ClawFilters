@@ -3,7 +3,7 @@
 **Earned Autonomy for Autonomous AI Agents**
 **Built for Data Sovereignty. Designed for Local-First Deployment.**
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **License:** Apache 2.0
 
 ---
@@ -318,4 +318,4 @@ The rotation serves as a form of cross-validation. Each platform reviews the oth
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

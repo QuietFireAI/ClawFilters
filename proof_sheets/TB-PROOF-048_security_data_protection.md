@@ -5,7 +5,7 @@
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestDataProtection -- 11 tests + depth tests added March 15
 **Last Verified:** March 8, 2026
-**Version:** v11.0.2
+**Version:** v11.0.3
 
 ---
 
@@ -59,4 +59,4 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py::
 
 ---
 
-*Sheet TB-PROOF-048 | ClawCoat v11.0.2 | March 19, 2026*
+*Sheet TB-PROOF-048 | ClawCoat v11.0.3 | March 20, 2026*

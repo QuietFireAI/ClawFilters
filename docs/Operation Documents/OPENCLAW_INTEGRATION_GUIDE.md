@@ -1,6 +1,6 @@
 # ClawCoat - OpenClaw Integration Guide
 
-**Version:** v11.0.2 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -759,5 +759,5 @@ See `CONTRIBUTING.md` for the full contribution process.
 
 ---
 
-*ClawCoat v11.0.2 · Quietfire AI · March 19, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
 *Questions: support@clawcoat.com*

@@ -7,7 +7,7 @@
 **Function:** `test_GIVEN_ollama_offline_WHEN_health_check_requested_THEN_reports_connection_failure`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -43,4 +43,4 @@ Class-level summary: see the [TB-PROOF-BEH](../../TB-PROOF-BEH.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-BEH-003 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-BEH-003 | TelsonBase v11.0.3 | March 8, 2026*

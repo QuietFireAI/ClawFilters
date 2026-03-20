@@ -1,6 +1,6 @@
 # ClawCoat Ambassador Program
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ## Why This Exists
 
@@ -153,4 +153,4 @@ This project was built as a partnership between a human and AI collaborators. Th
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

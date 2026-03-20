@@ -7,7 +7,7 @@
 **Function:** `test_get_mqtt_bus_returns_same_instance`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-OBS](../../TB-PROOF-OBS.md) proof sheet.
 
 ---
 
-*Sheet TB-TEST-OBS-029 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-OBS-029 | TelsonBase v11.0.3 | March 8, 2026*

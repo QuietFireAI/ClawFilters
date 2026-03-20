@@ -1,12 +1,12 @@
 # ClawCoat -- SOC 2 Type I Report Documentation
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI · **Classification:** Auditor-Ready Documentation
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI · **Classification:** Auditor-Ready Documentation
 
 ---
 
 ## 1. Management Assertion Statement
 
-The management of ClawCoat asserts that the accompanying description of the ClawCoat Zero-Trust AI Agent Security Platform, version v11.0.1, fairly presents the system as designed and implemented as of March 8, 2026. The description includes the principal service commitments and system requirements, and the controls stated in the description were suitably designed to provide reasonable assurance that the principal service commitments and system requirements would be achieved based on the applicable Trust Service Criteria set forth in TSP Section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy (AICPA, Trust Services Criteria), if the controls operated effectively throughout the specified period, and if the complementary user entity controls and complementary subservice organization controls described herein operated effectively throughout the specified period.
+The management of ClawCoat asserts that the accompanying description of the ClawCoat Zero-Trust AI Agent Security Platform, version v11.0.3, fairly presents the system as designed and implemented as of March 8, 2026. The description includes the principal service commitments and system requirements, and the controls stated in the description were suitably designed to provide reasonable assurance that the principal service commitments and system requirements would be achieved based on the applicable Trust Service Criteria set forth in TSP Section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy (AICPA, Trust Services Criteria), if the controls operated effectively throughout the specified period, and if the complementary user entity controls and complementary subservice organization controls described herein operated effectively throughout the specified period.
 
 This assertion covers ClawCoat as an open-source, self-hosted platform. Management makes no assertion regarding any individual deployment of ClawCoat, which remains entirely under the control of the deploying organization. See `DISCLAIMER.md` for the full limitation of liability applicable to this software.
 
@@ -321,7 +321,7 @@ The following matrix maps ClawCoat controls to the AICPA 2017 Trust Services Cri
 | Version | 1.2 |
 | Date | March 8, 2026 |
 | Classification | Auditor-Ready Documentation |
-| Platform Version | v11.0.1 |
+| Platform Version | v11.0.3 |
 | Author | Jeff Phillips, Architect - Quietfire AI |
 | Review Status | Updated for public release -- pending independent auditor review |
 | Next Review | Prior to Type II engagement or upon material system change |
@@ -342,4 +342,4 @@ The following matrix maps ClawCoat controls to the AICPA 2017 Trust Services Cri
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

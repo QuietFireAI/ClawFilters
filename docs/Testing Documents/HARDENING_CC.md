@@ -1,5 +1,5 @@
 # ClawCoat - Production Hardening Decision Log
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **Recorded:** February 10-11, 2026
 
 ---
@@ -258,4 +258,4 @@ Each checkpoint is taken AFTER tests pass, not before. CLAUDE.md is updated with
 
 ---
 
-*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*

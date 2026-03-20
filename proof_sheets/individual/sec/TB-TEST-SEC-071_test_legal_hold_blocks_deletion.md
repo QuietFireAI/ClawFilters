@@ -7,7 +7,7 @@
 **Function:** `test_legal_hold_blocks_deletion`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -46,4 +46,4 @@ Class-level summary: see the [TB-PROOF-048](../../TB-PROOF-048_security_data_pro
 
 ---
 
-*Sheet TB-TEST-SEC-071 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-SEC-071 | TelsonBase v11.0.3 | March 8, 2026*

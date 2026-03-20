@@ -7,7 +7,7 @@
 **Function:** `test_register_instance_hashes_api_key`
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
-**Version:** v11.0.1
+**Version:** v11.0.3
 
 ---
 
@@ -42,4 +42,4 @@ Class-level summary: see the [TB-PROOF-041](../../TB-PROOF-041_agent_registratio
 
 ---
 
-*Sheet TB-TEST-OCL-002 | TelsonBase v11.0.1 | March 8, 2026*
+*Sheet TB-TEST-OCL-002 | TelsonBase v11.0.3 | March 8, 2026*
