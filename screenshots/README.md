@@ -20,4 +20,4 @@ To replace with fresh screenshots: capture from `http://localhost:8000/dashboard
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 2026*

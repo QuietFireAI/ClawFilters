@@ -183,7 +183,7 @@ This is a one-time step. You do not need to repeat it on subsequent restarts.
 docker compose ps
 ```
 
-All 11 services should show **Up** or **healthy** (MailHog is dev-profile only - it won't appear here):
+All 12 services should show **Up** or **healthy** (MailHog is dev-profile only - it won't appear here):
 
 ```
 NAME                        STATUS
@@ -332,7 +332,7 @@ For the full scoring model, violation types, and API reference: `docs/Compliance
 
 ## Running the Test Suite
 
-5,700+ tests across 94 files covering the full governance platform:
+6,254 tests across 99 files covering the full governance platform:
 
 | Domain | Tests | What it covers |
 |---|---|---|
@@ -355,7 +355,7 @@ docker compose exec mcp_server python -m pytest tests/ --ignore=tests/test_mqtt_
 
 Expected result: **6,254 passed, 54 skipped, 0 failed**
 
-The 3 skips are expected - they are Celery-configuration tests that are skipped when Celery runs under the unit-test stub. Everything else should be green.
+The 54 skips are expected - they include Celery-configuration tests and coverage-omitted modules (ollama_service, ollama_agent). Everything else should be green.
 
 Run only the security battery:
 ```bash

@@ -10,7 +10,7 @@
 
 ## Exact Claim
 
-> "720 tests passing" -- README, proof_sheets/INDEX.md
+> "6,254 tests passing" -- README, proof_sheets/INDEX.md
 
 This sheet proves the **Behavioral (GIVEN/WHEN/THEN) Test Suite**: 30 tests across 6 classes written in GIVEN/WHEN/THEN specification style, verifying system behavior as observable outcomes: model failure recovery, QMS protocol discipline, security boundary enforcement, graceful degradation under load, trust promotion criteria, and tenant data isolation.
 

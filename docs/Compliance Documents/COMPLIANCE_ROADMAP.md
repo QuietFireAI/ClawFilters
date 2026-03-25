@@ -382,7 +382,7 @@ If a future ClawCoat module processes cardholder data (e.g., client billing inte
 | Identify users and authenticate access | 8.x | Unique user IDs, MFA, bcrypt password hashing, session management | Aligned |
 | Restrict physical access | 9.x | Customer responsibility (shared model) | Customer scope |
 | Log and monitor all access | 10.x | SHA-256 hash-chained audit, 47 event types, Prometheus alerting | Aligned |
-| Test security regularly | 11.x | 720 tests (96 security, 115 QMS, 129 toolroom, 55 OpenClaw, 29 E2E, 7 contract), CI/CD pipeline | Aligned |
+| Test security regularly | 11.x | 6,254 tests (96 security, 115 QMS, 129 toolroom, 55 OpenClaw, 29 E2E, 7 contract), CI/CD pipeline | Aligned |
 | Support information security with policies | 12.x | Compliance documentation, training module, incident response | Aligned |
 
 ### Recommendation

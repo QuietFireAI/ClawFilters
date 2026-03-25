@@ -10,7 +10,7 @@
 
 ## Exact Claim
 
-> "720 tests passing" -- README, proof_sheets/INDEX.md
+> "6,254 tests passing" -- README, proof_sheets/INDEX.md
 
 This sheet proves the **REST API Endpoint Test Suite**: 19 tests across 8 classes verifying TelsonBase REST API surface: public endpoint accessibility, authentication enforcement (401 without API key), system health structure, agent/approval/anomaly/federation endpoint auth requirements, and QMS formatting conventions in responses.
 

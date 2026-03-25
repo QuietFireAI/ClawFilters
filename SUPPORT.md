@@ -1,8 +1,8 @@
 # Getting Support - ClawCoat
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
-TelsonBase manages autonomous AI agents through earned trust — every agent carries a live Manners compliance score, starts at QUARANTINE, and advances only when behavior and human authorization align.
+ClawCoat manages autonomous AI agents through earned trust — every agent carries a live Manners compliance score, starts at QUARANTINE, and advances only when behavior and human authorization align.
 
 ---
 
@@ -67,4 +67,4 @@ If you have identified a bug and have a fix, pull requests are welcome. See [CON
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 2026*

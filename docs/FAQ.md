@@ -546,7 +546,7 @@ Those controls exist whether or not a certification badge has been issued.
 Static analysis and automated security testing have been run against the full codebase.
 Results are documented and public:
 
-- **Bandit (static analysis):** 0 high-severity findings across 93,893 lines scanned.
+- **Bandit (static analysis):** 0 high-severity findings across 43,457 lines scanned.
   8 medium findings, all non-actionable: 2 are expected `0.0.0.0` bind addresses in
   `if __name__ == "__main__":` dev-only blocks (Gunicorn binds via command line in
   production - these lines never execute in the container). 6 are `requests.get/post`

@@ -62,7 +62,7 @@ Self-hosted, single-node Docker Compose deployment. All services run on the cust
 
 ### 3.1 Governance
 
-ClawCoat maintains a documented production hardening roadmap tracked via GitHub Issues. Engineering decisions follow a defined working agreement documented in `CONTRIBUTING.md`. All code changes are subject to automated CI/CD testing via GitHub Actions (`.github/workflows/ci.yml`) with 720 tests (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 end-to-end, 7 contract, 289 core).
+ClawCoat maintains a documented production hardening roadmap tracked via GitHub Issues. Engineering decisions follow a defined working agreement documented in `CONTRIBUTING.md`. All code changes are subject to automated CI/CD testing via GitHub Actions (`.github/workflows/ci.yml`) with 6,254 tests (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 end-to-end, 7 contract, 5,823 core/depth).
 
 ### 3.2 Security Program
 
@@ -127,7 +127,7 @@ The Security criteria address whether the system is protected against unauthoriz
 | CC6.6 | Error sanitization | Global exception handler catches all unhandled errors; sanitized responses with no stack traces, file paths, or internal error class names leaked to clients | `main.py`, `core/middleware.py` |
 | CC6.7 | Network isolation | Docker internal networks isolate data-tier services (Redis, PostgreSQL) from external access; only Traefik reverse proxy is externally reachable | `docker-compose.yml` |
 | CC7.1 | Vulnerability management | Automated CI/CD pipeline with pip-audit (dependency CVE scanning) and bandit (static analysis); known issues tracked and triaged | `.github/workflows/ci.yml`, `CLAUDE.md` (Known Issues) |
-| CC7.2 | Automated testing | 720 tests across 7 domains (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 end-to-end, 7 contract, 289 core); pytest executed via `docker compose exec mcp_server python -m pytest tests/ -v`; expected result: 720 passed, 1 skipped, 0 failed | `tests/test_security_battery.py`, `tests/test_e2e_integration.py`, `tests/test_contracts.py`, `.github/workflows/ci.yml` |
+| CC7.2 | Automated testing | 6,254 tests across 99 files (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 end-to-end, 7 contract, 5,823 core/depth); pytest executed via `docker compose exec mcp_server python -m pytest tests/ -v`; expected result: 6254 passed, 54 skipped, 0 failed | `tests/test_security_battery.py`, `tests/test_e2e_integration.py`, `tests/test_contracts.py`, `.github/workflows/ci.yml` |
 
 ---
 
@@ -265,7 +265,7 @@ A SOC 2 Type I report evaluates the suitability of design of controls at a speci
 
 | Artifact | Location | Description |
 |----------|---------|-------------|
-| Automated test suite results | `tests/` directory, CI/CD logs | 720 tests (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 E2E, 7 contract, 289 core) with pass/fail results |
+| Automated test suite results | `tests/` directory, CI/CD logs | 6,254 tests (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 E2E, 7 contract, 5,823 core/depth) with pass/fail results |
 | Security battery tests | `tests/test_security_battery.py` | 96 tests covering authentication, authorization, session management, MFA, encryption, error sanitization, and runtime boundaries |
 | End-to-end integration tests | `tests/test_e2e_integration.py` | 29 tests across 6 test classes: UserLifecycle, TenantWorkflow, TenantIsolation, SecurityEndpoints, AuditChainIntegrity, ErrorSanitization |
 | RBAC permission matrix | `core/rbac.py` | 5 roles with enumerated permissions; `require_permission()` decorator applied to 140+ endpoints |

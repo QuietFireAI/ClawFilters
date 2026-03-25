@@ -1,8 +1,8 @@
 # Contributing to ClawCoat
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
-Welcome. TelsonBase is a platform for managing autonomous AI agents through earned trust — agents earn autonomy through demonstrated behavior and explicit human authorization, tracked by a live Manners compliance score across five trust tiers. Contributions that strengthen earned-autonomy controls, data sovereignty, and compliance are valued.
+Welcome. ClawCoat is a platform for managing autonomous AI agents through earned trust — agents earn autonomy through demonstrated behavior and explicit human authorization, tracked by a live Manners compliance score across five trust tiers. Contributions that strengthen earned-autonomy controls, data sovereignty, and compliance are valued.
 
 See also: [Ambassador Program](docs/AMBASSADORS.md) for non-code contributions.
 
@@ -25,7 +25,7 @@ docker compose up --build -d
 # Run migration (required on first start)
 docker compose exec mcp_server alembic upgrade head
 
-# Run tests (720 tests, all must pass)
+# Run tests (6,254 tests, all must pass)
 docker compose exec mcp_server python -m pytest tests/ -v --tb=short
 ```
 
@@ -275,4 +275,4 @@ See `CODE_OF_CONDUCT.md`. Summary: Be respectful, be constructive, focus on the 
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 2026*
