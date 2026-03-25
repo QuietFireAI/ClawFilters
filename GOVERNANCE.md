@@ -1,6 +1,6 @@
 # Project Governance - ClawCoat
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -99,4 +99,4 @@ Changes to this document follow the same PR process as code changes and are logg
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 2026*

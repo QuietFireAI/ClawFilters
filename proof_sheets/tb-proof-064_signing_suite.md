@@ -10,7 +10,7 @@
 
 ## Exact Claim
 
-> "720 tests passing" -- README, proof_sheets/INDEX.md
+> "6,254 tests passing" -- README, proof_sheets/INDEX.md
 
 This sheet proves the **Message Signing and Verification Test Suite**: 13 tests across 3 classes verifying TelsonBase cryptographic message signing: SignedAgentMessage construction and serialization, AgentKeyRegistry key storage and rotation, and MessageSigner signature production, verification, and tamper detection.
 

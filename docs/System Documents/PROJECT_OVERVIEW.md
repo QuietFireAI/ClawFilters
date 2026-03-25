@@ -147,7 +147,7 @@ Services only join networks they need. If Redis is compromised, the attacker has
 
 ### Test Coverage
 
-**746 tests across 16 modules. All passing.**
+**6,254 tests across 99 files. All passing.**
 
 | Test Module | Tests | Scope |
 |-------------|-------|-------|
@@ -202,6 +202,7 @@ Services only join networks they need. If Redis is compromised, the attacker has
 | Container Metrics | cAdvisor + Node Exporter | Docker and host-level metrics |
 | AI Chat UI | Open-WebUI | Human-AI conversation interface |
 | Agent Interface | MCP gateway (`/mcp`) | Goose / Claude Desktop integration - operator-authenticated, HITL-gated |
+| Telegram Gateway | Telegram Bot API | Remote operator channel — HITL approvals, kill-switch, and governance alerts from anywhere (optional, v11.1.0+) |
 | Secrets | Docker Secrets + generate_secrets.sh | tmpfs-mounted secrets, never on disk |
 
 All Python dependencies are version-pinned for reproducible builds.

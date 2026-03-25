@@ -101,9 +101,9 @@ ClawCoat's security model is documented across the following sources. There is n
 
 Current verified security status as of March 8, 2026:
 
-- **720 tests passing** - 0 failures, 1 expected skip (Alembic idempotency test, requires live DB)
+- **6,254 tests passing** - 54 skipped, 0 failures (CI run #367)
 - **96 dedicated security tests** - authentication, encryption, access control, audit trail, network, data protection, compliance, cryptography, runtime boundaries
-- **Bandit static analysis** - 0 high-severity findings across 37,921 lines of source code
+- **Bandit static analysis** - 0 high-severity findings across 43,457 lines of source code
 - **Server errors under fuzzing** - 657 reduced to 0 across hardening sessions
 - **QMS™ validation as security gate** - non-QMS messages to the Foreman are discarded and logged as `NON_QMS_MESSAGE` anomaly events; never processed
 - **8-step governance pipeline** - every agent action evaluated on all 8 steps with no bypass path

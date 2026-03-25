@@ -1,14 +1,14 @@
 # ClawCoat - Security Policy
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI - security@clawcoat.com
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI - security@clawcoat.com
 
 ## Supported Versions
 
 | Version | Supported |
 |---|---|
-| **v11.0.1** (Current) | ✅ Active - full support |
-| v10.0.0Bminus | ✅ Security updates only |
-| < v10.0.0Bminus | ❌ Not supported |
+| **v11.0.3** (Current) | ✅ Active - full support |
+| v11.0.1 | ✅ Security updates only |
+| < v11.0.1 | ❌ Not supported |
 
 Only the latest minor release receives security patches. Upgrade to the current version before reporting.
 
@@ -129,8 +129,8 @@ We recommend enabling [GitHub Dependabot](https://docs.github.com/en/code-securi
 
 ## Bug Bounty
 
-TelsonBase does not currently operate a paid bug bounty program. Security researchers who report valid vulnerabilities will be credited in release notes and the CONTRIBUTORS section of the repository.
+ClawCoat does not currently operate a paid bug bounty program. Security researchers who report valid vulnerabilities will be credited in release notes and the CONTRIBUTORS section of the repository.
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.3 · Quietfire AI · March 2026*

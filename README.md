@@ -46,14 +46,14 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 
 ## Status: Live
 
-**5,416 tests passing. 76% coverage. 0 high-severity findings. Everything described in this README is built and running.**
+**6,254 tests passing. ≥80% coverage. 0 high-severity findings. Everything described in this README is built and running.**
 
 **Try the live demo:** [huggingface.co/spaces/QuietFireAI/ClawCoat](https://huggingface.co/spaces/QuietFireAI/ClawCoat)
 
 The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional. The integration guide covers the full agent flow end-to-end and has been verified across multiple clean-slate deployments.
 
 **What's stable and tested:**
-Trust governance pipeline · Cryptographic audit chain · RBAC (149 endpoints) · Human-in-the-loop approval gates · Kill switch · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
+Trust governance pipeline · Cryptographic audit chain · RBAC (143 endpoints) · Human-in-the-loop approval gates · Kill switch · Telegram gateway · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
 
 **What's actively being worked on:**
 User management live endpoint · QMS real-time log feed · Audit chain PostgreSQL archival beyond 100K entries · Agent actor attribution in approval decisions · Identiclaw agent testing
@@ -232,7 +232,7 @@ This isn't a roadmap. This is shipped code with tests.
 |---|---|---|
 | **Trust Level Governance** | 5-tier earned trust, sequential promotion, instant demotion | 55 |
 | **Cryptographic Audit Trail** | SHA-256 hash-chained, tamper-evident | 11 |
-| **149 RBAC Endpoints** | 5-role permissions (viewer/operator/admin/security_officer/super_admin), deny overrides allow | 13 |
+| **143 RBAC Endpoints** | 5-role permissions (viewer/operator/admin/security_officer/super_admin), deny overrides allow | 13 |
 | **AES-256-GCM Encryption** | At-rest encryption, PBKDF2 key derivation | 11 |
 | **TOTP Multi-Factor Auth** | RFC 6238, QR enrollment, backup codes | 8 |
 | **Behavioral Anomaly Detection** | Rate spikes, capability probes, enumeration | 12 |
@@ -247,7 +247,7 @@ This isn't a roadmap. This is shipped code with tests.
 | **Kill Switch** | Instant suspension, Redis-persisted, survives restarts | 7 |
 | **MCP Gateway (Goose)** | 13 tools exposed via MCP, trust-gated sessions, native Goose / Claude Desktop integration | live |
 
-**Total: 5,416 tests passing. 3 skipped. 0 high-severity findings across 61,278 lines scanned.**
+**Total: 6,254 tests passing. 54 skipped. 0 high-severity findings across 43,457 lines scanned.**
 
 ---
 
@@ -266,7 +266,7 @@ This isn't a roadmap. This is shipped code with tests.
 
 Every control references a source file and a passing test. Run `proof_sheets/` to verify any claim.
 
-**Certification boundary:** "Baked in" means the controls are implemented in source code and verified by 854 passing tests — including 90 compliance depth tests covering PHI de-identification, breach notification, BAA lifecycle, HITRUST domain controls, sanctions, training, and more. It does not mean a SOC 2 Type I report has been signed, a HITRUST assessment completed, or an OCR HIPAA audit conducted. Those require external assessors and budget. The implementation is audit-ready. The certifications are next. See [`docs/WHATS_NEXT.md`](docs/WHATS_NEXT.md).
+**Certification boundary:** "Baked in" means the controls are implemented in source code and verified by 6,254 passing tests — including 90 compliance depth tests covering PHI de-identification, breach notification, BAA lifecycle, HITRUST domain controls, sanctions, training, and more. It does not mean a SOC 2 Type I report has been signed, a HITRUST assessment completed, or an OCR HIPAA audit conducted. Those require external assessors and budget. The implementation is audit-ready. The certifications are next. See [`docs/WHATS_NEXT.md`](docs/WHATS_NEXT.md).
 
 ---
 
@@ -338,7 +338,7 @@ Everything runs on your hardware. Your local VRAM. Your residential IP. Your dat
 
 | Component | Role |
 |---|---|
-| **FastAPI** | 161 API endpoints |
+| **FastAPI** | 162 API endpoints |
 | **PostgreSQL** | Multi-tenant persistent storage |
 | **Redis** | Cache, security state, agent state |
 | **Ollama** | Local LLM inference (no cloud AI) |
@@ -393,7 +393,7 @@ telsonbase/
 │   ├── demo_agent.py
 │   └── alien_adapter.py        # Quarantine adapter for external frameworks
 │
-├── api/                        # FastAPI route handlers (161 endpoints)
+├── api/                        # FastAPI route handlers (162 endpoints)
 │   ├── openclaw_routes.py      # OpenClaw governance
 │   ├── auth_routes.py          # Authentication
 │   ├── security_routes.py      # Security events
@@ -412,7 +412,7 @@ telsonbase/
 ├── celery_app/                 # Background task processing
 ├── monitoring/                 # Prometheus + Grafana + Mosquitto config
 │
-├── tests/                      # 5,416 passing tests across 88 files
+├── tests/                      # 6,254 passing tests across 99 files
 │   ├── test_security_battery.py  # 9-category security attack surface
 │   ├── test_openclaw.py          # Governance pipeline
 │   ├── test_qms.py               # QMS protocol
@@ -459,7 +459,7 @@ Nobody asked what happens to your data when an AI agent has no one watching it. 
 
 ClawCoat puts you back in control. Every action by an AI agent is evaluated. Every permission earned. Every decision is auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
 
-The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 5,416 passing tests. 64 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
+The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 6,254 passing tests. 64 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
 Built for the industries that can't afford to get this wrong: small business, real estate, medical, legal, insurance, and accounting. Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse.
 
@@ -511,7 +511,7 @@ This is not a marketing decision. If ClawCoat preaches governance, it has to pra
 ```
 proof_sheets/
   INDEX.md                          ← master index
-  TB-PROOF-001_tests_passing.md     ← 5,416 tests, all 88 files, version history
+  TB-PROOF-001_tests_passing.md     ← 6,254 tests, all 99 files, version history
   TB-PROOF-035_openclaw_governance.md
   TB-PROOF-043_security_auth.md     ← 9 security battery category sheets
   tb-proof-053_qms_suite.md         ← test suite class sheets
@@ -536,7 +536,7 @@ Question any claim. Run the command. That's the point.
 
 **Test coverage status (March 2026):**
 
-5,416 tests across 88 files. 76% line coverage (CI-verified). Every core module has dedicated depth tests: governance pipeline, trust tiers, manners scoring, HITL gates, kill switch, audit chain, all compliance infrastructure, all agents, all toolroom modules, and all API routes.
+6,254 tests across 99 files. ≥80% line coverage (CI-verified). Every core module has dedicated depth tests: governance pipeline, trust tiers, manners scoring, HITL gates, kill switch, audit chain, all compliance infrastructure, all agents, all toolroom modules, and all API routes.
 
 The proof sheet index carries a **Test Coverage** rating for every sheet: VERIFIED, SMOKE, CODE-ONLY, INFRA, or DOCS. Read the ratings before you read the verdicts.
 
@@ -611,7 +611,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process and [GOVERNANCE.md](
 2. Create a feature branch
 3. Write tests (we don't ship untested code)
 4. Submit a PR with a clear description
-5. Every PR runs the full test suite (5,416 and growing)
+5. Every PR runs the full test suite (6,254 and growing)
 
 Questions or bugs? See [SUPPORT.md](SUPPORT.md).
 

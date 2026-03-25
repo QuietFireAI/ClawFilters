@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-052
 **Claim Source:** README.md — "6,254 tests passing"
 **Status:** VERIFIED
-**Test Coverage:** VERIFIED — pytest full suite — 6,254 tests across 88 files
+**Test Coverage:** VERIFIED — pytest full suite — 6,254 tests across 99 files
 **Last Verified:** March 20, 2026 (CI run #367)
 **Version:** v11.0.3
 
@@ -47,6 +47,9 @@ QMS v2.2.0 protocol: block detection, chain building, parsing, validation, secur
 
 **`tests/test_identiclaw.py`** — 50 tests
 W3C DID identity: parsing, Ed25519 verification, verifiable credentials, scope mapping, kill switch, auth flow.
+
+**`tests/test_identiclaw_depth.py`** — 53 tests
+Identiclaw DID engine depth coverage.
 
 **`tests/test_behavioral.py`** — 30 tests
 Behavioral specifications: Ollama model management, QMS discipline, security boundaries, trust level progression, data sovereignty.
@@ -100,6 +103,9 @@ Toolroom executor depth coverage.
 
 **`tests/test_toolroom_foreman_depth.py`** — 38 tests
 Toolroom foreman depth coverage.
+
+**`tests/test_toolroom_cage_depth.py`** — 69 tests
+Toolroom cage sandbox depth coverage.
 
 ---
 
@@ -171,6 +177,12 @@ Local LLM inference: model management, generation, chat, health checks, async sa
 | `test_core_metrics_depth.py` | 36 | Metrics collection |
 | `test_core_auth_depth.py` | 26 | JWT authentication |
 | `test_core_auth_dependencies_depth.py` | 18 | FastAPI auth dependency helpers |
+| `test_core_email_sender_depth.py` | 16 | Email sender |
+| `test_core_database_depth.py` | 12 | Database session management |
+| `test_core_config_depth.py` | 53 | Core config and settings |
+| `test_core_mqtt_bus_depth.py` | 70 | MQTT bus integration |
+| `test_core_models_depth.py` | 38 | Pydantic models |
+| `test_ollama_service_depth.py` | 88 | Ollama service (omitted from coverage gate) |
 
 ---
 
@@ -185,6 +197,9 @@ Local LLM inference: model management, generation, chat, health checks, async sa
 | `test_agents_backup_depth.py` | 50 | Backup agent |
 | `test_agents_demo_depth.py` | 42 | Demo agent |
 | `test_agents_base_depth.py` | 29 | SecureBaseAgent base class |
+| `test_agents_compliance_check_agent_depth.py` | 103 | Compliance check agent |
+| `test_agents_doc_prep_depth.py` | 101 | Document preparation agent |
+| `test_ollama_agent_depth.py` | 43 | Ollama agent (omitted from coverage gate) |
 
 ---
 
@@ -196,6 +211,9 @@ Local LLM inference: model management, generation, chat, health checks, async sa
 | `test_tenancy_routes_depth.py` | 38 | Tenancy API routes |
 | `test_mcp_gateway_depth.py` | 34 | MCP gateway routes |
 | `test_auth_routes_depth.py` | 27 | Authentication routes |
+| `test_compliance_routes_depth.py` | 113 | Compliance framework routes |
+| `test_identiclaw_routes_depth.py` | 36 | Identiclaw identity routes |
+| `test_openclaw_routes_depth.py` | 71 | OpenClaw governance routes |
 
 ---
 
@@ -226,16 +244,16 @@ Local LLM inference: model management, generation, chat, health checks, async sa
 
 | Category | Files | Tests |
 |---|---|---|
-| Governance & Core Protocol | 5 | 257 |
+| Governance & Core Protocol | 6 | 310 |
 | Security | 4 | 172 |
-| Toolroom | 6 | 446 |
+| Toolroom | 7 | 515 |
 | Infrastructure & Integration | 5 | 163 |
-| Core Module Depth | 45 | 2,718 |
-| Agents Depth | 7 | 479 |
-| API Routes Depth | 4 | 157 |
+| Core Module Depth | 51 | — |
+| Agents Depth | 10 | — |
+| API Routes Depth | 7 | — |
 | User Management & Hardening | 3 | 127 |
 | Coverage Boost | 6 | 402 |
-| **TOTAL (standard run)** | **88** | **6,254** |
+| **TOTAL (standard run, CI #367)** | **99** | **6,254** |
 
 ---
 

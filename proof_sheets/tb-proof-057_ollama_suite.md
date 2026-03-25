@@ -10,7 +10,7 @@
 
 ## Exact Claim
 
-> "720 tests passing" -- README, proof_sheets/INDEX.md
+> "6,254 tests passing" -- README, proof_sheets/INDEX.md
 
 This sheet proves the **Ollama LLM Service Test Suite**: 49 tests across 12 classes verifying TelsonBase's local LLM integration: service initialization, health checks, model discovery and tier filtering, text generation, chat completions, throughput measurement, and REST API exposure.
 

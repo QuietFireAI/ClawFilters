@@ -10,7 +10,7 @@
 
 ## Exact Claim
 
-> "720 tests passing" -- README, proof_sheets/INDEX.md
+> "6,254 tests passing" -- README, proof_sheets/INDEX.md
 
 This sheet proves the **IdentiClaw Identity and Verification Test Suite**: 50 tests across 12 classes verifying TelsonBase's DID-based agent identity engine: DID parsing and resolution, Ed25519 signature verification, verifiable credential validation, trust scope mapping, kill-switch enforcement, and audit event emission.
 

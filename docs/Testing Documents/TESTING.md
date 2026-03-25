@@ -520,7 +520,7 @@ docker compose exec mcp_server alembic upgrade head
 
 | Layer | Command | Verifies |
 |---|---|---|
-| Full suite | `pytest tests/ --ignore=test_mqtt_stress.py` | All 720 tests - every platform layer |
+| Full suite | `pytest tests/ --ignore=test_mqtt_stress.py` | All 6,254 tests - every platform layer |
 | Security battery | `pytest tests/test_security_battery.py` | 96 dedicated security checks |
 | Governance smoke | `./scripts/governance_smoke_test.sh` | Live trust tier pipeline end-to-end |
 | Audit chain | `GET /v1/audit/chain/verify` | SHA-256 hash linkage intact |

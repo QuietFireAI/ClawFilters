@@ -10,7 +10,7 @@
 
 ## Exact Claim
 
-> "720 tests passing" -- README, proof_sheets/INDEX.md
+> "6,254 tests passing" -- README, proof_sheets/INDEX.md
 
 This sheet proves the **Qualified Message Standard (QMS™) Test Suite**: 115 tests across 13 classes verifying the Qualified Message Standard protocol: block detection, chain construction, halt signaling, bidirectional parse/build roundtrips, chain validation, security flagging, and backward compatibility.
 

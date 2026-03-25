@@ -10,7 +10,7 @@
 
 ## Exact Claim
 
-> "720 tests passing" -- README, proof_sheets/INDEX.md
+> "6,254 tests passing" -- README, proof_sheets/INDEX.md
 
 This sheet proves the **Toolroom and Foreman Agent Test Suite**: 129 tests across 28 classes verifying the Toolroom and Foreman agent: tool registry CRUD, trust-level checkout authorization, HITL approval gates, manifest validation, function tool execution, semantic version comparison, and full REST endpoint coverage.
 
