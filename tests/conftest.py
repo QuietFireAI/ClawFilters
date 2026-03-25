@@ -42,6 +42,9 @@ if "celery" not in sys.modules:
 # REM: Set test environment before importing app modules
 os.environ["MCP_API_KEY"] = "test_api_key_12345"
 os.environ["JWT_SECRET_KEY"] = "test_jwt_secret_key_for_testing_only"
+# REM: H4 fix: secure_storage now raises at startup if key is not set.
+# REM: Provide a deterministic test key so tests don't use ephemeral keys.
+os.environ.setdefault("TELSONBASE_ENCRYPTION_KEY", "test_encryption_key_32bytes_____x")
 
 # REM: Use DB 15 for test isolation, but preserve the real Redis hostname so tests
 # REM: work both on the dev machine (localhost:6379) and inside Docker (redis:6379).

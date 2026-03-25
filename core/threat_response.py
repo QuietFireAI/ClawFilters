@@ -226,6 +226,13 @@ class ThreatResponseEngine:
         """REM: Quarantine an agent."""
         try:
             from core.trust_levels import trust_manager
+        except ImportError:
+            logger.critical(
+                f"REM: CRITICAL — trust_levels unavailable, quarantine action FAILED "
+                f"for ::{agent_id}::_Thank_You_But_No"
+            )
+            raise
+        try:
             trust_manager.quarantine(
                 agent_id,
                 quarantined_by="threat_response:auto",
@@ -240,6 +247,13 @@ class ThreatResponseEngine:
         """REM: Demote an agent's trust level."""
         try:
             from core.trust_levels import trust_manager
+        except ImportError:
+            logger.critical(
+                f"REM: CRITICAL — trust_levels unavailable, demotion action FAILED "
+                f"for ::{agent_id}::_Thank_You_But_No"
+            )
+            raise
+        try:
             success, _ = trust_manager.demote(
                 agent_id,
                 demoted_by="threat_response:auto",
@@ -255,7 +269,13 @@ class ThreatResponseEngine:
         """REM: Apply aggressive rate limiting."""
         try:
             from core.rate_limiting import RateLimitTier, rate_limiter
-
+        except ImportError:
+            logger.critical(
+                f"REM: CRITICAL — rate_limiting unavailable, rate-limit action FAILED "
+                f"for ::{agent_id}::_Thank_You_But_No"
+            )
+            raise
+        try:
             # REM: Force agent to minimal tier temporarily
             state = rate_limiter._get_or_create_state(agent_id, RateLimitTier.MINIMAL)
             state.tier = RateLimitTier.MINIMAL
@@ -268,7 +288,13 @@ class ThreatResponseEngine:
         """REM: Revoke all delegations for an agent."""
         try:
             from core.delegation import delegation_manager
-
+        except ImportError:
+            logger.critical(
+                f"REM: CRITICAL — delegation unavailable, revoke-delegations action FAILED "
+                f"for ::{agent_id}::_Thank_You_But_No"
+            )
+            raise
+        try:
             # REM: Revoke all delegations where this agent is grantor
             # REM: v5.3.0CC — Use public API instead of private attributes
             for did in list(delegation_manager.get_delegation_ids_by_grantor(agent_id)):
@@ -350,7 +376,7 @@ class ThreatResponseEngine:
                     continue
 
             # REM: Match pattern
-            if self._matches_pattern(indicator.pattern, anomaly_type, severity, evidence):
+            if self._matches_pattern(indicator.pattern, anomaly_type, severity, evidence, agent_id, indicator.indicator_id):
                 event = ThreatEvent(
                     event_id=f"threat_{uuid.uuid4().hex[:12]}",
                     indicator_id=indicator.indicator_id,
@@ -377,21 +403,61 @@ class ThreatResponseEngine:
         pattern: Dict[str, Any],
         anomaly_type: str,
         severity: str,
-        evidence: Dict[str, Any]
+        evidence: Dict[str, Any],
+        agent_id: str = "",
+        indicator_id: str = "",
     ) -> bool:
-        """REM: Check if anomaly matches indicator pattern."""
-        # REM: Simple pattern matching - can be extended
-        if "anomaly_type" in pattern and pattern["anomaly_type"] != anomaly_type:
+        """
+        REM: Check if anomaly matches indicator pattern.
+        REM: Requires at least one positive match criterion (anomaly_type, anomaly_severity,
+        REM: or event_type) — patterns with only threshold/rate fields cannot match here.
+        REM: H6 fix: count_threshold and window_minutes are now enforced (were silently ignored).
+        """
+        positive_criteria_met = False
+
+        # REM: anomaly_type criterion — specified+matching counts as positive
+        if "anomaly_type" in pattern:
+            if pattern["anomaly_type"] != anomaly_type:
+                return False
+            positive_criteria_met = True
+
+        # REM: anomaly_severity criterion — specified+matching counts as positive
+        if "anomaly_severity" in pattern:
+            if pattern["anomaly_severity"] != severity:
+                return False
+            positive_criteria_met = True
+
+        # REM: event_type criterion (matched from evidence dict)
+        if "event_type" in pattern:
+            if evidence.get("event_type") != pattern["event_type"]:
+                return False
+            positive_criteria_met = True
+
+        # REM: If no positive match criterion was satisfied, cannot fire
+        if not positive_criteria_met:
             return False
 
-        if "anomaly_severity" in pattern and pattern["anomaly_severity"] != severity:
-            return False
+        # REM: Positive criteria met — enforce count_threshold (H6 fix)
+        count_threshold = pattern.get("count_threshold", 1)
+        window_minutes = pattern.get("window_minutes")
 
-        # REM: For now, just check if critical severity matches critical pattern
-        if pattern.get("anomaly_severity") == "critical" and severity == "critical":
+        if count_threshold <= 1:
+            # REM: Single-occurrence pattern — fires immediately on first match
             return True
 
-        return False
+        # REM: Count prior matching events for this agent+indicator within the window
+        now = datetime.now(timezone.utc)
+        cutoff = now - timedelta(minutes=window_minutes) if window_minutes else None
+
+        prior_count = sum(
+            1 for e in self._events
+            if e.agent_id == agent_id
+            and e.indicator_id == indicator_id
+            and (cutoff is None or e.detected_at >= cutoff)
+        )
+
+        # REM: Current event is prior+1 — trigger when total >= threshold
+        return (prior_count + 1) >= count_threshold
 
     def _execute_response(self, event: ThreatEvent, actions: List[ResponseAction]):
         """REM: Execute response actions for a threat."""

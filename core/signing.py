@@ -136,7 +136,7 @@ class AgentKeyRegistry:
         self._load_from_persistence()
 
     def _load_from_persistence(self):
-        """REM: Load keys from Redis on startup."""
+        """REM: Load keys and revocations from Redis on startup."""
         store = _get_store()
         if store:
             try:
@@ -147,6 +147,18 @@ class AgentKeyRegistry:
                 logger.info(f"REM: Loaded {len(self._keys)} signing keys from persistence_Thank_You")
             except Exception as e:
                 logger.warning(f"REM: Failed to load keys from persistence: {e}")
+        # REM: Load persisted revocations — prevents revoked agents from re-authenticating
+        # REM: after restart (H2 fix: _revoked_agents was previously in-memory only).
+        try:
+            from core.persistence import security_store
+            revoked = security_store.get_set_members("signing:revoked_agents")
+            if revoked:
+                self._revoked_agents = set(revoked)
+                logger.info(
+                    f"REM: Loaded {len(self._revoked_agents)} revoked agents from Redis_Thank_You"
+                )
+        except Exception as e:
+            logger.warning(f"REM: Failed to load revoked agents from Redis: {e}_Thank_You_But_No")
 
     def _persist_key(self, agent_id: str, key: bytes):
         """REM: Persist a key to Redis."""
@@ -212,6 +224,14 @@ class AgentKeyRegistry:
             del self._keys[agent_id]
             self._revoked_agents.add(agent_id)
             self._delete_persisted_key(agent_id)
+            # REM: Persist revocation to Redis — survives restarts (H2 fix)
+            try:
+                from core.persistence import security_store
+                security_store.add_to_set("signing:revoked_agents", agent_id)
+            except Exception as e:
+                logger.warning(
+                    f"REM: Failed to persist revocation for ::{agent_id}::: {e}_Thank_You_But_No"
+                )
 
             logger.warning(
                 f"REM: REVOKED signing key for agent ::{agent_id}:: "
@@ -246,6 +266,14 @@ class AgentKeyRegistry:
         """
         if agent_id in self._revoked_agents:
             self._revoked_agents.discard(agent_id)
+            # REM: Remove from Redis revocation set
+            try:
+                from core.persistence import security_store
+                security_store.remove_from_set("signing:revoked_agents", agent_id)
+            except Exception as e:
+                logger.warning(
+                    f"REM: Failed to clear Redis revocation for ::{agent_id}::: {e}_Thank_You_But_No"
+                )
             logger.warning(
                 f"REM: Revocation cleared for agent ::{agent_id}:: "
                 f"By: ::{cleared_by}::_Thank_You"

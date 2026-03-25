@@ -38,6 +38,9 @@ logger = logging.getLogger(__name__)
 PRIVILEGED_ROLES = {"admin", "security_officer", "super_admin"}
 PRIVILEGED_IDLE_MINUTES = 10
 
+# REM: All valid roles — role claims outside this set are rejected (H5 fix)
+VALID_ROLES = {"viewer", "operator", "admin", "security_officer", "super_admin"}
+
 
 @dataclass
 class SessionConfig:
@@ -219,6 +222,14 @@ class SessionManager:
         Returns:
             UserSession with generated session_id and expiry
         """
+        # REM: Validate role against known valid values — reject untrusted caller-supplied roles (H5 fix)
+        if role not in VALID_ROLES:
+            logger.warning(
+                f"REM: Invalid role ::{role}:: rejected in create_session for ::{user_id}::, "
+                f"defaulting to 'operator'_Thank_You_But_No"
+            )
+            role = "operator"
+
         now = datetime.now(timezone.utc)
         session = UserSession(
             user_id=user_id,
