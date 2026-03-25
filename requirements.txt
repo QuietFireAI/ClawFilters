@@ -53,7 +53,7 @@ paho-mqtt==1.6.1
 # --- HTTP Communication Library ---
 # REM: The standard tool for making HTTP requests. This gives our agents the ability
 # REM: to communicate with external APIs and retrieve data from across the web.
-requests==2.32.5
+requests==2.33.0
 
 # --- Sovereign AI Core Client ---
 # REM: TelsonBase communicates with Ollama via httpx (async HTTP client) directly.
