@@ -77,6 +77,21 @@ def _resolve_secret(docker_name: str, env_name: str, default: Optional[str] = No
     return default
 
 
+def _require_mcp_api_key() -> str:
+    """
+    REM: H13 fix: resolve MCP API key and raise at startup if not found.
+    REM: Previously this silently defaulted to the literal string "MISSING_API_KEY",
+    REM: allowing any caller who knew the default to authenticate successfully.
+    """
+    val = _resolve_secret("telsonbase_mcp_api_key", "MCP_API_KEY", default=None)
+    if not val:
+        raise ValueError(
+            "MCP_API_KEY is required but not set. "
+            "Provide it via the 'telsonbase_mcp_api_key' Docker secret or MCP_API_KEY env var."
+        )
+    return val
+
+
 class Settings(BaseSettings):
     """
     REM: Application settings loaded from Docker secrets → environment variables → defaults.
@@ -89,11 +104,10 @@ class Settings(BaseSettings):
     # --- API Security ---
     # REM: The master API key for accessing this instance. Required.
     # REM: Docker secret: telsonbase_mcp_api_key | Env: MCP_API_KEY
+    # REM: H13 fix: server now raises at startup if this is not set (was silently defaulting
+    # REM: to literal "MISSING_API_KEY", making all endpoints accessible with that string).
     mcp_api_key: str = Field(
-        default_factory=lambda: _resolve_secret(
-            "telsonbase_mcp_api_key", "MCP_API_KEY",
-            default=None  # REM: No default — must be provided
-        ) or "MISSING_API_KEY",
+        default_factory=_require_mcp_api_key,
         env="MCP_API_KEY"
     )
 
@@ -270,6 +284,13 @@ class Settings(BaseSettings):
     openclaw_auto_demote_manners_threshold: float = Field(default=0.50, env="OPENCLAW_AUTO_DEMOTE_THRESHOLD")
     openclaw_max_instances: int = Field(default=10, env="OPENCLAW_MAX_INSTANCES")
     openclaw_action_log_ttl_hours: int = Field(default=24, env="OPENCLAW_ACTION_LOG_TTL_HOURS")
+
+    # --- Telegram Gateway (v11.1.0CC) ---
+    # REM: Remote operator communication — HITL approvals, governance alerts, kill-switch
+    telegram_enabled: bool = Field(default=False, env="TELEGRAM_ENABLED")
+    telegram_bot_token: str = Field(default="", env="TELEGRAM_BOT_TOKEN")
+    telegram_chat_id: str = Field(default="", env="TELEGRAM_CHAT_ID")
+    telegram_webhook_url: str = Field(default="", env="TELEGRAM_WEBHOOK_URL")
 
     # --- Secrets Rotation Reminder (v6.2.0CC) ---
     # REM: Number of days before a rotation reminder is surfaced in the dashboard

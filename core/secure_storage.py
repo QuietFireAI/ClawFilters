@@ -85,12 +85,12 @@ class SecureStorageManager:
         salt_material = salt or os.environ.get(ENCRYPTION_SALT_ENV)
 
         if not key_material:
-            logger.warning(
-                f"REM: {ENCRYPTION_KEY_ENV} not set - generating ephemeral key. "
-                f"DATA WILL NOT PERSIST ACROSS RESTARTS!_Thank_You_But_No"
+            raise ValueError(
+                f"REM: {ENCRYPTION_KEY_ENV} is required but not set. "
+                f"Set the environment variable or provide the Docker secret. "
+                f"Refusing to start with an ephemeral key — encrypted data would be "
+                f"permanently unrecoverable after restart._Thank_You_But_No"
             )
-            key_material = secrets.token_hex(32)
-            salt_material = secrets.token_hex(16)
 
         if not salt_material:
             salt_material = "telsonbase_default_salt_CHANGE_ME"
@@ -228,8 +228,12 @@ class SecureStorageManager:
         """REM: Compute HMAC-SHA256 for data integrity verification."""
         import hashlib
         import hmac as hmac_mod
-        key_material = self._encryption_key if self._initialized else b"integrity-check"
-        h = hmac_mod.new(key_material, data + context.encode(), hashlib.sha256)
+        if not self._initialized:
+            raise RuntimeError(
+                "REM: SecureStorage not initialized — cannot compute integrity hash. "
+                "Ensure encryption key is configured before calling this method._Thank_You_But_No"
+            )
+        h = hmac_mod.new(self._encryption_key, data + context.encode(), hashlib.sha256)
         return h.hexdigest()
 
     def verify_integrity(self, data: bytes, expected_hash: str, context: str = "") -> bool:

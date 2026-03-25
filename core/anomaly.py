@@ -269,12 +269,9 @@ class BehaviorMonitor:
             if r.timestamp > cutoff
         ]
         
-        # REM: Get or create baseline
+        # REM: Get or create baseline — try Redis first (H9 fix: was always creating fresh)
         if agent_id not in self._baselines:
-            self._baselines[agent_id] = AgentBaseline(
-                agent_id=agent_id,
-                baseline_start=now
-            )
+            self._baselines[agent_id] = self._load_or_create_baseline(agent_id, now)
         
         baseline = self._baselines[agent_id]
         
@@ -502,6 +499,45 @@ class BehaviorMonitor:
             )]
         return []
     
+    def _load_or_create_baseline(self, agent_id: str, now: datetime) -> "AgentBaseline":
+        """
+        REM: Load baseline from Redis or create a fresh one.
+        REM: H9 fix: previously baselines were never loaded from persistence on startup,
+        REM: losing all behavioral learning on every restart.
+        """
+        store = _get_store()
+        if store:
+            try:
+                data = store.get_baseline(agent_id)
+                if data:
+                    return AgentBaseline(
+                        agent_id=agent_id,
+                        avg_actions_per_minute=data.get("avg_actions_per_minute", 0.0),
+                        std_actions_per_minute=data.get("std_actions_per_minute", 0.0),
+                        max_observed_rate=data.get("max_observed_rate", 0.0),
+                        known_resources=set(data.get("known_resources", [])),
+                        known_actions=set(data.get("known_actions", [])),
+                        hourly_distribution=defaultdict(
+                            int,
+                            {int(k): v for k, v in data.get("hourly_distribution", {}).items()}
+                        ),
+                        avg_error_rate=data.get("avg_error_rate", 0.0),
+                        total_observations=data.get("total_observations", 0),
+                        baseline_start=(
+                            datetime.fromisoformat(data["baseline_start"])
+                            if data.get("baseline_start") else now
+                        ),
+                        last_updated=(
+                            datetime.fromisoformat(data["last_updated"])
+                            if data.get("last_updated") else now
+                        ),
+                    )
+            except Exception as e:
+                logger.warning(
+                    f"REM: Failed to load baseline for ::{agent_id}:: from Redis: {e}"
+                )
+        return AgentBaseline(agent_id=agent_id, baseline_start=now)
+
     def _update_baseline(self, baseline: AgentBaseline, record: AgentBehaviorRecord):
         """REM: Update baseline with new observation."""
         baseline.total_observations += 1
@@ -514,14 +550,36 @@ class BehaviorMonitor:
         # REM: Update hourly distribution
         baseline.hourly_distribution[record.timestamp.hour] += 1
 
-        # REM: Update rate metrics (exponential moving average)
-        # REM: Simplified - in production you'd use proper time-series analysis
+        alpha = 0.1  # EMA smoothing factor
+
+        # REM: Update error rate EMA
         if baseline.total_observations > 1:
-            alpha = 0.1  # Smoothing factor
             baseline.avg_error_rate = (
                 alpha * (0 if record.success else 1) +
                 (1 - alpha) * baseline.avg_error_rate
             )
+
+        # REM: H8 fix: compute 5-minute action rate and update EMA for avg/std.
+        # REM: Previously these were never calculated, disabling rate-spike detection.
+        five_min_ago = record.timestamp - timedelta(minutes=5)
+        recent_records = self._recent_records.get(baseline.agent_id, [])
+        recent_count = sum(1 for r in recent_records if r.timestamp > five_min_ago)
+        current_rate = recent_count / 5.0
+
+        if baseline.total_observations == 1:
+            baseline.avg_actions_per_minute = current_rate
+            baseline.std_actions_per_minute = 0.0
+        else:
+            prev_avg = baseline.avg_actions_per_minute
+            baseline.avg_actions_per_minute = (
+                alpha * current_rate + (1 - alpha) * prev_avg
+            )
+            deviation = abs(current_rate - prev_avg)
+            baseline.std_actions_per_minute = max(
+                alpha * deviation + (1 - alpha) * baseline.std_actions_per_minute,
+                0.01  # REM: Minimum std prevents permanent zero-lock in _check_rate_spike
+            )
+        baseline.max_observed_rate = max(baseline.max_observed_rate, current_rate)
 
         # REM: Persist baseline every 50 observations to reduce Redis writes
         if baseline.total_observations % 50 == 0:

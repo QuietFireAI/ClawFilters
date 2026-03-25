@@ -113,11 +113,13 @@ class TestSecureStorageManagerInit:
         m = SecureStorageManager(encryption_key="mykey", salt="mysalt")
         assert m._initialized is True
 
-    def test_initialized_without_args_ephemeral(self, monkeypatch):
+    def test_raises_without_key(self, monkeypatch):
+        # REM: H4 fix: ephemeral keys are no longer silently generated.
+        # REM: ValueError is raised to force operators to set the key explicitly.
         monkeypatch.delenv(ENCRYPTION_KEY_ENV, raising=False)
         monkeypatch.delenv(ENCRYPTION_SALT_ENV, raising=False)
-        m = SecureStorageManager()
-        assert m._initialized is True
+        with pytest.raises(ValueError, match="required but not set"):
+            SecureStorageManager()
 
     def test_env_var_key_used(self, monkeypatch):
         monkeypatch.setenv(ENCRYPTION_KEY_ENV, "env_key")

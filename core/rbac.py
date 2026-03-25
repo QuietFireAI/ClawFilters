@@ -20,6 +20,7 @@
 # REM:   - Session-based permission caching
 # REM: =======================================================================================
 
+import hashlib
 import logging
 import uuid
 from dataclasses import dataclass, field
@@ -651,14 +652,18 @@ class RBACManager:
         return user.has_permission(permission)
 
     def register_api_key(self, api_key: str, user_id: str) -> bool:
-        """REM: Register an API key for a user. Persisted to Redis."""
+        """
+        REM: Register an API key for a user. Persisted to Redis.
+        REM: H10 fix: raw API key is never stored as a Redis key — stored under SHA-256 hash.
+        """
         if user_id not in self._users:
             if not self._load_user_from_redis(user_id):
                 return False
         self._api_key_to_user[api_key] = user_id
+        key_hash = hashlib.sha256(api_key.encode()).hexdigest()
         try:
             from core.persistence import security_store
-            security_store.store_record("rbac_api_keys", api_key, {"user_id": user_id})
+            security_store.store_record("rbac_api_keys", key_hash, {"user_id": user_id})
         except Exception as e:
             logger.warning(
                 f"REM: Failed to save API key to Redis: {e}_Thank_You_But_No"
@@ -669,9 +674,10 @@ class RBACManager:
         """REM: Get user by API key. Falls back to Redis on cache miss."""
         user_id = self._api_key_to_user.get(api_key)
         if not user_id:
+            key_hash = hashlib.sha256(api_key.encode()).hexdigest()
             try:
                 from core.persistence import security_store
-                data = security_store.get_record("rbac_api_keys", api_key)
+                data = security_store.get_record("rbac_api_keys", key_hash)
                 if data:
                     user_id = data.get("user_id") if isinstance(data, dict) else str(data)
                     if user_id:
@@ -753,39 +759,85 @@ def require_permission(permission: Permission):
     """
     REM: FastAPI dependency factory that checks RBAC permissions.
     REM: Returns a Depends-compatible callable.
+    REM: H11 fix: zero-user bootstrap bypass is now Redis-verified (not just in-memory).
+    REM: H12 fix: checks all auth methods — API key, JWT Bearer, and session cookie.
     """
     from fastapi import HTTPException, Request
 
-    async def _check_permission(request: Request):
-        # REM: If no users are registered, RBAC is not yet active — pass through
-        if not rbac_manager._users:
-            return True
+    def _deny(user_display: str) -> None:
+        """REM: Log and raise 403 for a known user who lacks the permission."""
+        logger.warning(
+            f"REM: RBAC denied ::{permission.value}:: for user "
+            f"::{user_display}::_Thank_You_But_No"
+        )
+        audit.log(
+            AuditEventType.SECURITY_ALERT,
+            f"RBAC permission denied: {permission.value}",
+            actor=user_display,
+            details={"permission": permission.value},
+            qms_status="Thank_You_But_No"
+        )
+        raise HTTPException(
+            status_code=403,
+            detail=f"Insufficient permissions: {permission.value} required"
+        )
 
-        # REM: Try to find user by API key from auth
+    async def _check_permission(request: Request):
+        # REM: H11 fix: verify no-users state against Redis, not just in-memory cache.
+        # REM: In-memory cache can be empty after startup race or cache miss.
+        if not rbac_manager._users:
+            try:
+                from core.persistence import security_store
+                all_users = security_store.list_records("rbac_users")
+                if all_users:
+                    # REM: Users exist in Redis but not in cache — reload and enforce
+                    rbac_manager._load_from_redis()
+                else:
+                    # REM: Genuinely no users yet — bootstrapping, pass through
+                    return True
+            except Exception:
+                # REM: Redis unavailable — fail closed, do not bypass
+                raise HTTPException(
+                    status_code=503,
+                    detail="RBAC system unavailable — cannot verify permissions"
+                )
+
+        # REM: Try API key auth (X-API-Key header)
         api_key = request.headers.get("X-API-Key")
         if api_key:
             user = rbac_manager.get_user_by_api_key(api_key)
             if user and user.has_permission(permission):
                 return True
-            if user and not user.has_permission(permission):
-                logger.warning(
-                    f"REM: RBAC denied ::{permission.value}:: for user "
-                    f"::{user.username}::_Thank_You_But_No"
-                )
-                audit.log(
-                    AuditEventType.SECURITY_ALERT,
-                    f"RBAC permission denied: {permission.value}",
-                    actor=user.username,
-                    details={"permission": permission.value, "user_id": user.user_id},
-                    qms_status="Thank_You_But_No"
-                )
-                raise HTTPException(
-                    status_code=403,
-                    detail=f"Insufficient permissions: {permission.value} required"
-                )
+            if user:
+                _deny(user.username)
 
-        # REM: No API key match — if users exist but none matched, deny
-        # REM: (the auth middleware already validated the key itself)
+        # REM: H12 fix: try JWT Bearer token auth
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
+            token = auth_header.split(" ", 1)[1]
+            try:
+                from core.auth import decode_token
+                token_data = decode_token(token)
+                if token_data and token_data.sub:
+                    user = rbac_manager.get_user(token_data.sub)
+                    if user and user.has_permission(permission):
+                        return True
+                    if user:
+                        _deny(user.username)
+            except Exception:
+                pass
+
+        # REM: H12 fix: try session auth (X-Session-ID header or session_id cookie)
+        session_id = request.headers.get("X-Session-ID") or request.cookies.get("session_id")
+        if session_id:
+            user = rbac_manager.validate_session(session_id)
+            if user and user.has_permission(permission):
+                return True
+            if user:
+                _deny(user.username)
+
+        # REM: No auth method matched a registered user — pass through
+        # REM: (auth middleware already validated the credential itself)
         return True
 
     return _check_permission

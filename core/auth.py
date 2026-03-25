@@ -65,11 +65,11 @@ did_auth_header = APIKeyHeader(name="X-DID-Auth", auto_error=False)
 # REM: =======================================================================================
 # REM: Redis-backed set of revoked JWT `jti` claims. Each entry has a TTL matching
 # REM: the token's remaining lifetime so Redis auto-cleans expired revocations.
-# REM: Fallback: in-memory set if Redis is unavailable (cleared on restart).
+# REM: Fail-closed: if Redis is unavailable, revoke_token returns False and
+# REM: is_token_revoked returns True (treat as revoked) — no instance-local fallback.
 # REM: =======================================================================================
 
 _REVOCATION_PREFIX = "jwt:revoked:"
-_revoked_tokens_fallback: set = set()  # In-memory fallback
 
 
 def _get_redis_client():
@@ -84,19 +84,29 @@ def _get_redis_client():
 def revoke_token(jti: str, expires_at: datetime, revoked_by: str = "system") -> bool:
     """
     REM: Revoke a JWT by its jti claim. Stores in Redis with TTL.
+    REM: Returns False if Redis is unavailable — caller must handle failure.
+    REM: Never silently falls back to in-memory (instance-local fallback is not
+    REM: safe in multi-worker deployments).
     """
     now = datetime.now(timezone.utc)
     ttl_seconds = max(int((expires_at - now).total_seconds()), 1)
 
     client = _get_redis_client()
-    if client:
-        try:
-            client.setex(f"{_REVOCATION_PREFIX}{jti}", ttl_seconds, "revoked")
-        except Exception as e:
-            logger.warning(f"REM: Redis revocation failed, using fallback: {e}")
-            _revoked_tokens_fallback.add(jti)
-    else:
-        _revoked_tokens_fallback.add(jti)
+    if not client:
+        logger.critical(
+            f"REM: CRITICAL — Redis unavailable, JWT revocation FAILED for ::{jti}::. "
+            f"Token may remain valid until expiry._Thank_You_But_No"
+        )
+        return False
+
+    try:
+        client.setex(f"{_REVOCATION_PREFIX}{jti}", ttl_seconds, "revoked")
+    except Exception as e:
+        logger.critical(
+            f"REM: CRITICAL — Redis revocation write failed for ::{jti}::, "
+            f"token may remain valid: {e}_Thank_You_But_No"
+        )
+        return False
 
     audit.log(
         AuditEventType.SECURITY_ALERT,
@@ -110,16 +120,26 @@ def revoke_token(jti: str, expires_at: datetime, revoked_by: str = "system") -> 
 
 
 def is_token_revoked(jti: str) -> bool:
-    """REM: Check if a JWT jti has been revoked."""
-    if jti in _revoked_tokens_fallback:
-        return True
+    """
+    REM: Check if a JWT jti has been revoked.
+    REM: Fail-closed: returns True (treat as revoked) when Redis is unavailable.
+    REM: This prevents tokens from being used when the revocation list is inaccessible.
+    """
     client = _get_redis_client()
-    if client:
-        try:
-            return client.exists(f"{_REVOCATION_PREFIX}{jti}") > 0
-        except Exception:
-            pass
-    return False
+    if not client:
+        logger.warning(
+            f"REM: Redis unavailable for revocation check of ::{jti}::, "
+            f"treating as revoked (fail-closed)_Thank_You_But_No"
+        )
+        return True
+    try:
+        return client.exists(f"{_REVOCATION_PREFIX}{jti}") > 0
+    except Exception as e:
+        logger.warning(
+            f"REM: Redis revocation check failed for ::{jti}::, "
+            f"treating as revoked (fail-closed): {e}_Thank_You_But_No"
+        )
+        return True
 
 
 class TokenData(BaseModel):
