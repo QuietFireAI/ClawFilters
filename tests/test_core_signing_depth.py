@@ -144,8 +144,22 @@ class TestIsExpired:
 # AgentKeyRegistry
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def _flush_signing_redis():
+    """Clear per-test Redis state that AgentKeyRegistry loads on __init__."""
+    try:
+        import redis as redis_lib, os, re
+        redis_url = re.sub(r'/\d+$', '/15', os.environ.get("REDIS_URL", "redis://localhost:6379/0"))
+        r = redis_lib.from_url(redis_url, decode_responses=True)
+        for k in r.keys("signing:*"):
+            r.delete(k)
+        r.delete("security:signing:revoked_agents")
+    except Exception:
+        pass
+
+
 @pytest.fixture
 def registry():
+    _flush_signing_redis()
     return AgentKeyRegistry()
 
 

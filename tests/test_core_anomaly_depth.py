@@ -115,8 +115,20 @@ def _no_store(monkeypatch):
     monkeypatch.setattr("core.anomaly._get_store", lambda: None)
 
 
+def _flush_anomaly_redis():
+    """Clear per-test Redis state that BehaviorMonitor loads on __init__."""
+    try:
+        import redis as redis_lib, os, re
+        redis_url = re.sub(r'/\d+$', '/15', os.environ.get("REDIS_URL", "redis://localhost:6379/0"))
+        r = redis_lib.from_url(redis_url, decode_responses=True)
+        r.delete("security:recent_denials")
+    except Exception:
+        pass
+
+
 @pytest.fixture
 def monitor():
+    _flush_anomaly_redis()
     return BehaviorMonitor()
 
 
