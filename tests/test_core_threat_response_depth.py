@@ -160,7 +160,7 @@ class TestDefaultIndicators:
 
     def test_excessive_failures_threat_level(self):
         ind = next(i for i in DEFAULT_INDICATORS if i.indicator_id == "ti_excessive_failures")
-        assert ind.threat_level == ThreatLevel.MEDIUM
+        assert ind.threat_level == ThreatLevel.HIGH
 
     def test_signature_failure_threat_level(self):
         ind = next(i for i in DEFAULT_INDICATORS if i.indicator_id == "ti_signature_failure")
@@ -194,23 +194,25 @@ class TestDefaultPolicies:
     def test_low_policy_present(self):
         assert ThreatLevel.LOW in DEFAULT_POLICIES
 
-    def test_critical_no_confirmation(self):
-        assert DEFAULT_POLICIES[ThreatLevel.CRITICAL].require_confirmation is False
-
-    def test_medium_requires_confirmation(self):
-        assert DEFAULT_POLICIES[ThreatLevel.MEDIUM].require_confirmation is True
-
-    def test_high_no_confirmation(self):
-        assert DEFAULT_POLICIES[ThreatLevel.HIGH].require_confirmation is False
-
-    def test_critical_zero_cooldown(self):
-        assert DEFAULT_POLICIES[ThreatLevel.CRITICAL].cooldown_minutes == 0
-
     def test_critical_notify_admins(self):
         assert DEFAULT_POLICIES[ThreatLevel.CRITICAL].notify_admins is True
 
-    def test_low_no_notify(self):
-        assert DEFAULT_POLICIES[ThreatLevel.LOW].notify_admins is False
+    def test_high_notify_admins(self):
+        assert DEFAULT_POLICIES[ThreatLevel.HIGH].notify_admins is True
+
+    def test_medium_notify_admins(self):
+        # Zero-tolerance: all levels notify
+        assert DEFAULT_POLICIES[ThreatLevel.MEDIUM].notify_admins is True
+
+    def test_low_notify_admins(self):
+        assert DEFAULT_POLICIES[ThreatLevel.LOW].notify_admins is True
+
+    def test_critical_actions_include_quarantine(self):
+        assert ResponseAction.QUARANTINE in DEFAULT_POLICIES[ThreatLevel.CRITICAL].actions
+
+    def test_medium_actions_include_quarantine(self):
+        # Zero-tolerance: even MEDIUM quarantines immediately
+        assert ResponseAction.QUARANTINE in DEFAULT_POLICIES[ThreatLevel.MEDIUM].actions
 
     def test_all_policies_are_response_policy(self):
         assert all(isinstance(p, ResponsePolicy) for p in DEFAULT_POLICIES.values())
@@ -230,8 +232,9 @@ class TestThreatResponseEngineInit:
     def test_events_empty(self, engine):
         assert engine._events == []
 
-    def test_last_trigger_empty(self, engine):
-        assert engine._last_trigger == {}
+    def test_no_last_trigger_attribute(self, engine):
+        # Zero-tolerance: cooldown tracking removed
+        assert not hasattr(engine, "_last_trigger")
 
     def test_seven_action_handlers(self, engine):
         assert len(engine._action_handlers) == 7
@@ -263,15 +266,15 @@ class TestThreatResponseEngineInit:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class TestMatchesPattern:
-    def test_critical_severity_single_occurrence_matches(self, engine):
-        # count_threshold=1 with matching severity → fires immediately
-        pattern = {"anomaly_severity": "critical", "count_threshold": 1}
+    def test_critical_severity_matches_immediately(self, engine):
+        # Zero-tolerance: matching severity fires on first occurrence
+        pattern = {"anomaly_severity": "critical"}
         assert engine._matches_pattern(pattern, "any_type", "critical", {}) is True
 
-    def test_critical_severity_count_threshold_not_met(self, engine):
-        # REM: H6 fix: count_threshold=3 requires 3 occurrences — first call returns False
-        pattern = {"anomaly_severity": "critical", "count_threshold": 3, "window_minutes": 5}
-        assert engine._matches_pattern(pattern, "any_type", "critical", {}) is False
+    def test_count_threshold_field_ignored(self, engine):
+        # Zero-tolerance: count_threshold is not a recognised criterion — ignored
+        pattern = {"anomaly_severity": "critical", "count_threshold": 999, "window_minutes": 5}
+        assert engine._matches_pattern(pattern, "any_type", "critical", {}) is True
 
     def test_severity_mismatch_returns_false(self, engine):
         pattern = {"anomaly_severity": "critical"}
@@ -323,7 +326,9 @@ class TestEvaluateAnomaly:
         assert result.event_id.startswith("threat_")
 
     def test_event_indicator_id(self, engine):
-        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        # Use severity="medium" so only ti_approval_bypass_attempt (type-match) fires,
+        # not ti_critical_anomaly_burst (severity="critical" only)
+        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "medium", {})
         assert result.indicator_id == "ti_approval_bypass_attempt"
 
     def test_event_agent_id(self, engine):
@@ -343,27 +348,29 @@ class TestEvaluateAnomaly:
         engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
         assert len(engine._events) == 1
 
-    def test_last_trigger_recorded(self, engine):
-        engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
-        assert "ti_approval_bypass_attempt:agent-001" in engine._last_trigger
-
-    def test_cooldown_blocks_same_agent(self, engine):
+    def test_zero_tolerance_same_agent_fires_twice(self, engine):
+        # Zero-tolerance: no cooldown — same agent fires on every matching call
         engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
         result2 = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
-        assert result2 is None
+        assert result2 is not None
 
-    def test_cooldown_different_agent_not_blocked(self, engine):
+    def test_zero_tolerance_multiple_events_recorded(self, engine):
+        engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        assert len(engine._events) == 2
+
+    def test_different_agent_also_fires(self, engine):
         engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
         result2 = engine.evaluate_anomaly("agent-002", "approval_bypass", "critical", {})
         assert result2 is not None
 
     def test_disabled_indicator_skipped(self, engine):
         engine.disable_indicator("ti_approval_bypass_attempt")
-        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "medium", {})
         assert result is None
 
-    def test_medium_require_confirmation_skips_actions(self, engine):
-        # MEDIUM policy has require_confirmation=True → response_actions_taken stays empty
+    def test_medium_indicator_fires_immediately(self, engine):
+        # Zero-tolerance: MEDIUM quarantines immediately — no confirmation gate
         custom = ThreatIndicator(
             indicator_id="ti_custom_medium_test",
             name="Custom Medium",
@@ -371,7 +378,6 @@ class TestEvaluateAnomaly:
             threat_level=ThreatLevel.MEDIUM,
             pattern={"anomaly_severity": "critical"},
             response_actions=[ResponseAction.ALERT],
-            cooldown_minutes=0,
         )
         engine.add_indicator(custom)
         engine.disable_indicator("ti_critical_anomaly_burst")
@@ -379,7 +385,8 @@ class TestEvaluateAnomaly:
         engine.disable_indicator("ti_signature_failure")
         result = engine.evaluate_anomaly("agent-001", "any_type", "critical", {})
         assert result is not None
-        assert result.response_actions_taken == []
+        # ALERT handler returns True → action recorded
+        assert "alert" in result.response_actions_taken
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -466,13 +473,22 @@ class TestGetRecentThreats:
         result = engine.get_recent_threats(limit=3)
         assert len(result) == 3
 
-    def test_eight_keys_in_result(self, engine):
+    def test_eleven_keys_in_result(self, engine):
         engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
         expected = {
             "event_id", "indicator_id", "threat_level", "agent_id",
-            "description", "detected_at", "actions_taken", "resolved"
+            "description", "detected_at", "actions_taken", "resolved",
+            "human_reviewed", "human_reviewed_by", "human_reviewed_at",
         }
         assert set(engine.get_recent_threats()[0].keys()) == expected
+
+    def test_human_reviewed_false_by_default(self, engine):
+        engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        assert engine.get_recent_threats()[0]["human_reviewed"] is False
+
+    def test_human_reviewed_by_none_by_default(self, engine):
+        engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        assert engine.get_recent_threats()[0]["human_reviewed_by"] is None
 
     def test_resolved_false_by_default(self, engine):
         engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
@@ -597,11 +613,65 @@ class TestDisableEnableIndicator:
 
     def test_disabled_prevents_evaluate_trigger(self, engine):
         engine.disable_indicator("ti_approval_bypass_attempt")
-        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "medium", {})
         assert result is None
 
     def test_reenable_allows_evaluate_trigger(self, engine):
         engine.disable_indicator("ti_approval_bypass_attempt")
         engine.enable_indicator("ti_approval_bypass_attempt")
-        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        result = engine.evaluate_anomaly("agent-001", "approval_bypass", "medium", {})
         assert result is not None
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ThreatResponseEngine.resolve_threat()
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class TestResolveThreat:
+    def test_resolve_unknown_event_returns_false(self, engine):
+        assert engine.resolve_threat("nonexistent_id", "admin") is False
+
+    def test_resolve_known_event_returns_true(self, engine):
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        assert engine.resolve_threat(event.event_id, "admin@clawcoat") is True
+
+    def test_resolved_flag_set(self, engine):
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        engine.resolve_threat(event.event_id, "admin")
+        assert event.resolved is True
+
+    def test_human_reviewed_flag_set(self, engine):
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        engine.resolve_threat(event.event_id, "admin")
+        assert event.human_reviewed is True
+
+    def test_human_reviewed_by_set(self, engine):
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        engine.resolve_threat(event.event_id, "admin@clawcoat")
+        assert event.human_reviewed_by == "admin@clawcoat"
+
+    def test_human_reviewed_at_is_datetime(self, engine):
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        engine.resolve_threat(event.event_id, "admin")
+        assert isinstance(event.human_reviewed_at, datetime)
+
+    def test_resolved_reflected_in_recent_threats(self, engine):
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        engine.resolve_threat(event.event_id, "admin")
+        threat_dict = next(
+            t for t in engine.get_recent_threats()
+            if t["event_id"] == event.event_id
+        )
+        assert threat_dict["resolved"] is True
+
+    def test_resolve_reduces_unresolved_stats(self, engine):
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        assert engine.get_threat_stats()["unresolved"] == 1
+        engine.resolve_threat(event.event_id, "admin")
+        assert engine.get_threat_stats()["unresolved"] == 0
+
+    def test_resolve_second_time_also_returns_true(self, engine):
+        # Resolving an already-resolved event is idempotent
+        event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
+        engine.resolve_threat(event.event_id, "admin")
+        assert engine.resolve_threat(event.event_id, "admin2") is True

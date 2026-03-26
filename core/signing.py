@@ -278,6 +278,22 @@ class AgentKeyRegistry:
                 f"REM: Revocation cleared for agent ::{agent_id}:: "
                 f"By: ::{cleared_by}::_Thank_You"
             )
+            try:
+                from core.audit import AuditEventType, audit
+                audit.log(
+                    AuditEventType.SECURITY_ALERT,
+                    f"Signing key revocation cleared for agent ::{agent_id}::",
+                    actor=cleared_by,
+                    resource=agent_id,
+                    details={
+                        "action": "clear_revocation",
+                        "cleared_by": cleared_by,
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                    },
+                    qms_status="Thank_You"
+                )
+            except Exception as e:
+                logger.error(f"REM: Failed to audit revocation clear: {e}")
             return True
         return False
 

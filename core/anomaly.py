@@ -23,6 +23,7 @@
 import json
 import logging
 import statistics
+import uuid
 from collections import defaultdict
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta, timezone
@@ -149,13 +150,13 @@ class BehaviorMonitor:
         self._baselines: Dict[str, AgentBaseline] = {}
         self._recent_records: Dict[str, List[AgentBehaviorRecord]] = defaultdict(list)
         self._anomalies: List[Anomaly] = []
-        self._anomaly_counter = 0
 
-        # REM: Track recent permission denials for probe detection
+        # REM: Track recent permission denials for probe detection — persisted cross-worker
         self._recent_denials: Dict[str, List[datetime]] = defaultdict(list)
 
-        # REM: Load baselines from persistence
+        # REM: Load baselines and recent denials from persistence
         self._load_from_persistence()
+        self._load_recent_denials_from_persistence()
 
     def _load_from_persistence(self):
         """REM: Load baselines from Redis on startup."""
@@ -166,11 +167,25 @@ class BehaviorMonitor:
                 unresolved = store.get_unresolved_anomalies(limit=500)
                 for anom_data in unresolved:
                     self._anomalies.append(self._dict_to_anomaly(anom_data))
-                    self._anomaly_counter = max(self._anomaly_counter,
-                        int(anom_data.get("anomaly_id", "ANOM-0").split("-")[1]) if "-" in anom_data.get("anomaly_id", "") else 0)
                 logger.info(f"REM: Loaded {len(self._anomalies)} unresolved anomalies from persistence_Thank_You")
             except Exception as e:
                 logger.warning(f"REM: Failed to load anomalies from persistence: {e}")
+
+    def _load_recent_denials_from_persistence(self) -> None:
+        """REM: Load persisted recent denial timestamps from Redis on startup."""
+        try:
+            from core.persistence import security_store
+            records = security_store.list_records("recent_denials")
+            cutoff = datetime.now(timezone.utc) - timedelta(minutes=5)
+            for agent_id, record in records.items():
+                timestamps = record.get("timestamps", [])
+                self._recent_denials[agent_id] = [
+                    datetime.fromisoformat(t)
+                    for t in timestamps
+                    if datetime.fromisoformat(t) > cutoff
+                ]
+        except Exception as e:
+            logger.warning(f"REM: Could not load recent denials from persistence: {e}")
 
     def _dict_to_anomaly(self, data: Dict) -> Anomaly:
         """REM: Convert stored dict back to Anomaly."""
@@ -477,14 +492,25 @@ class BehaviorMonitor:
     def _check_capability_probe(self, agent_id: str, timestamp: datetime) -> List[Anomaly]:
         """REM: Check for repeated permission denials (probing for capabilities)."""
         self._recent_denials[agent_id].append(timestamp)
-        
+
         # REM: Cleanup old denials
         cutoff = timestamp - timedelta(minutes=5)
         self._recent_denials[agent_id] = [
             t for t in self._recent_denials[agent_id]
             if t > cutoff
         ]
-        
+
+        # REM: Persist updated denial list so all workers share the same count
+        try:
+            from core.persistence import security_store
+            security_store.store_record(
+                "recent_denials",
+                agent_id,
+                {"timestamps": [t.isoformat() for t in self._recent_denials[agent_id]]}
+            )
+        except Exception as e:
+            logger.warning(f"REM: Failed to persist recent denials for {agent_id}: {e}")
+
         if len(self._recent_denials[agent_id]) >= self.CAPABILITY_PROBE_THRESHOLD:
             return [self._create_anomaly(
                 agent_id=agent_id,
@@ -594,10 +620,9 @@ class BehaviorMonitor:
         evidence: Dict[str, Any],
         requires_human_review: bool
     ) -> Anomaly:
-        """REM: Create an anomaly record."""
-        self._anomaly_counter += 1
+        """REM: Create an anomaly record. UUID-based ID is safe across multiple workers."""
         return Anomaly(
-            anomaly_id=f"ANOM-{self._anomaly_counter:06d}",
+            anomaly_id=f"ANOM-{uuid.uuid4().hex[:12]}",
             agent_id=agent_id,
             anomaly_type=anomaly_type,
             severity=severity,
