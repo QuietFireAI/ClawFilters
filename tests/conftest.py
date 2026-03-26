@@ -95,6 +95,19 @@ def client() -> Generator:
         # Redis is available the Lua token-bucket key persists across tests.
         for k in r.keys("ratelimit:*"):
             r.delete(k)
+        # REM: Flush signing keys/seen-message-IDs so test instances of AgentKeyRegistry
+        # start clean (signing_store prefix = "signing").
+        for k in r.keys("signing:*"):
+            r.delete(k)
+        # REM: Flush security hashes that bleed between tests:
+        #   - security:signing:revoked_agents  — revoked set persists to Redis (H2 fix)
+        #   - security:recent_denials          — denial timestamps (anomaly probe detection)
+        #   - security:threat_events           — persisted threat event records
+        r.delete(
+            "security:signing:revoked_agents",
+            "security:recent_denials",
+            "security:threat_events",
+        )
     except Exception:
         pass
     # REM: Reset in-memory RBAC state to match flushed Redis state
