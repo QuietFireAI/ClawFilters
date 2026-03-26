@@ -412,12 +412,12 @@ class TestValidateProductionSecrets:
         assert any("GRAFANA_ADMIN_PASSWORD" in e and "too short" in e for e in errors)
 
     def test_dev_postgres_password(self, good_settings):
-        good_settings.database_url = "postgresql://telsonbase:telsonbase_dev@postgres:5432/telsonbase"
+        good_settings.database_url = "postgresql://clawcoat:clawcoat_dev@postgres:5432/clawcoat"
         errors = validate_production_secrets(good_settings)
         assert any("POSTGRES_PASSWORD" in e for e in errors)
 
     def test_dev_redis_password(self, good_settings):
-        good_settings.redis_password = "telsonbase_redis_dev"
+        good_settings.redis_password = "clawcoat_redis_dev"
         errors = validate_production_secrets(good_settings)
         assert any("REDIS_PASSWORD" in e for e in errors)
 
@@ -433,7 +433,7 @@ class TestValidateProductionSecrets:
 
     def test_multiple_errors_reported(self, good_settings):
         good_settings.mcp_api_key = "MISSING_API_KEY"
-        good_settings.redis_password = "telsonbase_redis_dev"
+        good_settings.redis_password = "clawcoat_redis_dev"
         errors = validate_production_secrets(good_settings)
         assert len(errors) >= 2
 

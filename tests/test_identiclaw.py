@@ -337,7 +337,7 @@ class TestAgentRegistration:
         assert record.did == did
         assert record.display_name == "Test Agent"
         assert record.trust_level == "quarantine"
-        assert len(record.telsonbase_permissions) > 0
+        assert len(record.clawcoat_permissions) > 0
 
     def test_register_unresolvable_did(self, manager):
         manager._get_redis = MagicMock(return_value=None)
@@ -406,7 +406,7 @@ class TestAuthFlow:
         record = AgentIdentityRecord(
             did=did,
             display_name="Auth Test Agent",
-            telsonbase_permissions=["read"],
+            clawcoat_permissions=["read"],
         )
         manager._identity_cache[did] = record
 
@@ -433,7 +433,7 @@ class TestAuthFlow:
 
         assert result is not None
         assert result.did == did
-        assert "read" in result.telsonbase_permissions
+        assert "read" in result.clawcoat_permissions
 
     def test_auth_header_unregistered_agent(self, manager, ed25519_keypair, sample_did_key):
         """REM: DID authenticates but is not registered — should return None."""

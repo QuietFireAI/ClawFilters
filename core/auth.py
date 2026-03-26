@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/auth.py
+# ClawCoat/core/auth.py
 # REM: =======================================================================================
-# REM: AUTHENTICATION & AUTHORIZATION FOR THE TelsonBase
+# REM: AUTHENTICATION & AUTHORIZATION FOR CLAWCOAT
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026
@@ -454,7 +454,7 @@ async def authenticate_request(
                         authenticated=True,
                         actor=actor,
                         method="did",
-                        permissions=did_result.telsonbase_permissions
+                        permissions=did_result.clawcoat_permissions
                     )
                 else:
                     audit.auth_failure(actor="unknown_did", reason="DID authentication failed")

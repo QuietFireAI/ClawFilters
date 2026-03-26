@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/identiclaw.py
+# ClawCoat/core/identiclaw.py
 # REM: =======================================================================================
 # REM: W3C DID IDENTITY ENGINE
 # REM: =======================================================================================
@@ -102,7 +102,7 @@ class AgentIdentityRecord(BaseModel):
     display_name: str = ""                      # Human-readable label
     public_key_hex: str = ""                    # Cached public key
     active_credential_ids: List[str] = Field(default_factory=list)  # Active VC IDs
-    telsonbase_permissions: List[str] = Field(default_factory=list)  # Mapped permissions
+    clawcoat_permissions: List[str] = Field(default_factory=list)  # Mapped permissions
     trust_level: str = "quarantine"             # Starts at quarantine
     registered_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     last_verified_at: Optional[datetime] = None
@@ -657,7 +657,7 @@ class IdenticlawManager:
             display_name=display_name or did[:32],
             public_key_hex=doc.public_key_hex,
             active_credential_ids=active_vc_ids,
-            telsonbase_permissions=sorted(all_permissions),
+            clawcoat_permissions=sorted(all_permissions),
             trust_level="quarantine",
             registered_at=datetime.now(timezone.utc),
             last_verified_at=datetime.now(timezone.utc),
