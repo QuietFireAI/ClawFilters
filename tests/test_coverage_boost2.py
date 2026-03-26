@@ -363,11 +363,12 @@ class TestThreatIndicator:
             name="Test Indicator",
             description="A test threat indicator",
             threat_level=ThreatLevel.HIGH,
-            pattern={"count_threshold": 5},
+            pattern={"anomaly_type": "test_type"},
             response_actions=[ResponseAction.ALERT]
         )
         assert ind.enabled is True
-        assert ind.cooldown_minutes == 5
+        # Zero-tolerance: no cooldown_minutes field
+        assert not hasattr(ind, "cooldown_minutes")
 
     def test_default_indicators_not_empty(self):
         from core.threat_response import DEFAULT_INDICATORS
@@ -406,15 +407,16 @@ class TestResponsePolicy:
         for level in [ThreatLevel.CRITICAL, ThreatLevel.HIGH, ThreatLevel.MEDIUM, ThreatLevel.LOW]:
             assert level in DEFAULT_POLICIES
 
-    def test_critical_policy_does_not_require_confirmation(self):
-        from core.threat_response import DEFAULT_POLICIES, ThreatLevel
+    def test_critical_policy_has_quarantine_action(self):
+        from core.threat_response import DEFAULT_POLICIES, ThreatLevel, ResponseAction
         policy = DEFAULT_POLICIES[ThreatLevel.CRITICAL]
-        assert policy.require_confirmation is False
+        assert ResponseAction.QUARANTINE in policy.actions
 
-    def test_medium_policy_requires_confirmation(self):
-        from core.threat_response import DEFAULT_POLICIES, ThreatLevel
+    def test_medium_policy_has_quarantine_action(self):
+        # Zero-tolerance: MEDIUM quarantines immediately — no confirmation gate
+        from core.threat_response import DEFAULT_POLICIES, ThreatLevel, ResponseAction
         policy = DEFAULT_POLICIES[ThreatLevel.MEDIUM]
-        assert policy.require_confirmation is True
+        assert ResponseAction.QUARANTINE in policy.actions
 
 
 class TestThreatResponseEngine:
