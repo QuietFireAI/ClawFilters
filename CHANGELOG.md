@@ -7,9 +7,9 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] - 2026-03-25 (Security hardening H1–H13 + TelsonBase branding sweep)
+## [11.0.4] - 2026-03-25 (Security hardening H1–H13, branding sweep, zero-tolerance threat response)
 
-**CI:** Run #384 in progress on commit `c30040c`.
+**CI:** Run #388 in progress on commit `eb34af3`. Previous runs #385-#386 failed CI version check (Unreleased heading) — resolved in this release.
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Security (HIGH — all 13 items resolved)
@@ -38,6 +38,11 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - Frontend: localStorage keys renamed (`telsonbase_*` → `clawcoat_*`); `telsonbase_permissions` → `clawcoat_permissions` in admin UI
 - `.env.example`: header, DB URL default, MOSQUITTO_USER default updated
 - Docker secret filenames (`telsonbase_*`) and `TELSONBASE_ENV` env var intentionally unchanged — production filesystem/infrastructure names
+
+### Security (MEDIUM — multi-worker and zero-tolerance policy)
+- **`core/threat_response.py`** — Zero-tolerance policy: every threat match quarantines immediately; no cooldown; no confirmation gate. Threat events persisted to Redis (`SecurityStore`) so all workers share event history. `resolve_threat(event_id, reviewed_by)` added — agents remain quarantined until human explicitly reviews. `_matches_pattern` simplified: only positive criteria (anomaly_type, anomaly_severity, event_type) — no threshold accumulation. `_last_trigger` removed entirely.
+- **`core/anomaly.py`** — Anomaly IDs changed from sequential counters (`ANOM-000001`) to UUID4 (`ANOM-{uuid12}`) — safe across multiple workers. `_recent_denials` (permission denial counts for capability-probe detection) now persisted to Redis (`SecurityStore`) and loaded on startup — probe count is now shared cross-worker and survives restart.
+- **`core/signing.py`** — `clear_revocation()` now emits a `SECURITY_ALERT` audit log entry matching the pattern established in `revoke_agent()`.
 
 ---
 

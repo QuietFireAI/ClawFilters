@@ -29,7 +29,7 @@
 # REM: =======================================================================================
 
 # REM: Version constant for API responses and dashboard
-VERSION = "11.0.3"
+VERSION = "11.0.4"
 
 import os
 import secrets

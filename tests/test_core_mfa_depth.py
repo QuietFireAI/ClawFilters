@@ -113,7 +113,7 @@ class TestEnrollMfa:
 
     def test_provisioning_uri_has_issuer(self, mgr):
         result = mgr.enroll_mfa("user-1", "Alice")
-        assert "TelsonBase" in result["provisioning_uri"]
+        assert "ClawCoat" in result["provisioning_uri"]
 
     def test_provisioning_uri_has_username(self, mgr):
         result = mgr.enroll_mfa("user-1", "AliceName")
