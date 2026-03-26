@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/secure_storage.py
+# ClawCoat/core/secure_storage.py
 # REM: =======================================================================================
 # REM: ENCRYPTION AT REST FOR SENSITIVE DATA
 # REM: =======================================================================================
@@ -37,8 +37,11 @@ logger = logging.getLogger(__name__)
 
 
 # REM: Environment variable for encryption key (must be set in production)
-ENCRYPTION_KEY_ENV = "TELSONBASE_ENCRYPTION_KEY"
-ENCRYPTION_SALT_ENV = "TELSONBASE_ENCRYPTION_SALT"
+ENCRYPTION_KEY_ENV = "CLAWCOAT_ENCRYPTION_KEY"
+ENCRYPTION_SALT_ENV = "CLAWCOAT_ENCRYPTION_SALT"
+# REM: Legacy env var names — accepted for backward compat during migration
+_LEGACY_ENCRYPTION_KEY_ENV = "TELSONBASE_ENCRYPTION_KEY"
+_LEGACY_ENCRYPTION_SALT_ENV = "TELSONBASE_ENCRYPTION_SALT"
 
 
 @dataclass
@@ -80,9 +83,17 @@ class SecureStorageManager:
         """
         self._initialized = False
 
-        # REM: Get key from environment or parameter
-        key_material = encryption_key or os.environ.get(ENCRYPTION_KEY_ENV)
-        salt_material = salt or os.environ.get(ENCRYPTION_SALT_ENV)
+        # REM: Get key from environment or parameter (check legacy env var name for backward compat)
+        key_material = (
+            encryption_key
+            or os.environ.get(ENCRYPTION_KEY_ENV)
+            or os.environ.get(_LEGACY_ENCRYPTION_KEY_ENV)
+        )
+        salt_material = (
+            salt
+            or os.environ.get(ENCRYPTION_SALT_ENV)
+            or os.environ.get(_LEGACY_ENCRYPTION_SALT_ENV)
+        )
 
         if not key_material:
             raise ValueError(
@@ -93,7 +104,7 @@ class SecureStorageManager:
             )
 
         if not salt_material:
-            salt_material = "telsonbase_default_salt_CHANGE_ME"
+            salt_material = "clawcoat_default_salt_CHANGE_ME"
             logger.warning(
                 f"REM: {ENCRYPTION_SALT_ENV} not set - using default. "
                 f"Set for production!_Thank_You_But_No"

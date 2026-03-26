@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/secrets.py
+# ClawCoat/core/secrets.py
 # REM: =======================================================================================
 # REM: SECRETS PROVIDER — THE LAST LINE OF DEFENSE
 # REM: =======================================================================================
@@ -135,7 +135,7 @@ SECRET_REGISTRY: Dict[str, SecretDefinition] = {
     ),
     "encryption_key": SecretDefinition(
         name="encryption_key",
-        env_var="TELSONBASE_ENCRYPTION_KEY",
+        env_var="CLAWCOAT_ENCRYPTION_KEY",
         docker_secret_name="telsonbase_encryption_key",
         required=True,
         min_length=32,
@@ -143,7 +143,7 @@ SECRET_REGISTRY: Dict[str, SecretDefinition] = {
     ),
     "encryption_salt": SecretDefinition(
         name="encryption_salt",
-        env_var="TELSONBASE_ENCRYPTION_SALT",
+        env_var="CLAWCOAT_ENCRYPTION_SALT",
         docker_secret_name="telsonbase_encryption_salt",
         required=True,
         min_length=16,

@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/audit.py
+# ClawCoat/core/audit.py
 # REM: =======================================================================================
-# REM: AUDIT LOGGING SYSTEM FOR THE TelsonBase
+# REM: AUDIT LOGGING SYSTEM FOR CLAWCOAT
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026
@@ -207,7 +207,7 @@ class AuditLogger:
         # REM: Hash chain state
         self._chain_state = ChainState(
             chain_id=hashlib.sha256(
-                f"telsonbase_{datetime.now(timezone.utc).isoformat()}".encode()
+                f"clawcoat_{datetime.now(timezone.utc).isoformat()}".encode()
             ).hexdigest()[:16],
             created_at=datetime.now(timezone.utc).isoformat()
         )

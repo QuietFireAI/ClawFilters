@@ -85,7 +85,7 @@ class TestAgentIdentityResponse:
         assert resp.trust_level == "quarantine"
         assert resp.revoked is False
         assert resp.qms_status == "Thank_You"
-        assert resp.telsonbase_permissions == []
+        assert resp.clawcoat_permissions == []
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -98,7 +98,7 @@ def _mock_record(did=SAMPLE_DID, trust_level="quarantine", revoked=False):
     r.did = did
     r.display_name = "Test Agent"
     r.trust_level = trust_level
-    r.telsonbase_permissions = ["read:self"]
+    r.clawcoat_permissions = ["read:self"]
     r.active_credential_ids = []
     r.revoked = revoked
     r.revoked_by = None

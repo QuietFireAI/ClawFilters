@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/rbac.py
+# ClawCoat/core/rbac.py
 # REM: =======================================================================================
 # REM: ROLE-BASED ACCESS CONTROL FOR OPERATORS
 # REM: =======================================================================================

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/openclaw.py
+# ClawCoat/core/openclaw.py
 # REM: =======================================================================================
 # REM: OPENCLAW GOVERNANCE ENGINE — "CONTROL YOUR CLAW"
 # REM: =======================================================================================
@@ -10,7 +10,7 @@
 # REM: v7.4.0CC: OpenClaw governance integration — trust-level action enforcement
 #
 # REM: Mission Statement: OpenClaw is the autonomous AI agent with 180K+ GitHub stars
-# REM: and zero mandatory HITL. TelsonBase is the leash. This module intercepts every
+# REM: and zero mandatory HITL. ClawCoat is the leash. This module intercepts every
 # REM: action OpenClaw wants to take and evaluates it against the governance pipeline:
 # REM:
 # REM:   1. Is this claw registered? (reject if not)
@@ -23,8 +23,8 @@
 # REM:   8. If approval required → pause and wait for human
 # REM:   9. Audit every decision to cryptographic chain
 # REM:
-# REM: Architecture: TelsonBase acts as a governed MCP proxy. OpenClaw itself is NEVER
-# REM: modified — TelsonBase wraps it. The claw doesn't know it's on a leash.
+# REM: Architecture: ClawCoat acts as a governed MCP proxy. OpenClaw itself is NEVER
+# REM: modified — ClawCoat wraps it. The claw doesn't know it's on a leash.
 # REM:
 # REM: Integration guide: docs/Operation Documents/OPENCLAW_INTEGRATION_GUIDE.md
 # REM: Full start-to-finish walkthrough: install, register, govern, trust journey (45 min).
@@ -210,7 +210,7 @@ TRUST_PERMISSION_MATRIX: Dict[TrustLevel, Dict[str, List[ActionCategory]]] = {
 
 class OpenClawInstance(BaseModel):
     """
-    REM: A registered OpenClaw instance under TelsonBase governance.
+    REM: A registered OpenClaw instance under ClawCoat governance.
     REM: Starts at QUARANTINE. Trust must be earned.
     """
     instance_id: str = Field(default_factory=lambda: uuid.uuid4().hex[:16])
@@ -378,7 +378,7 @@ class OpenClawManager:
         metadata: Dict[str, Any] = None,
     ) -> Optional[OpenClawInstance]:
         """
-        REM: Register a new OpenClaw instance under TelsonBase governance.
+        REM: Register a new OpenClaw instance under ClawCoat governance.
         REM: Always starts at QUARANTINE. Trust must be earned.
         """
         settings = get_settings()

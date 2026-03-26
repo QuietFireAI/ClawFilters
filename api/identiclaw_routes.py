@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/api/identiclaw_routes.py
+# ClawCoat/api/identiclaw_routes.py
 # REM: =======================================================================================
 # REM: W3C DID IDENTITY MANAGEMENT API
 # REM: =======================================================================================
@@ -71,7 +71,7 @@ class AgentIdentityResponse(BaseModel):
     did: str
     display_name: str = ""
     trust_level: str = "quarantine"
-    telsonbase_permissions: List[str] = []
+    clawcoat_permissions: List[str] = []
     revoked: bool = False
     registered_at: Optional[str] = None
     last_verified_at: Optional[str] = None
@@ -139,7 +139,7 @@ async def register_did_agent(
         did=record.did,
         display_name=record.display_name,
         trust_level=record.trust_level,
-        telsonbase_permissions=record.telsonbase_permissions,
+        clawcoat_permissions=record.clawcoat_permissions,
         revoked=record.revoked,
         registered_at=record.registered_at.isoformat() if record.registered_at else None,
         last_verified_at=record.last_verified_at.isoformat() if record.last_verified_at else None,
@@ -165,7 +165,7 @@ async def list_did_agents(
                 "did": a.did,
                 "display_name": a.display_name,
                 "trust_level": a.trust_level,
-                "permissions": a.telsonbase_permissions,
+                "permissions": a.clawcoat_permissions,
                 "revoked": a.revoked,
                 "registered_at": a.registered_at.isoformat() if a.registered_at else None,
                 "last_verified_at": a.last_verified_at.isoformat() if a.last_verified_at else None,
@@ -201,7 +201,7 @@ async def get_did_agent(
         "display_name": record.display_name,
         "public_key_hex": record.public_key_hex,
         "trust_level": record.trust_level,
-        "telsonbase_permissions": record.telsonbase_permissions,
+        "clawcoat_permissions": record.clawcoat_permissions,
         "active_credential_ids": record.active_credential_ids,
         "revoked": record.revoked,
         "revoked_by": record.revoked_by,
