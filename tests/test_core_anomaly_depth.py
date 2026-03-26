@@ -286,12 +286,11 @@ class TestCreateAnomaly:
         )
         assert anomaly.anomaly_id.startswith("ANOM-")
 
-    def test_anomaly_id_increments(self, monitor):
+    def test_anomaly_ids_are_unique(self, monitor):
+        # IDs are UUID-based — must be distinct, not sequential counters
         a1 = monitor._create_anomaly("agent-001", AnomalyType.RATE_SPIKE, AnomalySeverity.LOW, "1", {}, False)
         a2 = monitor._create_anomaly("agent-001", AnomalyType.NEW_RESOURCE, AnomalySeverity.LOW, "2", {}, False)
-        id1 = int(a1.anomaly_id.split("-")[1])
-        id2 = int(a2.anomaly_id.split("-")[1])
-        assert id2 == id1 + 1
+        assert a1.anomaly_id != a2.anomaly_id
 
     def test_anomaly_has_correct_type(self, monitor):
         a = monitor._create_anomaly(
