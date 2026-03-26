@@ -78,7 +78,20 @@ class TestSignedAgentMessage:
 
 class TestAgentKeyRegistry:
     """REM: Tests for AgentKeyRegistry class."""
-    
+
+    @pytest.fixture(autouse=True)
+    def clear_signing_redis(self):
+        """Flush Redis signing state before each test so AgentKeyRegistry() starts clean."""
+        try:
+            import redis as redis_lib, os, re
+            redis_url = re.sub(r'/\d+$', '/15', os.environ.get("REDIS_URL", "redis://localhost:6379/0"))
+            r = redis_lib.from_url(redis_url, decode_responses=True)
+            for k in r.keys("signing:*"):
+                r.delete(k)
+            r.delete("security:signing:revoked_agents")
+        except Exception:
+            pass
+
     def test_register_agent(self):
         """REM: Test agent registration."""
         registry = AgentKeyRegistry()
