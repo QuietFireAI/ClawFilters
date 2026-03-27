@@ -1,7 +1,7 @@
 # TB-PROOF-016: HIPAA-Compliant Session Management
 
 **Sheet ID:** TB-PROOF-016
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestAuthSecurity -- session timeout, auto-logoff, max duration, and invalidation all tested
 **Last Verified:** March 8, 2026
@@ -68,4 +68,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-016 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-016 | ClawFilters v11.0.3 | March 20, 2026*

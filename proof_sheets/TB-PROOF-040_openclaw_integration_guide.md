@@ -163,5 +163,5 @@ that a stranger could follow without asking a question.
 
 ---
 
-*Sheet TB-PROOF-040 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-040 | ClawFilters v11.0.3 | March 20, 2026*
 *Status: VERIFIED - first-user walkthrough complete February 23, 2026*

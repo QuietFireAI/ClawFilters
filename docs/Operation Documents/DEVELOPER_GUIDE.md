@@ -1,8 +1,8 @@
-# ClawCoat - Developer Guide
+# ClawFilters - Developer Guide
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
-This guide explains how to build AI agents that run within the ClawCoat zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside ClawCoat.
+This guide explains how to build AI agents that run within the ClawFilters zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside ClawFilters.
 
 > **External agents (Goose, Claude Desktop, any HTTP client)** use a different path - the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
 
@@ -139,7 +139,8 @@ Every agent inherits from `SecureBaseAgent`, which wraps your logic with six enf
 # Promote via API
 curl -X POST http://localhost:8000/v1/openclaw/{instance_id}/promote \
   -H "X-API-Key: $API_KEY" \
-  -d '{"reason": "Initial deployment - reviewed and approved"}'
+  -H "Content-Type: application/json" \
+  -d '{"new_level": "probation", "reason": "Initial deployment - reviewed and approved"}'
 ```
 
 **Manners compliance score:** Every agent receives a score from 0.0 to 1.0, updated in real time. Five states:
@@ -323,7 +324,7 @@ The approval record includes the full payload so the reviewer knows exactly what
 
 ## QMS Logging Conventions
 
-ClawCoat uses the Qualified Message Standard (QMS™) in logs for human readability. Your agent's base class appends these suffixes automatically. Understanding them helps when reading audit logs.
+ClawFilters uses the Qualified Message Standard (QMS™) in logs for human readability. Your agent's base class appends these suffixes automatically. Understanding them helps when reading audit logs.
 
 | Suffix | Meaning | Example |
 |---|---|---|
@@ -521,8 +522,8 @@ docker run -d -p 6379:6379 --name redis-dev redis:7-alpine
 ### Setup
 
 ```bash
-git clone https://github.com/QuietFireAI/ClawCoat.git
-cd ClawCoat
+git clone https://github.com/QuietFireAI/ClawFilters.git
+cd ClawFilters
 
 python -m venv venv
 
@@ -585,8 +586,8 @@ pytest --cov=core --cov=agents --cov-report=html tests/
 4. Read [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) if you need external agents (Goose, Claude Desktop, HTTP clients)
 5. See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common issues
 
-For questions: support@clawcoat.com
+For questions: support@clawfilters.com
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

@@ -1,7 +1,7 @@
 # TB-PROOF-011: PBKDF2 Key Derivation (100,000+ Iterations)
 
 **Sheet ID:** TB-PROOF-011
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestEncryptionIntegrity -- PBKDF2 iterations, key derivation, and wrong-key rejection tested
 **Last Verified:** March 8, 2026
@@ -63,4 +63,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-011 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-011 | ClawFilters v11.0.3 | March 20, 2026*

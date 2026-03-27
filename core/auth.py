@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawCoat/core/auth.py
+# ClawFilters/core/auth.py
 # REM: =======================================================================================
 # REM: AUTHENTICATION & AUTHORIZATION FOR CLAWCOAT
 # REM: =======================================================================================

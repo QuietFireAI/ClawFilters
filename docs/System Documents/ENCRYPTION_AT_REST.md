@@ -1,10 +1,10 @@
-# ClawCoat - Encryption at Rest Guide
+# ClawFilters - Encryption at Rest Guide
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 ## Overview
 
-This document describes the encryption-at-rest posture of ClawCoat, a zero-trust AI agent security platform deployed on customer premises via Docker Compose. It covers what is encrypted today at the application level, what options exist for encrypting the underlying storage (PostgreSQL 16, Redis), and what steps customers must take to achieve full encryption at rest on their deployment hardware (Drobo, NAS, or other self-hosted infrastructure).
+This document describes the encryption-at-rest posture of ClawFilters, a zero-trust AI agent security platform deployed on customer premises via Docker Compose. It covers what is encrypted today at the application level, what options exist for encrypting the underlying storage (PostgreSQL 16, Redis), and what steps customers must take to achieve full encryption at rest on their deployment hardware (Drobo, NAS, or other self-hosted infrastructure).
 
 This guide is intended for law firm IT administrators, managed service providers (MSPs), and compliance officers responsible for the physical deployment environment.
 
@@ -12,7 +12,7 @@ This guide is intended for law firm IT administrators, managed service providers
 
 ## Current State: What Is Encrypted Today
 
-ClawCoat provides several layers of application-level cryptographic protection out of the box. These operate independently of any volume or disk encryption the customer may configure.
+ClawFilters provides several layers of application-level cryptographic protection out of the box. These operate independently of any volume or disk encryption the customer may configure.
 
 | Data | Protection | Mechanism | Reversible? |
 |------|-----------|-----------|-------------|
@@ -62,10 +62,10 @@ Encrypt the host filesystem or block device that backs the PostgreSQL Docker vol
 **Cons:**
 - Data is decrypted while the volume is mounted and the system is running
 - Does not protect against a compromised application or SQL injection reading data in memory
-- Requires customer action -- ClawCoat cannot enable this for you
+- Requires customer action -- ClawFilters cannot enable this for you
 - Key management is the customer's responsibility
 
-**This is the recommended approach for all ClawCoat deployments.**
+**This is the recommended approach for all ClawFilters deployments.**
 
 ### Option B: Column-Level Encryption (pgcrypto)
 
@@ -109,12 +109,12 @@ PostgreSQL 16 and later have community-contributed TDE patches that encrypt enti
 
 **Cons:**
 - Not part of core PostgreSQL -- requires patched builds or specific distributions
-- Not available in the standard `postgres:16` Docker image used by ClawCoat
+- Not available in the standard `postgres:16` Docker image used by ClawFilters
 - WAL encryption support varies by implementation
 - Less mature than volume-level encryption
 - Adds operational complexity (custom Docker image, key management daemon)
 
-**Not recommended for ClawCoat at this time.** Volume-level encryption (Option A) provides equivalent protection with less complexity. Revisit if TDE becomes part of core PostgreSQL in a future release.
+**Not recommended for ClawFilters at this time.** Volume-level encryption (Option A) provides equivalent protection with less complexity. Revisit if TDE becomes part of core PostgreSQL in a future release.
 
 ---
 
@@ -135,15 +135,15 @@ Redis stores all data in memory and periodically writes snapshots (RDB) and appe
 
 1. **Run Redis on an encrypted volume** (same approach as PostgreSQL -- see Option A above). This encrypts RDB snapshots and AOF files on disk.
 2. **Continue relying on application-level encryption** for sensitive fields. The `SecureRedisStore` and `SecureStorageManager` classes already encrypt MFA secrets, signing keys, API keys, tokens, passwords, private keys, and session keys before they reach Redis. Even if the Redis volume were accessed by an attacker, these fields are ciphertext.
-3. **Do not store plaintext secrets in Redis.** Any new sensitive data types added to ClawCoat must use `SecureStorageManager` for encryption before storage.
+3. **Do not store plaintext secrets in Redis.** Any new sensitive data types added to ClawFilters must use `SecureStorageManager` for encryption before storage.
 
 ---
 
-## Recommended Implementation for ClawCoat Customers
+## Recommended Implementation for ClawFilters Customers
 
 ### Primary: Volume-Level Encryption
 
-Enable full-disk or full-volume encryption on every host or NAS device that stores ClawCoat Docker volumes. This covers:
+Enable full-disk or full-volume encryption on every host or NAS device that stores ClawFilters Docker volumes. This covers:
 
 - PostgreSQL data volume (`telsonbase_postgres_data`)
 - Redis data volume (`telsonbase_redis_data`)
@@ -204,7 +204,7 @@ Use this checklist during initial deployment or when hardening an existing insta
 
 - [ ] Document the encryption key backup procedure for your volume encryption method
 - [ ] Store volume encryption recovery keys in a separate, secure location
-- [ ] Store ClawCoat application encryption keys (`./secrets/`) on encrypted media, separate from data
+- [ ] Store ClawFilters application encryption keys (`./secrets/`) on encrypted media, separate from data
 - [ ] Test backup and restore with encrypted volumes -- confirm backups can be restored on a new system
 - [ ] Test disaster recovery -- confirm the system can be rebuilt from backups with encryption keys
 
@@ -219,9 +219,9 @@ Use this checklist during initial deployment or when hardening an existing insta
 
 ## Shared Responsibility Model
 
-ClawCoat encryption at rest follows a shared responsibility model between the platform and the customer.
+ClawFilters encryption at rest follows a shared responsibility model between the platform and the customer.
 
-### ClawCoat Provides (Application Level)
+### ClawFilters Provides (Application Level)
 
 | Responsibility | Implementation |
 |---------------|----------------|
@@ -240,18 +240,18 @@ ClawCoat encryption at rest follows a shared responsibility model between the pl
 |---------------|-----------------|
 | Volume/disk encryption | Enable LUKS, BitLocker, FileVault, or NAS encryption on all data volumes |
 | Encryption key management | Store and back up volume encryption keys separately from data |
-| Physical security | Secure the hardware running ClawCoat (locked server room, restricted access) |
+| Physical security | Secure the hardware running ClawFilters (locked server room, restricted access) |
 | Backup encryption | Ensure backups are stored on encrypted media or encrypted before transfer |
 | Network security | Firewall rules, VPN access, restrict management ports |
 | Compliance documentation | Maintain records of encryption status for auditors |
 
-**ClawCoat cannot enable volume-level encryption on your behalf.** This is an infrastructure decision that depends on your operating system, hardware, and compliance requirements. ClawCoat provides the application-level encryption layer; the customer provides the infrastructure-level encryption layer.
+**ClawFilters cannot enable volume-level encryption on your behalf.** This is an infrastructure decision that depends on your operating system, hardware, and compliance requirements. ClawFilters provides the application-level encryption layer; the customer provides the infrastructure-level encryption layer.
 
 ---
 
 ## Compliance Relevance
 
-| Framework | Encryption at Rest Requirement | How ClawCoat + Volume Encryption Satisfies |
+| Framework | Encryption at Rest Requirement | How ClawFilters + Volume Encryption Satisfies |
 |-----------|-------------------------------|----------------------------------------------|
 | HIPAA (164.312(a)(2)(iv)) | Encryption of ePHI at rest | Volume encryption for all data; pgcrypto for PHI columns |
 | CJIS Security Policy (5.10.1.2) | Encryption of CJI at rest | Volume encryption; application-level encryption for sensitive fields |
@@ -274,4 +274,4 @@ For detailed compliance documentation, see [LEGAL_COMPLIANCE.md](LEGAL_COMPLIANC
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

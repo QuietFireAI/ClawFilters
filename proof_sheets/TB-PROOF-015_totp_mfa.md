@@ -1,7 +1,7 @@
 # TB-PROOF-015: RFC 6238 TOTP Multi-Factor Authentication
 
 **Sheet ID:** TB-PROOF-015
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestAuthSecurity -- 7 MFA/TOTP behavioral tests: enrollment, valid token, invalid token, replay, backup codes
 **Last Verified:** March 8, 2026
@@ -69,4 +69,4 @@ References to pyotp, RFC 6238, TOTP operations, backup codes, and replay prevent
 
 ---
 
-*Sheet TB-PROOF-015 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-015 | ClawFilters v11.0.3 | March 20, 2026*

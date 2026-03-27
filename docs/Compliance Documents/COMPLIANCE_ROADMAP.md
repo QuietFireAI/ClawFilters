@@ -1,4 +1,4 @@
-# ClawCoat - Compliance Certification Roadmap
+# ClawFilters - Compliance Certification Roadmap
 
 **Version:** v11.0.3 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 **Platform:** Zero-Trust AI Agent Security Platform
@@ -8,9 +8,9 @@
 
 ## I. Executive Summary
 
-This document defines the certification and compliance roadmap for ClawCoat, a self-hosted zero-trust AI agent orchestration platform. ClawCoat currently serves law firms (primary revenue market, $150-1000/seat/month) and real estate brokerages (entry market, low compliance bar), with forward-looking healthcare-adjacent compliance infrastructure already built into the platform.
+This document defines the certification and compliance roadmap for ClawFilters, a self-hosted zero-trust AI agent orchestration platform. ClawFilters currently serves law firms (primary revenue market, $150-1000/seat/month) and real estate brokerages (entry market, low compliance bar), with forward-looking healthcare-adjacent compliance infrastructure already built into the platform.
 
-The self-hosted deployment model is ClawCoat's principal compliance advantage. All data remains on the customer's premises. No client data is transmitted to third-party AI services. Local AI inference via Ollama means attorney-client privilege is preserved by architecture, not by policy. This fundamentally simplifies every certification path described below -- the data residency question that consumes weeks of audit effort in cloud-hosted platforms is answered at the architecture level.
+The self-hosted deployment model is ClawFilters's principal compliance advantage. All data remains on the customer's premises. No client data is transmitted to third-party AI services. Local AI inference via Ollama means attorney-client privilege is preserved by architecture, not by policy. This fundamentally simplifies every certification path described below -- the data residency question that consumes weeks of audit effort in cloud-hosted platforms is answered at the architecture level.
 
 This roadmap covers six certification targets across a phased 12-18 month timeline, with a total estimated budget of $50-125K. Each phase builds on existing controls documented in `LEGAL_COMPLIANCE.md`, `HEALTHCARE_COMPLIANCE.md`, and `ENCRYPTION_AT_REST.md`.
 
@@ -20,7 +20,7 @@ This roadmap covers six certification targets across a phased 12-18 month timeli
 
 ### HIPAA/HITECH Infrastructure
 
-ClawCoat maintains 12 compliance modules implemented and operational in the codebase:
+ClawFilters maintains 12 compliance modules implemented and operational in the codebase:
 
 | Module | File | Purpose |
 |--------|------|---------|
@@ -52,7 +52,7 @@ SOC 2 Trust Service Criteria controls are documented and mapped:
 
 The self-hosted model eliminates or simplifies several certification concerns:
 
-| Concern | Cloud-Hosted Complexity | ClawCoat (Self-Hosted) |
+| Concern | Cloud-Hosted Complexity | ClawFilters (Self-Hosted) |
 |---------|------------------------|--------------------------|
 | Data residency | Multi-region, cross-border, DPA required | Data never leaves customer premises |
 | Third-party AI training | Contractual prohibitions, vendor due diligence | Local Ollama inference, no external API calls |
@@ -67,7 +67,7 @@ The self-hosted model eliminates or simplifies several certification concerns:
 
 ### Current State
 
-ClawCoat maintains a HITRUST controls module (`core/hitrust_controls.py`) with pre-mapped controls across all 12 HITRUST CSF domains:
+ClawFilters maintains a HITRUST controls module (`core/hitrust_controls.py`) with pre-mapped controls across all 12 HITRUST CSF domains:
 
 | Domain | Description | Controls Mapped |
 |--------|-------------|----------------|
@@ -101,14 +101,14 @@ The HITRUST e1 assessment is the entry-level validated assessment, covering appr
 ### Steps to Certification
 
 1. **Register with HITRUST Alliance** and obtain access to MyCSF (HITRUST's assessment platform).
-2. **Conduct self-assessment** by populating MyCSF with ClawCoat's existing control mappings from `core/hitrust_controls.py`. The 75+ pre-mapped controls provide a significant head start.
-3. **Engage a HITRUST Authorized External Assessor** for readiness assessment. The assessor will identify gaps between ClawCoat's current controls and e1 requirements.
+2. **Conduct self-assessment** by populating MyCSF with ClawFilters's existing control mappings from `core/hitrust_controls.py`. The 75+ pre-mapped controls provide a significant head start.
+3. **Engage a HITRUST Authorized External Assessor** for readiness assessment. The assessor will identify gaps between ClawFilters's current controls and e1 requirements.
 4. **Remediate identified gaps.** Based on current control coverage, expected gaps are primarily procedural (documented policies, formal risk assessment process) rather than technical.
 5. **Complete validated assessment.** The assessor evaluates control implementation and submits results to HITRUST for quality review and certification.
 
 ### Strategic Benefit
 
-HITRUST CSF certification is accepted by healthcare organizations as evidence of security maturity. A single HITRUST certification replaces the need for multiple point-in-time assessments from individual healthcare clients. For ClawCoat's law firm customers who handle healthcare-adjacent work (medical malpractice, health law, insurance defense), HITRUST certification provides a competitive differentiator.
+HITRUST CSF certification is accepted by healthcare organizations as evidence of security maturity. A single HITRUST certification replaces the need for multiple point-in-time assessments from individual healthcare clients. For ClawFilters's law firm customers who handle healthcare-adjacent work (medical malpractice, health law, insurance defense), HITRUST certification provides a competitive differentiator.
 
 ---
 
@@ -116,7 +116,7 @@ HITRUST CSF certification is accepted by healthcare organizations as evidence of
 
 ### Business Associate Agreement (BAA) Readiness
 
-ClawCoat provides BAA lifecycle management via `core/baa_tracking.py`:
+ClawFilters provides BAA lifecycle management via `core/baa_tracking.py`:
 
 - BAA status tracking: draft, active, terminated, expired
 - Counterparty details and effective/expiration date management
@@ -125,11 +125,11 @@ ClawCoat provides BAA lifecycle management via `core/baa_tracking.py`:
 - Annual review enforcement with overdue detection
 - BAA template available for customer use
 
-Under the HIPAA shared responsibility model, ClawCoat acts as a Business Associate when deployed for covered entities or their law firms. The BAA tracking module ensures all downstream BA relationships are documented and reviewed annually.
+Under the HIPAA shared responsibility model, ClawFilters acts as a Business Associate when deployed for covered entities or their law firms. The BAA tracking module ensures all downstream BA relationships are documented and reviewed annually.
 
 ### Administrative Safeguards (HIPAA 164.308)
 
-| Safeguard | HIPAA Section | ClawCoat Module | Status |
+| Safeguard | HIPAA Section | ClawFilters Module | Status |
 |-----------|---------------|-------------------|--------|
 | Security management process | 164.308(a)(1)(i) | `core/compliance.py`, `core/hitrust_controls.py` | Implemented |
 | Risk analysis | 164.308(a)(1)(ii)(A) | `core/hitrust_controls.py` | Implemented (tooling) |
@@ -145,9 +145,9 @@ Under the HIPAA shared responsibility model, ClawCoat acts as a Business Associa
 
 ### Physical Safeguards (HIPAA 164.310)
 
-Physical safeguards fall under the customer's responsibility in ClawCoat's shared responsibility model. ClawCoat provides logical equivalents:
+Physical safeguards fall under the customer's responsibility in ClawFilters's shared responsibility model. ClawFilters provides logical equivalents:
 
-| Safeguard | HIPAA Section | Responsibility | ClawCoat Contribution |
+| Safeguard | HIPAA Section | Responsibility | ClawFilters Contribution |
 |-----------|---------------|----------------|------------------------|
 | Facility access controls | 164.310(a)(1) | Customer | Docker network isolation (5 networks, 3 internal-only) |
 | Workstation use | 164.310(b) | Customer | Session management with auto-logoff policies |
@@ -158,7 +158,7 @@ Customers must provide: locked server rooms, physical access controls to deploym
 
 ### Technical Safeguards (HIPAA 164.312)
 
-| Safeguard | HIPAA Section | ClawCoat Module | Status |
+| Safeguard | HIPAA Section | ClawFilters Module | Status |
 |-----------|---------------|-------------------|--------|
 | Access control | 164.312(a)(1) | `core/rbac.py`, `core/capabilities.py` | Implemented |
 | Unique user identification | 164.312(a)(2)(i) | `core/audit.py` (ActorType enumeration) | Implemented |
@@ -173,7 +173,7 @@ Customers must provide: locked server rooms, physical access controls to deploym
 
 ### Gap: Formal HIPAA Security Risk Assessment (SRA)
 
-While ClawCoat provides the tooling for risk analysis (`core/hitrust_controls.py` with per-control risk scoring), a formal HIPAA Security Risk Assessment has not been conducted by an independent assessor. The SRA is required under HIPAA 164.308(a)(1)(ii)(A) and is a prerequisite for demonstrating compliance to covered entity clients.
+While ClawFilters provides the tooling for risk analysis (`core/hitrust_controls.py` with per-control risk scoring), a formal HIPAA Security Risk Assessment has not been conducted by an independent assessor. The SRA is required under HIPAA 164.308(a)(1)(ii)(A) and is a prerequisite for demonstrating compliance to covered entity clients.
 
 **Remediation plan:**
 1. Engage a qualified HIPAA security assessor (OCR-recognized methodology preferred)
@@ -191,9 +191,9 @@ While ClawCoat provides the tooling for risk analysis (`core/hitrust_controls.py
 
 ### Current State: Type I Documentation
 
-ClawCoat has completed SOC 2 Type I documentation (self-assessed), mapping controls to AICPA Trust Service Criteria:
+ClawFilters has completed SOC 2 Type I documentation (self-assessed), mapping controls to AICPA Trust Service Criteria:
 
-| Control ID | Trust Service Criteria | ClawCoat Implementation | Evidence |
+| Control ID | Trust Service Criteria | ClawFilters Implementation | Evidence |
 |------------|----------------------|---------------------------|----------|
 | CC6.1 | Logical access controls | RBAC (5 roles, 24 permissions), MFA (TOTP RFC 6238) | `core/rbac.py`, `core/mfa.py` |
 | CC6.2 | User registration and authorization | User management with registration, profile, deactivation | `core/user_management.py` |
@@ -229,7 +229,7 @@ SOC 2 Type II differs from Type I in that it evaluates the operating effectivene
 
 ### Strategic Benefit
 
-SOC 2 Type II is the standard vendor security certification required by enterprise law firms and their clients. Without a SOC 2 Type II report, ClawCoat will face objections during procurement by Am Law 200 firms and corporate legal departments. This certification directly enables the $150-1000/seat/month revenue tier.
+SOC 2 Type II is the standard vendor security certification required by enterprise law firms and their clients. Without a SOC 2 Type II report, ClawFilters will face objections during procurement by Am Law 200 firms and corporate legal departments. This certification directly enables the $150-1000/seat/month revenue tier.
 
 ---
 
@@ -237,11 +237,11 @@ SOC 2 Type II is the standard vendor security certification required by enterpri
 
 ### Applicability
 
-ClawCoat is not itself subject to the Sarbanes-Oxley Act (SOX). SOX applies to publicly traded companies and their financial reporting. However, ClawCoat may be deployed by law firms that serve publicly traded clients subject to SOX, or by corporate legal departments within SOX-regulated companies. In these scenarios, ClawCoat functions as a tool supporting the client's SOX compliance obligations.
+ClawFilters is not itself subject to the Sarbanes-Oxley Act (SOX). SOX applies to publicly traded companies and their financial reporting. However, ClawFilters may be deployed by law firms that serve publicly traded clients subject to SOX, or by corporate legal departments within SOX-regulated companies. In these scenarios, ClawFilters functions as a tool supporting the client's SOX compliance obligations.
 
 ### Relevant Control Mapping
 
-| SOX Requirement | PCAOB/COSO Reference | ClawCoat Control | Implementation |
+| SOX Requirement | PCAOB/COSO Reference | ClawFilters Control | Implementation |
 |-----------------|---------------------|-------------------|----------------|
 | Change management controls | COSO Principle 11 | Cryptographic audit chain | `core/audit.py` -- SHA-256 hash-linked entries, tamper-evident, all configuration changes recorded |
 | Access controls | COSO Principle 12 | RBAC + MFA | `core/rbac.py`, `core/mfa.py` -- 5 roles, 24 permissions, TOTP MFA with role-based enforcement |
@@ -254,7 +254,7 @@ ClawCoat is not itself subject to the Sarbanes-Oxley Act (SOX). SOX applies to p
 
 ### Positioning Statement
 
-ClawCoat provides the technical controls that enable SOX-regulated organizations to meet their IT General Control (ITGC) requirements when using ClawCoat for legal workflow management. The cryptographic audit chain, role-based access controls, and data integrity mechanisms provide auditable evidence for SOX Section 404 internal control assessments. ClawCoat does not generate, process, or store financial statements and is therefore not in scope for SOX audits as a service organization.
+ClawFilters provides the technical controls that enable SOX-regulated organizations to meet their IT General Control (ITGC) requirements when using ClawFilters for legal workflow management. The cryptographic audit chain, role-based access controls, and data integrity mechanisms provide auditable evidence for SOX Section 404 internal control assessments. ClawFilters does not generate, process, or store financial statements and is therefore not in scope for SOX audits as a service organization.
 
 ---
 
@@ -262,11 +262,11 @@ ClawCoat provides the technical controls that enable SOX-regulated organizations
 
 ### Applicability
 
-The Criminal Justice Information Services (CJIS) Security Policy applies when law firm personnel access Criminal Justice Information (CJI) in the course of criminal defense representation, public defender work, or law enforcement advisory engagements. If ClawCoat stores or processes documents containing CJI (arrest records, rap sheets, court documents with CJIS-sourced data), the CJIS Security Policy requirements apply.
+The Criminal Justice Information Services (CJIS) Security Policy applies when law firm personnel access Criminal Justice Information (CJI) in the course of criminal defense representation, public defender work, or law enforcement advisory engagements. If ClawFilters stores or processes documents containing CJI (arrest records, rap sheets, court documents with CJIS-sourced data), the CJIS Security Policy requirements apply.
 
 ### Controls Mapping
 
-| CJIS Requirement | Policy Section | ClawCoat Control | Status |
+| CJIS Requirement | Policy Section | ClawFilters Control | Status |
 |------------------|---------------|-------------------|--------|
 | Encryption at rest | 5.10.1.2 | AES-256-GCM (application), volume encryption (customer) | Implemented |
 | Encryption in transit | 5.10.1.1 | TLS 1.2+ via Traefik | Implemented |
@@ -285,7 +285,7 @@ The Criminal Justice Information Services (CJIS) Security Policy applies when la
 
 **This is the most significant CJIS compliance gap.**
 
-CJIS Security Policy Section 5.10.1.2 requires FIPS 140-2 validated cryptographic modules for encryption of CJI at rest and in transit. ClawCoat currently uses:
+CJIS Security Policy Section 5.10.1.2 requires FIPS 140-2 validated cryptographic modules for encryption of CJI at rest and in transit. ClawFilters currently uses:
 
 - **Fernet** (AES-128-CBC + HMAC-SHA256) via the `cryptography` Python library for MFA secret storage
 - **AES-256-GCM** via the `cryptography` Python library for sensitive field encryption
@@ -309,11 +309,11 @@ The `cryptography` Python library uses OpenSSL as its backend. OpenSSL has FIPS-
 
 ### Applicability
 
-The General Data Protection Regulation (GDPR) applies when ClawCoat is deployed by law firms or real estate brokerages that process personal data of individuals located in the European Union, regardless of where the processing occurs. This includes U.S. law firms with EU clients, international transaction work, or cross-border litigation.
+The General Data Protection Regulation (GDPR) applies when ClawFilters is deployed by law firms or real estate brokerages that process personal data of individuals located in the European Union, regardless of where the processing occurs. This includes U.S. law firms with EU clients, international transaction work, or cross-border litigation.
 
 ### Data Processing Agreement (DPA)
 
-ClawCoat's self-hosted architecture simplifies GDPR compliance. A Data Processing Agreement template is available covering:
+ClawFilters's self-hosted architecture simplifies GDPR compliance. A Data Processing Agreement template is available covering:
 
 - Scope and purpose of processing
 - Categories of personal data and data subjects
@@ -322,11 +322,11 @@ ClawCoat's self-hosted architecture simplifies GDPR compliance. A Data Processin
 - Data subject rights facilitation
 - Audit rights
 
-Because ClawCoat is self-hosted, there is no cross-border data transfer. The customer acts as the Data Controller, and ClawCoat (as software) does not independently process data. This eliminates the need for Standard Contractual Clauses (SCCs), Binding Corporate Rules (BCRs), or adequacy decisions.
+Because ClawFilters is self-hosted, there is no cross-border data transfer. The customer acts as the Data Controller, and ClawFilters (as software) does not independently process data. This eliminates the need for Standard Contractual Clauses (SCCs), Binding Corporate Rules (BCRs), or adequacy decisions.
 
 ### Data Subject Rights Implementation
 
-| GDPR Right | Article | ClawCoat Implementation | Status |
+| GDPR Right | Article | ClawFilters Implementation | Status |
 |------------|---------|---------------------------|--------|
 | Right of access | Art. 15 | API endpoints for data export per tenant/matter | Implemented |
 | Right to rectification | Art. 16 | Data management API endpoints, audit trail of changes | Implemented |
@@ -338,7 +338,7 @@ Because ClawCoat is self-hosted, there is no cross-border data transfer. The cus
 
 ### GDPR-Specific Controls
 
-| GDPR Principle | Article | ClawCoat Control |
+| GDPR Principle | Article | ClawFilters Control |
 |---------------|---------|-------------------|
 | Data minimization | Art. 5(1)(c) | `core/minimum_necessary.py` -- policy engine restricting access to needed fields only |
 | Breach notification (72 hours) | Art. 33 | `core/breach_notification.py` -- severity assessment within 72-hour window, overdue detection |
@@ -364,13 +364,13 @@ Because ClawCoat is self-hosted, there is no cross-border data transfer. The cus
 
 ### Applicability
 
-The Payment Card Industry Data Security Standard (PCI DSS) applies only if ClawCoat directly handles, processes, stores, or transmits cardholder data (credit/debit card numbers, CVV codes, cardholder names associated with account numbers). In the standard deployment model, ClawCoat does not process payment card data -- billing and payment processing are handled externally.
+The Payment Card Industry Data Security Standard (PCI DSS) applies only if ClawFilters directly handles, processes, stores, or transmits cardholder data (credit/debit card numbers, CVV codes, cardholder names associated with account numbers). In the standard deployment model, ClawFilters does not process payment card data -- billing and payment processing are handled externally.
 
 ### If PCI DSS Becomes Applicable
 
-If a future ClawCoat module processes cardholder data (e.g., client billing integration, trust account management with card payments), the following controls are already aligned:
+If a future ClawFilters module processes cardholder data (e.g., client billing integration, trust account management with card payments), the following controls are already aligned:
 
-| PCI DSS Requirement | Version 4.0 Section | ClawCoat Control | Status |
+| PCI DSS Requirement | Version 4.0 Section | ClawFilters Control | Status |
 |---------------------|---------------------|-------------------|--------|
 | Install and maintain network security controls | 1.x | Docker network segmentation, egress firewall, Traefik reverse proxy | Aligned |
 | Apply secure configurations | 2.x | Production secret validation, Docker Compose declarative config | Aligned |
@@ -387,9 +387,9 @@ If a future ClawCoat module processes cardholder data (e.g., client billing inte
 
 ### Recommendation
 
-PCI DSS compliance should only be pursued if ClawCoat enters a scope where cardholder data is directly processed. The current recommendation is to keep payment processing out of scope by using an external payment processor (Stripe, Square, etc.) and never storing cardholder data within ClawCoat. This is a SAQ-A approach (no cardholder data stored, processed, or transmitted) rather than SAQ-D (full assessment).
+PCI DSS compliance should only be pursued if ClawFilters enters a scope where cardholder data is directly processed. The current recommendation is to keep payment processing out of scope by using an external payment processor (Stripe, Square, etc.) and never storing cardholder data within ClawFilters. This is a SAQ-A approach (no cardholder data stored, processed, or transmitted) rather than SAQ-D (full assessment).
 
-If SAQ-D scope becomes necessary, ClawCoat's existing access controls, encryption, logging, and network segmentation provide approximately 80% of required controls. The primary gap would be formal PCI vulnerability scanning (ASV scans) and penetration testing by a PCI QSA.
+If SAQ-D scope becomes necessary, ClawFilters's existing access controls, encryption, logging, and network segmentation provide approximately 80% of required controls. The primary gap would be formal PCI vulnerability scanning (ASV scans) and penetration testing by a PCI QSA.
 
 ---
 
@@ -481,7 +481,7 @@ Phase 5:          [=====FIPS 140-2 Engineering=====] (if needed)
 | Vulnerability scanner | Automated vulnerability scanning for SOC 2 evidence | $1-5K/year |
 | Penetration testing | Annual pen test for SOC 2 and HITRUST evidence | $5-15K/year |
 
-A GRC (Governance, Risk, and Compliance) platform is optional but recommended for organizations pursuing multiple certifications. These platforms automate evidence collection, track control status, and generate auditor-ready reports. ClawCoat's existing `core/compliance.py` and `core/hitrust_controls.py` modules provide equivalent functionality for ClawCoat-specific controls, but a GRC platform would cover organizational-level controls (HR policies, vendor management, etc.) that fall outside the software platform.
+A GRC (Governance, Risk, and Compliance) platform is optional but recommended for organizations pursuing multiple certifications. These platforms automate evidence collection, track control status, and generate auditor-ready reports. ClawFilters's existing `core/compliance.py` and `core/hitrust_controls.py` modules provide equivalent functionality for ClawFilters-specific controls, but a GRC platform would cover organizational-level controls (HR policies, vendor management, etc.) that fall outside the software platform.
 
 ---
 
@@ -489,7 +489,7 @@ A GRC (Governance, Risk, and Compliance) platform is optional but recommended fo
 
 A significant cost optimization in pursuing multiple certifications is the overlap between frameworks. Controls implemented for one certification provide evidence for others.
 
-| ClawCoat Control | SOC 2 | HIPAA | HITRUST | CJIS | GDPR | SOX |
+| ClawFilters Control | SOC 2 | HIPAA | HITRUST | CJIS | GDPR | SOX |
 |-------------------|-------|-------|---------|------|------|-----|
 | RBAC (5 roles, 24 permissions) | CC6.1 | 164.312(a)(1) | 01.c | 5.5 | Art. 25 | COSO P12 |
 | MFA (TOTP RFC 6238) | CC6.1 | 164.312(d) | 01.b | 5.6.2.2 | Art. 32 | COSO P12 |
@@ -504,7 +504,7 @@ A significant cost optimization in pursuing multiple certifications is the overl
 | Incident response | CC7.3, CC7.4 | 164.308(a)(6) | 11.a | 5.3 | Art. 33-34 | -- |
 | Data classification | CC6.7 | 164.312(a)(1) | 07.a | 5.8 | Art. 5(1)(c) | COSO P13 |
 
-Every control listed above is implemented in ClawCoat today. The primary gap across all frameworks is procedural documentation and formal third-party validation, not technical implementation.
+Every control listed above is implemented in ClawFilters today. The primary gap across all frameworks is procedural documentation and formal third-party validation, not technical implementation.
 
 ---
 
@@ -550,8 +550,8 @@ Every control listed above is implemented in ClawCoat today. The primary gap acr
 
 ---
 
-*This document is intended for executive leadership, compliance officers, and security assessors evaluating ClawCoat's certification roadmap. It provides a phased, budget-aware path to achieving the compliance certifications required for enterprise law firm sales, healthcare-adjacent practice support, and regulated industry deployment. For technical implementation details, refer to the referenced source files and companion compliance documents.*
+*This document is intended for executive leadership, compliance officers, and security assessors evaluating ClawFilters's certification roadmap. It provides a phased, budget-aware path to achieving the compliance certifications required for enterprise law firm sales, healthcare-adjacent practice support, and regulated industry deployment. For technical implementation details, refer to the referenced source files and companion compliance documents.*
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

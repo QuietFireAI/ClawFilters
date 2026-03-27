@@ -1,10 +1,10 @@
-# ClawCoat - Demo Walkthrough
+# ClawFilters - Demo Walkthrough
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
 **Who this is for:** You. The person running the demo.
 **What it covers:** Every physical action - what to open, what to type, what key to press, what to look for, and what "success" looks like before you move forward.
-**Environment:** Windows 11, WSL2 terminal, Docker Desktop running, ClawCoat stack up.
+**Environment:** Windows 11, WSL2 terminal, Docker Desktop running, ClawFilters stack up.
 
 **The story this demo tells:** An agent arrives. It has no permissions and no record - QUARANTINE, the starting point for every agent without exception. It tries to act. Some actions are gated (human review required). Some are hard-blocked (no queue, full stop). A human authorizes a promotion to PROBATION. The same action that was gated before now runs autonomously - because the agent earned it. Then the kill switch fires. One call. Frozen. That's earned autonomy: behavior opens the door, a human walks them through it, and a human can close it instantly.
 
@@ -27,13 +27,13 @@ These happen before the recording starts. Do all of them.
 4. Select **Ubuntu** (or whichever WSL distribution you have)
 5. You should see a prompt like: `jeff@DESKTOP-XXXXX:~$`
 
-**Step 3 - Navigate to ClawCoat**
+**Step 3 - Navigate to ClawFilters**
 1. In the terminal, type exactly:
    ```
-   cd /mnt/c/Claude_Code/ClawCoat
+   cd /mnt/c/Claude_Code/ClawFilters
    ```
 2. Press Enter
-3. Your prompt now shows the ClawCoat directory. Confirm:
+3. Your prompt now shows the ClawFilters directory. Confirm:
    ```
    ls docker-compose.yml
    ```
@@ -65,14 +65,14 @@ These happen before the recording starts. Do all of them.
 **Step 6 - Open browser**
 1. Open Chrome or Firefox
 2. Go to: `http://localhost:8000/dashboard`
-3. Confirm the ClawCoat dashboard loads (you may need to log in)
+3. Confirm the ClawFilters dashboard loads (you may need to log in)
 4. Keep this tab open - you'll switch to it in Scene 6
 5. Minimize the browser for now
 
 **Step 7 - Confirm OPENCLAW is enabled**
 1. In the terminal, type:
    ```
-   grep OPENCLAW_ENABLED /mnt/c/Claude_Code/ClawCoat/.env
+   grep OPENCLAW_ENABLED /mnt/c/Claude_Code/ClawFilters/.env
    ```
 2. Press Enter
 3. You should see: `OPENCLAW_ENABLED=true`
@@ -105,7 +105,7 @@ Let it sit on screen for 1-2 seconds. Then press Enter.
 **Step 4 - Read the result**
 You should see something like:
 ```json
-{"status":"healthy","version":"10.0.0Bminus","services":{"redis":"connected","database":"connected"}}
+{"status":"healthy","version":"11.0.3","services":{"redis":"connected","database":"connected"}}
 ```
 
 **What success looks like:** `"status":"healthy"` is present. That's the only thing that matters here.
@@ -286,7 +286,7 @@ Response:
 **What success looks like:**
 - `"allowed": false` - agent cannot proceed autonomously
 - `"approval_required": true` - it's in the queue, not hard-blocked
-- `"qms_status": "Excuse_Me"` - ClawCoat's way of saying "hold on, human needed"
+- `"qms_status": "Excuse_Me"` - ClawFilters's way of saying "hold on, human needed"
 
 **Step 4 - On camera: move cursor slowly over these lines**
 ```
@@ -679,4 +679,4 @@ If you do a second take, increment all nonces: `demo-nonce-101`, `demo-nonce-102
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

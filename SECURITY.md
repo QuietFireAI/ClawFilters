@@ -1,6 +1,6 @@
-# ClawCoat - Security Policy
+# ClawFilters - Security Policy
 
-**Version:** v11.0.3 · **Maintainer:** Quietfire AI - security@clawcoat.com
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI - security@clawfilters.com
 
 ## Supported Versions
 
@@ -20,9 +20,9 @@ Only the latest minor release receives security patches. Upgrade to the current 
 
 ### Disclosure Process
 
-1. **Email:** Send details to **security@clawcoat.com** with subject line `[SECURITY] TelsonBase - <brief description>`
+1. **Email:** Send details to **security@clawfilters.com** with subject line `[SECURITY] TelsonBase - <brief description>`
 
-   > **URGENT:** Security vulnerabilities must be reported to security@clawcoat.com only. Do not use general support channels for security disclosures.
+   > **URGENT:** Security vulnerabilities must be reported to security@clawfilters.com only. Do not use general support channels for security disclosures.
 2. **Include:**
   - Description of the vulnerability
   - Steps to reproduce (or proof of concept)
@@ -129,8 +129,8 @@ We recommend enabling [GitHub Dependabot](https://docs.github.com/en/code-securi
 
 ## Bug Bounty
 
-ClawCoat does not currently operate a paid bug bounty program. Security researchers who report valid vulnerabilities will be credited in release notes and the CONTRIBUTORS section of the repository.
+ClawFilters does not currently operate a paid bug bounty program. Security researchers who report valid vulnerabilities will be credited in release notes and the CONTRIBUTORS section of the repository.
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 2026*

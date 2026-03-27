@@ -1,7 +1,7 @@
 # TB-PROOF-030: No Third-Party Data Dependencies
 
 **Sheet ID:** TB-PROOF-030
-**Claim Source:** clawcoat.com - Hero Section, FAQ
+**Claim Source:** clawfilters.com - Hero Section, FAQ
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestNoCloudDependencies -- requirements.txt confirmed free of boto3/azure/google-cloud/openai packages
 **Last Verified:** March 8, 2026
@@ -71,4 +71,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-030 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-030 | ClawFilters v11.0.3 | March 20, 2026*

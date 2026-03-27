@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
 """
-ClawCoat - Live Governance Demo
-Gradio app connecting to the live ClawCoat API.
+ClawFilters - Live Governance Demo
+Gradio app connecting to the live ClawFilters API.
 API credentials loaded from HuggingFace Space secrets.
 """
 
@@ -84,12 +84,12 @@ def _format_decision(data: dict, tool_name: str) -> str:
         f"  Trust Tier    {trust_level}",
         f"  Reason        {reason}",
         "",
-        f"  Manners Score {manners_score:.2f}",
+        f"  Behavioral Score {manners_score:.2f}",
         f"  Anomaly Flag  {'⚠  YES — flagged for review' if anomaly_flagged else 'None'}",
         f"  Approval ID   {approval_id}",
         f"  QMS Status    {qms_status}",
         bar,
-        f"  {_ts()} UTC · ClawCoat v11.0.1",
+        f"  {_ts()} UTC · ClawFilters v11.0.4",
     ]
     return "\n".join(lines)
 
@@ -140,7 +140,7 @@ def get_citizen_status() -> str:
                 f"  Agent         demo_citizen\n"
                 f"  Status        {status}\n"
                 f"  Trust Tier    {tier}\n"
-                f"  Manners Score {score:.2f}\n"
+                f"  Behavioral Score {score:.2f}\n"
                 f"  Actions Run   {actions}\n"
                 f"  Checked       {_ts()} UTC"
             )
@@ -214,17 +214,17 @@ def reinstate_citizen() -> str:
 
 # ── UI ───────────────────────────────────────────────────────────────────────
 DESCRIPTION = """
-**ClawCoat** - the local-first gateway for OpenClaw.
+**ClawFilters** - Open source real-time behavioral filters for AI agents.
 
-Every MCP tool call is evaluated before execution. The governance pipeline decides: **Allow**, **Gate** (hold for human approval), or **Block**. Every agent starts at **Quarantine**. Every action is scored against five behavioral principles in real time - that score is the **Manners Score** (0.0–1.0). Trust is earned through demonstrated behavior, promoted tier by tier, approved by a human at each step.
+Every AI agent tool call is evaluated before execution. The governance pipeline decides: **Allow**, **Gate** (hold for human approval), or **Block**. Every agent starts at **Quarantine**. Every action is scored against five behavioral principles in real time — that **behavioral score** (0.0–1.0) drives automatic demotion. Trust is earned through demonstrated behavior, promoted tier by tier, approved by a human at each step.
 
 Drop below 0.25 or trigger three violations in any 24-hour window — the agent auto-suspends.
 No grace period. No human delay required.
 
-This demo connects to a **live ClawCoat instance** running on a real server.
+This demo connects to a **live ClawFilters instance** running on a real server.
 These are actual governance decisions, not simulations.
 
-→ [GitHub](https://github.com/QuietFireAI/ClawCoat) · Apache 2.0 · Self-hosted · No cloud dependency
+→ [GitHub](https://github.com/QuietFireAI/ClawFilters) · Apache 2.0 · Self-hosted · No cloud dependency
 """
 
 PIPELINE_DESCRIPTION = """
@@ -242,7 +242,7 @@ and returns a decision: **Allowed**, **Gated (HITL)**, or **Blocked**.
 Every tier was **earned**. Promotion is sequential — you cannot skip from Quarantine to Citizen.
 Demotion is instant and can skip levels.
 
-The **Manners Score** in every decision is the behavioral engine. It moves with each action.
+The **behavioral score** in every decision is the filter engine. It moves with each action.
 It is the same number a human admin reads when deciding whether an agent has earned the next tier.
 """
 
@@ -256,7 +256,7 @@ Hit **Reinstate Agent** when you're done to reset the demo for the next visitor.
 """
 
 with gr.Blocks(
-    title="ClawCoat - Live Governance Demo",
+    title="ClawFilters - Live Governance Demo",
     theme=gr.themes.Base(
         primary_hue=gr.themes.colors.violet,
         neutral_hue=gr.themes.colors.slate,
@@ -269,8 +269,8 @@ with gr.Blocks(
     """,
 ) as demo:
 
-    gr.Markdown("← [Back to clawcoat.com](https://clawcoat.com)", elem_classes=["back-link"])
-    gr.Markdown(f"# ClawCoat - Active Decision Making\n{DESCRIPTION}")
+    gr.Markdown("← [Back to clawfilters.com](https://clawfilters.com)", elem_classes=["back-link"])
+    gr.Markdown(f"# ClawFilters - Active Decision Making\n{DESCRIPTION}")
 
     gr.Markdown("---")
     gr.Markdown("## Governance Pipeline Explorer")
@@ -326,9 +326,9 @@ with gr.Blocks(
 
     gr.Markdown(
         "---\n"
-        "*ClawCoat v11.0.1 by Quietfire AI · "
-        "[GitHub](https://github.com/QuietFireAI/ClawCoat) · Apache 2.0 · "
-        "[← clawcoat.com](https://clawcoat.com)*"
+        "*ClawFilters v11.0.4 by Quietfire AI · "
+        "[GitHub](https://github.com/QuietFireAI/ClawFilters) · Apache 2.0 · "
+        "[← clawfilters.com](https://clawfilters.com)*"
     )
 
 if __name__ == "__main__":

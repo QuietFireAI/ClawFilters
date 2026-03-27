@@ -53,4 +53,4 @@ docker compose exec mcp_server python -m pytest tests/test_integration.py -v --t
 
 ---
 
-*Sheet TB-PROOF-062 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-062 | ClawFilters v11.0.3 | March 20, 2026*

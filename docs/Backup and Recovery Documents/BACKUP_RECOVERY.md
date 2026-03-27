@@ -1,4 +1,4 @@
-# ClawCoat Backup & Recovery Guide
+# ClawFilters Backup & Recovery Guide
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
@@ -31,7 +31,7 @@ Add this cron entry to run backups daily at 2:00 AM:
 # Edit crontab
 crontab -e
 
-# Add this line (adjust path to your ClawCoat installation):
+# Add this line (adjust path to your ClawFilters installation):
 0 2 * * * cd /path/to/telsonbase && ./scripts/backup.sh >> /var/log/telsonbase-backup.log 2>&1
 ```
 
@@ -123,7 +123,7 @@ rsync -av backups/ nas:/volume1/telsonbase-backups/
 
 | Responsibility | Owner |
 |---------------|-------|
-| Backup script correctness | ClawCoat project (automated) |
+| Backup script correctness | ClawFilters project (automated) |
 | Running backups on schedule | **Operator** |
 | Offsite backup storage | **Operator** |
 | Monitoring backup success/failure | **Operator** |
@@ -143,4 +143,4 @@ rsync -av backups/ nas:/volume1/telsonbase-backups/
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

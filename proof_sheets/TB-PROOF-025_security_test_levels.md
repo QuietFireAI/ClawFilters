@@ -1,7 +1,7 @@
 # TB-PROOF-025: 5 Automated Security Test Levels
 
 **Sheet ID:** TB-PROOF-025
-**Claim Source:** clawcoat.com - Security Testing Section
+**Claim Source:** clawfilters.com - Security Testing Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord + TestStaticAnalysis -- fuzz tier documented and reproducible; bandit confirmed in CI; schemathesis in requirements-dev.txt
 **Last Verified:** March 8, 2026
@@ -59,4 +59,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-025 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-025 | ClawFilters v11.0.3 | March 20, 2026*

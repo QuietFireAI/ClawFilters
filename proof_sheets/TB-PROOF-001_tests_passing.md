@@ -1,7 +1,7 @@
 # TB-PROOF-001: Test Suite Count
 
 **Sheet ID:** TB-PROOF-001
-**Claim Source:** clawcoat.com - Hero Section / README.md
+**Claim Source:** clawfilters.com - Hero Section / README.md
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED — pytest full suite (unit + integration) — 6,254 tests
 **Last Verified:** March 20, 2026 (CI run #367)
@@ -154,4 +154,4 @@ docker compose exec mcp_server python -m pytest tests/ \
 
 ---
 
-*Sheet TB-PROOF-001 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-001 | ClawFilters v11.0.3 | March 20, 2026*

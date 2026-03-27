@@ -1,4 +1,4 @@
-# ClawCoat - Security Architecture
+# ClawFilters - Security Architecture
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-ClawCoat implements a **zero-trust security model** for AI agent orchestration. This document describes the security layers, threat model, and implementation details.
+ClawFilters implements a **zero-trust security model** for AI agent orchestration. This document describes the security layers, threat model, and implementation details.
 
 ## Threat Model
 
@@ -304,7 +304,7 @@ Sensitive data in Redis is encrypted with AES-256-GCM:
 │    ┌───────────────────────┐                                            │
 │    │  SecureStorageManager │                                            │
 │    │                       │                                            │
-│    │  1. PBKDF2 key derive │  ← Key from ClawCoat_ENCRYPTION_KEY      │
+│    │  1. PBKDF2 key derive │  ← Key from ClawFilters_ENCRYPTION_KEY      │
 │    │  2. Generate nonce    │                                            │
 │    │  3. AES-256-GCM enc   │                                            │
 │    └───────────────────────┘                                            │
@@ -523,8 +523,8 @@ Instance A                                    Instance B
 
 1. **Set encryption key:**
    ```bash
-   export ClawCoat_ENCRYPTION_KEY=$(openssl rand -hex 32)
-   export ClawCoat_ENCRYPTION_SALT=$(openssl rand -hex 16)
+   export ClawFilters_ENCRYPTION_KEY=$(openssl rand -hex 32)
+   export ClawFilters_ENCRYPTION_SALT=$(openssl rand -hex 16)
    ```
 
 2. **Store keys securely:**
@@ -577,7 +577,7 @@ Instance A                                    Instance B
 
 ### SOC2 Trust Services Criteria
 
-| Criteria | ClawCoat Feature |
+| Criteria | ClawFilters Feature |
 |----------|-------------------|
 | CC6.1 Logical access | API authentication, RBAC |
 | CC6.2 Prior authorization | Capability system, approval gates |
@@ -589,7 +589,7 @@ Instance A                                    Instance B
 
 ### ISO 27001 Control Mapping
 
-| Control | ClawCoat Feature |
+| Control | ClawFilters Feature |
 |---------|-------------------|
 | A.9.2 User access | RBAC, trust levels |
 | A.9.4 System access | Capability enforcement |
@@ -603,11 +603,11 @@ Instance A                                    Instance B
 
 ## Compliance Considerations
 
-ClawCoat is designed with regulatory compliance awareness. While the platform provides security controls, **compliance certification requires additional organizational policies and procedures**.
+ClawFilters is designed with regulatory compliance awareness. While the platform provides security controls, **compliance certification requires additional organizational policies and procedures**.
 
 ### HIPAA (Healthcare)
 
-ClawCoat supports HIPAA compliance through:
+ClawFilters supports HIPAA compliance through:
 - **Encryption at rest** (AES-256-GCM for sensitive data in Redis)
 - **Audit trails** (cryptographic hash-chained logs for non-repudiation)
 - **Access controls** (RBAC, capability-based permissions)
@@ -621,7 +621,7 @@ ClawCoat supports HIPAA compliance through:
 
 ### GDPR (European Data Protection)
 
-ClawCoat supports GDPR compliance through:
+ClawFilters supports GDPR compliance through:
 - **Data sovereignty** (self-hosted, data never leaves your control)
 - **Audit logging** (track all data access and processing)
 - **Federated architecture** (data stays in appropriate jurisdictions)
@@ -635,7 +635,7 @@ ClawCoat supports GDPR compliance through:
 
 ### Financial Services (SOX, PCI-DSS)
 
-ClawCoat supports financial compliance through:
+ClawFilters supports financial compliance through:
 - **Change control** (audit trail of all modifications)
 - **Access segregation** (trust levels, RBAC)
 - **Monitoring** (anomaly detection, threat response)
@@ -684,4 +684,4 @@ Quick reference:
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

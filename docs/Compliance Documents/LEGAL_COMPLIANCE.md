@@ -1,4 +1,4 @@
-# ClawCoat - Legal & Regulatory Compliance Security Profile
+# ClawFilters - Legal & Regulatory Compliance Security Profile
 
 **Version:** v11.0.3 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 **Platform:** Zero-Trust AI Agent Security Platform
@@ -8,9 +8,9 @@
 
 ## I. Executive Summary
 
-ClawCoat is a self-hosted, zero-trust AI agent orchestration platform designed for industries where data sovereignty, auditability, and regulatory compliance are non-negotiable. The platform runs entirely on the customer's infrastructure - no data leaves the deployment, no client data is sent to third-party AI services for training, and all AI inference occurs locally via Ollama.
+ClawFilters is a self-hosted, zero-trust AI agent orchestration platform designed for industries where data sovereignty, auditability, and regulatory compliance are non-negotiable. The platform runs entirely on the customer's infrastructure - no data leaves the deployment, no client data is sent to third-party AI services for training, and all AI inference occurs locally via Ollama.
 
-This document maps ClawCoat's security architecture to the compliance frameworks most commonly evaluated by real estate brokerages, law firms, and their respective regulatory bodies.
+This document maps ClawFilters's security architecture to the compliance frameworks most commonly evaluated by real estate brokerages, law firms, and their respective regulatory bodies.
 
 ---
 
@@ -24,7 +24,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Can access be scoped and revoked?
 - Are sessions time-limited?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -60,7 +60,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - How are encryption keys managed?
 - Is key rotation supported?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -92,7 +92,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - How long are logs retained?
 - Can you demonstrate chain of custody?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -125,7 +125,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Is there rate limiting and DDoS protection?
 - Are security headers configured?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -161,7 +161,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Can data be deleted on request?
 - Are retention policies configurable?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -194,7 +194,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Is there per-tenant access control?
 - Can tenant data be independently managed (exported, deleted)?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -225,7 +225,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Is there a custodian notification and acknowledgment workflow?
 - Can holds be released with proper authorization and audit trail?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -258,7 +258,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Are notification activities auditable?
 - What are the recovery time objectives?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -292,7 +292,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Is there human oversight of AI decisions?
 - How is agent trust established?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -322,7 +322,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - Is there a framework for SOC 2 evidence?
 - Can reports be exported for auditors?
 
-### ClawCoat Implementation
+### ClawFilters Implementation
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
@@ -337,7 +337,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 
 ### For Real Estate Evaluators
 
-| Regulation | ClawCoat Feature | Status |
+| Regulation | ClawFilters Feature | Status |
 |-----------|-------------------|--------|
 | Fair Housing Act | Tenant isolation prevents cross-client data leakage, data classification, audit trail | Implemented |
 | RESPA | Transaction data isolation via client-matter model, 3-5 year retention support, access audit trail | Implemented |
@@ -348,7 +348,7 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 
 ### For Legal Evaluators
 
-| Regulation | ClawCoat Feature | Status |
+| Regulation | ClawFilters Feature | Status |
 |-----------|-------------------|--------|
 | ABA Rule 1.6 (Confidentiality) | AES-256-GCM encryption, RBAC, MFA, audit trail, self-hosted (no third-party AI training), data classification (RESTRICTED level for privilege) | Implemented |
 | ABA Rule 1.7 / 1.10 (Conflicts) | Client-matter isolation, tenant scoping, ethical wall support via matter-level access control | Implemented |
@@ -395,12 +395,12 @@ This document maps ClawCoat's security architecture to the compliance frameworks
 - **Security Policy:** `SECURITY.md` in project root
 - **Vulnerability Reporting:** Responsible disclosure process documented
 - **Response Times:** Critical (24h), High (7d), Medium (30d), Low (next release)
-- **Contact:** support@clawcoat.com
+- **Contact:** support@clawfilters.com
 
 ---
 
-*This document is intended for compliance evaluators, security auditors, and enterprise procurement teams assessing ClawCoat for deployment in regulated industries. For technical implementation details, refer to the referenced source files.*
+*This document is intended for compliance evaluators, security auditors, and enterprise procurement teams assessing ClawFilters for deployment in regulated industries. For technical implementation details, refer to the referenced source files.*
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

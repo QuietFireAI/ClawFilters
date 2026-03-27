@@ -1,7 +1,7 @@
 # TB-PROOF-037: OpenClaw Kill Switch
 
 **Sheet ID:** TB-PROOF-037
-**Claim Source:** clawcoat.com - OpenClaw Integration
+**Claim Source:** clawfilters.com - OpenClaw Integration
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- test_openclaw.py -- kill switch suspend and reinstate tested as named test functions
 **Last Verified:** March 8, 2026
@@ -85,4 +85,4 @@ References to suspend_instance, reinstate_instance, kill switch check at Step 2,
 
 ---
 
-*Sheet TB-PROOF-037 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-037 | ClawFilters v11.0.3 | March 20, 2026*

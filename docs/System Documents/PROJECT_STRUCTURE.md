@@ -1,4 +1,4 @@
-# ClawCoat Project Structure
+# ClawFilters Project Structure
 
 **Version:** v11.0.3 | **Updated:** March 20, 2026
 
@@ -372,7 +372,7 @@ telsonbase/
 ├── GOVERNANCE.md               # Project governance, decisions, release process
 ├── SECURITY.md                 # Vulnerability reporting and responsible disclosure
 ├── SUPPORT.md                  # Support channels and response times
-├── TRADEMARKS.md               # Trademark policy (ClawCoat, QMS™)
+├── TRADEMARKS.md               # Trademark policy (ClawFilters, QMS™)
 ├── DOC_INDEX.md                # Master navigation index for all 70+ documents
 ├── PROOF_INDEX.md              # Entry point for 788 proof documents
 ├── Makefile                    # Developer shortcuts: make test, run, lint, clean
@@ -460,7 +460,7 @@ main.py → federation/trust.py → federation/mtls.py → core/signing.py → (
 
 | Use Case | Path |
 |---|---|
-| Python agent inside ClawCoat | Inherit `SecureBaseAgent` - see `docs/Operation Documents/DEVELOPER_GUIDE.md` |
+| Python agent inside ClawFilters | Inherit `SecureBaseAgent` - see `docs/Operation Documents/DEVELOPER_GUIDE.md` |
 | External agent (any language/framework) | Call `/v1/openclaw/{id}/action` - see `docs/Operation Documents/OPENCLAW_INTEGRATION_GUIDE.md` |
 | Goose / Claude Desktop | Point MCP client at `http://localhost:8000/mcp` with API key - see `goose.yaml` |
 

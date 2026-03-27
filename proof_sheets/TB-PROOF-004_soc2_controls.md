@@ -1,7 +1,7 @@
 # TB-PROOF-004: 64 SOC 2 Controls Mapped to Source Code
 
 **Sheet ID:** TB-PROOF-004
-**Claim Source:** clawcoat.com - Compliance Section, Hero Section
+**Claim Source:** clawfilters.com - Compliance Section, Hero Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestSOC2ControlsMapping -- 4 tests: SOC2_TYPE_I.md exists, all 5 Trust Service Criteria referenced, Python source files cited per control, >= 40 control entries confirmed
 **Last Verified:** March 8, 2026
@@ -68,4 +68,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-004 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-004 | ClawFilters v11.0.3 | March 20, 2026*

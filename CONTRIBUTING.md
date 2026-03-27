@@ -1,8 +1,8 @@
-# Contributing to ClawCoat
+# Contributing to ClawFilters
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
-Welcome. ClawCoat is a platform for managing autonomous AI agents through earned trust — agents earn autonomy through demonstrated behavior and explicit human authorization, tracked by a live Manners compliance score across five trust tiers. Contributions that strengthen earned-autonomy controls, data sovereignty, and compliance are valued.
+Welcome. ClawFilters is a platform for managing autonomous AI agents through earned trust — agents earn autonomy through demonstrated behavior and explicit human authorization, tracked by a live Manners compliance score across five trust tiers. Contributions that strengthen earned-autonomy controls, data sovereignty, and compliance are valued.
 
 See also: [Ambassador Program](docs/AMBASSADORS.md) for non-code contributions.
 
@@ -12,7 +12,7 @@ See also: [Ambassador Program](docs/AMBASSADORS.md) for non-code contributions.
 
 ```bash
 # Clone
-git clone https://github.com/QuietFireAI/ClawCoat.git
+git clone https://github.com/QuietFireAI/ClawFilters.git
 cd TelsonBase
 
 # Copy environment, then generate all secrets (run in Git Bash on Windows)
@@ -267,7 +267,7 @@ See `CODE_OF_CONDUCT.md`. Summary: Be respectful, be constructive, focus on the 
 ## Questions?
 
 - GitHub Discussions (preferred)
-- Email: support@clawcoat.com
+- Email: support@clawfilters.com
 
 ---
 
@@ -275,4 +275,4 @@ See `CODE_OF_CONDUCT.md`. Summary: Be respectful, be constructive, focus on the 
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 2026*

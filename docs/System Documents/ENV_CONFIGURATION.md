@@ -1,4 +1,4 @@
-# ClawCoat Environment Configuration Reference
+# ClawFilters Environment Configuration Reference
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-ClawCoat uses environment variables for configuration. Copy `.env.example` to `.env` and customize for your deployment.
+ClawFilters uses environment variables for configuration. Copy `.env.example` to `.env` and customize for your deployment.
 
 ```bash
 cp .env.example .env
@@ -130,10 +130,10 @@ JWT_EXPIRATION_HOURS=24
 
 ## Encryption Variables (v4.3.0+)
 
-### ClawCoat_ENCRYPTION_KEY
+### ClawFilters_ENCRYPTION_KEY
 
 ```bash
-ClawCoat_ENCRYPTION_KEY=your_encryption_key_here
+ClawFilters_ENCRYPTION_KEY=your_encryption_key_here
 ```
 
 **Purpose:** Master key for encrypting sensitive data at rest in Redis.
@@ -154,10 +154,10 @@ openssl rand -hex 32
 
 ---
 
-### ClawCoat_ENCRYPTION_SALT
+### ClawFilters_ENCRYPTION_SALT
 
 ```bash
-ClawCoat_ENCRYPTION_SALT=your_salt_here
+ClawFilters_ENCRYPTION_SALT=your_salt_here
 ```
 
 **Purpose:** Salt for key derivation (PBKDF2).
@@ -349,10 +349,36 @@ ALLOWED_EXTERNAL_DOMAINS=api.anthropic.com,api.perplexity.ai
 LOG_LEVEL=INFO
 TRAEFIK_ACME_EMAIL=admin@yourcompany.com
 TRAEFIK_DOMAIN=telsonbase.yourcompany.com
-ClawCoat_ENCRYPTION_KEY=<generated with openssl rand -hex 32>
-ClawCoat_ENCRYPTION_SALT=<generated with openssl rand -hex 16>
+ClawFilters_ENCRYPTION_KEY=<generated with openssl rand -hex 32>
+ClawFilters_ENCRYPTION_SALT=<generated with openssl rand -hex 16>
 GRAFANA_ADMIN_PASSWORD=<secure password>
 ```
+
+---
+
+---
+
+## Telegram Gateway (v11.1.0CC)
+
+Remote operator communication — HITL approvals, governance alerts, and kill-switch commands delivered to a Telegram chat.
+
+```bash
+TELEGRAM_ENABLED=false
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+TELEGRAM_WEBHOOK_URL=
+```
+
+| Variable | Required | Description |
+|---|---|---|
+| `TELEGRAM_ENABLED` | No | Set `true` to enable the gateway (default: `false`) |
+| `TELEGRAM_BOT_TOKEN` | When enabled | Bot token from @BotFather |
+| `TELEGRAM_CHAT_ID` | When enabled | Chat/group ID to send messages to (group IDs are negative) |
+| `TELEGRAM_WEBHOOK_URL` | No | Public HTTPS base URL for webhook mode. Leave empty for polling mode. |
+
+**Polling vs. webhook:** Polling (default) works on any deployment including localhost. Webhook mode requires a public HTTPS endpoint — ClawFilters registers `<TELEGRAM_WEBHOOK_URL>/v1/telegram/webhook` with Telegram automatically on startup.
+
+See [TELEGRAM_GUIDE.md](../Operation%20Documents/TELEGRAM_GUIDE.md) for full setup instructions.
 
 ---
 

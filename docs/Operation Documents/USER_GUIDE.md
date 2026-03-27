@@ -1,15 +1,15 @@
-# ClawCoat User Guide
+# ClawFilters User Guide
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
-**For:** Solopreneurs, small teams, and anyone running ClawCoat for the first time
+**For:** Solopreneurs, small teams, and anyone running ClawFilters for the first time
 
 ---
 
-## What Is ClawCoat?
+## What Is ClawFilters?
 
-ClawCoat is a self-hosted platform for managing OpenClaw agents through earned trust. Agents start with no permissions and work their way up through five tiers - QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT - by demonstrating compliant behavior. Every promotion requires a human decision. No tier is skipped. No trust is assumed.
+ClawFilters is a self-hosted platform for managing OpenClaw agents through earned trust. Agents start with no permissions and work their way up through five tiers - QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT - by demonstrating compliant behavior. Every promotion requires a human decision. No tier is skipped. No trust is assumed.
 
-It runs as a set of Docker containers on any machine with Docker installed. Agents do work (process documents, manage real estate transactions, run local LLMs, manage backups), and ClawCoat tracks their behavior, scores their compliance, and ensures they only do what you've explicitly authorized them to do at their current trust level.
+It runs as a set of Docker containers on any machine with Docker installed. Agents do work (process documents, manage real estate transactions, run local LLMs, manage backups), and ClawFilters tracks their behavior, scores their compliance, and ensures they only do what you've explicitly authorized them to do at their current trust level.
 
 **Key features:**
 
@@ -37,8 +37,8 @@ It runs as a set of Docker containers on any machine with Docker installed. Agen
 ### Step 1: Clone and Configure
 
 ```bash
-git clone https://github.com/QuietFireAI/ClawCoat.git
-cd ClawCoat
+git clone https://github.com/QuietFireAI/ClawFilters.git
+cd ClawFilters
 cp .env.example .env
 ```
 
@@ -95,7 +95,7 @@ curl http://localhost:8000/health
 
 ## The Dashboard
 
-ClawCoat has two web interfaces:
+ClawFilters has two web interfaces:
 
 ### Admin Dashboard
 
@@ -133,7 +133,7 @@ The user console is a simplified 5-tab interface for day-to-day operators:
 
 ## Authentication
 
-ClawCoat supports three authentication methods:
+ClawFilters supports three authentication methods:
 
 ### 1. API Key (simplest)
 
@@ -236,7 +236,7 @@ Agents are the workers. Each one has a specific job and lives on one of three fl
 | **compliance_check_agent** | Ohio regulatory compliance monitoring (licenses, fair housing, CE) |
 | **doc_prep_agent** | Document generation from templates (purchase agreements, disclosures) |
 
-You don't talk to agents directly. You send requests to the API, and ClawCoat routes them to the right agent.
+You don't talk to agents directly. You send requests to the API, and ClawFilters routes them to the right agent.
 
 ### Agent Trust Levels
 
@@ -268,7 +268,7 @@ Think of it like a machine shop: workers sign tools out, use them, sign them bac
 
 ### QMS™ - How Agents Talk
 
-QMS™ (Qualified Message Standard) is ClawCoat's internal messaging format. You'll see it in logs:
+QMS™ (Qualified Message Standard) is ClawFilters's internal messaging format. You'll see it in logs:
 
 ```
 Tool_Checkout_Please ::backup_agent:: ::tool_pgcli::
@@ -288,7 +288,7 @@ You don't need to write QMS - it's automatic. But understanding it makes logs re
 
 ### HITL - Human-in-the-Loop
 
-Any operation that touches the outside world (downloading a tool, calling an external API, closing a transaction, deleting a model) requires your explicit approval. ClawCoat creates an **Approval Request** and waits for you to approve or reject it.
+Any operation that touches the outside world (downloading a tool, calling an external API, closing a transaction, deleting a model) requires your explicit approval. ClawFilters creates an **Approval Request** and waits for you to approve or reject it.
 
 Check pending approvals:
 ```bash
@@ -303,9 +303,11 @@ curl -X POST -H "X-API-Key: YOUR_KEY" \
 
 Or approve/reject from the Dashboard (Approvals tab) or User Console (My Approvals tab).
 
+**Telegram channel (v11.1.0+):** If the Telegram Gateway is configured, approval requests are also sent as Telegram messages with inline Approve and Reject buttons. Tap to decide from anywhere — the gate resolves in real time. See [TELEGRAM_GUIDE.md](TELEGRAM_GUIDE.md) for setup.
+
 ### Manners Compliance
 
-ClawCoat enforces five behavioral safety principles at runtime:
+ClawFilters enforces five behavioral safety principles at runtime:
 
 | Principle | What It Means |
 |---|---|
@@ -346,7 +348,7 @@ curl -X POST -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "llama3.2",
-    "messages": [{"role": "user", "content": "What is ClawCoat?"}]
+    "messages": [{"role": "user", "content": "What is ClawFilters?"}]
   }' \
   http://localhost:8000/v1/llm/chat
 ```
@@ -511,7 +513,7 @@ docker compose logs -f mcp_server
 docker compose logs -f worker
 ```
 
-Look for `REM:` prefixed lines - these are ClawCoat's internal logging. QMS messages show agent activity.
+Look for `REM:` prefixed lines - these are ClawFilters's internal logging. QMS messages show agent activity.
 
 ### Grafana Dashboard
 
@@ -581,7 +583,7 @@ Your data persists in Docker volumes: PostgreSQL (users, tenants, identities), R
 ## Project Structure
 
 ```
-ClawCoat/
+ClawFilters/
 ├── main.py                  # FastAPI application entry point
 ├── core/                    # Core platform modules
 │   ├── config.py            # Centralized configuration (Settings)
@@ -636,8 +638,8 @@ ClawCoat/
 
 ## Who Built This
 
-ClawCoat was created by Jeff Phillips (Quietfire AI). The complete attribution and methodology is documented in the project README, including the AI collaboration disclosure.
+ClawFilters was created by Jeff Phillips (Quietfire AI). The complete attribution and methodology is documented in the project README, including the AI collaboration disclosure.
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

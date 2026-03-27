@@ -1,7 +1,7 @@
 # TB-PROOF-036: Trust Level Permission Matrix
 
 **Sheet ID:** TB-PROOF-036
-**Claim Source:** clawcoat.com - OpenClaw Integration
+**Claim Source:** clawfilters.com - OpenClaw Integration
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- test_openclaw.py -- trust level permission matrix exercised across all 5 tiers
 **Last Verified:** March 8, 2026
@@ -90,4 +90,4 @@ For how trust levels govern tool checkout eligibility, `min_trust_level` designa
 
 ---
 
-*Sheet TB-PROOF-036 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-036 | ClawFilters v11.0.3 | March 20, 2026*

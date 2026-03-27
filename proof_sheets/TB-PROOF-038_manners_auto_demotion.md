@@ -1,7 +1,7 @@
 # TB-PROOF-038: Manners Auto-Demotion
 
 **Sheet ID:** TB-PROOF-038
-**Claim Source:** clawcoat.com - Control Your Claw
+**Claim Source:** clawfilters.com - Control Your Claw
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- test_openclaw.py -- manners score tracking and auto-demotion threshold confirmed
 **Last Verified:** March 8, 2026
@@ -71,4 +71,4 @@ References to Manners score checking, auto-demotion logic, and threshold compari
 
 ---
 
-*Sheet TB-PROOF-038 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-038 | ClawFilters v11.0.3 | March 20, 2026*

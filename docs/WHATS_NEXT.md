@@ -1,8 +1,8 @@
-# ClawCoat - What's Next
+# ClawFilters - What's Next
 
 **Version:** v11.0.3 · **Launch:** March 8, 2026 · **Maintainer:** Quietfire AI
 
-This document is an honest account of where ClawCoat stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact - things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
+This document is an honest account of where ClawFilters stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact - things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
 
 ---
 
@@ -92,17 +92,17 @@ These are the first things that get worked on after launch:
 Full governance proxy integration is live. Every action evaluated through the 8-step pipeline. Trust levels, Manners, anomaly detection, kill switch, approval gates - all working.
 
 ### Identiclaw (Post-Launch)
-ClawCoat's W3C DID identity engine (`core/identiclaw.py`) is built and tested - Ed25519 keypairs, verifiable credentials, local verification with no external calls. The engine is framework-agnostic by design.
+ClawFilters's W3C DID identity engine (`core/identiclaw.py`) is built and tested - Ed25519 keypairs, verifiable credentials, local verification with no external calls. The engine is framework-agnostic by design.
 
-The next step is binding that engine to the Identiclaw service (vouched.id) specifically: agent identity issuance via their Cloudflare-based DID infrastructure, credential flow into the governance pipeline, trust level binding on registration. That integration is scheduled for the first post-launch sprint. Identiclaw was chosen for its inherent convention alignment with how ClawCoat thinks about agent identity.
+The next step is binding that engine to the Identiclaw service (vouched.id) specifically: agent identity issuance via their Cloudflare-based DID infrastructure, credential flow into the governance pipeline, trust level binding on registration. That integration is scheduled for the first post-launch sprint. Identiclaw was chosen for its inherent convention alignment with how ClawFilters thinks about agent identity.
 
 ### Goose (Current - Native MCP)
-Goose by Block connects natively via the MCP gateway at `/mcp`. All 13 ClawCoat tools are available. Configuration via `goose.yaml`.
+Goose by Block connects natively via the MCP gateway at `/mcp`. All 13 ClawFilters tools are available. Configuration via `goose.yaml`.
 
 ### Other Agent Frameworks
-OpenClaw is a third-party OpenClaw agent. ClawCoat's governance proxy code (`core/openclaw.py`) wraps it at the MCP layer - every action evaluated through the 8-step pipeline before execution. OpenClaw itself is never modified. The claw doesn't know it's on a leash.
+OpenClaw is a third-party OpenClaw agent. ClawFilters's governance proxy code (`core/openclaw.py`) wraps it at the MCP layer - every action evaluated through the 8-step pipeline before execution. OpenClaw itself is never modified. The claw doesn't know it's on a leash.
 
-Any MCP-compatible agent framework can connect to ClawCoat without modification. The governance proxy wraps the agent at the MCP layer - the agent never needs to know ClawCoat exists. Post-launch evaluation will include Claude Desktop and other Goose integrations as compatible frameworks mature.
+Any MCP-compatible agent framework can connect to ClawFilters without modification. The governance proxy wraps the agent at the MCP layer - the agent never needs to know ClawFilters exists. Post-launch evaluation will include Claude Desktop and other Goose integrations as compatible frameworks mature.
 
 ---
 
@@ -110,13 +110,13 @@ Any MCP-compatible agent framework can connect to ClawCoat without modification.
 
 This section exists because honesty is the whole point.
 
-**What ClawCoat has done:**
+**What ClawFilters has done:**
 - Implemented source code modules mapping to SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, and ABA Model Rules
 - Written 64 SOC 2 controls mapped to specific source files with evidence locations
 - Built behavioral enforcement code: PHI de-identification (18 Safe Harbor identifiers), breach notification (60-day deadline tracking), BAA lifecycle, sanctions tracking, training compliance, minimum necessary enforcement, legal hold, contingency testing
 - Verified all of the above with 6,254 passing tests — including 90 compliance depth tests added March 15, 2026
 
-**What ClawCoat has NOT done:**
+**What ClawFilters has NOT done:**
 - Passed a SOC 2 Type I audit (requires engaging a licensed CPA firm)
 - Completed a HITRUST CSF assessment (requires a HITRUST-authorized external assessor via MyCSF)
 - Undergone an OCR HIPAA audit or third-party HIPAA risk assessment
@@ -151,4 +151,4 @@ If you find something broken, open an issue. If something is missing, start a di
 
 ---
 
-*ClawCoat v11.0.3 · March 20, 2026 · Quietfire AI*
+*ClawFilters v11.0.3 · March 20, 2026 · Quietfire AI*

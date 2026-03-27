@@ -83,4 +83,4 @@ docker compose exec mcp_server whoami
 
 ---
 
-*Sheet TB-PROOF-031 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-031 | ClawFilters v11.0.3 | March 20, 2026*

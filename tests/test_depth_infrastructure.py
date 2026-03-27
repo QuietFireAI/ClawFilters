@@ -312,12 +312,12 @@ class TestZeroExternalCalls:
         """REM: No file in core/api/agents must make outbound calls to openai.com.
         REM: alien_adapter.py is excluded — it contains openai.com as a capability
         REM: allowlist entry string (what external agents MAY request), not as an
-        REM: actual HTTP call from ClawCoat itself."""
+        REM: actual HTTP call from ClawFilters itself."""
         sources = self._scan_source()
         violations = []
         for fpath, content in sources:
             # alien_adapter.py bridges external frameworks inbound — URL strings
-            # there are allowlist definitions, not ClawCoat calling external services
+            # there are allowlist definitions, not ClawFilters calling external services
             if "alien_adapter.py" in fpath:
                 continue
             # Strip comment lines
@@ -388,7 +388,7 @@ class TestNoCloudDependencies:
         # 'anthropic' may appear if Anthropic SDK is imported — that would be a violation
         assert not violations, (
             f"Cloud API client packages found in requirements.txt: {violations}. "
-            "ClawCoat must have zero cloud API SDK dependencies."
+            "ClawFilters must have zero cloud API SDK dependencies."
         )
 
     def test_requirements_dev_has_no_cloud_packages(self):

@@ -1,4 +1,4 @@
-# ClawCoat - Installation Guide for Windows
+# ClawFilters - Installation Guide for Windows
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **Target Audience:** Windows users, including those new to Docker
@@ -7,7 +7,7 @@
 
 ## Before You Start
 
-ClawCoat runs entirely in Docker. You do not install Python, Redis, or any other dependency directly on Windows - Docker handles all of that. What you need on your machine:
+ClawFilters runs entirely in Docker. You do not install Python, Redis, or any other dependency directly on Windows - Docker handles all of that. What you need on your machine:
 
 1. Docker Desktop
 2. Git (for cloning the repo and running the setup script)
@@ -40,7 +40,7 @@ docker --version
 docker compose version
 ```
 
-> ClawCoat uses `docker compose` (V2, built into Docker Desktop). The older `docker-compose` (with hyphen) is not needed.
+> ClawFilters uses `docker compose` (V2, built into Docker Desktop). The older `docker-compose` (with hyphen) is not needed.
 
 ---
 
@@ -66,11 +66,11 @@ Accept the defaults during installation. When it finishes, you will have both `g
 Open PowerShell, Command Prompt, or Git Bash:
 
 ```bash
-git clone https://github.com/QuietFireAI/ClawCoat.git
-cd ClawCoat
+git clone https://github.com/QuietFireAI/ClawFilters.git
+cd ClawFilters
 ```
 
-> Note the capital C - the directory is `ClawCoat`, not `clawcoat`.
+> Note the capital C - the directory is `ClawFilters`, not `clawcoat`.
 
 ---
 
@@ -103,7 +103,7 @@ This script does three things:
 - Writes them into the `secrets/` directory as Docker secret files
 - Updates your `.env` file with the matching values
 
-**Do not skip this step and do not generate keys manually.** ClawCoat uses Docker Secrets - keys must be in `secrets/` as files, not just in `.env`. The script handles both.
+**Do not skip this step and do not generate keys manually.** ClawFilters uses Docker Secrets - keys must be in `secrets/` as files, not just in `.env`. The script handles both.
 
 After the script completes, verify the secrets directory was created:
 
@@ -119,7 +119,7 @@ cat secrets/telsonbase_mcp_api_key
 
 ### Step 3 - Enable the governance pipeline
 
-**This step is required** to use agent governance features (trust levels, kill switch, Manners compliance, approval gates). Run this command before starting ClawCoat.
+**This step is required** to use agent governance features (trust levels, kill switch, Manners compliance, approval gates). Run this command before starting ClawFilters.
 
 **In Git Bash:**
 ```bash
@@ -147,7 +147,7 @@ Expected output: `OPENCLAW_ENABLED=true`
 
 ---
 
-## Starting ClawCoat
+## Starting ClawFilters
 
 ### Step 1 - Confirm Docker Desktop is running
 
@@ -225,7 +225,7 @@ Expected response:
 
 ### Step 6 - Pull the AI model
 
-ClawCoat uses Ollama for local LLM inference. Pull the default model after startup:
+ClawFilters uses Ollama for local LLM inference. Pull the default model after startup:
 
 ```bash
 docker compose exec ollama ollama pull gemma2:9b
@@ -240,7 +240,7 @@ curl http://localhost:11434/api/tags
 
 ---
 
-## Accessing ClawCoat
+## Accessing ClawFilters
 
 | Service | URL | What it is |
 |---|---|---|
@@ -401,13 +401,13 @@ netstat -ano | findstr :8000
 taskkill /PID 1234 /F
 ```
 
-Alternatively, switch ClawCoat to port 8001 instead. Run this in **Git Bash** from the ClawCoat directory:
+Alternatively, switch ClawFilters to port 8001 instead. Run this in **Git Bash** from the ClawFilters directory:
 
 ```bash
 sed -i 's/"8000:8000"/"8001:8000"/' docker-compose.yml
 ```
 
-Then access ClawCoat at `http://localhost:8001` instead of `http://localhost:8000`.
+Then access ClawFilters at `http://localhost:8001` instead of `http://localhost:8000`.
 
 To switch back:
 ```bash
@@ -454,7 +454,7 @@ docker compose down -v
 
 ---
 
-## Updating ClawCoat
+## Updating ClawFilters
 
 ```bash
 # Pull latest code
@@ -484,9 +484,9 @@ This adds MailHog. Access it at `http://localhost:8025` to view emails sent by t
 ## Getting Help
 
 - **Troubleshooting guide:** `docs/Operation Documents/TROUBLESHOOTING.md`
-- **GitHub Issues:** https://github.com/QuietFireAI/ClawCoat/issues
-- **Email:** support@clawcoat.com
+- **GitHub Issues:** https://github.com/QuietFireAI/ClawFilters/issues
+- **Email:** support@clawfilters.com
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

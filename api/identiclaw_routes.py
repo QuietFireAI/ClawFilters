@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawCoat/api/identiclaw_routes.py
+# ClawFilters/api/identiclaw_routes.py
 # REM: =======================================================================================
 # REM: W3C DID IDENTITY MANAGEMENT API
 # REM: =======================================================================================

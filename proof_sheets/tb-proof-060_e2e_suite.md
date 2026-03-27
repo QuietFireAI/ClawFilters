@@ -50,4 +50,4 @@ docker compose exec mcp_server python -m pytest tests/test_e2e_integration.py -v
 
 ---
 
-*Sheet TB-PROOF-060 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-060 | ClawFilters v11.0.3 | March 20, 2026*

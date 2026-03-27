@@ -1,7 +1,7 @@
 # TB-PROOF-018: Built on Anthropic's Agent Safety Framework (Manners)
 
 **Sheet ID:** TB-PROOF-018
-**Claim Source:** clawcoat.com - AI Safety Section
+**Claim Source:** clawfilters.com - AI Safety Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- pytest -k manners -- behavioral manners tests across OpenClaw suite
 **Last Verified:** March 8, 2026
@@ -83,4 +83,4 @@ All Manners compliance tests pass.
 
 ---
 
-*Sheet TB-PROOF-018 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-018 | ClawFilters v11.0.3 | March 20, 2026*

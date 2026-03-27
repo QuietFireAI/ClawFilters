@@ -1,16 +1,16 @@
-# ClawCoat
+# ClawFilters
 
-### Local-First Gateway for OpenClaw.
+### Open source real-time behavioral filters for AI agents.
 
-Every OpenClaw tool call passes through ClawCoat before execution. Allow, gate for human approval, or block. Every time. That is active decision making, and it is what separates governance from logging.
+Every AI agent tool call passes through ClawFilters before execution. Allow, gate for human approval, or block. Every time. That is active decision making, and it is what separates governance from logging.
 
-ClawCoat is the working implementation of the [Agent Autonomy SLA](docs/System%20Documents/AGENT_AUTONOMY_SLA.md), a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux and Cabot identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)) — and defined `OversightLevel` as a first-class quality metric for AI agent services. ClawCoat makes it runtime-enforced and behaviorally dynamic. The [formal machine-readable spec](docs/System%20Documents/agent-autonomy-sla-spec.json) is expressed in their DSL.
+ClawFilters is the working implementation of the [Agent Autonomy SLA](docs/System%20Documents/AGENT_AUTONOMY_SLA.md), a formal per-tier commitment framework defining what an AI agent may do, under what conditions, and with what audit trail. Jouneaux and Cabot identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)) — and defined `OversightLevel` as a first-class quality metric for AI agent services. ClawFilters makes it runtime-enforced and behaviorally dynamic. The [formal machine-readable spec](docs/System%20Documents/agent-autonomy-sla-spec.json) is expressed in their DSL.
 
-Five trust tiers, earned by behavior. The Manners Engine measures every action continuously — the active measurement device that drives automatic demotion. Human-in-the-loop gates decide promotion. A cryptographic audit chain records every governance decision. Nothing leaves your network.
+Five trust tiers, earned by behavior. ClawFilters scores every action continuously — driving automatic demotion. Human-in-the-loop gates decide promotion. A cryptographic audit chain records every governance decision. Nothing leaves your network.
 
-Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
+Self-hosted. Open source. Apache 2.0. [clawfilters.com](https://clawfilters.com)
 
-> *"The industry gave OpenClaw agents the keys to everything before anyone asked who was watching."*
+> *"The industry gave AI agents the keys to everything before anyone asked who was watching."*
 
 <p align="center">
   <strong>v11.0.3</strong> &nbsp;|&nbsp;
@@ -29,13 +29,13 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 </p>
 
 <p align="center">
-  <a href="https://github.com/QuietFireAI/ClawCoat/actions/workflows/ci.yml"><img src="https://github.com/QuietFireAI/ClawCoat/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/QuietFireAI/ClawFilters/actions/workflows/ci.yml"><img src="https://github.com/QuietFireAI/ClawFilters/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   &nbsp;
   <img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat" alt="License: Apache 2.0">
   &nbsp;
   <img src="https://img.shields.io/badge/python-3.11-blue?style=flat&logo=python&logoColor=white" alt="Python 3.11">
   &nbsp;
-  <a href="https://huggingface.co/spaces/QuietFireAI/ClawCoat"><img src="https://img.shields.io/badge/Live%20Demo-HuggingFace-ff6b35?style=flat&logo=huggingface&logoColor=white" alt="Live Demo on HuggingFace"></a>
+  <a href="https://huggingface.co/spaces/QuietFireAI/ClawFilters"><img src="https://img.shields.io/badge/Live%20Demo-HuggingFace-ff6b35?style=flat&logo=huggingface&logoColor=white" alt="Live Demo on HuggingFace"></a>
   &nbsp;
   <a href="https://buymeacoffee.com/jphillips"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support%20the%20project-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"></a>
   &nbsp;
@@ -48,12 +48,12 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 
 **6,254 tests passing. ≥80% coverage. 0 high-severity findings. Everything described in this README is built and running.**
 
-**Try the live demo:** [huggingface.co/spaces/QuietFireAI/ClawCoat](https://huggingface.co/spaces/QuietFireAI/ClawCoat)
+**Try the live demo:** [huggingface.co/spaces/QuietFireAI/ClawFilters](https://huggingface.co/spaces/QuietFireAI/ClawFilters)
 
 The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional. The integration guide covers the full agent flow end-to-end and has been verified across multiple clean-slate deployments.
 
 **What's stable and tested:**
-Trust governance pipeline · Cryptographic audit chain · RBAC (143 endpoints) · Human-in-the-loop approval gates · Kill switch · Telegram gateway · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
+Trust governance pipeline · Cryptographic audit chain · RBAC (143 endpoints) · Human-in-the-loop approval gates · Kill switch · Telegram gateway · behavioral scoring engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · AI agent governance proxy
 
 **What's actively being worked on:**
 User management live endpoint · QMS real-time log feed · Audit chain PostgreSQL archival beyond 100K entries · Agent actor attribution in approval decisions · Identiclaw agent testing
@@ -62,11 +62,11 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 ---
 
-## What Is ClawCoat?
+## What Is ClawFilters?
 
-ClawCoat is a **self-hosted, local-first governance platform** for OpenClaw agents. It acts as a governed MCP proxy: agents connect to ClawCoat, and every action they attempt is evaluated against trust levels, Manners compliance, anomaly detection, and approval gates before execution. The agent is never modified. ClawCoat wraps it.
+ClawFilters is a **self-hosted, local-first governance platform** for AI agents. It acts as a governed MCP proxy: agents connect to ClawFilters, and every action they attempt is evaluated against trust levels, behavioral scoring, anomaly detection, and approval gates before execution. The agent is never modified. ClawFilters wraps it.
 
-> **Note:** You will see `telsonbase` in environment variables, Docker container names, directory paths, and internal configuration. TelsonBase is the internal engine name. ClawCoat is the product. No changes to your deployment are required.
+> **Note:** You will see `telsonbase` in environment variables, Docker container names, directory paths, and internal configuration. ClawFilters is the product. The `telsonbase` internal name requires no changes to your deployment. No changes to your deployment are required.
 
 ---
 
@@ -74,7 +74,7 @@ ClawCoat is a **self-hosted, local-first governance platform** for OpenClaw agen
 
 ```bash
 # Clone
-git clone https://github.com/QuietFireAI/ClawCoat.git
+git clone https://github.com/QuietFireAI/ClawFilters.git
 cd telsonbase
 
 # Configure
@@ -130,7 +130,7 @@ Everything below is a live instance. No mocks. No scripted responses. Real gover
 ---
 
 **GIF 1 - Policy Block**
-QUARANTINE agent attempts an external financial API call. ClawCoat blocks it before execution. Decision written to the tamper-evident audit chain. Agent never touched the endpoint.
+QUARANTINE agent attempts an external financial API call. ClawFilters blocks it before execution. Decision written to the tamper-evident audit chain. Agent never touched the endpoint.
 
 ![Governance Blocked](screenshots/governance-blocked.gif)
 
@@ -144,7 +144,7 @@ QUARANTINE agent fires an action - governance gates it, queues a human approval.
 ---
 
 **GIF 3 - Human-in-the-Loop: Approve**
-PROBATION agent attempts an external http_post. ClawCoat holds it - cannot execute without human review. Operator reviews the full payload in the approval dashboard and approves. `::_Thank_You::` logged to the audit chain - the QMS™ command block for successful completion, attributed to the operator, hash-chained to every event before it. The agent's action goes through. Trust, verified.
+PROBATION agent attempts an external http_post. ClawFilters holds it - cannot execute without human review. Operator reviews the full payload in the approval dashboard and approves. `::_Thank_You::` logged to the audit chain - the QMS™ command block for successful completion, attributed to the operator, hash-chained to every event before it. The agent's action goes through. Trust, verified.
 
 ![HITL Approval](screenshots/hitl-approval.gif)
 
@@ -200,7 +200,7 @@ Fresh agent at QUARANTINE attempts `file_write` - blocked outright. Promoted to 
 
 ## The Secret Sauce: Earned Trust
 
-Every other platform gives agents permissions and hopes for the best. ClawCoat does the opposite. Every agent starts at **Quarantine** with zero autonomous permissions and earns its way up.
+Every other platform gives agents permissions and hopes for the best. ClawFilters does the opposite. Every agent starts at **Quarantine** with zero autonomous permissions and earns its way up.
 
 ```
 QUARANTINE ──► PROBATION ──► RESIDENT ──► CITIZEN ──► AGENT
@@ -230,21 +230,21 @@ This isn't a roadmap. This is shipped code with tests.
 
 | Capability | Implementation | Tests |
 |---|---|---|
-| **Trust Level Governance** | 5-tier earned trust, sequential promotion, instant demotion | 55 |
-| **Cryptographic Audit Trail** | SHA-256 hash-chained, tamper-evident | 11 |
-| **143 RBAC Endpoints** | 5-role permissions (viewer/operator/admin/security_officer/super_admin), deny overrides allow | 13 |
-| **AES-256-GCM Encryption** | At-rest encryption, PBKDF2 key derivation | 11 |
-| **TOTP Multi-Factor Auth** | RFC 6238, QR enrollment, backup codes | 8 |
-| **Behavioral Anomaly Detection** | Rate spikes, capability probes, enumeration | 12 |
-| **Human-in-the-Loop Gates** | Approval workflows with timeouts, escalation | 9 |
-| **Manners Compliance Engine** | Five behavioral principles, runtime scoring | 7 |
+| **Trust Level Governance** | 5-tier earned trust, sequential promotion, instant demotion | 100 |
+| **Cryptographic Audit Trail** | SHA-256 hash-chained, tamper-evident | 159 |
+| **143 RBAC Endpoints** | 5-role permissions (viewer/operator/admin/security_officer/super_admin), deny overrides allow | 85 |
+| **AES-256-GCM Encryption** | At-rest encryption, PBKDF2 key derivation | 60 |
+| **TOTP Multi-Factor Auth** | RFC 6238, QR enrollment, backup codes | 49 |
+| **Behavioral Anomaly Detection** | Rate spikes, capability probes, enumeration | 61 |
+| **Human-in-the-Loop Gates** | Approval workflows with timeouts, escalation | 67 |
+| **Manners Compliance Engine** | Five behavioral principles, runtime scoring | 96 |
 | **Egress Firewall** | Domain whitelist, external call governance | 5 |
-| **Multi-Tenant Isolation** | Redis key namespacing, litigation holds | 8 |
-| **Agent Identity** | DID-based identity, Ed25519, verifiable credentials (engine built; Identiclaw service binding is post-launch - see `docs/WHATS_NEXT.md`) | 50 |
-| **OpenClaw Governance** | Governed MCP proxy, kill switch, Manners auto-demotion | 55 |
-| **Session Management** | HIPAA-compliant idle timeout, privileged role limits | 6 |
+| **Multi-Tenant Isolation** | Redis key namespacing, litigation holds | 97 |
+| **Agent Identity** | DID-based identity, Ed25519, verifiable credentials (engine built; Identiclaw service binding is post-launch - see `docs/WHATS_NEXT.md`) | 103 |
+| **OpenClaw Governance** | Governed MCP proxy, kill switch, Manners auto-demotion | 83 |
+| **Session Management** | HIPAA-compliant idle timeout, privileged role limits | 79 |
 | **Federation** | Cross-instance trust with mTLS, RSA-4096 signatures | 5 |
-| **Kill Switch** | Instant suspension, Redis-persisted, survives restarts | 7 |
+| **Kill Switch** | Instant suspension, Redis-persisted, survives restarts | 19 |
 | **MCP Gateway (Goose)** | 13 tools exposed via MCP, trust-gated sessions, native Goose / Claude Desktop integration | live |
 
 **Total: 6,254 tests passing. 54 skipped. 0 high-severity findings across 43,457 lines scanned.**
@@ -266,13 +266,13 @@ This isn't a roadmap. This is shipped code with tests.
 
 Every control references a source file and a passing test. Run `proof_sheets/` to verify any claim.
 
-**Certification boundary:** "Baked in" means the controls are implemented in source code and verified by 6,254 passing tests — including 90 compliance depth tests covering PHI de-identification, breach notification, BAA lifecycle, HITRUST domain controls, sanctions, training, and more. It does not mean a SOC 2 Type I report has been signed, a HITRUST assessment completed, or an OCR HIPAA audit conducted. Those require external assessors and budget. The implementation is audit-ready. The certifications are next. See [`docs/WHATS_NEXT.md`](docs/WHATS_NEXT.md).
+**Certification boundary:** "Baked in" means the controls are implemented in source code and verified by 6,254 passing tests — including 538 compliance depth tests covering PHI de-identification, breach notification, BAA lifecycle, HITRUST domain controls, sanctions, training, and more. It does not mean a SOC 2 Type I report has been signed, a HITRUST assessment completed, or an OCR HIPAA audit conducted. Those require external assessors and budget. The implementation is audit-ready. The certifications are next. See [`docs/WHATS_NEXT.md`](docs/WHATS_NEXT.md).
 
 ---
 
 ## Who This Is For
 
-**The regulated industries -law firms, healthcare, insurance, accounting -ClawCoat was built against the standards they operate under.** HIPAA. SOC 2. HITRUST. CJIS. GDPR. PCI DSS. ABA Model Rules. Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse. The compliance mappings are in the repository because if it holds up to those frameworks, it works everywhere below them.
+**The regulated industries -law firms, healthcare, insurance, accounting -ClawFilters was built against the standards they operate under.** HIPAA. SOC 2. HITRUST. CJIS. GDPR. PCI DSS. ABA Model Rules. Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse. The compliance mappings are in the repository because if it holds up to those frameworks, it works everywhere below them.
 
 **Small businesses** get the same platform. Five employees or fifty -every agent action is governed, every decision logged, every permission earned. No enterprise contract required.
 
@@ -284,7 +284,7 @@ It runs on a $200 mini-PC, a Raspberry Pi, a homelab server, or a cloud VM. The 
 
 ## Connecting Goose (or Any MCP Client)
 
-ClawCoat ships a native MCP gateway at `/mcp`. [Goose](https://github.com/block/goose) by Block connects to it out of the box. No plugin, no glue code, no n8n. The configuration file is included.
+ClawFilters ships a native MCP gateway at `/mcp`. [Goose](https://github.com/block/goose) by Block connects to it out of the box. No plugin, no glue code, no n8n. The configuration file is included.
 
 **Three steps:**
 
@@ -302,7 +302,7 @@ goose session start
 Goose will discover all 13 tools automatically via MCP tool discovery. From there, natural language:
 
 ```
-> What is the ClawCoat system status?
+> What is the ClawFilters system status?
 > List all pending approval requests
 > Show me the agents in quarantine
 > Approve request req_abc123
@@ -412,7 +412,7 @@ telsonbase/
 ├── celery_app/                 # Background task processing
 ├── monitoring/                 # Prometheus + Grafana + Mosquitto config
 │
-├── tests/                      # 6,254 passing tests across 99 files
+├── tests/                      # 6,254 passing tests across 100 files
 │   ├── test_security_battery.py  # 9-category security attack surface
 │   ├── test_openclaw.py          # Governance pipeline
 │   ├── test_qms.py               # QMS protocol
@@ -457,7 +457,7 @@ Right now, as you read this:
 
 Nobody asked what happens to your data when an AI agent has no one watching it. And while that conversation was missing, a quieter question went unasked too: "Where does your data go when you hand it to a cloud AI platform?" Every document you attach, every conversation you have are all ingested, stored, processed on someone else's cloud infrastructure you don't control, under terms that can change without notice.
 
-ClawCoat puts you back in control. Every action by an AI agent is evaluated. Every permission earned. Every decision is auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
+ClawFilters puts you back in control. Every action by an AI agent is evaluated. Every permission earned. Every decision is auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
 
 The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 6,254 passing tests. 64 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
@@ -469,7 +469,7 @@ Built for the industries that can't afford to get this wrong: small business, re
 
 One piece of this project that deserves its own moment: the Qualified Message Standard.
 
-This is unique and novel to Quietfire AI and ClawCoat. It is only presented for logs and anomaly detection. Most agent communication protocols require a shared configuration layer - both sides need to know the schema, register with a coordinator, or load the same library before they can understand each other. That works fine when every agent in the room was built by the same team. It breaks the moment a new type of agent shows up that was not part of the original design.
+This is unique and novel to Quietfire AI and ClawFilters. It is only presented for logs and anomaly detection. Most agent communication protocols require a shared configuration layer - both sides need to know the schema, register with a coordinator, or load the same library before they can understand each other. That works fine when every agent in the room was built by the same team. It breaks the moment a new type of agent shows up that was not part of the original design.
 
 QMS™ solves that differently. The grammar is in the format itself:
 
@@ -498,7 +498,7 @@ QMS™ is an open standard (MIT licensed). The trademark covers the name. The pr
 
 The `proof_sheets/` directory contains **788 evidence documents** (67 claim/suite-level + 721 individual test case sheets).
 
-This is not a marketing decision. If ClawCoat preaches governance, it has to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
+This is not a marketing decision. If ClawFilters preaches governance, it has to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
 **Two tiers:**
 
@@ -511,7 +511,7 @@ This is not a marketing decision. If ClawCoat preaches governance, it has to pra
 ```
 proof_sheets/
   INDEX.md                          ← master index
-  TB-PROOF-001_tests_passing.md     ← 6,254 tests, all 99 files, version history
+  TB-PROOF-001_tests_passing.md     ← 6,254 tests, all 100 files, version history
   TB-PROOF-035_openclaw_governance.md
   TB-PROOF-043_security_auth.md     ← 9 security battery category sheets
   tb-proof-053_qms_suite.md         ← test suite class sheets
@@ -536,7 +536,7 @@ Question any claim. Run the command. That's the point.
 
 **Test coverage status (March 2026):**
 
-6,254 tests across 99 files. ≥80% line coverage (CI-verified). Every core module has dedicated depth tests: governance pipeline, trust tiers, manners scoring, HITL gates, kill switch, audit chain, all compliance infrastructure, all agents, all toolroom modules, and all API routes.
+6,254 tests across 100 files. ≥80% line coverage (CI-verified). Every core module has dedicated depth tests: governance pipeline, trust tiers, manners scoring, HITL gates, kill switch, audit chain, all compliance infrastructure, all agents, all toolroom modules, and all API routes.
 
 The proof sheet index carries a **Test Coverage** rating for every sheet: VERIFIED, SMOKE, CODE-ONLY, INFRA, or DOCS. Read the ratings before you read the verdicts.
 
@@ -550,7 +550,7 @@ Two things. The main two things.
 
 **Behavior has a score.** Every agent carries a [**Manners compliance score**](docs/System%20Documents/MANNERS.md) - a live measurement across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. The score moves in real time. Blocked actions cost points. Good behavior holds the score. Drop below 50% and the agent is automatically demoted to Quarantine, no human required.
 
-These two things together are the main architecture. Everything else in ClawCoat - the audit trail, the kill switches, the compliance frameworks, the 8-step governance pipeline - exists to support them. The tools an agent can access follow the same logic: authorization requires both the trust level and a demonstrated need. That's not a restriction - that's a credential.
+These two things together are the main architecture. Everything else in ClawFilters - the audit trail, the kill switches, the compliance frameworks, the 8-step governance pipeline - exists to support them. The tools an agent can access follow the same logic: authorization requires both the trust level and a demonstrated need. That's not a restriction - that's a credential.
 
 Agents that already demonstrate the ability to make decisions can certainly understand that their own actions have consequences. As my dad would say.
 
@@ -560,7 +560,7 @@ Agents that already demonstrate the ability to make decisions can certainly unde
 
 I'm one person and I'm responsible for this project. This project was built over three years on consumer hardware, with standard subscriptions, using three AI platforms - not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated conversational drift and produced what you're looking at now, and what I will continue to build with.
 
-ClawCoat is my interpretation of how OpenClaw agents can work together safely and with some order. It is not the definitive answer - it is an approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less. I'm sharing this freely because the problems for OpenClaw agents are real and one person's solution and energy only goes so far. When this project gains traction, community contributions will drive expanded capability - those will be released back openly as it develops.
+ClawFilters is my interpretation of how OpenClaw agents can work together safely and with some order. It is not the definitive answer - it is an approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less. I'm sharing this freely because the problems for OpenClaw agents are real and one person's solution and energy only goes so far. When this project gains traction, community contributions will drive expanded capability - those will be released back openly as it develops.
 
 Fork it. Break it. Build something better from it. The goal was never to own this problem but to model one way to solve it seriously and put that model where others can use it.
 
@@ -578,7 +578,7 @@ I'm one person. This project needs people who see what it is and want to help ca
 
 If you work in a regulated industry and understand what's at stake, read [AMBASSADORS.md](docs/AMBASSADORS.md). I'm looking for people who will:
 
-- Deploy ClawCoat in their environment and report what works and what doesn't
+- Deploy ClawFilters in their environment and report what works and what doesn't
 - Help answer community questions in areas I don't have deep expertise (healthcare compliance, legal technology, insurance regulation, accounting standards)
 - Contribute code, documentation, or testing
 - Help shape the roadmap based on real-world needs
@@ -599,7 +599,7 @@ This project was built through human-AI collaboration. Not "AI generated my code
 | **Claude Sonnet 4.6** | Primary development, security implementation |
 | **Claude Code (Sonnet/Opus 4.6)** | Production hardening, OpenClaw integration, testing |
 
-Built independently. No corporate backing, no venture funding, no AI company involvement. This is a developer in Ohio using publicly available AI models as genuine collaborators to build something the world needs right now. Technical integrations - W3C DID - are ecosystem compatibility choices, not business dependencies. ClawCoat works with any W3C DID-compliant provider.
+Built independently. No corporate backing, no venture funding, no AI company involvement. This is a developer in Ohio using publicly available AI models as genuine collaborators to build something the world needs right now. Technical integrations - W3C DID - are ecosystem compatibility choices, not business dependencies. ClawFilters works with any W3C DID-compliant provider.
 
 ---
 
@@ -619,19 +619,19 @@ Questions or bugs? See [SUPPORT.md](SUPPORT.md).
 
 ## License
 
-ClawCoat is open source under the [Apache License, Version 2.0](LICENSE).
+ClawFilters is open source under the [Apache License, Version 2.0](LICENSE).
 
 Free for any use - personal, commercial, production, research. Use it, modify it, deploy it, build on it. Attribution required: retain the copyright and license notices when distributing. Full terms: [`LICENSE`](LICENSE)
 
-ClawCoat is provided as-is with no warranty. Deploying organizations are responsible for their own configurations, agents, and compliance outcomes. Full terms: [`TERMS_OF_USE.md`](docs/TERMS_OF_USE.md)
+ClawFilters is provided as-is with no warranty. Deploying organizations are responsible for their own configurations, agents, and compliance outcomes. Full terms: [`TERMS_OF_USE.md`](docs/TERMS_OF_USE.md)
 
 ---
 
 ## Contact
 
 **Jeff Phillips** - Quietfire AI
-- Email: support@clawcoat.com
-- Website: [clawcoat.com](https://clawcoat.com)
+- Email: support@clawfilters.com
+- Website: [clawfilters.com](https://clawfilters.com)
 - ORCID: [0009-0000-1375-1725](https://orcid.org/0009-0000-1375-1725)
 - Support the project: [buymeacoffee.com/jphillips](https://buymeacoffee.com/jphillips)
 
@@ -639,16 +639,16 @@ ClawCoat is provided as-is with no warranty. Deploying organizations are respons
 
 ## Cite This Work
 
-If you use ClawCoat in research, a paper, or a published project, a `CITATION.cff` file is included in the root of this repository. GitHub generates a formatted citation automatically - click **"Cite this repository"** on the right side of the repo page.
+If you use ClawFilters in research, a paper, or a published project, a `CITATION.cff` file is included in the root of this repository. GitHub generates a formatted citation automatically - click **"Cite this repository"** on the right side of the repo page.
 
 Manual citation:
 ```
-Phillips, J. (2026). ClawCoat (v11.0.3). Quietfire AI.
-https://github.com/QuietFireAI/ClawCoat
+Phillips, J. (2026). ClawFilters (v11.0.3). Quietfire AI.
+https://github.com/QuietFireAI/ClawFilters
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```
 
 ---
 
-*"The industry gave OpenClaw agents the keys to everything before anyone asked who was watching. ClawCoat is the answer."*
+*"The industry gave OpenClaw agents the keys to everything before anyone asked who was watching. ClawFilters is the answer."*
 

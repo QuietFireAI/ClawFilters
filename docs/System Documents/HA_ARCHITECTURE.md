@@ -1,8 +1,8 @@
-# ClawCoat High Availability Architecture
+# ClawFilters High Availability Architecture
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 **Status:** Planning Document
-**Applies to:** ClawCoat v11.0.3
+**Applies to:** ClawFilters v11.0.3
 
 ---
 
@@ -22,7 +22,7 @@
 
 ### Single-Node Docker Compose Deployment
 
-ClawCoat runs as a single-host Docker Compose stack. All services execute on one machine, communicating over five segmented bridge networks (frontend, backend, data, ai, monitoring).
+ClawFilters runs as a single-host Docker Compose stack. All services execute on one machine, communicating over five segmented bridge networks (frontend, backend, data, ai, monitoring).
 
 #### Service Inventory
 
@@ -327,10 +327,10 @@ metadata:
 spec:
   tls:
    - hosts:
-       - clawcoat.com
+       - clawfilters.com
       secretName: telsonbase-tls
   rules:
-   - host: clawcoat.com
+   - host: clawfilters.com
       http:
         paths:
          - path: /
@@ -454,7 +454,7 @@ Application impact: The MQTT client in `core/mqtt_bus.py` connects by hostname. 
 
 ### Data Sovereignty
 
-ClawCoat's primary market is law firms where attorney-client privilege demands that data never leaves the firm's network. All HA strategies must preserve this constraint:
+ClawFilters's primary market is law firms where attorney-client privilege demands that data never leaves the firm's network. All HA strategies must preserve this constraint:
 
 - No cloud dependency. All components run on-premises.
 - No external SaaS for any data path (monitoring, logging, backups).
@@ -520,7 +520,7 @@ A single 8-core / 32 GB node comfortably hosts the full stack with headroom for 
 | **Swarm ports** | TCP 2377 (cluster management), TCP/UDP 7946 (node discovery), UDP 4789 (VXLAN overlay) |
 | **Firewall** | Block Swarm/K8s management ports from external access. Only ports 80 and 443 should be externally reachable. |
 | **Multi-site** | If nodes are in separate physical locations, use a site-to-site VPN (WireGuard recommended). Latency under 10ms is required for synchronous PostgreSQL replication. |
-| **DNS** | Internal DNS or `/etc/hosts` entries for node discovery. External DNS for clawcoat.com pointing to the primary node or a floating VIP. |
+| **DNS** | Internal DNS or `/etc/hosts` entries for node discovery. External DNS for clawfilters.com pointing to the primary node or a floating VIP. |
 
 ---
 
@@ -549,7 +549,7 @@ A single 8-core / 32 GB node comfortably hosts the full stack with headroom for 
 
 ### Recommended Path
 
-For ClawCoat's current trajectory (law firm pilots, self-hosted, compliance-driven):
+For ClawFilters's current trajectory (law firm pilots, self-hosted, compliance-driven):
 
 1. **Now:** Continue with single-node deployment. Focus on completing Cluster C hardening items (SOC 2 documentation, pen test prep, disaster recovery testing).
 
@@ -583,4 +583,4 @@ For ClawCoat's current trajectory (law firm pilots, self-hosted, compliance-driv
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

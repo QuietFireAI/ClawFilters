@@ -1,7 +1,7 @@
 # TB-PROOF-033: Disaster Recovery RPO=24hr RTO=15min
 
 **Sheet ID:** TB-PROOF-033
-**Claim Source:** clawcoat.com - Reports Section
+**Claim Source:** clawfilters.com - Reports Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestDisasterRecoveryConfig -- 4 tests: backup docs exist, RPO=24hr/RTO=15min in version.py, DR/backup script confirmed on disk, Redis+Postgres both in docker-compose
 **Last Verified:** March 8, 2026
@@ -68,4 +68,4 @@ References to daily backup schedule and RPO=24hr, RTO=15min targets.
 
 ---
 
-*Sheet TB-PROOF-033 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-033 | ClawFilters v11.0.3 | March 20, 2026*

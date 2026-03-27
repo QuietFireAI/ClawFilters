@@ -1,4 +1,4 @@
-# ClawCoat - Proof Index
+# ClawFilters - Proof Index
 
 **Every claim is backed by evidence.**
 
@@ -6,7 +6,7 @@
 
 ---
 
-ClawCoat publishes evidence for every security and compliance claim in the project.
+ClawFilters publishes evidence for every security and compliance claim in the project.
 If a claim is in the README, there is a verifiable source behind it.
 If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
@@ -74,4 +74,4 @@ Question any claim. Run the command. That is the point.
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · Apache 2.0*
+*ClawFilters v11.0.3 · Quietfire AI · Apache 2.0*

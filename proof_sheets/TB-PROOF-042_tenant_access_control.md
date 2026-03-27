@@ -1,7 +1,7 @@
 # TB-PROOF-042: Tenant Access Control - allowed_actors Enforcement
 
 **Sheet ID:** TB-PROOF-042
-**Claim Source:** ClawCoat architecture - multi-tenancy security model
+**Claim Source:** ClawFilters architecture - multi-tenancy security model
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestTenantAccessControl -- allowed_actors data model, enforcement function existence, 403 enforcement, and None return for unknown ID all confirmed
 **Last Verified:** March 8, 2026
@@ -110,4 +110,4 @@ pytest tests/test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_acc
 
 ---
 
-*Sheet TB-PROOF-042 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-042 | ClawFilters v11.0.3 | March 20, 2026*

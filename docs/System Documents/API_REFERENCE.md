@@ -1,4 +1,4 @@
-# ClawCoat - API Reference
+# ClawFilters - API Reference
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-The ClawCoat API provides endpoints for:
+The ClawFilters API provides endpoints for:
 - Agent management and task dispatch
 - Approval workflow management
 - Anomaly monitoring and resolution
@@ -537,13 +537,13 @@ Responses include a `qms_status` field following the Qualified Message Standard 
 
 ## MCP Gateway (Goose / Claude Desktop Integration)
 
-ClawCoat exposes its management capabilities as MCP (Model Context Protocol) tools at `/mcp`.
+ClawFilters exposes its management capabilities as MCP (Model Context Protocol) tools at `/mcp`.
 Operators using **Goose** (by Block), **Claude Desktop**, or any MCP-compatible AI agent can connect
-and drive ClawCoat workflows through natural language - no REST wrappers, no custom scripts.
+and drive ClawFilters workflows through natural language - no REST wrappers, no custom scripts.
 
 > **Security boundary:** The MCP gateway is an **operator interface**, not a public API.
 > All tool calls require a valid Bearer token and are logged to the immutable audit chain.
-> Any agent action that would cross ClawCoat's external data boundary is automatically
+> Any agent action that would cross ClawFilters's external data boundary is automatically
 > **queued as a HITL approval request** in the toolroom. Nothing leaves the sovereign perimeter
 > without an explicit human decision. The MCP tools give operators *visibility and control*
 > over that queue - they do not bypass it.
@@ -554,7 +554,7 @@ and drive ClawCoat workflows through natural language - no REST wrappers, no cus
 Transport: Streamable HTTP (SSE)
 Endpoint:  http://<host>:8000/mcp        (dev)
            https://<domain>/mcp          (production via Traefik)
-Auth:      Authorization: Bearer <ClawCoat API key>
+Auth:      Authorization: Bearer <ClawFilters API key>
 Config:    See goose.yaml at project root
 ```
 
@@ -581,7 +581,7 @@ Config:    See goose.yaml at project root
 ```
 $ goose session
 
-Goose: Connected to ClawCoat MCP server. 13 tools available.
+Goose: Connected to ClawFilters MCP server. 13 tools available.
 
 You: What's the system status?
 Goose → system_status()
@@ -593,7 +593,7 @@ Goose → list_pending_approvals()
 ← { count: 2, approvals: [ { request_id: "APPR-001", agent: "web_agent", action: "POST /api/external" }, ... ] }
 
 You: Approve APPR-001 - I've reviewed it.
-Goose → approve_tool_request(request_id="APPR-001", approved_by="operator@clawcoat.com")
+Goose → approve_tool_request(request_id="APPR-001", approved_by="operator@clawfilters.com")
 ← { approved: true, qms_status: "Thank_You" }
 
 You: Register me as a Goose agent at probation trust level.
@@ -615,7 +615,7 @@ All tools return the QMS status field:
 
 1. Install Goose: `curl -fsSL https://github.com/block/goose/releases/latest/download/install.sh | bash`
 2. Copy `goose.yaml` from project root → `~/.config/goose/config.yaml`
-3. Set `TELSONBASE_API_KEY` to your ClawCoat API key
+3. Set `TELSONBASE_API_KEY` to your ClawFilters API key
 4. Run `goose session` - tools are auto-discovered
 
 ---
@@ -628,8 +628,8 @@ All tools return the QMS status field:
 import requests
 from typing import Optional, Dict, Any
 
-class ClawCoatClient:
-    """Simple Python client for ClawCoat API."""
+class ClawFiltersClient:
+    """Simple Python client for ClawFilters API."""
 
     def __init__(self, base_url: str = "http://localhost:8000", api_key: str = None):
         self.base_url = base_url.rstrip("/")
@@ -717,7 +717,7 @@ class ClawCoatClient:
 
 # Usage example
 if __name__ == "__main__":
-    client = ClawCoatClient(
+    client = ClawFiltersClient(
         base_url="http://localhost:8000",
         api_key="your_api_key_here"
     )
@@ -749,8 +749,8 @@ import httpx
 import asyncio
 from typing import Dict, Any
 
-class AsyncClawCoatClient:
-    """Async Python client for ClawCoat API."""
+class AsyncClawFiltersClient:
+    """Async Python client for ClawFilters API."""
 
     def __init__(self, base_url: str = "http://localhost:8000", api_key: str = None):
         self.base_url = base_url.rstrip("/")
@@ -796,7 +796,7 @@ class AsyncClawCoatClient:
 
 # Async usage example
 async def main():
-    client = AsyncClawCoatClient(
+    client = AsyncClawFiltersClient(
         base_url="http://localhost:8000",
         api_key="your_api_key_here"
     )
@@ -823,7 +823,7 @@ if __name__ == "__main__":
 import requests
 from requests.exceptions import HTTPError
 
-def safe_api_call(client: ClawCoatClient):
+def safe_api_call(client: ClawFiltersClient):
     """Example of proper error handling."""
     try:
         result = client.dispatch_task(
@@ -856,7 +856,7 @@ def safe_api_call(client: ClawCoatClient):
 
 ## Rate Limiting
 
-ClawCoat implements rate limiting via production middleware (`core/middleware.py`) to prevent abuse and ensure fair resource allocation.
+ClawFilters implements rate limiting via production middleware (`core/middleware.py`) to prevent abuse and ensure fair resource allocation.
 
 ### Global Rate Limits
 
@@ -902,7 +902,7 @@ HTTP Status: `429 Too Many Requests`
 
 ## Webhooks
 
-ClawCoat supports webhook callbacks for async operations, particularly approval workflows.
+ClawFilters supports webhook callbacks for async operations, particularly approval workflows.
 
 ### Webhook Callback Format
 
@@ -934,7 +934,7 @@ When an approval decision is made and a `callback_url` was provided:
 
 ### Webhook Security
 
-- Verify the source by checking the `X-ClawCoat-Signature` header
+- Verify the source by checking the `X-ClawFilters-Signature` header
 - Signature is HMAC-SHA256 of the request body using your API key
 - Example verification (Python):
 
@@ -969,4 +969,4 @@ See [MCP Gateway](#mcp-gateway-goose--claude-desktop-integration) for complete G
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

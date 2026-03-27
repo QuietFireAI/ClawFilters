@@ -1,7 +1,7 @@
 # TB-PROOF-035: OpenClaw Governance Pipeline
 
 **Sheet ID:** TB-PROOF-035
-**Claim Source:** clawcoat.com - OpenClaw Integration
+**Claim Source:** clawfilters.com - OpenClaw Integration
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- test_openclaw.py -- 55 behavioral tests confirm full governance pipeline
 **Last Verified:** March 8, 2026
@@ -62,4 +62,4 @@ References to the governance pipeline, evaluate_action method, and OPENCLAW conf
 
 ---
 
-*Sheet TB-PROOF-035 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-035 | ClawFilters v11.0.3 | March 20, 2026*

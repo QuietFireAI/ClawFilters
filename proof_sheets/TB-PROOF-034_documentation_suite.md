@@ -1,7 +1,7 @@
 # TB-PROOF-034: Contract-Ready Documentation Suite
 
 **Sheet ID:** TB-PROOF-034
-**Claim Source:** clawcoat.com - Reports Section
+**Claim Source:** clawfilters.com - Reports Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestDocumentationSuite -- all 10 required documentation files confirmed to exist and be non-empty (> 500 bytes)
 **Last Verified:** March 8, 2026
@@ -94,4 +94,4 @@ All 6 files exist with substantive file sizes (not empty stubs).
 
 ---
 
-*Sheet TB-PROOF-034 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-034 | ClawFilters v11.0.3 | March 20, 2026*
