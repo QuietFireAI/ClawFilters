@@ -1,7 +1,7 @@
 # TB-PROOF-028: Zero Data Leaves Your Network
 
 **Sheet ID:** TB-PROOF-028
-**Claim Source:** clawcoat.com - The Promise Section
+**Claim Source:** clawfilters.com - The Promise Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestZeroExternalCalls -- source scan confirms no outbound calls to openai.com/googleapis.com/amazonaws.com in core/api/agents
 **Last Verified:** March 8, 2026
@@ -77,4 +77,4 @@ Zero references to external inference APIs.
 
 ---
 
-*Sheet TB-PROOF-028 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-028 | ClawFilters v11.0.3 | March 20, 2026*

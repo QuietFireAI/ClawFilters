@@ -50,4 +50,4 @@ docker compose exec mcp_server python -m pytest tests/test_observability.py -v -
 
 ---
 
-*Sheet TB-PROOF-058 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-058 | ClawFilters v11.0.3 | March 20, 2026*

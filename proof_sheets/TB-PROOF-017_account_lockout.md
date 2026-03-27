@@ -1,7 +1,7 @@
 # TB-PROOF-017: Account Lockout After 5 Failed Attempts
 
 **Sheet ID:** TB-PROOF-017
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestAuthSecurity -- account lockout enforcement and failed attempt tracking tested
 **Last Verified:** March 8, 2026
@@ -69,4 +69,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-017 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-017 | ClawFilters v11.0.3 | March 20, 2026*

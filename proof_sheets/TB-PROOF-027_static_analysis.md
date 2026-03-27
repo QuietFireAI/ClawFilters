@@ -1,7 +1,7 @@
 # TB-PROOF-027: 0 High-Severity Findings (Static Analysis)
 
 **Sheet ID:** TB-PROOF-027
-**Claim Source:** clawcoat.com - Security Testing Section
+**Claim Source:** clawfilters.com - Security Testing Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestStaticAnalysis -- bandit confirmed in CI workflow with report artifact; bandit run skipped locally when not installed but clean in CI (0 HIGH, 8 accepted MEDIUMs)
 **Last Verified:** March 8, 2026
@@ -82,4 +82,4 @@ bandit -r core/ api/ agents/ -ll --format json | python -c \
 
 ---
 
-*Sheet TB-PROOF-027 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-027 | ClawFilters v11.0.3 | March 20, 2026*

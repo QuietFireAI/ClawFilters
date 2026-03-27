@@ -1,7 +1,7 @@
 # TB-PROOF-002: Dedicated Security Tests
 
 **Sheet ID:** TB-PROOF-002
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- pytest test_security_battery.py -- 96 behavioral tests
 **Last Verified:** March 8, 2026
@@ -63,4 +63,4 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 
 ---
 
-*Sheet TB-PROOF-002 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-002 | ClawFilters v11.0.3 | March 20, 2026*

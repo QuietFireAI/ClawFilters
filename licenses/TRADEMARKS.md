@@ -1,4 +1,4 @@
-# ClawCoat Trademarks
+# ClawFilters Trademarks
 
 **TelsonBase** and **QMS™** (as used in the context of AI agent governance quality management) are trademarks of Quietfire AI / Jeff Phillips. QMS trademark registration is pending.
 
@@ -28,8 +28,8 @@ This is not legally required under Apache 2.0 (beyond keeping the license file),
 
 ## Contact
 
-Trademark questions: support@clawcoat.com
+Trademark questions: support@clawfilters.com
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI / Jeff Phillips · March 2026*
+*ClawFilters v11.0.3 · Quietfire AI / Jeff Phillips · March 2026*

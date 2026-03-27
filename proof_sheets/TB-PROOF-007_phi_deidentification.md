@@ -1,7 +1,7 @@
 # TB-PROOF-007: PHI De-identification (18 Safe Harbor Identifiers)
 
 **Sheet ID:** TB-PROOF-007
-**Claim Source:** clawcoat.com - The Promise Section
+**Claim Source:** clawfilters.com - The Promise Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- 9 depth tests added March 15 + 1 security battery test
 **Last Verified:** March 8, 2026
@@ -74,4 +74,4 @@ grep "PHIField" core/phi_deidentification.py | head -20
 
 ---
 
-*Sheet TB-PROOF-007 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-007 | ClawFilters v11.0.3 | March 20, 2026*

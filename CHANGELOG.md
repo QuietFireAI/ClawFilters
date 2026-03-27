@@ -1,9 +1,30 @@
-# CHANGELOG - ClawCoat
+# CHANGELOG - ClawFilters
 
 All notable changes to this project are documented in this file.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/).
+
+---
+
+## [Unreleased] - 2026-03-27 (Product rebrand ClawCoat → ClawFilters)
+
+**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
+
+### Changed
+- **Product rename:** ClawCoat → ClawFilters across all source files, docs, tests, proof sheets, CITATION.cff, README, CHANGELOG
+- **GitHub repo:** QuietFireAI/ClawCoat → QuietFireAI/ClawFilters
+- **Domain:** clawcoat.com → clawfilters.com
+- **Website hero:** "Real-Time Behavioral Filters for AI Agents" / "Because your AI agent needs a filter too."
+- **"The Manners Engine" brand name dropped** from all public-facing copy — replaced with "ClawFilters" and "behavioral scoring/filter" language throughout. Scoring mechanism and five-principle architecture unchanged.
+- **Positioning shift:** Small business primary audience; regulated industries framed as quality signal, not primary pitch. Compliance docs section reframed: "The bar was set by regulated industries. You clear it automatically."
+- **Audience broadened:** "OpenClaw agents" → "AI agents" in public-facing copy; platform now explicitly governs any MCP-connected AI agent
+- **`clawcoat.com`** → `clawfilters.com` in all contact emails, docs, CITATION.cff
+- **`clawcoat_dev`** default DB/Redis dev password → `clawfilters_dev` in config.py
+- **Audit chain prefix:** `clawcoat_` → `clawfilters_` in core/audit.py chain ID generation
+- **`clawcoat_permissions`** DB column name: unchanged (requires Alembic migration — deferred)
+- **`CLAWCOAT_ENCRYPTION_KEY`** env var: unchanged (internal implementation name, backward-compat)
+- **`TELSONBASE_ENV`** and all `telsonbase_*` Docker/internal names: unchanged
 
 ---
 
@@ -29,11 +50,11 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - **H14** `core/openclaw.py` — Verified non-issue: `TrustLevel.AGENT` was already present in `TRUST_PERMISSION_MATRIX`
 
 ### Changed (branding sweep)
-- All `core/` file headers updated from TelsonBase → ClawCoat
+- All `core/` file headers updated from TelsonBase → ClawFilters
 - `core/audit.py`: chain ID prefix `telsonbase_` → `clawcoat_`
-- `core/mfa.py`: TOTP issuer name → `ClawCoat`
+- `core/mfa.py`: TOTP issuer name → `ClawFilters`
 - `core/secure_storage.py`: env vars → `CLAWCOAT_ENCRYPTION_KEY` / `CLAWCOAT_ENCRYPTION_SALT`; backward-compat fallback for `TELSONBASE_*` so existing deployments continue to work
-- `core/config.py`: dev DB URL default and Redis password default → `clawcoat_dev`; production validation strings updated
+- `core/config.py`: dev DB URL default and Redis password default → `clawfilters_dev`; production validation strings updated
 - `core/identiclaw.py` + `api/identiclaw_routes.py` + `core/auth.py`: Pydantic field `telsonbase_permissions` → `clawcoat_permissions` (DB column unchanged — requires Alembic migration)
 - Frontend: localStorage keys renamed (`telsonbase_*` → `clawcoat_*`); `telsonbase_permissions` → `clawcoat_permissions` in admin UI
 - `.env.example`: header, DB URL default, MOSQUITTO_USER default updated
@@ -79,9 +100,9 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - REUSE compliance: LICENSES/Apache-2.0.txt, .reuse/DEP5, SPDX headers on 250 Python files
 
 ### Changed
-- `CITATION.cff`: title updated TelsonBase → ClawCoat; abstract updated to active decision making positioning with arXiv citation
+- `CITATION.cff`: title updated TelsonBase → ClawFilters; abstract updated to active decision making positioning with arXiv citation
 - CI coverage gate: 40% → 63% (verified 76.13% on run #325)
-- Proof sheets: all 68 sheets updated to ClawCoat v11.0.2, March 19, 2026
+- Proof sheets: all 68 sheets updated to ClawFilters v11.0.2, March 19, 2026
 - Website: version footer v11.0.1 → v11.0.2; lines of code counter 61,278 → 93,893; API operations 161 → 162
 
 ### Fixed
@@ -631,7 +652,7 @@ CI threshold: `701 → 716`
 
 Version 8.0.0 marks TelsonBase's first public release. The CC suffix is retired -
 version numbers are pure semver going forward. The engineering checklist is complete.
-clawcoat.com is live. The governance pipeline is proven.
+clawfilters.com is live. The governance pipeline is proven.
 
 ### OpenClaw Governance - Live Test Complete (10/10)
 
@@ -678,7 +699,7 @@ Python's `configparser` INI parser. Converted to `#` comments.
 
 ### Infrastructure
 
-- clawcoat.com live - deep purple glassmorphism, "Control Your Claw" hero,
+- clawfilters.com live - deep purple glassmorphism, "Control Your Claw" hero,
   Chief of Staff framing, trust level pipeline visualization
 - Pre-drop engineering checklist: 10/10 complete
 - Validation report: `docs/Testing Documents/VALIDATION_REPORT_v7.4.0CC.md`
@@ -1799,5 +1820,5 @@ Based on Gemini's documentation analysis and recommendations:
 
 ---
 
-**Architect:** Jeff Phillips - support@clawcoat.com
+**Architect:** Jeff Phillips - support@clawfilters.com
 **Project:** TelsonBase by Quietfire AI

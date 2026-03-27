@@ -1,7 +1,7 @@
 # TB-PROOF-023: 107,811 Generated Test Cases
 
 **Sheet ID:** TB-PROOF-023
-**Claim Source:** clawcoat.com - Security Testing Section
+**Claim Source:** clawfilters.com - Security Testing Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord -- 107,811 test case count documented in version.py; API endpoint count >= 100 confirmed by source scan; schemathesis in requirements-dev.txt
 **Last Verified:** March 8, 2026
@@ -52,4 +52,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-023 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-023 | ClawFilters v11.0.3 | March 20, 2026*

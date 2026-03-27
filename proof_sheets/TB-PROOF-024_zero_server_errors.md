@@ -1,7 +1,7 @@
 # TB-PROOF-024: 0 Server Errors Under Fuzzing
 
 **Sheet ID:** TB-PROOF-024
-**Claim Source:** clawcoat.com - Security Testing Section
+**Claim Source:** clawfilters.com - Security Testing Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestFuzzTestingHistoricalRecord -- 0 server errors result documented in version.py; test verifies both the claim text and the API endpoint count baseline
 **Last Verified:** March 8, 2026
@@ -66,4 +66,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-024 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-024 | ClawFilters v11.0.3 | March 20, 2026*

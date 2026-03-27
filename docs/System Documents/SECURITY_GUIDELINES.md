@@ -1,7 +1,7 @@
-# ClawCoat - Security Policy
-**Version:** v11.0.3 · **Maintainer:** Quietfire AI - security@clawcoat.com
+# ClawFilters - Security Policy
+**Version:** v11.0.3 · **Maintainer:** Quietfire AI - security@clawfilters.com
 
-ClawCoat is built on zero-trust principles. Every agent message is cryptographically signed, every action requires declared capabilities, and behavioral anomalies trigger automatic quarantine.
+ClawFilters is built on zero-trust principles. Every agent message is cryptographically signed, every action requires declared capabilities, and behavioral anomalies trigger automatic quarantine.
 
 **This is security infrastructure for AI agents.** We take vulnerabilities seriously.
 
@@ -23,9 +23,9 @@ ClawCoat is built on zero-trust principles. Every agent message is cryptographic
 
 ### Contact
 
-Email: **security@clawcoat.com**
+Email: **security@clawfilters.com**
 
-> **URGENT:** All security vulnerabilities must be reported exclusively to security@clawcoat.com. Do not open public issues or use general support channels for security disclosures.
+> **URGENT:** All security vulnerabilities must be reported exclusively to security@clawfilters.com. Do not open public issues or use general support channels for security disclosures.
 
 Include:
 1. Description of the vulnerability
@@ -67,7 +67,7 @@ Out of scope:
 
 ## Security Architecture Overview
 
-ClawCoat's security model is documented across the following sources. There is no single architecture document - the architecture is verified through proof sheets and explained through the technical reference.
+ClawFilters's security model is documented across the following sources. There is no single architecture document - the architecture is verified through proof sheets and explained through the technical reference.
 
 | Document | What It Covers |
 |---|---|
@@ -119,7 +119,7 @@ Current verified security status as of March 8, 2026:
 
 We follow responsible disclosure practices:
 
-1. Reporter contacts us privately at security@clawcoat.com
+1. Reporter contacts us privately at security@clawfilters.com
 2. We confirm and assess the vulnerability within 7 days
 3. We develop and test a fix
 4. We release the fix
@@ -145,4 +145,4 @@ Security patches are announced via:
 
 *"Data sovereignty is security sovereignty."* - Quietfire AI
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

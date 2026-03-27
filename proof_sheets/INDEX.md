@@ -1,8 +1,8 @@
-# ClawCoat Proof Sheets
+# ClawFilters Proof Sheets
 
 **Every claim is backed by evidence.**
 
-Every claim made on [clawcoat.com](https://clawcoat.com) has a corresponding evidence sheet in this directory. Each sheet documents the exact claim, provides the source code files, test files, and verification commands that prove it.
+Every claim made on [clawfilters.com](https://clawfilters.com) has a corresponding evidence sheet in this directory. Each sheet documents the exact claim, provides the source code files, test files, and verification commands that prove it.
 
 **Format:** Each sheet follows a standardized format inspired by Safety Data Sheets (SDS). Grab the sheet number, verify the claim, move on.
 
@@ -168,4 +168,4 @@ docker compose exec mcp_server python -m pytest tests/ -v --tb=short --ignore=te
 
 ---
 
-*Generated February 23, 2026 | ClawCoat v11.0.3 | March 20, 2026*
+*Generated February 23, 2026 | ClawFilters v11.0.3 | March 20, 2026*

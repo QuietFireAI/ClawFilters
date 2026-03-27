@@ -1,4 +1,4 @@
-# ClawCoat Troubleshooting Guide
+# ClawFilters Troubleshooting Guide
 
 **Version:** v11.0.3 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 
@@ -11,10 +11,10 @@
 curl http://localhost:8000/health
 
 # Check all container status
-docker-compose ps
+docker compose ps
 
 # View recent logs
-docker-compose logs --tail=50 mcp_server
+docker compose logs --tail=50 mcp_server
 ```
 
 ---
@@ -140,11 +140,11 @@ openssl rand -hex 32
 
 **Check Redis is running:**
 ```bash
-docker-compose ps redis
+docker compose ps redis
 # Should show "Up"
 
 # If not running
-docker-compose up -d redis
+docker compose up -d redis
 ```
 
 **Check Redis connectivity:**
@@ -159,9 +159,9 @@ docker exec -it telsonbase_redis redis-cli ping
 docker volume ls | grep redis
 
 # Recreate if corrupted
-docker-compose down
+docker compose down
 docker volume rm telsonbase_redis_data
-docker-compose up -d
+docker compose up -d
 ```
 
 ---
@@ -339,8 +339,8 @@ curl -H "X-API-Key: $KEY" http://localhost:8000/v1/anomalies/dashboard/summary
 curl -H "X-API-Key: $KEY" http://localhost:8000/v1/audit/chain/verify
 
 # Container logs
-docker-compose logs -f mcp_server
-docker-compose logs -f redis
+docker compose logs -f mcp_server
+docker compose logs -f redis
 
 # Redis CLI
 docker exec -it telsonbase_redis redis-cli
@@ -383,7 +383,7 @@ pip install --force-reinstall -r requirements.txt
 
 **Pydantic v1 vs v2 issues:**
 ```bash
-# ClawCoat uses Pydantic v2 with pydantic-settings
+# ClawFilters uses Pydantic v2 with pydantic-settings
 pip install pydantic>=2.0.0 pydantic-settings>=2.0.0
 ```
 
@@ -452,7 +452,7 @@ sudo ufw allow 8000/tcp
 Get-NetFirewallRule | Where-Object { $_.LocalPort -eq 8000 }
 
 # Add rule if needed
-New-NetFirewallRule -DisplayName "ClawCoat API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "ClawFilters API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
 ```
 
 **Docker network issues:**
@@ -462,9 +462,9 @@ docker network ls
 docker network inspect telsonbase_backend
 
 # Recreate networks
-docker-compose down
+docker compose down
 docker network prune
-docker-compose up -d
+docker compose up -d
 ```
 
 **Proxy/Corporate firewall:**
@@ -509,16 +509,16 @@ Ensure `TRAEFIK_ACME_EMAIL` is set in `.env` for automatic certificate provision
 
 ## Getting Help
 
-1. **Check existing issues:** [GitHub Issues](https://github.com/QuietFireAI/ClawCoat/issues)
+1. **Check existing issues:** [GitHub Issues](https://github.com/QuietFireAI/ClawFilters/issues)
 2. **Search documentation:** Check `docs/` folder
 3. **Open new issue:** Use bug report template
-4. **Email:** support@clawcoat.com
+4. **Email:** support@clawfilters.com
 
 When reporting issues, include:
-- ClawCoat version (`curl http://localhost:8000/health`)
+- ClawFilters version (`curl http://localhost:8000/health`)
 - Docker version (`docker --version`)
 - Python version (`python --version`)
-- Relevant logs (`docker-compose logs --tail=100 mcp_server`)
+- Relevant logs (`docker compose logs --tail=100 mcp_server`)
 - Steps to reproduce
 
 ---
@@ -527,4 +527,4 @@ When reporting issues, include:
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

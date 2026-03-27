@@ -53,4 +53,4 @@ docker compose exec mcp_server python -m pytest tests/test_mqtt_stress.py -v --t
 
 ---
 
-*Sheet TB-PROOF-067 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-067 | ClawFilters v11.0.3 | March 20, 2026*

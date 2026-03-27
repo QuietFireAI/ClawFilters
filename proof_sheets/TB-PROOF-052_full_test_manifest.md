@@ -13,7 +13,7 @@
 
 > "6,254 tests passing. 54 skipped. 0 failed."
 
-This sheet is the complete manifest of every test file in the ClawCoat test suite. An outside observer can clone the repository, run the verification command, and confirm the count independently.
+This sheet is the complete manifest of every test file in the ClawFilters test suite. An outside observer can clone the repository, run the verification command, and confirm the count independently.
 
 ## Verdict
 
@@ -267,4 +267,4 @@ docker compose exec mcp_server python -m pytest tests/test_mqtt_stress.py -v --t
 
 ---
 
-*Sheet TB-PROOF-052 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-052 | ClawFilters v11.0.3 | March 20, 2026*

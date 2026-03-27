@@ -1,7 +1,7 @@
 # TB-PROOF-026: 50 Concurrent Requests Handled
 
 **Sheet ID:** TB-PROOF-026
-**Claim Source:** clawcoat.com - Security Testing Section
+**Claim Source:** clawfilters.com - Security Testing Section
 **Status:** VERIFIED
 **Test Coverage:** INFRA -- curl concurrent load test; functional but not a unit test
 **Last Verified:** March 8, 2026
@@ -77,4 +77,4 @@ All 50 requests return HTTP 200.
 
 ---
 
-*Sheet TB-PROOF-026 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-026 | ClawFilters v11.0.3 | March 20, 2026*

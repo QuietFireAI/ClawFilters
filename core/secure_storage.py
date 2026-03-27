@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawCoat/core/secure_storage.py
+# ClawFilters/core/secure_storage.py
 # REM: =======================================================================================
 # REM: ENCRYPTION AT REST FOR SENSITIVE DATA
 # REM: =======================================================================================
@@ -104,7 +104,7 @@ class SecureStorageManager:
             )
 
         if not salt_material:
-            salt_material = "clawcoat_default_salt_CHANGE_ME"
+            salt_material = "clawfilters_default_salt_CHANGE_ME"
             logger.warning(
                 f"REM: {ENCRYPTION_SALT_ENV} not set - using default. "
                 f"Set for production!_Thank_You_But_No"

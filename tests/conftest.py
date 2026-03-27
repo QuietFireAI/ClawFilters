@@ -123,7 +123,7 @@ def client() -> Generator:
         audit._chain_entries.clear()
         audit._chain_state = ChainState(
             chain_id=hashlib.sha256(
-                f"clawcoat_{datetime.now(timezone.utc).isoformat()}".encode()
+                f"clawfilters_{datetime.now(timezone.utc).isoformat()}".encode()
             ).hexdigest()[:16],
             created_at=datetime.now(timezone.utc).isoformat()
         )

@@ -1,6 +1,6 @@
-# Third-Party Notices - ClawCoat v11.0.3
+# Third-Party Notices - ClawFilters v11.0.3
 
-ClawCoat incorporates and depends on open-source software. This document
+ClawFilters incorporates and depends on open-source software. This document
 lists all third-party dependencies, their licenses, and the corresponding
 license files in this directory.
 

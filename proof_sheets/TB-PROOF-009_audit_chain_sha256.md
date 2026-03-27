@@ -1,7 +1,7 @@
 # TB-PROOF-009: SHA-256 Hash-Chained Audit Trail
 
 **Sheet ID:** TB-PROOF-009
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestAuditTrailIntegrity -- 11 behavioral tests
 **Last Verified:** March 8, 2026
@@ -71,4 +71,4 @@ All audit chain tests pass, including tamper detection tests that verify chain b
 
 ---
 
-*Sheet TB-PROOF-009 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-009 | ClawFilters v11.0.3 | March 20, 2026*

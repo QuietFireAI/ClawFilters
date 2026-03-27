@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawCoat/core/config.py
+# ClawFilters/core/config.py
 # REM: =======================================================================================
 # REM: CENTRALIZED CONFIGURATION FOR CLAWCOAT
 # REM: =======================================================================================
@@ -161,12 +161,12 @@ class Settings(BaseSettings):
     
     # --- Database ---
     database_url: str = Field(
-        default="postgresql://clawcoat:clawcoat_dev@postgres:5432/clawcoat",
+        default="postgresql://clawcoat:clawfilters_dev@postgres:5432/clawcoat",
         env="DATABASE_URL"
     )
 
     # --- Service URLs (Internal Docker Network) ---
-    redis_password: str = Field(default="clawcoat_redis_dev", env="REDIS_PASSWORD")
+    redis_password: str = Field(default="clawfilters_redis_dev", env="REDIS_PASSWORD")
     redis_url: str = Field(default="redis://redis:6379/0", env="REDIS_URL")
 
     @field_validator('redis_url')
@@ -368,14 +368,14 @@ def validate_production_secrets(settings: Settings) -> list:
     # REM: v6.2.0CC — Infrastructure password checks for production
     # REM: Extract PostgreSQL password from DATABASE_URL
     db_url = settings.database_url or ""
-    if "clawcoat_dev" in db_url:
+    if "clawfilters_dev" in db_url:
         errors.append(
-            "POSTGRES_PASSWORD: must not be 'clawcoat_dev' in production — "
+            "POSTGRES_PASSWORD: must not be 'clawfilters_dev' in production — "
             "run scripts/generate_secrets.sh and update DATABASE_URL"
         )
 
     # REM: Redis password must not be the dev default
-    if settings.redis_password == "clawcoat_redis_dev":
+    if settings.redis_password == "clawfilters_redis_dev":
         errors.append(
             "REDIS_PASSWORD: must not be 'clawcoat_redis_dev' in production — "
             "run scripts/generate_secrets.sh and set REDIS_PASSWORD"

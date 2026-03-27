@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawCoat/core/secrets.py
+# ClawFilters/core/secrets.py
 # REM: =======================================================================================
 # REM: SECRETS PROVIDER — THE LAST LINE OF DEFENSE
 # REM: =======================================================================================

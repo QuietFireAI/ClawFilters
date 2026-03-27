@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawCoat/core/middleware.py
+# ClawFilters/core/middleware.py
 # REM: =======================================================================================
 # REM: PRODUCTION HARDENING MIDDLEWARE FOR CLAWCOAT
 # REM: =======================================================================================

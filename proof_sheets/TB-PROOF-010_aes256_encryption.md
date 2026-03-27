@@ -1,7 +1,7 @@
 # TB-PROOF-010: AES-256-GCM Encryption at Rest
 
 **Sheet ID:** TB-PROOF-010
-**Claim Source:** clawcoat.com - Capabilities Section, The Promise Section
+**Claim Source:** clawfilters.com - Capabilities Section, The Promise Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestEncryptionIntegrity -- 11 behavioral tests confirm AES-256-GCM encrypt/decrypt/tamper
 **Last Verified:** March 8, 2026
@@ -64,4 +64,4 @@ Lines showing AESGCM import, 32-byte key size, 12-byte nonce, and encrypt/decryp
 
 ---
 
-*Sheet TB-PROOF-010 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-010 | ClawFilters v11.0.3 | March 20, 2026*

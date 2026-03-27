@@ -1,7 +1,7 @@
 # TB-PROOF-013: Cryptographic Message Signing Between Agents
 
 **Sheet ID:** TB-PROOF-013
-**Claim Source:** clawcoat.com - AI Safety Section
+**Claim Source:** clawfilters.com - AI Safety Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- test_signing.py -- 13 behavioral tests confirm sign, verify, tamper detection, replay prevention
 **Last Verified:** March 8, 2026
@@ -56,4 +56,4 @@ HMAC-based signing implementation with key management.
 
 ---
 
-*Sheet TB-PROOF-013 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-013 | ClawFilters v11.0.3 | March 20, 2026*

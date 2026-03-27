@@ -56,4 +56,4 @@ docker compose exec mcp_server python -m pytest tests/test_qms.py -v --tb=short
 
 ---
 
-*Sheet TB-PROOF-053 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-053 | ClawFilters v11.0.3 | March 20, 2026*

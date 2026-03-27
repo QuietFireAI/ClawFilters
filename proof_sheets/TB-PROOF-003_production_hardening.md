@@ -1,7 +1,7 @@
 # TB-PROOF-003: 22 Production Hardening Items
 
 **Sheet ID:** TB-PROOF-003
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestProductionHardeningItems -- 11 behavioral tests: TLS/HSTS middleware, MFA, bcrypt, error handler, Alembic migrations, RBAC count >= 140, Prometheus/Grafana, rate limiter, secrets script, E2E tests, version.py documentation
 **Last Verified:** March 8, 2026
@@ -79,4 +79,4 @@ All 22 items listed with their descriptions under the v7.0.0CC version entry.
 
 ---
 
-*Sheet TB-PROOF-003 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-003 | ClawFilters v11.0.3 | March 20, 2026*

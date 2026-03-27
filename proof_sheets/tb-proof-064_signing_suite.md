@@ -45,4 +45,4 @@ docker compose exec mcp_server python -m pytest tests/test_signing.py -v --tb=sh
 
 ---
 
-*Sheet TB-PROOF-064 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-064 | ClawFilters v11.0.3 | March 20, 2026*

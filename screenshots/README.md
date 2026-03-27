@@ -20,4 +20,4 @@ To replace with fresh screenshots: capture from `http://localhost:8000/dashboard
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 2026*

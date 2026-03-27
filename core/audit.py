@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawCoat/core/audit.py
+# ClawFilters/core/audit.py
 # REM: =======================================================================================
 # REM: AUDIT LOGGING SYSTEM FOR CLAWCOAT
 # REM: =======================================================================================
@@ -207,7 +207,7 @@ class AuditLogger:
         # REM: Hash chain state
         self._chain_state = ChainState(
             chain_id=hashlib.sha256(
-                f"clawcoat_{datetime.now(timezone.utc).isoformat()}".encode()
+                f"clawfilters_{datetime.now(timezone.utc).isoformat()}".encode()
             ).hexdigest()[:16],
             created_at=datetime.now(timezone.utc).isoformat()
         )

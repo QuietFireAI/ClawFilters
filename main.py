@@ -231,6 +231,24 @@ async def lifespan(app: FastAPI):
     else:
         logger.info("REM: OpenClaw governance disabled (set OPENCLAW_ENABLED=true to enable)")
 
+    # REM: v11.1.0CC — Initialize Telegram gateway if enabled
+    if settings.telegram_enabled:
+        from core.telegram_gateway import telegram_gateway
+        from core.approval import approval_gate
+        configured = telegram_gateway.configure(
+            token=settings.telegram_bot_token,
+            chat_id=settings.telegram_chat_id,
+            webhook_url=settings.telegram_webhook_url,
+        )
+        if configured:
+            approval_gate.register_notification_callback(telegram_gateway.as_approval_callback)
+            telegram_gateway.startup()
+            logger.info("REM: Telegram gateway enabled — HITL approvals routed to Telegram_Thank_You")
+        else:
+            logger.warning("REM: Telegram gateway enabled but misconfigured — check TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID_Excuse_Me")
+    else:
+        logger.info("REM: Telegram gateway disabled (set TELEGRAM_ENABLED=true to enable)")
+
     audit.log(
         AuditEventType.SYSTEM_STARTUP,
         f"TelsonBase API Server v{APP_VERSION} started",
@@ -248,6 +266,9 @@ async def lifespan(app: FastAPI):
     async with _mcp_server.session_manager.run():
         yield
     logger.info("REM: TelsonBase API Server shutting down")
+    if settings.telegram_enabled:
+        from core.telegram_gateway import telegram_gateway
+        telegram_gateway.shutdown()
     shutdown_mqtt_bus()
     audit.log(
         AuditEventType.SYSTEM_SHUTDOWN,
@@ -436,6 +457,9 @@ app.include_router(identiclaw_router)
 # REM: v7.4.0CC — OpenClaw governance routes ("Control Your Claw")
 from api.openclaw_routes import router as openclaw_router
 app.include_router(openclaw_router)
+
+from api.telegram_routes import router as telegram_router
+app.include_router(telegram_router)
 
 # REM: =======================================================================================
 # REM: DASHBOARD - SERVED FROM /dashboard

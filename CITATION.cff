@@ -1,11 +1,11 @@
 cff-version: 1.2.0
-message: "If you use ClawCoat in your research or work, please cite it using this metadata."
-title: "ClawCoat"
+message: "If you use ClawFilters in your research or work, please cite it using this metadata."
+title: "ClawFilters"
 version: 11.0.4
 date-released: 2026-03-20
 license: Apache-2.0
 abstract: >
-  ClawCoat is a self-hosted zero-trust AI agent governance platform providing
+  ClawFilters is a self-hosted zero-trust AI agent governance platform providing
   active decision making for every MCP tool call. It provides earned trust tiers,
   a kill switch for instant agent suspension, human-in-the-loop approval gates,
   behavioral scoring, tamper-evident audit chain, and full MCP integration.
@@ -17,8 +17,8 @@ authors:
     alias: "Jeff Phillips"
     affiliation: "Quietfire AI"
     orcid: "https://orcid.org/0009-0000-1375-1725"
-repository-code: "https://github.com/QuietFireAI/ClawCoat"
-url: "https://clawcoat.com"
+repository-code: "https://github.com/QuietFireAI/ClawFilters"
+url: "https://clawfilters.com"
 keywords:
   - ai-governance
   - ai-agents

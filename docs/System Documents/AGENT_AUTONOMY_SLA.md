@@ -7,13 +7,13 @@
 **Effective Date:** March 2026
 **Author:** Quietfire AI
 **License:** Apache 2.0
-**Status:** Active, reference implementation in ClawCoat v11.0.3
+**Status:** Active, reference implementation in ClawFilters v11.0.3
 
 ---
 
 ## Abstract
 
-This document defines the Agent Autonomy SLA, a formal per-agent commitment framework that governs what an OpenClaw agent is permitted to do, under what conditions, with what oversight, and with what accountability. It is implemented in ClawCoat, a self-hosted, zero-trust AI agent governance platform.
+This document defines the Agent Autonomy SLA, a formal per-agent commitment framework that governs what an OpenClaw agent is permitted to do, under what conditions, with what oversight, and with what accountability. It is implemented in ClawFilters, a self-hosted, zero-trust AI agent governance platform.
 
 This specification is offered as an open standard. Any system that intercepts MCP tool calls in real time and enforces per-tier policy may claim compliance with the Agent Autonomy SLA model defined here.
 
@@ -28,7 +28,7 @@ Jouneaux and Cabot (2025) propose a quality model and DSL for specifying AI agen
 > "We argue that the notion of Service Level Agreement (SLA) for AI agents is still largely open and would require new research efforts to tackle the properties that make AI agents unique."
 > - *AgentSLA: Towards a Service Level Agreement for AI Agents*, arXiv:2511.02885
 
-Their work defines the vocabulary — including `OversightLevel` as a first-class metric — and produces a formal specification language. ClawCoat implements that vocabulary at runtime. The enforcement gap is precise. An API gateway can confirm that a request was authenticated and responded within 200ms. It cannot determine whether that request, tool call, file write, transaction initiation, was appropriate for the agent that made it, given its behavioral history, trust standing, and the human oversight policy in effect at that moment.
+Their work defines the vocabulary — including `OversightLevel` as a first-class metric — and produces a formal specification language. ClawFilters implements that vocabulary at runtime. The enforcement gap is precise. An API gateway can confirm that a request was authenticated and responded within 200ms. It cannot determine whether that request, tool call, file write, transaction initiation, was appropriate for the agent that made it, given its behavioral history, trust standing, and the human oversight policy in effect at that moment.
 
 Autonomous agents introduce three properties that existing SLA infrastructure was never designed to handle:
 
@@ -82,7 +82,7 @@ AGENT (apex) is not a default state. It represents an agent that has earned maxi
 
 ### 3.3 Manners Engine
 
-The Manners Engine is an 8-factor behavioral scoring system that produces a continuous score in [0.0, 1.0] for each registered agent. Violations deduct from the score according to severity. The score is evaluated on every tool call and is the primary input to automatic tier demotion.
+The Manners Engine is a 5-principle behavioral scoring system that produces a continuous score in [0.0, 1.0] for each registered agent. Violations deduct from the score according to severity. The score is evaluated on every tool call and is the primary input to automatic tier demotion.
 
 **Manners compliance bands:**
 
@@ -217,7 +217,7 @@ Every governance decision is recorded as a signed audit event. Events are chaine
 
 ## 5. System-Level SLA Metrics
 
-The following apply to the ClawCoat governance layer itself, independent of agent tier.
+The following apply to the ClawFilters governance layer itself, independent of agent tier.
 
 | Metric | Commitment |
 |---|---|
@@ -238,7 +238,7 @@ The Agent Autonomy SLA is scoped to governance of tool execution. It does not sp
 - The content of agent responses (output filtering is a separate concern)
 - Model-level alignment properties
 - The internal decision-making of the agent LLM
-- Compliance frameworks (SOC 2, HIPAA, HITRUST), addressed in ClawCoat's compliance proof documentation
+- Compliance frameworks (SOC 2, HIPAA, HITRUST), addressed in ClawFilters's compliance proof documentation
 
 ---
 
@@ -251,7 +251,7 @@ This specification is released under Apache 2.0. Any governance system may imple
 - Maintain a cryptographic audit chain per the requirements in Section 5
 - Reference arXiv:2511.02885 when describing the problem this specification addresses
 
-A conformant implementation does not need to be ClawCoat. The model should be portable.
+A conformant implementation does not need to be ClawFilters. The model should be portable.
 
 ---
 
@@ -259,7 +259,7 @@ A conformant implementation does not need to be ClawCoat. The model should be po
 
 Jouneaux and Cabot (arXiv:2511.02885) propose a quality model for AI agents built on ISO/IEC 25010 and a formal DSL — expressed in JSON — for specifying AI agent SLAs. Their work identifies `OversightLevel` as a first-class QoS metric, citing Cihon et al. (arXiv:2502.15212) on the autonomy spectrum.
 
-ClawCoat is compatible with their DSL and adopts their vocabulary. The formal machine-readable specification of ClawCoat's governance SLA commitments is expressed in their format:
+ClawFilters is compatible with their DSL and adopts their vocabulary. The formal machine-readable specification of ClawFilters's governance SLA commitments is expressed in their format:
 
 **[`agent-autonomy-sla-spec.json`](agent-autonomy-sla-spec.json)**
 
@@ -267,7 +267,7 @@ This file is a valid document in their proposed DSL. It uses their `OversightLev
 
 ### OversightLevel per trust tier
 
-`OversightLevel` is expressed as a value in [0.0, 1.0] where 1.0 = full human oversight and 0.0 = fully autonomous. ClawCoat's five tiers map to the following committed values:
+`OversightLevel` is expressed as a value in [0.0, 1.0] where 1.0 = full human oversight and 0.0 = fully autonomous. ClawFilters's five tiers map to the following committed values:
 
 | Tier | OversightLevel | Manners Score Floor | Basis |
 |---|---|---|---|
@@ -281,29 +281,29 @@ Note the inverse relationship: OversightLevel decreases as trust increases, whil
 
 ### Where the approaches align
 
-Both frameworks recognize that traditional SLA infrastructure (uptime, latency, rate limits) cannot govern autonomous agent behavior. Both use a tiered structure for differentiated commitments. `OversightLevel` in their quality model maps directly to ClawCoat's trust tiers.
+Both frameworks recognize that traditional SLA infrastructure (uptime, latency, rate limits) cannot govern autonomous agent behavior. Both use a tiered structure for differentiated commitments. `OversightLevel` in their quality model maps directly to ClawFilters's trust tiers.
 
 ### Where they differ — and why both are needed
 
 Jouneaux & Cabot solve the **specification problem**: how to formally express what quality and oversight level an agent service promises to deliver. Their DSL produces a document an agent can advertise and a client can evaluate against.
 
-The Agent Autonomy SLA solves the **enforcement problem**: how to guarantee that a deployed agent *actually behaves* within the declared policy before any tool call executes. Specification without enforcement is a promise. Enforcement without specification is opaque. ClawCoat does both.
+The Agent Autonomy SLA solves the **enforcement problem**: how to guarantee that a deployed agent *actually behaves* within the declared policy before any tool call executes. Specification without enforcement is a promise. Enforcement without specification is opaque. ClawFilters does both.
 
 The specific contribution of this specification is the dynamic `OversightLevel` model: an agent does not arrive at a tier and stay there. Its tier — and therefore its `OversightLevel` — changes continuously based on behavioral evidence produced by the Manners Engine. No other system in the field currently implements `OversightLevel` as a runtime-enforced, behaviorally-driven property. It has only been proposed.
 
 ### Attribution
 
-The `OversightLevel` metric type, the quality model taxonomy, and the JSON DSL used in `agent-autonomy-sla-spec.json` are the work of Jouneaux, G. and Cabot, J. (2025), released under their repository at https://github.com/gwendal-jouneaux/AgentSLA. ClawCoat adopts and extends this vocabulary with a working enforcement implementation.
+The `OversightLevel` metric type, the quality model taxonomy, and the JSON DSL used in `agent-autonomy-sla-spec.json` are the work of Jouneaux, G. and Cabot, J. (2025), released under their repository at https://github.com/gwendal-jouneaux/AgentSLA. ClawFilters adopts and extends this vocabulary with a working enforcement implementation.
 
 ---
 
 ## 9. Reference Implementation
 
-**ClawCoat**, self-hosted, zero-trust AI agent governance platform.
+**ClawFilters**, self-hosted, zero-trust AI agent governance platform.
 
-- **Repository:** https://github.com/QuietFireAI/ClawCoat
-- **Website:** https://clawcoat.com
-- **Live Demo:** https://huggingface.co/spaces/QuietFireAI/ClawCoat
+- **Repository:** https://github.com/QuietFireAI/ClawFilters
+- **Website:** https://clawfilters.com
+- **Live Demo:** https://huggingface.co/spaces/QuietFireAI/ClawFilters
 - **Machine-readable SLA spec:** [`agent-autonomy-sla-spec.json`](agent-autonomy-sla-spec.json)
 - **License:** Apache 2.0
 
@@ -319,7 +319,7 @@ This specification is the working enforcement implementation of the open challen
 
 ---
 
-## 10. Document Information
+## 11. Document Information
 
 | Field | Value |
 |---|---|
@@ -328,7 +328,7 @@ This specification is the working enforcement implementation of the open challen
 | **Version** | 1.0.0 |
 | **Date** | March 2026 |
 | **License** | Apache 2.0 |
-| **Implements** | ClawCoat v11.0.3 |
+| **Implements** | ClawFilters v11.0.3 |
 
 ---
 

@@ -1,7 +1,7 @@
 # TB-PROOF-029: Local LLM Inference via Ollama
 
 **Sheet ID:** TB-PROOF-029
-**Claim Source:** clawcoat.com - The Promise Section
+**Claim Source:** clawfilters.com - The Promise Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestLocalOllamaConfig -- ollama_base_url confirmed local, ollama service confirmed in docker-compose
 **Last Verified:** March 8, 2026
@@ -76,4 +76,4 @@ All references point to `http://ollama:11434` (Docker internal network address).
 
 ---
 
-*Sheet TB-PROOF-029 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-029 | ClawFilters v11.0.3 | March 20, 2026*

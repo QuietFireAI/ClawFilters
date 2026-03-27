@@ -1,7 +1,7 @@
 # TB-PROOF-014: 143 RBAC-Protected Endpoints
 
 **Sheet ID:** TB-PROOF-014
-**Claim Source:** clawcoat.com - Hero Section, Capabilities Section
+**Claim Source:** clawfilters.com - Hero Section, Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestRBACEndpointCount -- require_permission count >= 140 verified by source introspection test
 **Last Verified:** March 25, 2026
@@ -72,4 +72,4 @@ Total: 143
 
 ---
 
-*Sheet TB-PROOF-014 | ClawCoat v11.0.3 | March 25, 2026*
+*Sheet TB-PROOF-014 | ClawFilters v11.0.3 | March 25, 2026*

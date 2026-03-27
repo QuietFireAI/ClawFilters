@@ -214,7 +214,7 @@ class TestFederationEndpoints:
             "/v1/federation/invitations",
             headers=auth_headers,
             json={
-                "name": "Acme ClawCoat Node",
+                "name": "Acme ClawFilters Node",
                 "remote_url": "https://clawcoat.acme.com",
                 "description": "Branch office",
                 "trust_level": "standard",

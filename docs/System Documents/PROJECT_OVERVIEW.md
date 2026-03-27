@@ -1,4 +1,4 @@
-# ClawCoat - Project Overview
+# ClawFilters - Project Overview
 
 **Earned Autonomy for Autonomous AI Agents**
 **Built for Data Sovereignty. Designed for Local-First Deployment.**
@@ -10,7 +10,7 @@
 
 ## What This Is
 
-ClawCoat is a self-hosted platform for managing OpenClaw agents through earned trust. Agents start at QUARANTINE - no permissions, no record - and advance through five tiers (QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT) by demonstrating compliant behavior. Every promotion requires an explicit human authorization. No tier is skipped. No trust is assumed.
+ClawFilters is a self-hosted platform for managing OpenClaw agents through earned trust. Agents start at QUARANTINE - no permissions, no record - and advance through five tiers (QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT) by demonstrating compliant behavior. Every promotion requires an explicit human authorization. No tier is skipped. No trust is assumed.
 
 Every agent carries a live Manners compliance score across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. Score drops trigger automatic demotion. Reinstatement always requires a human.
 
@@ -59,13 +59,13 @@ No other agent communication standard does this. LangChain, CrewAI, and AutoGen 
 
 ### 3. Multi-AI Collaborative Development
 
-ClawCoat was developed using a deliberate methodology: the architect (Jeff Phillips) directed implementation across three AI platforms - ChatGPT, Google Gemini, and Claude - rotating between them to reduce drift, hallucination, and single-platform bias. Each platform's contributions are tracked via version suffixes (G, C, CC).
+ClawFilters was developed using a deliberate methodology: the architect (Jeff Phillips) directed implementation across three AI platforms - ChatGPT, Google Gemini, and Claude - rotating between them to reduce drift, hallucination, and single-platform bias. Each platform's contributions are tracked via version suffixes (G, C, CC).
 
 This is documented in the codebase and is part of the project's story. Gemini ran the first external test suite (Colab). Claude built the security core, observability, and MQTT bus. ChatGPT contributed early architectural scaffolding. The rotation methodology itself - using cross-platform validation to maintain coherence - is a reproducible pattern for AI-assisted software development.
 
 ### 4. Federation - Cross-Instance Encrypted Trust
 
-ClawCoat instances can establish trust relationships with other ClawCoat instances for cross-organizational agent collaboration. The federation protocol uses RSA-OAEP encrypted session key exchange, and all cross-instance messages are encrypted end-to-end. Trust levels (Standard, Elevated, Full) control what actions federated agents can perform.
+ClawFilters instances can establish trust relationships with other ClawFilters instances for cross-organizational agent collaboration. The federation protocol uses RSA-OAEP encrypted session key exchange, and all cross-instance messages are encrypted end-to-end. Trust levels (Standard, Elevated, Full) control what actions federated agents can perform.
 
 This enables scenarios like: a law firm's document analysis agent sends a contract to an external compliance agent at an accounting firm, with every message encrypted, signed, and auditable on both sides.
 
@@ -248,7 +248,7 @@ Archives are `.tar.gz` files stored in `./backups/{type}/` on the host. Restore 
 
 ### Monitoring
 
-Prometheus scrapes 5 targets: MCP Server application metrics, Redis (via exporter), Docker containers (via cAdvisor), host (via Node Exporter), and Prometheus itself. Grafana auto-provisions with a ClawCoat infrastructure dashboard on first boot. Application-level metrics include request latency histograms, active agent counts, security event counters, and Ollama inference timing.
+Prometheus scrapes 5 targets: MCP Server application metrics, Redis (via exporter), Docker containers (via cAdvisor), host (via Node Exporter), and Prometheus itself. Grafana auto-provisions with a ClawFilters infrastructure dashboard on first boot. Application-level metrics include request latency histograms, active agent counts, security event counters, and Ollama inference timing.
 
 ---
 
@@ -319,4 +319,4 @@ The rotation serves as a form of cross-validation. Each platform reviews the oth
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

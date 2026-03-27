@@ -1,7 +1,7 @@
 # TB-PROOF-041: How to Add an Agent - Developer Deep Dive
 
 **Sheet ID:** TB-PROOF-041
-**Claim Source:** clawcoat.com - Control Your Claw
+**Claim Source:** clawfilters.com - Control Your Claw
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- registration, trust transitions, kill switch, manners auto-demotion, and model validator enforcement all covered by test_openclaw.py (55 tests)
 **Last Verified:** March 8, 2026
@@ -50,7 +50,7 @@ Both paths arrive at the same place: QUARANTINE, an `instance_id`, and a full au
 ## Prerequisites
 
 ```bash
-# ClawCoat must be running
+# ClawFilters must be running
 curl http://localhost:8000/health
 # → {"status": "healthy", ...}
 
@@ -77,7 +77,7 @@ TELSONBASE_URL = "http://localhost:8000"
 ADMIN_TOKEN = "your-jwt-token-here"
 
 # The agent's own API key - this gets hashed (SHA-256) before storage.
-# ClawCoat never stores the plaintext key.
+# ClawFilters never stores the plaintext key.
 AGENT_API_KEY = "my-secret-agent-key-abc123"
 
 response = httpx.post(
@@ -476,4 +476,4 @@ No. Registration with a trust override uses `promote_trust()` called once per st
 
 ---
 
-*Sheet TB-PROOF-041 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-041 | ClawFilters v11.0.3 | March 20, 2026*

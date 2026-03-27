@@ -197,4 +197,4 @@ AGENT tier re-verification is the strictest: 99.9% success rate required, 0 anom
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*

@@ -1,7 +1,7 @@
 # TB-PROOF-006: HITRUST CSF 12 Domains
 
 **Sheet ID:** TB-PROOF-006
-**Claim Source:** clawcoat.com - Compliance Section
+**Claim Source:** clawfilters.com - Compliance Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestHITRUSTDepth -- 8 depth tests cover all 12 domains, all 5 statuses, gap analysis, risk scoring
 **Last Verified:** March 8, 2026
@@ -62,4 +62,4 @@ All 12 domains confirmed, all 5 control statuses present, posture score calculat
 
 ---
 
-*Sheet TB-PROOF-006 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-006 | ClawFilters v11.0.3 | March 20, 2026*

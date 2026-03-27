@@ -1,8 +1,8 @@
 # OpenClaw Operations Guide
 
-## ClawCoat v11.0.3 - "Control Your Claw"
+## ClawFilters v11.0.3 - "Control Your Claw"
 
-**Architecture:** ClawCoat acts as a governed MCP proxy. OpenClaw is never modified - ClawCoat wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
+**Architecture:** ClawFilters acts as a governed MCP proxy. OpenClaw is never modified - ClawFilters wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
 
 ---
 
@@ -33,7 +33,7 @@ Verify via API:
 
 ```powershell
 curl -H "X-API-Key: $env:MCP_API_KEY" http://localhost:8000/v1/openclaw/list
-# Should return: {"instances": [], "count": 0, ...}
+# Should return: [] (empty JSON array)
 # (NOT a 404 - 404 means OPENCLAW_ENABLED is still false)
 ```
 
@@ -87,7 +87,7 @@ Save the `instance_id` - you'll use it for all subsequent operations.
 
 ## Submit an Action for Governance Evaluation
 
-This is the core operation. When an OpenClaw instance wants to do something, it submits the action to ClawCoat, which runs it through the 8-step pipeline and returns a decision.
+This is the core operation. When an OpenClaw instance wants to do something, it submits the action to ClawFilters, which runs it through the 8-step pipeline and returns a decision.
 
 ```powershell
 curl -s -X POST `
@@ -185,7 +185,7 @@ curl -s -X POST `
 
 ### Automatic Demotion (Manners Auto-Demotion)
 
-If a claw's Manners compliance score drops below the configured threshold, ClawCoat automatically demotes it to QUARANTINE without human intervention. This fires at step 4 of the governance pipeline and is audited.
+If a claw's Manners compliance score drops below the configured threshold, ClawFilters automatically demotes it to QUARANTINE without human intervention. This fires at step 4 of the governance pipeline and is audited.
 
 ---
 
@@ -367,4 +367,4 @@ curl -s -H "X-API-Key: $env:MCP_API_KEY" "http://localhost:8000/v1/audit/chain/e
 
 ---
 
-*ClawCoat v11.0.3 · OpenClaw Governance · Quietfire AI · March 8, 2026*
+*ClawFilters v11.0.3 · OpenClaw Governance · Quietfire AI · March 8, 2026*

@@ -1,7 +1,7 @@
 # TB-PROOF-020: Behavioral Anomaly Detection
 
 **Sheet ID:** TB-PROOF-020
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- pytest -k anomal -- behavioral anomaly detection tests
 **Last Verified:** March 8, 2026
@@ -67,4 +67,4 @@ All anomaly detection tests pass, validating all 7 detection types.
 
 ---
 
-*Sheet TB-PROOF-020 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-020 | ClawFilters v11.0.3 | March 20, 2026*

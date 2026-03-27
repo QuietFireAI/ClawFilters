@@ -1,7 +1,7 @@
 # TB-PROOF-032: 10 Self-Hosted Services
 
 **Sheet ID:** TB-PROOF-032
-**Claim Source:** clawcoat.com - Integrations Section
+**Claim Source:** clawfilters.com - Integrations Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestSelfHostedServices -- docker-compose.yml confirmed: >= 10 services including traefik, redis, postgres, mcp_server
 **Last Verified:** March 8, 2026
@@ -82,4 +82,4 @@ docker compose ps
 
 ---
 
-*Sheet TB-PROOF-032 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-032 | ClawFilters v11.0.3 | March 20, 2026*

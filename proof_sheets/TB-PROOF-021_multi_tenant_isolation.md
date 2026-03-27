@@ -1,7 +1,7 @@
 # TB-PROOF-021: Multi-Tenant Data Isolation
 
 **Sheet ID:** TB-PROOF-021
-**Claim Source:** clawcoat.com - Capabilities Section
+**Claim Source:** clawfilters.com - Capabilities Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- TestMultiTenantIsolation -- Tenant dataclass allowed_actors model, filtering logic, and isolation contracts all confirmed
 **Last Verified:** March 8, 2026
@@ -62,4 +62,4 @@ docker compose exec mcp_server python -m pytest \
 
 ---
 
-*Sheet TB-PROOF-021 | ClawCoat v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-021 | ClawFilters v11.0.3 | March 20, 2026*

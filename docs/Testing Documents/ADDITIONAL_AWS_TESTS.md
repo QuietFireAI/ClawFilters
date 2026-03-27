@@ -1,4 +1,4 @@
-# ClawCoat - Additional AWS Tests & Pre-Handoff Strategy
+# ClawFilters - Additional AWS Tests & Pre-Handoff Strategy
 
 **Date:** March 1, 2026
 **Context:** Supplemental tests beyond the 10-phase AWS Testing Guide
@@ -37,7 +37,7 @@ docker scout cves <image-name>:latest
 ```
 
 Same idea - known vulnerabilities in your base images. Free, built into Docker.
-Note: golang/stdlib CVEs in the output are from the Ollama vendor image, not ClawCoat.
+Note: golang/stdlib CVEs in the output are from the Ollama vendor image, not ClawFilters.
 Your Python CVE count should be 0. The multi-stage Dockerfile also eliminates 13 LOW binutils CVEs.
 
 ### 3. Secret Leak Scan - Verify No Secrets in Built Images
@@ -99,4 +99,4 @@ File the papers March 1st. Then you decide who's worth showing it to.
 
 ---
 
-*ClawCoat v11.0.3 · Quietfire AI · March 20, 2026*
+*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*
