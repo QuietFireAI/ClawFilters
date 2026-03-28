@@ -72,5 +72,6 @@ def check_db_health() -> bool:
         db.execute(text("SELECT 1"))
         db.close()
         return True
-    except Exception:
+    except Exception as e:
+        logger.warning(f"REM: PostgreSQL health check failed: {e}_Thank_You_But_No")
         return False

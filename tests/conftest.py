@@ -107,7 +107,8 @@ def client() -> Generator:
             "security:signing:revoked_agents",
             "security:recent_denials",
             "security:threat_events",
-            "security:trust",  # REM: trust level records — flush so TrustLevelManager starts clean
+            "security:trust",         # REM: trust level records — flush so TrustLevelManager starts clean
+            "security:capabilities",  # REM: agent capabilities — flush so CapabilityEnforcer starts clean
         )
     except Exception:
         pass
@@ -137,12 +138,12 @@ def client() -> Generator:
 
 
 @pytest.fixture(autouse=True)
-def _flush_trust_records():
-    """REM: Flush Redis trust records before each test so TrustLevelManager starts clean."""
+def _flush_per_test_redis_state():
+    """REM: Flush Redis hashes that must be clean per-test (trust + capabilities)."""
     try:
         import redis as redis_lib
         r = redis_lib.from_url(os.environ["REDIS_URL"], decode_responses=True)
-        r.delete("security:trust")
+        r.delete("security:trust", "security:capabilities")
     except Exception:
         pass
     yield

@@ -174,18 +174,58 @@ class CapabilityEnforcer:
     """
     REM: Enforces capabilities at runtime.
     REM: Wraps resource access and checks permissions before allowing operations.
+    REM: Capabilities are persisted to Redis so all workers share the same set.
     """
-    
+
     def __init__(self):
         self._agent_capabilities: Dict[str, CapabilitySet] = {}
-    
+        self._load_from_redis()
+
+    def _load_from_redis(self) -> None:
+        """REM: Load agent capabilities from Redis on startup for cross-worker consistency."""
+        try:
+            from core.persistence import security_store
+            all_records = security_store.list_records("capabilities")
+            for agent_id, data in all_records.items():
+                try:
+                    cap_strings = data.get("capabilities", [])
+                    self._agent_capabilities[agent_id] = CapabilitySet.from_strings(cap_strings)
+                except Exception as e:
+                    logger.warning(
+                        f"REM: Failed to load capabilities for ::{agent_id}::: {e}_Thank_You_But_No"
+                    )
+            if all_records:
+                logger.info(
+                    f"REM: Loaded capabilities for {len(self._agent_capabilities)} agents from Redis_Thank_You"
+                )
+        except Exception as e:
+            logger.warning(f"REM: Redis unavailable for capability load: {e}_Thank_You_But_No")
+
+    def _save_agent(self, agent_id: str) -> None:
+        """REM: Write-through save of an agent's capabilities to Redis."""
+        try:
+            from core.persistence import security_store
+            cap_set = self._agent_capabilities.get(agent_id)
+            if not cap_set:
+                return
+            allow_strs = [str(c) for c in cap_set.allow]
+            deny_strs = [f"!{c}" for c in cap_set.deny]
+            security_store.store_record("capabilities", agent_id, {
+                "capabilities": allow_strs + deny_strs
+            })
+        except Exception as e:
+            logger.warning(
+                f"REM: Failed to save capabilities for ::{agent_id}:: to Redis: {e}_Thank_You_But_No"
+            )
+
     def register_agent(self, agent_id: str, capabilities: List[str]):
         """
         REM: Register an agent with its declared capabilities.
         """
         cap_set = CapabilitySet.from_strings(capabilities)
         self._agent_capabilities[agent_id] = cap_set
-        
+        self._save_agent(agent_id)
+
         logger.info(
             f"REM: Registered capabilities for agent ::{agent_id}:: - "
             f"Allow: {[str(c) for c in cap_set.allow]} "
