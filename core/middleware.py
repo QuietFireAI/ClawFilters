@@ -22,6 +22,7 @@
 
 import hashlib
 import logging
+import re
 import time
 import uuid
 from collections import defaultdict
@@ -117,10 +118,14 @@ class RateLimiter:
             key_hash = hashlib.sha256(api_key.encode()).hexdigest()
             return f"key:{key_hash}"
 
-        # REM: Fall back to IP
+        # REM: Fall back to IP — validate value looks like an IP address to prevent
+        # REM: header injection if Traefik is misconfigured or absent (M1 fix)
         forwarded = request.headers.get("X-Forwarded-For")
         if forwarded:
-            return f"ip:{forwarded.split(',')[0].strip()}"
+            candidate = forwarded.split(',')[0].strip()
+            # REM: Accept IPv4 (digits and dots) or IPv6 (hex, colons, brackets)
+            if re.match(r'^[\d\.a-fA-F:\[\]]+$', candidate):
+                return f"ip:{candidate}"
 
         return f"ip:{request.client.host if request.client else 'unknown'}"
 
