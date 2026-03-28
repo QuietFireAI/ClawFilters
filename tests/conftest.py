@@ -8,15 +8,16 @@
 # REM: Date: February 23, 2026
 # REM: =======================================================================================
 
+import hashlib
 import os
 import re
 import sys
 import types
-import hashlib
-import pytest
 from datetime import datetime, timezone
 from typing import Generator
 from unittest.mock import MagicMock
+
+import pytest
 
 # REM: Install celery stub before any test file is imported.
 # REM: Agent depth tests also install stubs but run after conftest; this
@@ -125,7 +126,7 @@ def client() -> Generator:
     except (ImportError, AttributeError):
         pass
     try:
-        from core.audit import audit, ChainState, GENESIS_HASH
+        from core.audit import GENESIS_HASH, ChainState, audit
         audit._chain_entries.clear()
         audit._chain_state = ChainState(
             chain_id=hashlib.sha256(

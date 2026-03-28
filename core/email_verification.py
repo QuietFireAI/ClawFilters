@@ -432,8 +432,9 @@ class EmailVerificationManager:
         self._resend_tracking[user_id].append(now)
         # REM: Redis INCR with 1-hour TTL — cross-worker resend counter
         try:
-            from core.config import get_settings
             import redis as redis_lib
+
+            from core.config import get_settings
             r = redis_lib.from_url(
                 get_settings().redis_url, decode_responses=True,
                 socket_connect_timeout=1, socket_timeout=1,
@@ -460,8 +461,9 @@ class EmailVerificationManager:
         # REM: If Redis has an entry, it is authoritative. If no entry exists (count is None)
         # REM: or Redis is unavailable, fall through to in-memory tracking below.
         try:
-            from core.config import get_settings
             import redis as redis_lib
+
+            from core.config import get_settings
             r = redis_lib.from_url(
                 get_settings().redis_url, decode_responses=True,
                 socket_connect_timeout=1, socket_timeout=1,
