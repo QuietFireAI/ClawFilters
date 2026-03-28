@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/capabilities.py
+# ClawFilters/core/capabilities.py
 # REM: =======================================================================================
 # REM: CAPABILITY-BASED PERMISSION SYSTEM FOR AGENTS
 # REM: =======================================================================================

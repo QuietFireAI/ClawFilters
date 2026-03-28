@@ -165,6 +165,14 @@ class TestAgentTrustRecord:
 
 @pytest.fixture
 def mgr():
+    # REM: Flush trust records so each test starts with a clean in-memory store
+    try:
+        from core.persistence import security_store
+        r = security_store.client
+        if r:
+            r.delete("security:trust")
+    except Exception:
+        pass
     return TrustLevelManager()
 
 

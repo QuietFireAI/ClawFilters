@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/delegation.py
+# ClawFilters/core/delegation.py
 # REM: =======================================================================================
 # REM: AGENT-TO-AGENT CAPABILITY DELEGATION
 # REM: =======================================================================================

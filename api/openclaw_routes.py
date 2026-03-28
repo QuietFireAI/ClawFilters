@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/api/openclaw_routes.py
+# ClawFilters/api/openclaw_routes.py
 # REM: =======================================================================================
 # REM: OPENCLAW GOVERNANCE API — "CONTROL YOUR CLAW"
 # REM: =======================================================================================

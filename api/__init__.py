@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/api/__init__.py
+# ClawFilters/api/__init__.py
 # REM: API module exports
 # REM: n8n_integration removed Feb 24 2026 — replaced by native Goose/MCP at /mcp
 

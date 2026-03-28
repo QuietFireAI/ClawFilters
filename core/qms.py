@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/qms.py
+# ClawFilters/core/qms.py
 # REM: =======================================================================================
 # REM: QUIETFIRE MESSAGE STANDARD (QMS) v2.2.0 — AI AUDIT CHAIN PROTOCOL
 # REM: =======================================================================================

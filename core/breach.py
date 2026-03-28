@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/breach.py
+# ClawFilters/core/breach.py
 # REM: Alias module — routes import from core.breach, actual impl is core.breach_notification
 # REM: v7.2.0CC: Created to resolve module naming mismatch
 from core.breach_notification import (BreachAssessment, BreachManager,

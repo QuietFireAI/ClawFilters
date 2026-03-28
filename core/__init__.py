@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/__init__.py
+# ClawFilters/core/__init__.py
 # REM: Core module exports - all security infrastructure
 
 from core.anomaly import (Anomaly, AnomalySeverity, AnomalyType,

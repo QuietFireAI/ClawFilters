@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/agents/demo_agent.py
+# ClawFilters/agents/demo_agent.py
 # REM: =======================================================================================
 # REM: DEMO AGENT - DEMONSTRATES SECURITY FLOW
 # REM: =======================================================================================

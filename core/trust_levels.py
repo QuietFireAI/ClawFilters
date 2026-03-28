@@ -283,14 +283,98 @@ class TrustLevelManager:
         self._load_from_persistence()
 
     def _load_from_persistence(self):
-        """REM: Load trust records from Redis."""
+        """REM: Load trust records from Redis on startup."""
         try:
-            from core.persistence import RedisStore
-
-            # REM: Will be implemented with Redis store
-            pass
+            from core.persistence import security_store
+            all_records = security_store.list_records("trust")
+            for agent_id, data in all_records.items():
+                try:
+                    record = AgentTrustRecord(
+                        agent_id=data["agent_id"],
+                        trust_level=AgentTrustLevel(data["trust_level"]),
+                        registered_at=datetime.fromisoformat(data["registered_at"]),
+                        last_promotion=(
+                            datetime.fromisoformat(data["last_promotion"])
+                            if data.get("last_promotion") else None
+                        ),
+                        last_demotion=(
+                            datetime.fromisoformat(data["last_demotion"])
+                            if data.get("last_demotion") else None
+                        ),
+                        total_actions=data.get("total_actions", 0),
+                        successful_actions=data.get("successful_actions", 0),
+                        failed_actions=data.get("failed_actions", 0),
+                        anomalies_triggered=data.get("anomalies_triggered", 0),
+                        approvals_granted=data.get("approvals_granted", 0),
+                        approvals_denied=data.get("approvals_denied", 0),
+                        days_at_current_level=data.get("days_at_current_level", 0),
+                        promotion_blocked_until=(
+                            datetime.fromisoformat(data["promotion_blocked_until"])
+                            if data.get("promotion_blocked_until") else None
+                        ),
+                        promotion_blocked_reason=data.get("promotion_blocked_reason"),
+                        last_reverification=(
+                            datetime.fromisoformat(data["last_reverification"])
+                            if data.get("last_reverification") else None
+                        ),
+                        reverification_passed=data.get("reverification_passed", True),
+                        reverification_failures=data.get("reverification_failures", 0),
+                        period_actions=data.get("period_actions", 0),
+                        period_successes=data.get("period_successes", 0),
+                        period_failures=data.get("period_failures", 0),
+                        period_anomalies=data.get("period_anomalies", 0),
+                    )
+                    self._records[agent_id] = record
+                except Exception as e:
+                    logger.warning(
+                        f"REM: Failed to load trust record for ::{agent_id}::: {e}_Thank_You_But_No"
+                    )
+            if all_records:
+                logger.info(f"REM: Loaded {len(self._records)} trust records from Redis_Thank_You")
         except Exception as e:
-            logger.warning(f"REM: Failed to load trust records: {e}")
+            logger.warning(f"REM: Failed to load trust records from Redis: {e}_Thank_You_But_No")
+
+    def _save_record(self, agent_id: str) -> None:
+        """REM: Write-through save of a single trust record to Redis."""
+        try:
+            from core.persistence import security_store
+            record = self._records.get(agent_id)
+            if not record:
+                return
+            data = {
+                "agent_id": record.agent_id,
+                "trust_level": record.trust_level.value,
+                "registered_at": record.registered_at.isoformat(),
+                "last_promotion": record.last_promotion.isoformat() if record.last_promotion else None,
+                "last_demotion": record.last_demotion.isoformat() if record.last_demotion else None,
+                "total_actions": record.total_actions,
+                "successful_actions": record.successful_actions,
+                "failed_actions": record.failed_actions,
+                "anomalies_triggered": record.anomalies_triggered,
+                "approvals_granted": record.approvals_granted,
+                "approvals_denied": record.approvals_denied,
+                "days_at_current_level": record.days_at_current_level,
+                "promotion_blocked_until": (
+                    record.promotion_blocked_until.isoformat()
+                    if record.promotion_blocked_until else None
+                ),
+                "promotion_blocked_reason": record.promotion_blocked_reason,
+                "last_reverification": (
+                    record.last_reverification.isoformat()
+                    if record.last_reverification else None
+                ),
+                "reverification_passed": record.reverification_passed,
+                "reverification_failures": record.reverification_failures,
+                "period_actions": record.period_actions,
+                "period_successes": record.period_successes,
+                "period_failures": record.period_failures,
+                "period_anomalies": record.period_anomalies,
+            }
+            security_store.store_record("trust", agent_id, data)
+        except Exception as e:
+            logger.warning(
+                f"REM: Failed to save trust record for ::{agent_id}:: to Redis: {e}_Thank_You_But_No"
+            )
 
     def register_agent(
         self,
@@ -314,6 +398,7 @@ class TrustLevelManager:
             trust_level=initial_level
         )
         self._records[agent_id] = record
+        self._save_record(agent_id)
 
         logger.info(
             f"REM: Agent ::{agent_id}:: registered at trust level "
@@ -462,6 +547,7 @@ class TrustLevelManager:
         record.trust_level = new_level
         record.last_promotion = datetime.now(timezone.utc)
         record.days_at_current_level = 0
+        self._save_record(agent_id)
 
         logger.info(
             f"REM: Agent ::{agent_id}:: PROMOTED from ::{old_level.value}:: "
@@ -516,6 +602,7 @@ class TrustLevelManager:
         record.days_at_current_level = 0
         record.promotion_blocked_until = datetime.now(timezone.utc) + timedelta(days=block_promotion_days)
         record.promotion_blocked_reason = reason
+        self._save_record(agent_id)
 
         logger.warning(
             f"REM: Agent ::{agent_id}:: DEMOTED from ::{old_level.value}:: "
@@ -555,6 +642,7 @@ class TrustLevelManager:
         record.last_demotion = datetime.now(timezone.utc)
         record.promotion_blocked_until = datetime.now(timezone.utc) + timedelta(days=30)
         record.promotion_blocked_reason = f"Emergency quarantine: {reason}"
+        self._save_record(agent_id)
 
         logger.error(
             f"REM: Agent ::{agent_id}:: QUARANTINED from ::{old_level.value}:: "

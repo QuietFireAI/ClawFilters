@@ -277,8 +277,8 @@ class AuditLogger:
                     "entries_count": self._chain_state.entries_count
                 }
                 redis.set("audit:chain:state", json.dumps(state_data))
-        except Exception:
-            pass  # REM: Non-critical, in-memory state still works
+        except Exception as e:
+            self.logger.warning(f"REM: Failed to save audit chain state to Redis: {e}_Thank_You_But_No")
 
     def _create_chain_entry(
         self,

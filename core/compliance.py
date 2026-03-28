@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/compliance.py
+# ClawFilters/core/compliance.py
 # REM: =======================================================================================
 # REM: COMPLIANCE EXPORT AND REPORTING
 # REM: =======================================================================================
@@ -392,18 +392,24 @@ def _collect_audit_evidence(
     period_start: datetime,
     period_end: datetime
 ) -> List[Dict[str, Any]]:
-    """REM: Collect evidence from audit logs."""
+    """REM: Collect evidence from audit chain — queries in-memory entries by event_type and time."""
     evidence = []
+    start_iso = period_start.isoformat()
+    end_iso = period_end.isoformat()
 
-    # REM: This would query the actual audit store
-    # REM: For now, return a sample structure
-    evidence.append({
-        "type": event_type.value,
-        "count": 0,
-        "period_start": period_start.isoformat(),
-        "period_end": period_end.isoformat(),
-        "source": "audit_log"
-    })
+    for entry in audit.get_recent_entries(limit=10000):
+        if entry.get("event_type") != event_type.value:
+            continue
+        ts = entry.get("timestamp", "")
+        if start_iso <= ts <= end_iso:
+            evidence.append({
+                "type": entry["event_type"],
+                "timestamp": ts,
+                "message": entry.get("message", ""),
+                "actor": entry.get("actor", ""),
+                "resource": entry.get("resource"),
+                "source": "audit_chain"
+            })
 
     return evidence
 

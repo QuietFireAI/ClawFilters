@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/toolroom/function_tools.py
+# ClawFilters/toolroom/function_tools.py
 # REM: =======================================================================================
 # REM: FUNCTION TOOL REGISTRY — IN-HOUSE PYTHON TOOLS AS FIRST-CLASS CITIZENS
 # REM: =======================================================================================

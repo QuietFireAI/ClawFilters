@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/email_verification.py
+# ClawFilters/core/email_verification.py
 # REM: =======================================================================================
 # REM: EMAIL VERIFICATION MODULE
 # REM: =======================================================================================
@@ -400,9 +400,12 @@ class EmailVerificationManager:
             Number of expired tokens removed
         """
         now = datetime.now(timezone.utc)
+        # REM: Also prune VERIFIED tokens after 48h — they accumulate indefinitely otherwise (OOM DoS)
+        verified_cutoff = now - timedelta(hours=48)
         expired_users = [
             uid for uid, tok in self._tokens.items()
-            if now > tok.expires_at and tok.status != VerificationStatus.VERIFIED
+            if (now > tok.expires_at and tok.status != VerificationStatus.VERIFIED)
+            or (tok.status == VerificationStatus.VERIFIED and tok.created_at < verified_cutoff)
         ]
 
         for uid in expired_users:

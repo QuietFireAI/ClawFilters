@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/agents/alien_adapter.py
+# ClawFilters/agents/alien_adapter.py
 # REM: =======================================================================================
 # REM: ALIEN ADAPTER — QUARANTINE ZONE FOR EXTERNAL AGENT FRAMEWORKS
 # REM: =======================================================================================

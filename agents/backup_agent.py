@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/agents/backup_agent.py
+# ClawFilters/agents/backup_agent.py
 # REM: =======================================================================================
 # REM: BACKUP AGENT - DEMONSTRATES SECURITY FLOW
 # REM: =======================================================================================
