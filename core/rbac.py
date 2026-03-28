@@ -659,8 +659,9 @@ class RBACManager:
         if user_id not in self._users:
             if not self._load_user_from_redis(user_id):
                 return False
-        self._api_key_to_user[api_key] = user_id
+        # REM: M13 fix: store key hash in memory — raw key material never kept in-process
         key_hash = hashlib.sha256(api_key.encode()).hexdigest()
+        self._api_key_to_user[key_hash] = user_id
         try:
             from core.persistence import security_store
             security_store.store_record("rbac_api_keys", key_hash, {"user_id": user_id})
@@ -672,16 +673,17 @@ class RBACManager:
 
     def get_user_by_api_key(self, api_key: str) -> Optional[User]:
         """REM: Get user by API key. Falls back to Redis on cache miss."""
-        user_id = self._api_key_to_user.get(api_key)
+        # REM: M13 fix: always look up by hash so raw key never lives in _api_key_to_user
+        key_hash = hashlib.sha256(api_key.encode()).hexdigest()
+        user_id = self._api_key_to_user.get(key_hash)
         if not user_id:
-            key_hash = hashlib.sha256(api_key.encode()).hexdigest()
             try:
                 from core.persistence import security_store
                 data = security_store.get_record("rbac_api_keys", key_hash)
                 if data:
                     user_id = data.get("user_id") if isinstance(data, dict) else str(data)
                     if user_id:
-                        self._api_key_to_user[api_key] = user_id
+                        self._api_key_to_user[key_hash] = user_id
             except Exception:
                 pass
         if user_id:
