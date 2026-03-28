@@ -99,6 +99,10 @@ def client() -> Generator:
         # start clean (signing_store prefix = "signing").
         for k in r.keys("signing:*"):
             r.delete(k)
+        # REM: Flush email resend rate-limit counters (email_resend:{user_id}) so tests
+        # that send verification emails don't see stale resend counts across fixtures.
+        for k in r.keys("email_resend:*"):
+            r.delete(k)
         # REM: Flush security hashes that bleed between tests:
         #   - security:signing:revoked_agents  — revoked set persists to Redis (H2 fix)
         #   - security:recent_denials          — denial timestamps (anomaly probe detection)
