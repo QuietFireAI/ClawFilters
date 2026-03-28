@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/tests/test_qms.py
+# ClawFilters/tests/test_qms.py
 # REM: =======================================================================================
 # REM: QMS v2.1.6 TEST SUITE — CHAIN BUILDING, PARSING, VALIDATION, SECURITY
 # REM: =======================================================================================

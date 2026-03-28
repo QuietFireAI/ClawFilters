@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/models.py
+# ClawFilters/core/models.py
 # REM: =======================================================================================
 # REM: SQLALCHEMY ORM MODELS FOR POSTGRESQL
 # REM: =======================================================================================

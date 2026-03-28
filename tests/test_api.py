@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/tests/test_api.py
+# ClawFilters/tests/test_api.py
 # REM: =======================================================================================
 # REM: TESTS FOR API ENDPOINTS
 # REM: =======================================================================================

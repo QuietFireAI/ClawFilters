@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/toolroom/registry.py
+# ClawFilters/toolroom/registry.py
 # REM: =======================================================================================
 # REM: TOOL REGISTRY - INVENTORY AND CHECKOUT SYSTEM
 # REM: =======================================================================================

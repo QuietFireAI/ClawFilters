@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/federation/mtls.py
+# ClawFilters/federation/mtls.py
 # REM: =======================================================================================
 # REM: MUTUAL TLS FOR FEDERATION TRANSPORT SECURITY
 # REM: =======================================================================================

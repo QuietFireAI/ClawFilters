@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/tests/test_toolroom.py
+# ClawFilters/tests/test_toolroom.py
 # REM: =======================================================================================
 # REM: TOOLROOM & FOREMAN TEST SUITE
 # REM: =======================================================================================

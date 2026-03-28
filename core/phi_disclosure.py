@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/phi_disclosure.py
+# ClawFilters/core/phi_disclosure.py
 # REM: =======================================================================================
 # REM: HIPAA ACCOUNTING OF PHI DISCLOSURES
 # REM: =======================================================================================

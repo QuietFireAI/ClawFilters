@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/tenant_rate_limiting.py
+# ClawFilters/core/tenant_rate_limiting.py
 # REM: =======================================================================================
 # REM: TENANT-SCOPED RATE LIMITING
 # REM: =======================================================================================

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/version.py
+# ClawFilters/version.py
 # REM: =======================================================================================
 # REM: OFFICIAL VERSION IDENTIFIER FOR TELSONBASE
 # REM: =======================================================================================

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/system_analysis.py
+# ClawFilters/core/system_analysis.py
 # REM: =======================================================================================
 # REM: SYSTEM-WIDE SECURITY ANALYSIS
 # REM: =======================================================================================

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/tests/conftest.py
+# ClawFilters/tests/conftest.py
 # REM: =======================================================================================
 # REM: PYTEST FIXTURES AND CONFIGURATION
 # REM: =======================================================================================
@@ -107,6 +107,7 @@ def client() -> Generator:
             "security:signing:revoked_agents",
             "security:recent_denials",
             "security:threat_events",
+            "security:trust",  # REM: trust level records — flush so TrustLevelManager starts clean
         )
     except Exception:
         pass
@@ -133,6 +134,18 @@ def client() -> Generator:
     from main import app
     with TestClient(app) as c:
         yield c
+
+
+@pytest.fixture(autouse=True)
+def _flush_trust_records():
+    """REM: Flush Redis trust records before each test so TrustLevelManager starts clean."""
+    try:
+        import redis as redis_lib
+        r = redis_lib.from_url(os.environ["REDIS_URL"], decode_responses=True)
+        r.delete("security:trust")
+    except Exception:
+        pass
+    yield
 
 
 @pytest.fixture(scope="function")

@@ -138,6 +138,7 @@ class RateLimiter:
             "probation": RateLimitTier.RESTRICTED,
             "resident": RateLimitTier.STANDARD,
             "citizen": RateLimitTier.ELEVATED,
+            "agent": RateLimitTier.UNLIMITED,  # REM: Apex tier — fully verified autonomous agents
         }
 
     def _get_or_create_state(self, agent_id: str, tier: RateLimitTier) -> AgentRateState:

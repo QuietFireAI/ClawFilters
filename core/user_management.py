@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/user_management.py
+# ClawFilters/core/user_management.py
 # REM: =======================================================================================
 # REM: PER-USER AUTHENTICATION — REGISTRATION, LOGIN, PASSWORD MANAGEMENT
 # REM: =======================================================================================

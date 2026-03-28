@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/toolroom/executor.py
+# ClawFilters/toolroom/executor.py
 # REM: =======================================================================================
 # REM: TOOL EXECUTION ENGINE — HOW AGENTS ACTUALLY INVOKE TOOLS
 # REM: =======================================================================================

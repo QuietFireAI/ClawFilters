@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/phi.py
+# ClawFilters/core/phi.py
 # REM: Alias module — routes import from core.phi using phi_manager,
 # REM: actual impl is core.phi_disclosure using phi_disclosure_manager
 # REM: v7.2.0CC: Created to resolve module naming + variable naming mismatch

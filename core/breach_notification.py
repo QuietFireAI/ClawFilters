@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/breach_notification.py
+# ClawFilters/core/breach_notification.py
 # REM: =======================================================================================
 # REM: BREACH ASSESSMENT AND NOTIFICATION TRACKING
 # REM: =======================================================================================
@@ -206,7 +206,7 @@ class BreachManager:
         updated_by: str
     ) -> bool:
         """REM: Update the containment status of a breach assessment."""
-        assessment = self._assessments.get(assessment_id)
+        assessment = self.get_assessment(assessment_id)
         if not assessment:
             logger.warning(f"REM: Breach assessment ::{assessment_id}:: not found_Thank_You_But_No")
             return False
@@ -367,8 +367,38 @@ class BreachManager:
         return overdue
 
     def get_assessment(self, assessment_id: str) -> Optional[BreachAssessment]:
-        """REM: Get a breach assessment by ID."""
-        return self._assessments.get(assessment_id)
+        """REM: Get a breach assessment by ID — Redis-first for cross-worker correctness."""
+        assessment = self._assessments.get(assessment_id)
+        if assessment:
+            return assessment
+        # REM: Not in local cache — may have been created by another worker; check Redis
+        try:
+            from core.persistence import compliance_store
+            record_data = compliance_store.get_record("breaches", assessment_id)
+            if record_data:
+                assessment = BreachAssessment(
+                    assessment_id=record_data["assessment_id"],
+                    detected_at=datetime.fromisoformat(record_data["detected_at"]),
+                    assessed_by=record_data["assessed_by"],
+                    severity=BreachSeverity(record_data["severity"]),
+                    description=record_data["description"],
+                    affected_tenants=record_data["affected_tenants"],
+                    affected_records_count=record_data["affected_records_count"],
+                    data_types_exposed=record_data["data_types_exposed"],
+                    attack_vector=record_data["attack_vector"],
+                    containment_status=record_data.get("containment_status", "investigating"),
+                    notification_required=record_data.get("notification_required", False),
+                    notification_deadline=(
+                        datetime.fromisoformat(record_data["notification_deadline"])
+                        if record_data.get("notification_deadline") else None
+                    ),
+                    status=record_data.get("status", "assessing"),
+                )
+                self._assessments[assessment_id] = assessment
+                return assessment
+        except Exception as e:
+            logger.warning(f"REM: Redis fallback failed for assessment ::{assessment_id}::: {e}")
+        return None
 
     def list_assessments(self, status: Optional[str] = None) -> List[BreachAssessment]:
         """REM: List breach assessments, optionally filtered by status."""
@@ -379,7 +409,7 @@ class BreachManager:
 
     def close_assessment(self, assessment_id: str, closed_by: str) -> bool:
         """REM: Close a breach assessment after all notifications are complete."""
-        assessment = self._assessments.get(assessment_id)
+        assessment = self.get_assessment(assessment_id)
         if not assessment:
             logger.warning(f"REM: Breach assessment ::{assessment_id}:: not found_Thank_You_But_No")
             return False

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/tests/test_mqtt_stress.py
+# ClawFilters/tests/test_mqtt_stress.py
 # REM: =======================================================================================
 # REM: MQTT BUS LOAD & STRESS TESTS
 # REM: =======================================================================================

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/agents/document_agent.py
+# ClawFilters/agents/document_agent.py
 # REM: =======================================================================================
 # REM: DOCUMENT PROCESSOR AGENT FOR TELSONBASE
 # REM: =======================================================================================

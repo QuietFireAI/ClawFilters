@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/emergency_access.py
+# ClawFilters/core/emergency_access.py
 # REM: =======================================================================================
 # REM: HIPAA BREAK-THE-GLASS EMERGENCY ACCESS
 # REM: =======================================================================================
@@ -367,6 +367,27 @@ class EmergencyAccessManager:
     def list_all_requests(self) -> List[Dict[str, Any]]:
         """REM: List all emergency access requests for audit review."""
         return [r.to_dict() for r in self._requests.values()]
+
+    def cleanup_old_requests(self, retention_days: int = 90) -> int:
+        """
+        REM: Remove inactive requests older than retention_days from the in-memory cache.
+        REM: Redis records are kept for audit purposes — this only prunes the local dict
+        REM: to prevent unbounded memory growth.
+        """
+        cutoff = datetime.now(timezone.utc) - timedelta(days=retention_days)
+        to_remove = [
+            rid for rid, req in self._requests.items()
+            if not req.is_active and req.timestamp < cutoff
+        ]
+        for rid in to_remove:
+            del self._requests[rid]
+
+        if to_remove:
+            logger.info(
+                f"REM: Cleaned up {len(to_remove)} old emergency requests "
+                f"from memory (>{retention_days}d inactive)_Thank_You"
+            )
+        return len(to_remove)
 
 
 # REM: Global instance for import throughout the application

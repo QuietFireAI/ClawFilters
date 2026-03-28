@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/agents/base.py
+# ClawFilters/agents/base.py
 # REM: =======================================================================================
 # REM: SECURE BASE AGENT CLASS FOR THE TelsonBase (v4.2.0)
 # REM: =======================================================================================

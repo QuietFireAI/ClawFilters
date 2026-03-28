@@ -827,18 +827,21 @@ class IdenticlawManager:
             return None
 
     def _check_nonce(self, nonce: str) -> bool:
-        """REM: Check if nonce has been used (replay protection). Returns True if nonce is fresh."""
+        """REM: Check if nonce has been used (replay protection). Returns True if nonce is fresh.
+        REM: Fails CLOSED on Redis outage — a replay cannot be detected without the nonce store,
+        REM: so we must reject rather than silently allow potential replay attacks."""
         client = self._get_redis()
-        if client:
-            try:
-                # REM: If key exists, nonce was already used
-                if client.exists(f"identiclaw:nonce:{nonce}"):
-                    return False
-                return True
-            except Exception:
-                pass
-        # REM: Fallback: accept (better to allow than fail-closed on Redis outage for auth)
-        return True
+        if not client:
+            logger.warning("REM: Nonce check failed — Redis unavailable, rejecting auth_Thank_You_But_No")
+            return False
+        try:
+            # REM: If key exists, nonce was already used
+            if client.exists(f"identiclaw:nonce:{nonce}"):
+                return False
+            return True
+        except Exception as e:
+            logger.warning(f"REM: Nonce check Redis error — rejecting auth: {e}_Thank_You_But_No")
+            return False
 
     def _mark_nonce_used(self, nonce: str):
         """REM: Mark a nonce as used with 5-minute TTL."""
