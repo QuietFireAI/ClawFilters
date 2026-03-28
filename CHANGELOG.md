@@ -7,31 +7,24 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] - 2026-03-27 (Product rebrand ClawCoat → ClawFilters)
+## [11.0.4] - 2026-03-27 (Security hardening H1–H13, branding sweep, zero-tolerance threat response, product rebrand ClawCoat → ClawFilters)
 
+**CI:** Run #397 failed (Unreleased heading) — resolved in this commit. Run #396 on `827688f` was the last green: 6,348 passed, 4 skipped, ≥80% coverage.
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### Changed
+### Changed (product rebrand — Mar 27, 2026)
 - **Product rename:** ClawCoat → ClawFilters across all source files, docs, tests, proof sheets, CITATION.cff, README, CHANGELOG
 - **GitHub repo:** QuietFireAI/ClawCoat → QuietFireAI/ClawFilters
 - **Domain:** clawcoat.com → clawfilters.com
-- **Website hero:** "Real-Time Behavioral Filters for AI Agents" / "Because your AI agent needs a filter too."
-- **"The Manners Engine" brand name dropped** from all public-facing copy — replaced with "ClawFilters" and "behavioral scoring/filter" language throughout. Scoring mechanism and five-principle architecture unchanged.
-- **Positioning shift:** Small business primary audience; regulated industries framed as quality signal, not primary pitch. Compliance docs section reframed: "The bar was set by regulated industries. You clear it automatically."
-- **Audience broadened:** "OpenClaw agents" → "AI agents" in public-facing copy; platform now explicitly governs any MCP-connected AI agent
-- **`clawcoat.com`** → `clawfilters.com` in all contact emails, docs, CITATION.cff
-- **`clawcoat_dev`** default DB/Redis dev password → `clawfilters_dev` in config.py
-- **Audit chain prefix:** `clawcoat_` → `clawfilters_` in core/audit.py chain ID generation
-- **`clawcoat_permissions`** DB column name: unchanged (requires Alembic migration — deferred)
-- **`CLAWCOAT_ENCRYPTION_KEY`** env var: unchanged (internal implementation name, backward-compat)
+- **Website:** "Real-Time Behavioral Filters for AI Agents" / "Because your AI agent needs a filter too."
+- **"The Manners Engine" brand name dropped** from all public-facing copy; scoring mechanism and five-principle architecture unchanged; referred to as "behavioral scoring" / "behavioral filter" externally
+- **Positioning shift:** Small business primary audience; regulated industries as quality signal, not primary pitch
+- **Audience broadened:** "OpenClaw agents" → "AI agents" in public-facing copy
+- **`clawcoat_dev`** default DB/Redis passwords → `clawfilters_dev` in config.py
+- **Audit chain prefix:** `clawcoat_` → `clawfilters_` in core/audit.py
+- **`clawcoat_permissions`** DB column name: unchanged (Alembic migration deferred)
+- **`CLAWCOAT_ENCRYPTION_KEY`** env var: unchanged (internal name, backward-compat)
 - **`TELSONBASE_ENV`** and all `telsonbase_*` Docker/internal names: unchanged
-
----
-
-## [11.0.4] - 2026-03-25 (Security hardening H1–H13, branding sweep, zero-tolerance threat response)
-
-**CI:** Run #388 in progress on commit `eb34af3`. Previous runs #385-#386 failed CI version check (Unreleased heading) — resolved in this release.
-**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Security (HIGH — all 13 items resolved)
 - **H1** `core/auth.py` — JWT revocation fail-closed: Redis unavailable → `is_token_revoked` returns True, `revoke_token` returns False; in-memory fallback set removed entirely
