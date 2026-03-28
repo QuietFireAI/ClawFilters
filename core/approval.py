@@ -776,7 +776,8 @@ def requires_approval(description: str = "", risk_factors: List[str] = None):
             # REM: Extract agent identity from task kwargs — hostname is a Celery
             # REM: worker-level identifier and must NOT be used as agent identity.
             # REM: Callers should pass agent_id=... as a kwarg; fall back to 'unknown'.
-            from celery import current_task  # noqa: F401 (imported for task context)
+            from celery import \
+                current_task  # noqa: F401 (imported for task context)
             agent_id = (
                 kwargs.get('agent_id')
                 or getattr(getattr(current_task, 'request', None), 'kwargs', {}).get('agent_id')
