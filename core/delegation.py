@@ -331,16 +331,21 @@ class DelegationManager:
         if held == needed:
             return True
 
-        # REM: Wildcard matching
+        # REM: Global wildcard
+        if held == "*":
+            return True
+
+        # REM: Hierarchical wildcard matching — held "admin.*" matches "admin.users.create"
         held_parts = held.split(".")
         needed_parts = needed.split(".")
 
-        if len(held_parts) != len(needed_parts):
-            return False
-
-        for h, n in zip(held_parts, needed_parts):
+        for i, h in enumerate(held_parts):
             if h == "*":
-                continue
+                # REM: Trailing wildcard covers all remaining segments
+                return True
+            if i >= len(needed_parts):
+                return False
+            n = needed_parts[i]
             h_base, h_resource = h.split(":") if ":" in h else (h, "")
             n_base, n_resource = n.split(":") if ":" in n else (n, "")
 

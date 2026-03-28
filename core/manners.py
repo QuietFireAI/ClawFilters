@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/manners.py
+# ClawFilters/core/manners.py
 # REM: =======================================================================================
 # REM: MANNERS COMPLIANCE ENGINE — RUNTIME PRINCIPLE ENFORCEMENT
 # REM: =======================================================================================
@@ -597,7 +597,38 @@ class MannersEngine:
                     if isinstance(ts_str, bytes):
                         ts_str = ts_str.decode()
                     self._first_seen[agent_name] = datetime.fromisoformat(ts_str)
-            logger.info(f"REM: Manners loaded {len(self._first_seen)} agent records from persistence")
+
+            # REM: Load violation history for all known agents
+            violation_count = 0
+            for agent_name in list(self._first_seen.keys()):
+                key = f"manners:violations:{agent_name}"
+                try:
+                    raw_list = store.lrange(key, 0, -1)
+                    if raw_list:
+                        self._violations.setdefault(agent_name, [])
+                        for raw in raw_list:
+                            if isinstance(raw, bytes):
+                                raw = raw.decode()
+                            d = json.loads(raw)
+                            self._violations[agent_name].append(MannersViolation(
+                                agent_name=d["agent_name"],
+                                violation_type=ViolationType(d["violation_type"]),
+                                principle=MannersPrinciple(d["principle"]),
+                                severity=d["severity"],
+                                timestamp=datetime.fromisoformat(d["timestamp"]),
+                                details=d["details"],
+                                action=d.get("action"),
+                                resource=d.get("resource"),
+                                auto_resolved=d.get("auto_resolved", False),
+                            ))
+                            violation_count += 1
+                except Exception as ve:
+                    logger.warning(f"REM: Failed to load violations for {agent_name}: {ve}")
+
+            logger.info(
+                f"REM: Manners loaded {len(self._first_seen)} agents, "
+                f"{violation_count} violations from persistence_Thank_You"
+            )
         except Exception as e:
             logger.warning(f"REM: Failed to load Manners state from Redis: {e}")
 

@@ -125,13 +125,10 @@ class MFAManager:
                 ),
                 "is_active": record.is_active,
             }
-            # REM: Encrypt sensitive fields before storing
-            try:
-                data["secret"] = secure_storage.encrypt_string(data["secret"])
-                data["backup_codes"] = secure_storage.encrypt_string(json.dumps(data["backup_codes"]))
-                data["_encrypted"] = True
-            except Exception:
-                pass  # Store unencrypted if encryption unavailable
+            # REM: Encrypt sensitive fields before storing — fail-hard, never store plaintext
+            data["secret"] = secure_storage.encrypt_string(data["secret"])
+            data["backup_codes"] = secure_storage.encrypt_string(json.dumps(data["backup_codes"]))
+            data["_encrypted"] = True
             security_store.store_record("mfa", user_id, data)
         except Exception as e:
             logger.warning(f"REM: Failed to save MFA record to Redis for ::{user_id}::: {e}_Thank_You_But_No")

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/email_sender.py
+# ClawFilters/core/email_sender.py
 # REM: =======================================================================================
 # REM: SMTP EMAIL SENDER MODULE
 # REM: =======================================================================================
@@ -26,6 +26,7 @@
 # REM: =======================================================================================
 
 import asyncio
+import html
 import logging
 import os
 import smtplib
@@ -113,9 +114,12 @@ async def send_verification_email(
     Returns:
         True if the email was sent successfully, False otherwise
     """
+    safe_username = html.escape(username)
+    safe_user_id  = html.escape(str(user_id))
+    safe_token    = html.escape(str(token))
     verify_url = (
         f"{APP_BASE_URL}/v1/auth/verify-email"
-        f"?user_id={user_id}&token={token}"
+        f"?user_id={safe_user_id}&token={safe_token}"
     )
 
     html_body = f"""
@@ -126,8 +130,8 @@ async def send_verification_email(
   <div style="max-width:480px;margin:0 auto;background:#1e293b;border:1px solid #334155;
               border-radius:12px;padding:32px;">
     <h2 style="color:#22d3ee;margin-top:0;">Verify your email</h2>
-    <p>Hi <strong>{username}</strong>,</p>
-    <p>You've been registered on <strong>TelsonBase</strong>.
+    <p>Hi <strong>{safe_username}</strong>,</p>
+    <p>You've been registered on <strong>ClawFilters</strong>.
        Please verify your email address to activate your account:</p>
     <p style="text-align:center;margin:32px 0;">
       <a href="{verify_url}"
@@ -138,12 +142,12 @@ async def send_verification_email(
       </a>
     </p>
     <p style="font-size:12px;color:#64748b;">
-      This link expires in 24 hours. If you did not register for TelsonBase,
+      This link expires in 24 hours. If you did not register for ClawFilters,
       you can safely ignore this email.
     </p>
     <hr style="border:none;border-top:1px solid #334155;margin:24px 0;"/>
     <p style="font-size:11px;color:#475569;margin:0;">
-      TelsonBase by Quietfire AI &mdash; Sovereign AI Management Platform
+      ClawFilters by Quietfire AI &mdash; Real-Time Behavioral Filters for AI Agents
     </p>
   </div>
 </body>
@@ -151,5 +155,5 @@ async def send_verification_email(
 """
 
     return await asyncio.to_thread(
-        _send_sync, to_email, "Verify your TelsonBase email address", html_body
+        _send_sync, to_email, "Verify your ClawFilters email address", html_body
     )

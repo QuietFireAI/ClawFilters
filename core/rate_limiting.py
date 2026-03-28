@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/rate_limiting.py
+# ClawFilters/core/rate_limiting.py
 # REM: =======================================================================================
 # REM: PER-AGENT RATE LIMITING
 # REM: =======================================================================================

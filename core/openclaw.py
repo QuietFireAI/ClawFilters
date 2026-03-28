@@ -845,10 +845,10 @@ class OpenClawManager:
         REM: Delegates to core/anomaly.py if available.
         """
         try:
-            from core.anomaly import AnomalyDetector
-            detector = AnomalyDetector()
-            # REM: Check for rate spikes and new actions
-            anomalies = detector.check_agent(
+            from core.anomaly import BehaviorMonitor
+            detector = BehaviorMonitor()
+            # REM: Record action and check for anomalies
+            anomalies = detector.record(
                 agent_id=f"openclaw:{instance_id}",
                 action=tool_name,
                 resource=json.dumps(tool_args, default=str)[:200],
