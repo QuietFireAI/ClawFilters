@@ -58,12 +58,23 @@ async def require_mfa(
     from core.rbac import rbac_manager
 
     # REM: Resolve the RBAC user from the auth actor identity.
-    # REM: If no RBAC user is found (pure API-key auth with no linked user),
-    # REM: skip MFA check — backward compatible with pre-RBAC deployments.
+    # REM: If no RBAC user is found, check whether the API key carries global (*) permissions.
+    # REM: A global-permission key is functionally equivalent to a super-admin and must not
+    # REM: bypass MFA. Only keys with no registered permissions are allowed through.
     user = _resolve_rbac_user(auth, rbac_manager)
     if user is None:
+        if auth.permissions and "*" in auth.permissions:
+            logger.warning(
+                "REM: Global-permission API key ::%s:: has no RBAC user — "
+                "MFA cannot be verified, rejecting access to MFA-protected endpoint_Thank_You_But_No",
+                auth.actor,
+            )
+            raise HTTPException(
+                status_code=403,
+                detail="MFA required: register this API key with an RBAC user to access this endpoint",
+            )
         logger.debug(
-            "REM: No RBAC context for actor ::%s:: — MFA check skipped_Thank_You",
+            "REM: No RBAC context for actor ::%s:: (no global permissions) — MFA check skipped_Thank_You",
             auth.actor,
         )
         return auth

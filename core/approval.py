@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# TelsonBase/core/approval.py
+# ClawFilters/core/approval.py
 # REM: =======================================================================================
 # REM: HUMAN-IN-THE-LOOP APPROVAL GATES
 # REM: =======================================================================================
@@ -23,7 +23,7 @@
 
 import asyncio
 import logging
-import threading
+import time
 import uuid
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta, timezone
@@ -96,8 +96,7 @@ class ApprovalRequest:
     risk_factors: List[str] = field(default_factory=list)
     anomaly_ids: List[str] = field(default_factory=list)
     
-    # REM: For waiting tasks
-    _event: threading.Event = field(default_factory=threading.Event, repr=False)
+    # REM: _event removed — wait_for_decision polls Redis so cross-worker decisions are visible
 
 
 class ApprovalRule(BaseModel):
@@ -504,10 +503,38 @@ class ApprovalGate:
             remaining = (request.expires_at - datetime.now(timezone.utc)).total_seconds()
             timeout = max(0, remaining)
         
-        # REM: Wait for decision
+        # REM: Poll Redis for decision — cross-worker safe (threading.Event is process-local)
         logger.info(f"REM: Waiting for decision on ::{request_id}::_Please")
-        decided = request._event.wait(timeout=timeout)
-        
+        poll_interval = 1.0  # seconds
+        deadline = time.monotonic() + (timeout or 0)
+        decided = False
+        while True:
+            # REM: Re-read status from Redis so decisions made on other workers are visible
+            store = _get_store()
+            if store:
+                try:
+                    fresh = store.get_request(request_id)
+                    if fresh and fresh.get("status") not in (
+                        ApprovalStatus.PENDING.value, None
+                    ):
+                        request.status = ApprovalStatus(fresh["status"])
+                        request.decided_at = (
+                            datetime.fromisoformat(fresh["decided_at"])
+                            if fresh.get("decided_at") else None
+                        )
+                        request.decided_by = fresh.get("decided_by")
+                        request.decision_notes = fresh.get("decision_notes")
+                        decided = True
+                        break
+                except Exception as e:
+                    logger.warning(f"REM: Redis poll error for ::{request_id}::: {e}")
+            if request.status != ApprovalStatus.PENDING:
+                decided = True
+                break
+            if timeout is not None and time.monotonic() >= deadline:
+                break
+            time.sleep(poll_interval)
+
         if not decided and request.status == ApprovalStatus.PENDING:
             # REM: Timeout - check rule for auto-reject behavior
             request.status = ApprovalStatus.EXPIRED
@@ -550,12 +577,9 @@ class ApprovalGate:
             self._known_domains.add(request.payload["domain"])
         self._known_agents.add(request.agent_id)
         
-        # REM: Signal waiting task
-        request._event.set()
-
         self._move_to_completed(request_id)
 
-        # REM: Update persisted state
+        # REM: Update persisted state — polling workers will see this
         self._update_persisted_request(request_id, {
             "status": ApprovalStatus.APPROVED.value,
             "decided_at": request.decided_at.isoformat(),
@@ -595,12 +619,9 @@ class ApprovalGate:
         request.decided_by = decided_by
         request.decision_notes = notes
         
-        # REM: Signal waiting task
-        request._event.set()
-
         self._move_to_completed(request_id)
 
-        # REM: Update persisted state
+        # REM: Update persisted state — polling workers will see this
         self._update_persisted_request(request_id, {
             "status": ApprovalStatus.REJECTED.value,
             "decided_at": request.decided_at.isoformat(),
