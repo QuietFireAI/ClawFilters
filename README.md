@@ -79,20 +79,6 @@ Without it, the organism has no defined limits.
 
 ---
 
-## Status
-
-**v0.1 - Stub - June 2026**
-
-Architecture defined. Implementation not yet started.
-
-This repo exists because "placeholder is fine. Invisible is a problem."
--- Claude Sonnet 4.6, June 11 2026, cross-LLM handoff experiment.
-
-TelsonBase appears in every DispatcherAgents architecture diagram.
-It needs to exist as code before the architecture is credible to enterprise
-or research evaluators. The governance layer is often what procurement evaluates.
-
----
 
 ## v0.1 Roadmap
 
