@@ -46,17 +46,19 @@ Self-hosted. Open source. Apache 2.0. [TelsonBase.com](https://TelsonBase.com)
 
 ## Status: Live
 
-**6,404 tests passing. ≥80% coverage. 0 high-severity static-analysis findings (bandit). Everything described in this README is built and running.**
+**6,415 tests passing. 79% coverage (measured). 0 high-severity and 0 medium-severity findings (bandit, full scan). A code-level security audit (June 2026) found and fixed one HIGH-severity issue; the report is in the repo. Everything described in this README is built and running.**
 
 **Try the live demo:** [huggingface.co/spaces/QuietFireAI/TelsonBase](https://huggingface.co/spaces/QuietFireAI/TelsonBase)
 
 The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional. The integration guide covers the full agent flow end-to-end and has been verified across multiple clean-slate deployments.
 
 **What's stable and tested:**
-Trust governance pipeline · Cryptographic audit chain · RBAC (143 endpoints) · Human-in-the-loop approval gates · Kill switch · Telegram gateway · behavioral scoring engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · AI agent governance proxy
+Trust governance pipeline · Cryptographic audit chain · RBAC (143 endpoints) · Human-in-the-loop approval gates · Kill switch · Telegram gateway (secret-token + chat allowlist) · behavioral scoring engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · AI agent governance proxy
 
 **What's actively being worked on:**
 User management live endpoint · QMS real-time log feed · Audit chain PostgreSQL archival beyond 100K entries · Agent actor attribution in approval decisions · Identiclaw agent testing
+
+**Security:** A whole-codebase audit (June 2026) — static analysis plus manual review of the full auth surface, crypto core, signing, tenant isolation, and all API routes — found one HIGH-severity issue (a Telegram approval-webhook auth bypass), now fixed and regression-tested. Full report: [`SECURITY_AUDIT_2026-06-12.md`](SECURITY_AUDIT_2026-06-12.md). No third-party penetration test of a live deployment has been performed yet; that is the next external step.
 
 If something is broken, [open an issue](../../issues). If something is missing that you need, [start a discussion](../../discussions). If you want to contribute, read [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -66,7 +68,7 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 TelsonBase is a **self-hosted, local-first governance platform** for AI agents. It acts as a governed MCP proxy: agents connect to TelsonBase, and every action they attempt is evaluated against trust levels, behavioral scoring, anomaly detection, and approval gates before execution. The agent is never modified. TelsonBase wraps it.
 
-> **Note:** You will see `telsonbase` in environment variables, Docker container names, directory paths, and internal configuration. TelsonBase is the product. The `telsonbase` internal name requires no changes to your deployment. No changes to your deployment are required.
+> **Note:** You will see `telsonbase` in environment variables, Docker container names, directory paths, and internal configuration. TelsonBase is the product. The `telsonbase` internal name requires no changes to your deployment.
 
 ---
 
@@ -246,8 +248,9 @@ This isn't a roadmap. This is shipped code with tests.
 | **Federation** | Cross-instance trust with mTLS, RSA-4096 signatures | 5 |
 | **Kill Switch** | Instant suspension, Redis-persisted, survives restarts | 19 |
 | **MCP Gateway (Goose)** | 13 tools exposed via MCP, trust-gated sessions, native Goose / Claude Desktop integration | live |
+| **Adversarial Security Suite** | Signature forgery, payload tampering, replay/expired-replay, agent-identity boundary, forged-HITL-approval regression | 11 |
 
-**Total: 6,254 tests passing. 54 skipped. 0 high-severity findings across 43,457 lines scanned.**
+**Total: 6,415 tests passing. 54 skipped. 0 high-severity findings across 43,457 lines scanned.**
 
 ---
 
@@ -266,7 +269,7 @@ This isn't a roadmap. This is shipped code with tests.
 
 Every control references a source file and a passing test. Run `proof_sheets/` to verify any claim.
 
-**Certification boundary:** "Baked in" means the controls are implemented in source code and verified by 6,254 passing tests — including 538 compliance depth tests covering PHI de-identification, breach notification, BAA lifecycle, HITRUST domain controls, sanctions, training, and more. It does not mean a SOC 2 Type I report has been signed, a HITRUST assessment completed, or an OCR HIPAA audit conducted. Those require external assessors and budget. The implementation is audit-ready. The certifications are next. See [`docs/WHATS_NEXT.md`](docs/WHATS_NEXT.md).
+**Certification boundary:** "Baked in" means the controls are implemented in source code and verified by 6,415 passing tests — including 538 compliance depth tests covering PHI de-identification, breach notification, BAA lifecycle, HITRUST domain controls, sanctions, training, and more. It does not mean a SOC 2 Type I report has been signed, a HITRUST assessment completed, or an OCR HIPAA audit conducted. Those require external assessors and budget. The implementation is audit-ready. The certifications are next. See [`docs/WHATS_NEXT.md`](docs/WHATS_NEXT.md).
 
 ---
 
@@ -412,7 +415,7 @@ telsonbase/
 ├── celery_app/                 # Background task processing
 ├── monitoring/                 # Prometheus + Grafana + Mosquitto config
 │
-├── tests/                      # 6,254 passing tests across 100 files
+├── tests/                      # 6,415 passing tests across 100+ files
 │   ├── test_security_battery.py  # 9-category security attack surface
 │   ├── test_openclaw.py          # Governance pipeline
 │   ├── test_qms.py               # QMS protocol
@@ -459,7 +462,7 @@ Nobody asked what happens to your data when an AI agent has no one watching it. 
 
 TelsonBase puts you back in control. Every action by an AI agent is evaluated. Every permission earned. Every decision is auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
 
-The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 6,254 passing tests. 64 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
+The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 6,415 passing tests. 64 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
 Built for the industries that can't afford to get this wrong: small business, real estate, medical, legal, insurance, and accounting. Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse.
 
@@ -511,7 +514,7 @@ This is not a marketing decision. If TelsonBase preaches governance, it has to p
 ```
 proof_sheets/
   INDEX.md                          ← master index
-  TB-PROOF-001_tests_passing.md     ← 6,254 tests, all 100 files, version history
+  TB-PROOF-001_tests_passing.md     ← 6,415 tests, all 100 files, version history
   TB-PROOF-035_openclaw_governance.md
   TB-PROOF-043_security_auth.md     ← 9 security battery category sheets
   tb-proof-053_qms_suite.md         ← test suite class sheets
@@ -534,9 +537,9 @@ Browse the full index: [`proof_sheets/INDEX.md`](proof_sheets/INDEX.md)
 
 Question any claim. Run the command. That's the point.
 
-**Test coverage status (March 2026):**
+**Test coverage status (June 2026, measured):**
 
-6,254 tests across 100 files. ≥80% line coverage (CI-verified). Every core module has dedicated depth tests: governance pipeline, trust tiers, manners scoring, HITL gates, kill switch, audit chain, all compliance infrastructure, all agents, all toolroom modules, and all API routes.
+6,415 tests across 100 files. 79% line coverage (measured across core/api/agents/federation/toolroom/gateway). Every core module has dedicated depth tests: governance pipeline, trust tiers, manners scoring, HITL gates, kill switch, audit chain, all compliance infrastructure, all agents, all toolroom modules, and all API routes.
 
 The proof sheet index carries a **Test Coverage** rating for every sheet: VERIFIED, SMOKE, CODE-ONLY, INFRA, or DOCS. Read the ratings before you read the verdicts.
 
@@ -611,7 +614,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process and [GOVERNANCE.md](
 2. Create a feature branch
 3. Write tests (we don't ship untested code)
 4. Submit a PR with a clear description
-5. Every PR runs the full test suite (6,254 and growing)
+5. Every PR runs the full test suite (6,415 and growing)
 
 Questions or bugs? See [SUPPORT.md](SUPPORT.md).
 
@@ -643,7 +646,7 @@ If you use TelsonBase in research, a paper, or a published project, a `CITATION.
 
 Manual citation:
 ```
-Phillips, J. (2026). TelsonBase (v11.0.3). Quietfire AI.
+Phillips, J. (2026). TelsonBase (v11.0.4). Quietfire AI.
 https://github.com/QuietFireAI/TelsonBase
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```
