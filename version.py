@@ -547,5 +547,19 @@
 # REM:         - CI coverage gate: 75% → 80% (confirmed ≥80% on run #367)
 # REM:         - 6,254 tests passing
 # REM: =======================================================================================
+# REM: 12.0.0 - Security hardening, audit, and license clarity (June 12, 2026):
+# REM:         - SECURITY: fixed HIGH Telegram HITL approval-webhook auth bypass
+# REM:           (secret-token header + admin chat_id allowlist, fail-closed)
+# REM:         - SECURITY: triaged all 647 CodeQL alerts; fixed SSRF internal-range gap
+# REM:           (egress_proxy private/loopback/metadata block + no-redirect) and
+# REM:           tool-name path traversal (manifest validation). See CODEQL_TRIAGE_2026-06-12.md
+# REM:         - Added adversarial security test suite: signature forgery, replay,
+# REM:           expired-replay, agent-identity boundary, forged-HITL, tool-name traversal
+# REM:         - Deps: mcp >=1.23.0, cryptography 46.0.7, pytest 9.0.3 (CVE fixes)
+# REM:         - LICENSE: switched to MIT repo-wide (LICENSE, 212 SPDX headers,
+# REM:           REUSE.toml, docs); third-party notices preserved
+# REM:         - Completed ClawFilters → TelsonBase rename; scrubbed dump.rdb from history
+# REM:         - 6,417 tests passing; bandit 0 high / 0 medium; 79% measured coverage
+# REM: =======================================================================================
 
-__version__ = "11.0.4"
+__version__ = "12.0.0"

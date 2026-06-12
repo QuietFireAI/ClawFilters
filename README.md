@@ -13,7 +13,7 @@ Self-hosted. Open source. MIT licensed. [TelsonBase.com](https://TelsonBase.com)
 > *"The industry gave AI agents the keys to everything before anyone asked who was watching."*
 
 <p align="center">
-  <strong>v11.0.4</strong> &nbsp;|&nbsp;
+  <strong>v12.0.0</strong> &nbsp;|&nbsp;
   <strong>6,417 tests passing</strong> &nbsp;|&nbsp;
   <strong>64 SOC 2 controls</strong> &nbsp;|&nbsp;
   <strong>162 API endpoints</strong> &nbsp;|&nbsp;
@@ -646,7 +646,7 @@ If you use TelsonBase in research, a paper, or a published project, a `CITATION.
 
 Manual citation:
 ```
-Phillips, J. (2026). TelsonBase (v11.0.4). Quietfire AI.
+Phillips, J. (2026). TelsonBase (v12.0.0). Quietfire AI.
 https://github.com/QuietFireAI/TelsonBase
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```
