@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_openclaw_depth.py
 # REM: Depth tests for core/openclaw.py — constants, enums, data models,
 # REM: and OpenClawManager pure-logic methods (no Redis/external deps)

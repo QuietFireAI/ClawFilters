@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/agents/__init__.py
 # REM: =======================================================================================
 # REM: AGENT REGISTRY AND DISCOVERY FOR TELSONBASE

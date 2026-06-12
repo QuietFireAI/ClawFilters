@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/core/retention.py
 # REM: Alias module — routes import from core.retention, actual impl is core.data_retention
 # REM: v7.2.0CC: Created to resolve module naming mismatch

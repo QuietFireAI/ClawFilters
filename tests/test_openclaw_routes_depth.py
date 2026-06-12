@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_openclaw_routes_depth.py
 # REM: Depth coverage for api/openclaw_routes.py
 # REM: Tests: model validators, request/response models, all 14 endpoints,

@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_agents_demo_depth.py
 # REM: Depth coverage for agents/demo_agent.py
 # REM: Constants and health task are pure. Store-backed tasks use mock _get_stores().

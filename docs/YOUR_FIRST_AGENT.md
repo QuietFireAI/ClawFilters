@@ -266,4 +266,4 @@ When `X-Agent-Key` is present, TelsonBase verifies the key matches the `instance
 
 ---
 
-*TelsonBase v11.0.3 · Quietfire AI · Apache 2.0*
+*TelsonBase v11.0.3 · Quietfire AI · MIT*

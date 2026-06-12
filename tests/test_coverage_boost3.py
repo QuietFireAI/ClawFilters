@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_coverage_boost3.py
 # REM: Coverage tests for database.py, rotation.py, executor subprocess path.
 

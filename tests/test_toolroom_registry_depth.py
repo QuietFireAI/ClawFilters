@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_toolroom_registry_depth.py
 # REM: Depth tests for toolroom/registry.py — pure in-memory, no Redis/external deps
 

@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_database_depth.py
 # REM: Depth coverage for core/database.py
 # REM: Tests: init_db, check_db_health, get_db — both success and failure paths.

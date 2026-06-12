@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_agents_memory_depth.py
 # REM: Depth coverage for agents/memory_agent.py
 # REM: Pure Python classes (MemoryStore, Memory, ConversationContext) + Celery task direct calls

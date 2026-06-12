@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_session_management_depth.py
 # REM: Depth coverage for core/session_management.py
 # REM: SessionConfig, UserSession, SessionManager — in-memory.

@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/celery_app/worker.py
 # REM: =======================================================================================
 # REM: CELERY WORKER CONFIGURATION FOR THE TelsonBase

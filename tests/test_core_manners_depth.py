@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_manners_depth.py
 # REM: Depth coverage for core/manners.py
 # REM: All enums, data models, MannersEngine methods — pure in-memory.

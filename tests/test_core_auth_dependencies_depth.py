@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_auth_dependencies_depth.py
 # REM: Depth tests for core/auth_dependencies.py — pure helper functions, no FastAPI calls
 

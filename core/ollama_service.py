@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/core/ollama_service.py
 # REM: =======================================================================================
 # REM: SOVEREIGN AI ENGINE SERVICE — DIRECT OLLAMA REST API CLIENT
@@ -69,7 +69,7 @@ RECOMMENDED_MODELS = {
         "size_gb": 4.7,
         "ram_required_gb": 7,
         "description": "Alibaba's open model. Excellent at structured output and code.",
-        "license": "Apache 2.0",
+        "license": "MIT",
         "recommended_for": ["code generation", "structured output", "analysis"],
         "default": False,
     },
@@ -87,7 +87,7 @@ RECOMMENDED_MODELS = {
         "size_gb": 4.1,
         "ram_required_gb": 6,
         "description": "Mistral AI's foundation model. Battle-tested, reliable general purpose.",
-        "license": "Apache 2.0",
+        "license": "MIT",
         "recommended_for": ["general chat", "writing", "analysis"],
         "default": False,
     },

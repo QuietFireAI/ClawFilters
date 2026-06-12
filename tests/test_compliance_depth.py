@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """
 Compliance Module Depth Tests
 Rating: VERIFIED — exercises error paths, all enum values, secondary methods,

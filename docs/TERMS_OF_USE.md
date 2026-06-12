@@ -64,7 +64,7 @@ This obligation survives termination of your use of TelsonBase.
 
 ## 4. Acceptable Use
 
-You may use TelsonBase for any lawful purpose consistent with the Apache 2.0 license. You may not use TelsonBase to:
+You may use TelsonBase for any lawful purpose consistent with the MIT license. You may not use TelsonBase to:
 
 - Facilitate illegal activity, including unauthorized access to systems, data theft, or violations of privacy law
 - Govern agents in ways designed to circumvent compliance obligations rather than support them
@@ -119,9 +119,9 @@ TelsonBase gives you the tools to govern AI agents. What you do with those tools
 
 ## 8. Open Source License
 
-TelsonBase is licensed under the Apache License, Version 2.0. The full text is in [`LICENSE`](LICENSE).
+TelsonBase is licensed under the MIT License. The full text is in [`LICENSE`](LICENSE).
 
-The Apache 2.0 license independently contains a disclaimer of warranties and limitation of liability. These Terms supplement and do not replace those terms. In the event of conflict, the Apache 2.0 license governs.
+The MIT license independently contains a disclaimer of warranties and limitation of liability. These Terms supplement and do not replace those terms. In the event of conflict, the MIT license governs.
 
 ---
 
@@ -145,7 +145,7 @@ If any provision of these Terms is found to be unenforceable or invalid under ap
 
 ## 12. Entire Agreement
 
-These Terms, together with the Apache License, Version 2.0, constitute the entire agreement between you and the Developer with respect to TelsonBase and supersede all prior or contemporaneous representations, understandings, or agreements, written or oral, relating to the subject matter herein.
+These Terms, together with the MIT License, constitute the entire agreement between you and the Developer with respect to TelsonBase and supersede all prior or contemporaneous representations, understandings, or agreements, written or oral, relating to the subject matter herein.
 
 ---
 

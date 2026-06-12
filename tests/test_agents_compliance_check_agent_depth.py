@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_agents_compliance_check_agent_depth.py
 # REM: Depth coverage for agents/compliance_check_agent.py
 # REM: Pure in-memory agent — all tests run without Redis/DB.

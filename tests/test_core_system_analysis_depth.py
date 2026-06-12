@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_system_analysis_depth.py
 # REM: Depth coverage for core/system_analysis.py
 # REM: Pure Python classes (enums, dataclasses) + SystemAnalyzer (in-memory ops).

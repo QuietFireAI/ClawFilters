@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_semantic_matching_depth.py
 # REM: Depth coverage for core/semantic_matching.py
 # REM: Enums, synonym maps, hierarchy traversal, path matching,

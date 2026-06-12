@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/agents/compliance_check_agent.py
 # REM: =======================================================================================
 # REM: COMPLIANCE CHECK AGENT — REAL ESTATE

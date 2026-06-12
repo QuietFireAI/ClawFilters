@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/version.py
 # REM: =======================================================================================
 # REM: OFFICIAL VERSION IDENTIFIER FOR TELSONBASE
@@ -463,7 +463,7 @@
 # REM:         - 32 files corrected:
 # REM:           * secrets/api_key → secrets/telsonbase_mcp_api_key (OPENCLAW_INTEGRATION_GUIDE x3)
 # REM:           * Wrong trust tier names in MANNERS.md (fictional names → correct 5-tier names)
-# REM:           * MIT license → Apache 2.0 (PROJECT_OVERVIEW.md)
+# REM:           * MIT license → MIT (PROJECT_OVERVIEW.md)
 # REM:           * WEB_CONCURRENCY=2 → WEB_CONCURRENCY=1 beta (TECHNICAL_DEFENSE_BRIEF.md)
 # REM:           * brokerage tenant type removed from DATA_PROCESSING_AGREEMENT.md
 # REM:           * 151 API endpoints → 177 (FAQ.md, OPENCLAW_SECURITY_ANALYSIS.md, INDEX.md)
@@ -476,7 +476,7 @@
 # REM:           * quietfire/telsonbase → QuietFireAI/TelsonBase (8 files)
 # REM:           * Version headers v7.3.0CC → v9.0.0B (15 files)
 # REM:         - GitHub repo created: QuietFireAI/TelsonBase (private until March 6)
-# REM:         - CITATION.cff added: ORCID 0009-0000-1375-1725, Apache 2.0
+# REM:         - CITATION.cff added: ORCID 0009-0000-1375-1725, MIT
 # REM:         - README: AGENT tier added to diagram + table, nav links fixed,
 # REM:           clone URL fixed, proof sheet count corrected, ORCID + citation section
 # REM:         - 720 tests, 0 failed — launch candidate March 6, 2026

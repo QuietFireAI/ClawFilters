@@ -1,12 +1,12 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 
 # Agent Autonomy SLA
 
 **Specification Version:** 1.0.0
 **Effective Date:** March 2026
 **Author:** Quietfire AI
-**License:** Apache 2.0
+**License:** MIT
 **Status:** Active, reference implementation in TelsonBase v11.0.3
 
 ---
@@ -244,7 +244,7 @@ The Agent Autonomy SLA is scoped to governance of tool execution. It does not sp
 
 ## 7. Open Standard Invitation
 
-This specification is released under Apache 2.0. Any governance system may implement the Agent Autonomy SLA model described here. Implementors are encouraged to:
+This specification is released under MIT. Any governance system may implement the Agent Autonomy SLA model described here. Implementors are encouraged to:
 
 - Adopt the five-tier naming convention (QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT) for interoperability
 - Implement active decision making (ALLOW/GATE/BLOCK) at the call intercept layer, before execution, not after
@@ -305,7 +305,7 @@ The `OversightLevel` metric type, the quality model taxonomy, and the JSON DSL u
 - **Website:** https://telsonbase.com
 - **Live Demo:** https://huggingface.co/spaces/QuietFireAI/TelsonBase
 - **Machine-readable SLA spec:** [`agent-autonomy-sla-spec.json`](agent-autonomy-sla-spec.json)
-- **License:** Apache 2.0
+- **License:** MIT
 
 ---
 
@@ -327,7 +327,7 @@ This specification is the working enforcement implementation of the open challen
 | **ORCID** | 0009-0000-1375-1725 (J. Phillips, Quietfire AI) |
 | **Version** | 1.0.0 |
 | **Date** | March 2026 |
-| **License** | Apache 2.0 |
+| **License** | MIT |
 | **Implements** | TelsonBase v11.0.3 |
 
 ---

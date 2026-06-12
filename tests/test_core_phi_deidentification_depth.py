@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_phi_deidentification_depth.py
 # REM: Depth coverage for core/phi_deidentification.py
 # REM: PHIField, PHI_FIELD_PATTERNS, DeidentificationResult, PHIDeidentifier — all in-memory.

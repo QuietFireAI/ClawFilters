@@ -237,4 +237,4 @@ Kill-switch events:
 
 ---
 
-*TelsonBase v11.1.0+ · Quietfire AI · Apache 2.0*
+*TelsonBase v11.1.0+ · Quietfire AI · MIT*

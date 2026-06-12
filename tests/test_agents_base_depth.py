@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_agents_base_depth.py
 # REM: Depth tests for agents/base.py — AgentRequest/AgentResponse Pydantic models
 

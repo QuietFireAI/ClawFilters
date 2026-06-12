@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/toolroom/manifest.py
 # REM: =======================================================================================
 # REM: TOOL MANIFEST — THE CONTRACT EVERY TOOL MUST FULFILL
@@ -139,6 +139,17 @@ def validate_manifest(manifest: ToolManifest) -> List[str]:
     REM: QMS: Tool_Manifest_Validate_Please → errors[] or []
     """
     errors = []
+
+    # REM: SECURITY (2026-06-12 CodeQL triage): tool name becomes part of filesystem
+    # REM: paths in executor/cage. Reject traversal and non-portable characters at the
+    # REM: source so a malformed/malicious tool package cannot escape its directory.
+    if manifest.name:
+        _bad = ("..", "/", "\\", "\x00")
+        if any(b in manifest.name for b in _bad) or len(manifest.name) > 128:
+            errors.append(
+                "'name' must not contain path separators, traversal sequences, "
+                "or null bytes, and must be <=128 chars"
+            )
 
     # REM: Required fields
     if not manifest.name or not manifest.name.strip():

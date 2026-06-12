@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_phi_disclosure_depth.py
 # REM: Depth tests for core/phi_disclosure.py — pure in-memory, no external deps
 

@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """
 Tests for core/user_management.py, core/sessions.py, core/system_analysis.py.
 These three files were at 0% coverage — all security-critical paths.

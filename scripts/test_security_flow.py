@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/scripts/test_security_flow.py
 # REM: =======================================================================================
 # REM: INTEGRATION TEST - DEMONSTRATES COMPLETE SECURITY FLOW

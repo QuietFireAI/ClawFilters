@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """
 Production Hardening, DR, Static Analysis, and Compliance Mapping Depth Tests
 Rating: VERIFIED -- behavioral tests for claims previously backed by grep/version.py strings only.

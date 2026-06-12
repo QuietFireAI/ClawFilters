@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_auth_routes_depth.py
 # REM: Coverage depth tests for api/auth_routes.py
 # REM: Targets: register, login, change-password, profile, list-users, logout,

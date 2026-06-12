@@ -90,7 +90,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - Federation backend wiring: `POST /v1/federation/invitations` now accepts `name`/`remote_url`/`description`; stores `pending_outbound` relationship in Redis; response includes `relationship_id`. Admin panel now shows copyable invitation token in result panel.
 - 3,400+ depth tests across all core modules: anomaly, manners, signing, approval gate, audit chain, data classification, PHI de-identification, session management, HITRUST controls, toolroom (manifest/registry/executor/foreman/function_tools), tenancy, openclaw, auth_dependencies, agents (base/alien adapter)
 - AGENT_AUTONOMY_SLA.md — formal 5-tier open-standard SLA spec, cites arXiv:2511.02885
-- REUSE compliance: LICENSES/Apache-2.0.txt, .reuse/DEP5, SPDX headers on 250 Python files
+- REUSE compliance: LICENSES/MIT.txt, .reuse/DEP5, SPDX headers on 250 Python files
 
 ### Changed
 - `CITATION.cff`: title updated TelsonBase → TelsonBase; abstract updated to active decision making positioning with arXiv citation
@@ -114,7 +114,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 ### Added
 - `GOVERNANCE.md` - Project governance, decision process, release procedure, contributor path
 - `SUPPORT.md` - Support channels, response times, bug report guidance (GitHub surfaces this automatically)
-- `NOTICE` - Apache 2.0 required attribution file, third-party component summary
+- `NOTICE` - MIT required attribution file, third-party component summary
 - `.github/CODEOWNERS` - Auto-review assignment for security-sensitive paths and legal files
 - `docs/DASHBOARD_agent_registration.md` - Full video-ready agent registration walkthrough: connect, register, promote, verify governance loop, audit trail
 - `docs/Operation Documents/INSTALLATION_GUIDE_WINDOWS.md` - New file: fresh Windows install guide, Docker Desktop through first agent
@@ -235,7 +235,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 Critical fixes:
 - `secrets/api_key` → `secrets/telsonbase_mcp_api_key` in `OPENCLAW_INTEGRATION_GUIDE.md` (3 locations) - would have broken all deployments following that guide
 - Wrong trust tier names in `MANNERS.md` (fictional names → QUARANTINE/PROBATION/RESIDENT/CITIZEN/AGENT)
-- MIT license → Apache 2.0 in `PROJECT_OVERVIEW.md`
+- MIT license → MIT in `PROJECT_OVERVIEW.md`
 - WEB_CONCURRENCY=2 → WEB_CONCURRENCY=1 throughout `TECHNICAL_DEFENSE_BRIEF.md`
 - `brokerage` tenant type removed from `DATA_PROCESSING_AGREEMENT.md`
 
@@ -244,7 +244,7 @@ Numbers corrected: 151 endpoints → 177, 93 security tests → 96, 2 Bandit med
 ### GitHub Repository Created
 
 - `QuietFireAI/TelsonBase` - private until March 6, 2026 drop
-- `CITATION.cff`: ORCID 0009-0000-1375-1725 (J. Phillips / Quietfire AI), Apache 2.0
+- `CITATION.cff`: ORCID 0009-0000-1375-1725 (J. Phillips / Quietfire AI), MIT
 - README: AGENT tier diagram, nav links, clone URL, proof sheet count, ORCID + citation section, 9 screenshots wired
 - 10 repo topics: ai-governance, ai-agents, zero-trust, self-hosted, human-in-the-loop, kill-switch, audit-trail, mcp, fastapi, docker
 
@@ -312,22 +312,22 @@ New file: `docs/Testing Documents/PRE_DROP_AUDIT.md` - permanent audit record, r
 
 ---
 
-## [9.0.0B] - 2026-03-01 (LAUNCH PREP - v9.0.0B_20260301i - Apache 2.0)
+## [9.0.0B] - 2026-03-01 (LAUNCH PREP - v9.0.0B_20260301i - MIT)
 
 **Status:** 720 tests, 0 failed - ninth archive - launch candidate
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### License - Apache 2.0 (replaces AGPL v3 dual-license)
+### License - MIT (replaces AGPL v3 dual-license)
 
-- **LICENSE** - replaced AGPL v3 / commercial dual-license with Apache License, Version 2.0. Full standard license text + copyright + social impact commitment. No commercial license required for any use.
-- **COMMERCIAL_LICENSE.md** - retired. File now contains a short redirect notice explaining the move to Apache 2.0.
-- **README.md** - license section updated to Apache 2.0. Removed dual-license description and "commercial license required" language.
-- **website/index.html** - all AGPL-3.0 references updated to Apache 2.0 across 5 occurrences (feature card, FAQ, CTA section, open-source modal intro, modal for-home card).
-- **docs/LAUNCH_DRAFTS.md** - 3 occurrences of AGPL/commercial-license language updated to Apache 2.0.
-- **docs/FAQ.md** - Q16 updated (AGPL → Apache 2.0); Q19 rewritten as "What is the license and what can I do with TelsonBase?" - explains Apache 2.0 permissions, attribution requirement, and consulting availability.
-- **docs/TECHNICAL_DEFENSE_BRIEF.md** - Section 11 rewritten as "The License - Apache 2.0"; table row updated.
+- **LICENSE** - replaced AGPL v3 / commercial dual-license with MIT License. Full standard license text + copyright + social impact commitment. No commercial license required for any use.
+- **COMMERCIAL_LICENSE.md** - retired. File now contains a short redirect notice explaining the move to MIT.
+- **README.md** - license section updated to MIT. Removed dual-license description and "commercial license required" language.
+- **website/index.html** - all AGPL-3.0 references updated to MIT across 5 occurrences (feature card, FAQ, CTA section, open-source modal intro, modal for-home card).
+- **docs/LAUNCH_DRAFTS.md** - 3 occurrences of AGPL/commercial-license language updated to MIT.
+- **docs/FAQ.md** - Q16 updated (AGPL → MIT); Q19 rewritten as "What is the license and what can I do with TelsonBase?" - explains MIT permissions, attribution requirement, and consulting availability.
+- **docs/TECHNICAL_DEFENSE_BRIEF.md** - Section 11 rewritten as "The License - MIT"; table row updated.
 - **docs/WHATS_NEXT.md** - "commercial license customers" → "consulting customers and enterprise sponsors".
-- **docs/System Documents/OPENCLAW_SECURITY_ANALYSIS.md** - "source-available under AGPL v3" → "open source under Apache 2.0".
+- **docs/System Documents/OPENCLAW_SECURITY_ANALYSIS.md** - "source-available under AGPL v3" → "open source under MIT".
 - **PROJECT_STRUCTURE.md** - LICENSE file description updated.
 
 ---

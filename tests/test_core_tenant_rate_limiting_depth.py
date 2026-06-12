@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_tenant_rate_limiting_depth.py
 # REM: Depth coverage for core/tenant_rate_limiting.py
 # REM: _InMemoryBucket, TenantRateLimiter — in-memory fallback path.

@@ -401,7 +401,7 @@ Yes. TelsonBase exposes an MCP gateway at `/mcp` with 13 tools covering system s
 agent management, tenant operations, audit chain access, and approval workflows.
 It uses StreamableHTTP transport and Bearer token authentication.
 
-Compatible clients today: Goose (by Block, Apache 2.0), Claude Desktop, and any
+Compatible clients today: Goose (by Block, MIT), Claude Desktop, and any
 MCP-compliant client built to the MCP specification.
 
 **Note:** Connecting an MCP client is optional. TelsonBase runs and governs agents
@@ -607,7 +607,7 @@ sheets are the verification layer. Run them. That's the deal.
 ## 16. What Happens If the Developer Stops Maintaining It?
 
 **Plain answer:**
-TelsonBase is open source under Apache 2.0. If development stopped today, anyone could
+TelsonBase is open source under MIT. If development stopped today, anyone could
 fork the repository, continue development, and redistribute under the same terms. The
 entire codebase, all documentation, all proof sheets, and all test infrastructure are
 publicly available.
@@ -616,7 +616,7 @@ A governance platform that depends on a single vendor for survival is itself a g
 risk. TelsonBase is designed so that the community can carry it forward.
 
 **Source files:**
-- `LICENSE` - Apache 2.0 terms
+- `LICENSE` - MIT terms
 - `CONTRIBUTING.md` - contribution guidelines
 - `docs/DEVELOPER_GUIDE.md` - full architecture documentation for new contributors
 
@@ -685,9 +685,9 @@ curl -X POST http://localhost:8000/v1/llm/pull \
 ## 19. What Is the License and What Can I Do with TelsonBase?
 
 **Plain answer:**
-TelsonBase is open source under the Apache License, Version 2.0.
+TelsonBase is open source under the MIT License.
 
-**What Apache 2.0 means:** Free for any use - personal, commercial, production, research.
+**What MIT means:** Free for any use - personal, commercial, production, research.
 Use it, modify it, deploy it, build products on it, charge customers for it. No commercial
 license required. No AGPL network-service disclosure requirements.
 
@@ -698,7 +698,7 @@ license required. No AGPL network-service disclosure requirements.
 **Full terms:** `LICENSE` - or the official text at https://www.apache.org/licenses/LICENSE-2.0
 
 **Support and consulting:** Quietfire AI offers enterprise support, consulting, and
-compliance guidance for production deployments. Apache 2.0 means you are not obligated
+compliance guidance for production deployments. MIT means you are not obligated
 to pay anything - but if you are deploying TelsonBase in healthcare, legal, or insurance
 and want expert help, that is available. Contact support@telsonbase.com.
 

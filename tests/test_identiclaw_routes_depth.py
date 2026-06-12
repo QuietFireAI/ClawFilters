@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_identiclaw_routes_depth.py
 # REM: Depth coverage for api/identiclaw_routes.py
 # REM: Tests: request/response models, all 6 endpoints (auth, 503, success, 422, 400, 404).

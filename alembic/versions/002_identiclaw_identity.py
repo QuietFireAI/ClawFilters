@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """Add agent_identities table for W3C DID identity integration
 
 Revision ID: 002_identiclaw_identity

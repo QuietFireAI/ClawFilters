@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """
 TelsonBase - Live Governance Demo
 Gradio app connecting to the live TelsonBase API.
@@ -224,7 +224,7 @@ No grace period. No human delay required.
 This demo connects to a **live TelsonBase instance** running on a real server.
 These are actual governance decisions, not simulations.
 
-→ [GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · Self-hosted · No cloud dependency
+→ [GitHub](https://github.com/QuietFireAI/TelsonBase) · MIT · Self-hosted · No cloud dependency
 """
 
 PIPELINE_DESCRIPTION = """
@@ -327,7 +327,7 @@ with gr.Blocks(
     gr.Markdown(
         "---\n"
         "*TelsonBase v11.0.4 by Quietfire AI · "
-        "[GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · "
+        "[GitHub](https://github.com/QuietFireAI/TelsonBase) · MIT · "
         "[← telsonbase.com](https://telsonbase.com)*"
     )
 

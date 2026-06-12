@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_toolroom_cage_depth.py
 # REM: Depth coverage for toolroom/cage.py
 # REM: Uses tmp_path for filesystem operations. No Redis/Postgres required.

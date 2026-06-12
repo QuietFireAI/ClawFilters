@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_mqtt_bus_depth.py
 # REM: Depth coverage for core/mqtt_bus.py
 # REM: Pure unit tests — paho.mqtt.Client is mocked. No broker required.

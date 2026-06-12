@@ -74,4 +74,4 @@ Question any claim. Run the command. That is the point.
 
 ---
 
-*TelsonBase v11.0.3 · Quietfire AI · Apache 2.0*
+*TelsonBase v11.0.3 · Quietfire AI · MIT*

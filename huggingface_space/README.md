@@ -61,8 +61,8 @@ TelsonBase is the working implementation of the Agent Autonomy SLA — a formal 
 **[github.com/QuietFireAI/TelsonBase](https://github.com/QuietFireAI/TelsonBase)**
 
 Source code, documentation, proof sheets, deployment guide, and full test suite.
-6,254 tests passing. 0 high-severity findings. Apache 2.0. Self-hosted.
+6,254 tests passing. 0 high-severity findings. MIT. Self-hosted.
 
 ---
 
-*TelsonBase v11.0.3 · Quietfire AI · Apache 2.0*
+*TelsonBase v11.0.3 · Quietfire AI · MIT*

@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_approval_depth.py
 # REM: Depth coverage for core/approval.py
 # REM: Enums, ApprovalGate CRUD and decisions — all pure in-memory.

@@ -360,8 +360,8 @@ telsonbase/
 │
 ├── licenses/                   # Third-party license files
 │
-├── LICENSE                     # Apache License 2.0
-├── NOTICE                      # Apache 2.0 required attribution
+├── LICENSE                     # MIT License
+├── NOTICE                      # MIT required attribution
 ├── README.md                   # Project overview, GIFs, screenshots, architecture
 ├── QUICKSTART.md               # 5-minute path: clone to first governance decision
 ├── CHANGELOG.md                # Version history (keepachangelog format)

@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_agents_document_depth.py
 # REM: Depth coverage for agents/document_agent.py
 # REM: Pure methods tested directly; filesystem ops use tmp_path.

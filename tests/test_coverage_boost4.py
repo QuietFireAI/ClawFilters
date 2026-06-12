@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_coverage_boost4.py
 # REM: Coverage tests for anomaly.py data classes and BehaviorMonitor,
 # REM: and cage.py CageReceipt data class and Cage utility methods.

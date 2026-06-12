@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """Add openclaw_instances table for OpenClaw governance integration
 
 Revision ID: 003_openclaw_instances

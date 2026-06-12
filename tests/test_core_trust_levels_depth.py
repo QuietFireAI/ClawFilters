@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_trust_levels_depth.py
 # REM: Depth coverage for core/trust_levels.py
 # REM: Enums, dataclasses, TrustLevelManager all methods — pure in-memory.

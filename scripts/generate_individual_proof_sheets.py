@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """
 TelsonBase — Individual Proof Sheet Generator
 Generates one TB-TEST-[CODE]-[NNN] proof sheet per test function.

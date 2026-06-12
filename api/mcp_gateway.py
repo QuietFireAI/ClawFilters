@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/api/mcp_gateway.py
 # REM: =======================================================================================
 # REM: MCP GATEWAY — TELSONBASE AS AN MCP SERVER

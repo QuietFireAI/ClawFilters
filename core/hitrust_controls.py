@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/core/hitrust_controls.py
 # REM: =======================================================================================
 # REM: HITRUST CSF COMPLIANCE TRACKING

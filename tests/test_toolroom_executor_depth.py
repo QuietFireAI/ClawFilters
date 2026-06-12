@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_toolroom_executor_depth.py
 # REM: Depth tests for toolroom/executor.py — ExecutionResult, BLOCKED_ENV_VARS,
 # REM: execute_function_tool (pure in-process function execution, no subprocess)

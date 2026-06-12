@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_hitrust_controls_depth.py
 # REM: Depth coverage for core/hitrust_controls.py
 # REM: HITRUSTDomain, ControlStatus, HITRUSTControl, RiskAssessment,

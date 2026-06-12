@@ -4,7 +4,7 @@
 **Built for Data Sovereignty. Designed for Local-First Deployment.**
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
-**License:** Apache 2.0
+**License:** MIT
 
 ---
 

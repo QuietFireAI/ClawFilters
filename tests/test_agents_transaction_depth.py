@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_agents_transaction_depth.py
 # REM: Depth coverage for agents/transaction_agent.py
 # REM: Enums, checklists, and TransactionCoordinatorAgent methods.

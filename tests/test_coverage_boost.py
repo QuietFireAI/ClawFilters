@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_coverage_boost.py
 # REM: Coverage tests for pure-Python modules currently at 0% or low coverage.
 # REM: Targets: compliance.py, semantic_matching.py, rotation.py (dataclasses),

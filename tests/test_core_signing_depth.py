@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_signing_depth.py
 # REM: Depth coverage for core/signing.py
 # REM: SignedAgentMessage, AgentKeyRegistry, MessageSigner — all pure in-memory.

@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_coverage_boost6.py
 # REM: Coverage tests for tenant_rate_limiting.py (TenantRateLimiter)
 # REM: and cage.py (Cage archive/verify/inventory methods).

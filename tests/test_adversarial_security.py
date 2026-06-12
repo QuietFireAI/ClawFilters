@@ -179,3 +179,24 @@ class TestTelegramHITLForgery:
         }
         gw.handle_update(forged_update)
         assert called["approve"] is False, "Forged approval reached the HITL gate"
+
+
+class TestToolNameTraversal:
+    """REM: Regression for the 2026-06-12 CodeQL path-injection finding.
+    REM: Tool names flow into filesystem paths; traversal must be rejected at validation."""
+
+    def _manifest(self, name):
+        from toolroom.manifest import ToolManifest
+        return ToolManifest(name=name, entry_point="python main.py", version="1.0.0")
+
+    def test_traversal_name_rejected(self):
+        from toolroom.manifest import validate_manifest
+        for evil in ["../escape", "a/b", "..\\win", "tool/../../etc"]:
+            errors = validate_manifest(self._manifest(evil))
+            assert any("traversal" in e or "separator" in e for e in errors), f"accepted {evil!r}"
+
+    def test_legitimate_name_with_space_ok(self):
+        from toolroom.manifest import validate_manifest
+        # REM: Spaces are legitimate; the fix must not break normal names.
+        errors = validate_manifest(self._manifest("Test Tool"))
+        assert not any("separator" in e or "traversal" in e for e in errors)

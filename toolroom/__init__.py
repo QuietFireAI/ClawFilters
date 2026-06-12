@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/toolroom/__init__.py
 # REM: =======================================================================================
 # REM: TOOLROOM - CENTRALIZED TOOL MANAGEMENT FOR TELSONBASE AGENTS

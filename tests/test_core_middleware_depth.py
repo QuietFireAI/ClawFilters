@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_middleware_depth.py
 # REM: Coverage depth tests for core/middleware.py
 # REM: Pure unit tests for RateLimiter, CircuitBreaker, get_circuit

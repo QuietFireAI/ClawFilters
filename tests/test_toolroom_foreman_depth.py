@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_toolroom_foreman_depth.py
 # REM: Depth tests for toolroom/foreman.py — constants, source validation, trust logic
 

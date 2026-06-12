@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 """Initial schema — users, audit_entries, tenants, compliance_records
 
 Revision ID: 001_initial_schema

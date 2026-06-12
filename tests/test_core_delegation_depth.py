@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_delegation_depth.py
 # REM: Coverage depth tests for core/delegation.py
 # REM: Targets: DelegationManager delegate/revoke/check/cleanup logic (pure unit tests)

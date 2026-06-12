@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # TelsonBase/gateway/egress_proxy.py
 # REM: =======================================================================================
 # REM: EGRESS GATEWAY - EXTERNAL COMMUNICATION FIREWALL
@@ -49,7 +49,7 @@ app = FastAPI(
 )
 
 # REM: HTTP client for making outbound requests
-http_client = httpx.AsyncClient(timeout=30.0)
+http_client = httpx.AsyncClient(timeout=30.0, follow_redirects=False)  # REM: SSRF defense — never auto-follow to an internal redirect
 
 
 class ProxyRequest(BaseModel):
@@ -74,7 +74,23 @@ def is_domain_allowed(url: str) -> tuple[bool, str]:
         # REM: Handle port numbers in domain
         if ":" in domain:
             domain = domain.split(":")[0]
-        
+
+        # REM: SECURITY (2026-06-12 CodeQL SSRF triage): block private/loopback/link-local
+        # REM: targets even if they would otherwise match, to defend against an allowlisted
+        # REM: name resolving to an internal IP or the cloud metadata endpoint (169.254.169.254).
+        import ipaddress as _ip
+        _host = domain
+        try:
+            _addr = _ip.ip_address(_host)
+            if _addr.is_private or _addr.is_loopback or _addr.is_link_local or _addr.is_reserved:
+                logger.warning(f"REM: BLOCKED internal-range target ::{_host}::_Thank_You_But_No")
+                return False, domain
+        except ValueError:
+            # REM: not a bare IP — block obvious internal hostnames and the metadata IP literal
+            if _host in ("localhost", "metadata.google.internal") or _host.startswith("169.254."):
+                logger.warning(f"REM: BLOCKED internal hostname ::{_host}::_Thank_You_But_No")
+                return False, domain
+
         # REM: Check against whitelist
         for allowed in ALLOWED_DOMAINS:
             # REM: Allow exact match or subdomain match

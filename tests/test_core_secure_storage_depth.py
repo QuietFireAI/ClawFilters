@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_secure_storage_depth.py
 # REM: Depth coverage for core/secure_storage.py
 # REM: EncryptedValue, SecureStorageManager (all methods), integrity checks.

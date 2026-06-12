@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_compliance_routes_depth.py
 # REM: Coverage depth tests for api/compliance_routes.py
 # REM: Covers all 28 endpoints across legal-holds, breach, retention, sanctions,

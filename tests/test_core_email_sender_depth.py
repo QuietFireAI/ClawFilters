@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_core_email_sender_depth.py
 # REM: Depth coverage for core/email_sender.py
 # REM: All SMTP calls are mocked. No mail server required.

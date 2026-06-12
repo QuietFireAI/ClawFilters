@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: MIT
 # tests/test_agents_backup_depth.py
 # REM: Depth coverage for agents/backup_agent.py
 # REM: Helper functions are pure. Filesystem tasks use tmp_path.
