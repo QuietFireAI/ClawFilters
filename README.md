@@ -8,13 +8,13 @@ TelsonBase is the working implementation of the [Agent Autonomy SLA](docs/System
 
 Five trust tiers, earned by behavior. TelsonBase scores every action continuously — driving automatic demotion. Human-in-the-loop gates decide promotion. A cryptographic audit chain records every governance decision. Nothing leaves your network.
 
-Self-hosted. Open source. Apache 2.0. [TelsonBase.com](https://TelsonBase.com)
+Self-hosted. Open source. MIT licensed. [TelsonBase.com](https://TelsonBase.com)
 
 > *"The industry gave AI agents the keys to everything before anyone asked who was watching."*
 
 <p align="center">
   <strong>v11.0.4</strong> &nbsp;|&nbsp;
-  <strong>6,404 tests passing</strong> &nbsp;|&nbsp;
+  <strong>6,415 tests passing</strong> &nbsp;|&nbsp;
   <strong>64 SOC 2 controls</strong> &nbsp;|&nbsp;
   <strong>162 API endpoints</strong> &nbsp;|&nbsp;
   <strong>0 data shared</strong>
@@ -31,7 +31,7 @@ Self-hosted. Open source. Apache 2.0. [TelsonBase.com](https://TelsonBase.com)
 <p align="center">
   <a href="https://github.com/QuietFireAI/TelsonBase/actions/workflows/ci.yml"><img src="https://github.com/QuietFireAI/TelsonBase/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   &nbsp;
-  <img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat" alt="License: Apache 2.0">
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat" alt="License: MIT">
   &nbsp;
   <img src="https://img.shields.io/badge/python-3.11-blue?style=flat&logo=python&logoColor=white" alt="Python 3.11">
   &nbsp;
@@ -622,7 +622,7 @@ Questions or bugs? See [SUPPORT.md](SUPPORT.md).
 
 ## License
 
-TelsonBase is open source under the [Apache License, Version 2.0](LICENSE).
+TelsonBase is open source under the [MIT License](LICENSE).
 
 Free for any use - personal, commercial, production, research. Use it, modify it, deploy it, build on it. Attribution required: retain the copyright and license notices when distributing. Full terms: [`LICENSE`](LICENSE)
 
