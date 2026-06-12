@@ -96,7 +96,7 @@ mcp>=1.2.0
 # --- Cryptography ---
 # REM: Provides RSA, AES-GCM, x509 certificates for federation mTLS,
 # REM: secure storage encryption at rest, and trust key exchange.
-cryptography==46.0.6
+cryptography==46.0.7  # REM: PYSEC-2026-36 fix
 
 # --- PostgreSQL Database ---
 # REM: SQLAlchemy ORM for durable structured storage (audit, users, tenants, compliance).
@@ -111,6 +111,6 @@ alembic==1.18.4
 # browser-use
 
 # --- Testing ---
-pytest==7.4.4
+pytest==9.0.3  # REM: GHSA-6w46-j5rx-g56g fix
 pytest-asyncio==0.23.4
 pytest-mock==3.15.1

@@ -115,3 +115,4 @@ package-lock.json
 
 # Local MCP config — contains registered agent keys, never commit
 .mcp.json
+dump.rdb

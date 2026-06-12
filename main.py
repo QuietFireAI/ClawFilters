@@ -239,6 +239,7 @@ async def lifespan(app: FastAPI):
             token=settings.telegram_bot_token,
             chat_id=settings.telegram_chat_id,
             webhook_url=settings.telegram_webhook_url,
+            webhook_secret=settings.telegram_webhook_secret,
         )
         if configured:
             approval_gate.register_notification_callback(telegram_gateway.as_approval_callback)

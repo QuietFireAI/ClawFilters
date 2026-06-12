@@ -30,6 +30,12 @@ async def telegram_webhook(request: Request):
     if not telegram_gateway.enabled:
         raise HTTPException(status_code=404, detail="Telegram gateway not enabled")
 
+    # REM: SECURITY — verify Telegram's secret token header before processing.
+    # REM: Without this, a forged POST could approve a HITL gate. Fails closed.
+    secret_header = request.headers.get("X-Telegram-Bot-Api-Secret-Token", "")
+    if not telegram_gateway.verify_webhook_secret(secret_header):
+        raise HTTPException(status_code=403, detail="Invalid webhook secret")
+
     try:
         update: Dict[str, Any] = await request.json()
     except Exception:

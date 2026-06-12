@@ -303,6 +303,7 @@ class Settings(BaseSettings):
     telegram_enabled: bool = Field(default=False, env="TELEGRAM_ENABLED")
     telegram_bot_token: str = Field(default="", env="TELEGRAM_BOT_TOKEN")
     telegram_chat_id: str = Field(default="", env="TELEGRAM_CHAT_ID")
+    telegram_webhook_secret: str = Field(default="", env="TELEGRAM_WEBHOOK_SECRET")  # REM: validates inbound webhook authenticity (X-Telegram-Bot-Api-Secret-Token)
     telegram_webhook_url: str = Field(default="", env="TELEGRAM_WEBHOOK_URL")
 
     # --- Secrets Rotation Reminder (v6.2.0CC) ---

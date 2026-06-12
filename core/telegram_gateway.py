@@ -67,12 +67,13 @@ class TelegramGateway:
         self._poll_thread: Optional[threading.Thread] = None
         self._polling: bool = False
         self._last_update_id: int = 0
+        self._webhook_secret: str = ""
 
     # ------------------------------------------------------------------
     # REM: Configuration
     # ------------------------------------------------------------------
 
-    def configure(self, token: str, chat_id: str, webhook_url: str = "") -> bool:
+    def configure(self, token: str, chat_id: str, webhook_url: str = "", webhook_secret: str = "") -> bool:
         """REM: Configure and validate the gateway. Returns True if ready."""
         if not token or not chat_id:
             logger.warning("REM: Telegram gateway not configured — TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID required")
@@ -80,6 +81,7 @@ class TelegramGateway:
         self._token = token
         self._chat_id = str(chat_id)
         self._webhook_url = webhook_url
+        self._webhook_secret = str(webhook_secret or "")
         self._enabled = True
         logger.info(f"REM: Telegram gateway configured — chat_id ::{self._chat_id}::_Thank_You")
         return True
@@ -87,6 +89,25 @@ class TelegramGateway:
     @property
     def enabled(self) -> bool:
         return self._enabled
+
+    def verify_webhook_secret(self, header_value: str) -> bool:
+        """REM: Constant-time check of Telegram's X-Telegram-Bot-Api-Secret-Token header.
+        REM: If a secret is configured, inbound webhooks MUST present it. Fails closed."""
+        import hmac
+        if not self._webhook_secret:
+            # REM: No secret configured — webhook auth unavailable. Fail closed in production.
+            import os
+            if os.environ.get("TELSONBASE_ENV", "").lower() == "production":
+                logger.error("REM: Telegram webhook secret not set in production — rejecting inbound update")
+                return False
+            return True
+        return hmac.compare_digest(str(header_value or ""), self._webhook_secret)
+
+    def _is_authorized_sender(self, chat_id) -> bool:
+        """REM: Inbound updates are only honored from the configured admin chat.
+        REM: A forged callback_query from any other chat is rejected before it can
+        REM: approve/reject a HITL gate."""
+        return self._chat_id != "" and str(chat_id) == str(self._chat_id)
 
     def _api_url(self, method: str) -> str:
         return _TG_API.format(token=self._token, method=method)
@@ -209,16 +230,28 @@ class TelegramGateway:
 
     def handle_update(self, update: Dict) -> None:
         """REM: Process a single Telegram update (from webhook or polling)."""
+        # REM: SECURITY — only honor updates from the configured admin chat.
+        # REM: Approve/reject taps drive the HITL gate; an unauthenticated sender
+        # REM: must never reach approval_gate. Fails closed.
+        cb = update.get("callback_query", {})
+        msg = update.get("message", {})
+        origin_chat = (
+            cb.get("message", {}).get("chat", {}).get("id")
+            if cb else msg.get("chat", {}).get("id")
+        )
+        if not self._is_authorized_sender(origin_chat):
+            logger.warning(f"REM: Telegram update from unauthorized chat ::{origin_chat}:: rejected")
+            return
+
         # REM: Button tap (callback_query)
         if "callback_query" in update:
             self._handle_callback_query(update["callback_query"])
             return
 
         # REM: Text command
-        message = update.get("message", {})
-        text = message.get("text", "").strip()
+        text = msg.get("text", "").strip()
         if text.startswith("/"):
-            self._handle_command(text, message)
+            self._handle_command(text, msg)
 
     def _handle_callback_query(self, cq: Dict) -> None:
         """REM: Handle Approve/Reject button taps."""
