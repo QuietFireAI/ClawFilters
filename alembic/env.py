@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/alembic/env.py
+# TelsonBase/alembic/env.py
 # REM: =======================================================================================
 # REM: ALEMBIC MIGRATION ENVIRONMENT
 # REM: =======================================================================================

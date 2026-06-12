@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/email_verification.py
+# TelsonBase/core/email_verification.py
 # REM: =======================================================================================
 # REM: EMAIL VERIFICATION MODULE
 # REM: =======================================================================================

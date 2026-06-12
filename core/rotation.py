@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/rotation.py
+# TelsonBase/core/rotation.py
 # REM: =======================================================================================
 # REM: SECRET ROTATION MANAGER
 # REM: =======================================================================================

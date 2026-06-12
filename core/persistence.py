@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/persistence.py
+# TelsonBase/core/persistence.py
 # REM: =======================================================================================
 # REM: REDIS PERSISTENCE LAYER FOR SECURITY INFRASTRUCTURE
 # REM: =======================================================================================

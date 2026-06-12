@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/tests/test_e2e_integration.py
+# TelsonBase/tests/test_e2e_integration.py
 # REM: =======================================================================================
 # REM: END-TO-END INTEGRATION TESTS FOR TELSONBASE
 # REM: =======================================================================================
@@ -100,7 +100,23 @@ def _api_key_headers() -> dict:
 class TestUserLifecycle:
     """REM: End-to-end tests for user registration, login, profile, password change, logout."""
 
-    def test_register_first_user_gets_super_admin(self, client):
+    @pytest.fixture
+    def fresh_user_state(self):
+        """REM: Snapshot and clear user state so first-user detection triggers,
+        REM: regardless of suite ordering. Restores prior state afterward so
+        REM: later tests see the world they expect. Fixes order-dependent failure
+        REM: observed when the full suite runs before this test."""
+        from core.user_management import user_manager
+        from core.rbac import rbac_manager
+        saved_users = dict(getattr(rbac_manager, "_users", {}))
+        saved_count = user_manager._user_count
+        rbac_manager._users.clear()
+        user_manager._user_count = 0
+        yield
+        rbac_manager._users.update(saved_users)
+        user_manager._user_count = saved_count
+
+    def test_register_first_user_gets_super_admin(self, client, fresh_user_state):
         """
         REM: The very first user registered on a fresh system receives super_admin role.
         REM: POST /v1/auth/register -> user.roles includes super_admin

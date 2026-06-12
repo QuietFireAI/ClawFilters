@@ -1,6 +1,6 @@
-# Third-Party Notices - ClawFilters v11.0.3
+# Third-Party Notices - TelsonBase v11.0.3
 
-ClawFilters incorporates and depends on open-source software. This document
+TelsonBase incorporates and depends on open-source software. This document
 lists all third-party dependencies, their licenses, and the corresponding
 license files in this directory.
 

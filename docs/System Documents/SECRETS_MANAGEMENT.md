@@ -1,4 +1,4 @@
-# ClawFilters - Secrets Management
+# TelsonBase - Secrets Management
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
@@ -6,7 +6,7 @@
 
 ## What This Covers
 
-ClawFilters uses Docker Secrets for all sensitive values - API keys, signing keys,
+TelsonBase uses Docker Secrets for all sensitive values - API keys, signing keys,
 encryption keys, and all infrastructure passwords. This document explains how the
 secrets system works, how to generate and rotate secrets, what each secret does,
 and what happens if you skip any of it.
@@ -150,7 +150,7 @@ or after a restore.
 ## File Permissions: Why 644, Not 600
 
 Secret files are set to mode `644` (owner read/write, group and world read). This is
-intentional. ClawFilters containers run as non-root users and need to read the secrets
+intentional. TelsonBase containers run as non-root users and need to read the secrets
 mounted at `/run/secrets/`. Mode `600` would block that read and cause startup failures.
 
 The `secrets/` **directory** is mode `700` (owner only). Files inside are readable but the
@@ -234,7 +234,7 @@ TELSONBASE_ENV=production
 
 In production mode:
 - **JWT secret using an insecure default** → `ValueError` raised, application refuses to start
-- **Infrastructure passwords using dev defaults** (`clawfilters_dev`, `clawfilters_redis_dev`) → `warnings.warn()` at startup
+- **Infrastructure passwords using dev defaults** (`telsonbase_dev`, `telsonbase_redis_dev`) → `warnings.warn()` at startup
 - `validate_production_secrets()` in `core/config.py` runs additional checks and returns a list of any failures
 
 The difference matters: the JWT check is a hard block. The infrastructure password checks
@@ -289,4 +289,4 @@ both recommend regular key rotation; the specific interval depends on your risk 
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 20, 2026*

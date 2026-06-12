@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/captcha.py
+# TelsonBase/core/captcha.py
 # REM: =======================================================================================
 # REM: SERVER-SIDE CAPTCHA CHALLENGE MODULE
 # REM: =======================================================================================

@@ -1,7 +1,7 @@
-# ClawFilters Deployment Guide
+# TelsonBase Deployment Guide
 
 **Version:** v11.0.3 · **Updated:** March 20, 2026
-**Audience:** IT administrators, managed service providers (MSPs), and systems integrators deploying ClawFilters on customer premises for law firms and professional services organizations.
+**Audience:** IT administrators, managed service providers (MSPs), and systems integrators deploying TelsonBase on customer premises for law firms and professional services organizations.
 
 ---
 
@@ -96,12 +96,12 @@ DENY  ALL      FROM 0.0.0.0/0    # Default deny
 
 ## 2. Quick Start
 
-For experienced administrators who want ClawFilters running in under 30 minutes.
+For experienced administrators who want TelsonBase running in under 30 minutes.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/QuietFireAI/ClawFilters.git
-cd ClawFilters
+git clone https://github.com/QuietFireAI/TelsonBase.git
+cd TelsonBase
 
 # 2. Configure environment
 cp .env.example .env
@@ -138,14 +138,14 @@ After verification, proceed to [Section 3i](#3i-register-first-admin-user) to cr
 ### 3a. Clone the Repository
 
 ```bash
-git clone https://github.com/QuietFireAI/ClawFilters.git
-cd ClawFilters
+git clone https://github.com/QuietFireAI/TelsonBase.git
+cd TelsonBase
 ```
 
 Verify the directory structure includes:
 
 ```
-ClawFilters/
+TelsonBase/
   docker-compose.yml
   Dockerfile
   .env.example
@@ -210,7 +210,7 @@ Verify secret generation:
 
 ### 3d. Configure TLS
 
-ClawFilters ships with Traefik as its reverse proxy, pre-configured for automatic TLS via Let's Encrypt.
+TelsonBase ships with Traefik as its reverse proxy, pre-configured for automatic TLS via Let's Encrypt.
 
 **Option A: Automatic TLS with Let's Encrypt (recommended)**
 
@@ -266,7 +266,7 @@ This starts the following 12 services (MailHog is excluded — dev profile only)
 | 4 | open-webui | ghcr.io/open-webui/open-webui | Human-AI interface |
 | 5 | mosquitto | eclipse-mosquitto:2 | MQTT event bus for real-time agent communication |
 | 6 | ollama | ollama/ollama | Local AI inference engine |
-| 7 | mcp_server | (built from Dockerfile) | ClawFilters API server (FastAPI) |
+| 7 | mcp_server | (built from Dockerfile) | TelsonBase API server (FastAPI) |
 | 8 | worker | (built from Dockerfile) | Celery background task workers |
 | 9 | beat | (built from Dockerfile) | Celery scheduler (periodic tasks) |
 | 10 | prometheus | prom/prometheus:v2.49.1 | Metrics collection |
@@ -315,7 +315,7 @@ curl -sk https://localhost/health
 
 ### 3g. Run Initial Database Migration
 
-The PostgreSQL database must be initialized with the ClawFilters schema:
+The PostgreSQL database must be initialized with the TelsonBase schema:
 
 ```bash
 docker compose exec mcp_server alembic upgrade head
@@ -411,7 +411,7 @@ curl -X POST https://your-domain.com/v1/security/mfa/confirm \
 
 ### 3k. Verify Audit Chain
 
-ClawFilters maintains a cryptographic audit chain (SHA-256 hash-linked) for tamper-evident logging. Verify its integrity:
+TelsonBase maintains a cryptographic audit chain (SHA-256 hash-linked) for tamper-evident logging. Verify its integrity:
 
 ```bash
 curl -s https://your-domain.com/v1/audit/chain/verify \
@@ -456,7 +456,7 @@ Complete every item before declaring the deployment production-ready.
 - [ ] Bot created via @BotFather, token copied to `TELEGRAM_BOT_TOKEN`
 - [ ] Private group/channel created, bot added, chat ID copied to `TELEGRAM_CHAT_ID`
 - [ ] `TELEGRAM_ENABLED=true` set in `.env`
-- [ ] ClawFilters restarted and "🦞 ClawFilters online" message received in Telegram
+- [ ] TelsonBase restarted and "🦞 TelsonBase online" message received in Telegram
 - See [TELEGRAM_GUIDE.md](TELEGRAM_GUIDE.md) for full instructions
 
 ---
@@ -503,7 +503,7 @@ All configuration is managed through the `.env` file and Docker secrets.
 
 ### Network Segmentation
 
-ClawFilters uses 5 isolated Docker networks to prevent lateral movement:
+TelsonBase uses 5 isolated Docker networks to prevent lateral movement:
 
 | Network | Type | Connected Services |
 |---------|------|--------------------|
@@ -519,7 +519,7 @@ Networks marked `internal` have no external access. Services on the `data` and `
 
 ## 6. Backup Configuration
 
-ClawFilters includes built-in backup and disaster recovery tooling. See `docs/BACKUP_RECOVERY.md` for the full reference.
+TelsonBase includes built-in backup and disaster recovery tooling. See `docs/BACKUP_RECOVERY.md` for the full reference.
 
 ### Configure Daily Automated Backups
 
@@ -530,7 +530,7 @@ Add a cron job to run backups daily at 2:00 AM:
 crontab -e
 
 # Add this line:
-0 2 * * * /path/to/ClawFilters/scripts/backup.sh >> /var/log/telsonbase-backup.log 2>&1
+0 2 * * * /path/to/TelsonBase/scripts/backup.sh >> /var/log/telsonbase-backup.log 2>&1
 ```
 
 The backup script performs:
@@ -573,7 +573,7 @@ For compliance (HIPAA, CJIS), copy backups to an offsite location:
 
 ```bash
 # Example: rsync to a remote server
-rsync -az --delete /path/to/ClawFilters/backups/ user@backup-server:/backups/telsonbase/
+rsync -az --delete /path/to/TelsonBase/backups/ user@backup-server:/backups/telsonbase/
 ```
 
 ---
@@ -583,7 +583,7 @@ rsync -az --delete /path/to/ClawFilters/backups/ user@backup-server:/backups/tel
 ### Standard Upgrade Procedure
 
 ```bash
-cd /path/to/ClawFilters
+cd /path/to/TelsonBase
 
 # 1. Create a backup before upgrading
 ./scripts/backup.sh
@@ -743,7 +743,7 @@ docker compose exec mcp_server alembic history
 
 **Symptom:** MCP server starts but endpoints return 500 errors.
 
-ClawFilters services have the following dependency chain:
+TelsonBase services have the following dependency chain:
 
 ```
 traefik -> mcp_server -> redis, postgres, mosquitto, ollama
@@ -787,7 +787,7 @@ This validates that all secrets meet minimum entropy requirements and no default
 
 ### Enable Encryption at Rest
 
-ClawFilters supports volume-level encryption for all persistent data. See `docs/ENCRYPTION_AT_REST.md` for the complete guide.
+TelsonBase supports volume-level encryption for all persistent data. See `docs/ENCRYPTION_AT_REST.md` for the complete guide.
 
 **Linux (LUKS):**
 ```bash
@@ -855,7 +855,7 @@ docker compose stop open-webui
 
 - Use a VPN or SSH tunnel for accessing internal services (Grafana, Prometheus).
 - Consider placing the server behind a corporate firewall with IDS/IPS.
-- ClawFilters's Docker network segmentation (5 isolated networks) prevents lateral movement between tiers.
+- TelsonBase's Docker network segmentation (5 isolated networks) prevents lateral movement between tiers.
 
 ### Regular Security Maintenance
 
@@ -921,12 +921,12 @@ docker compose stop open-webui
 
 ### Contact
 
-For deployment assistance, contact your ClawFilters account representative or visit [clawfilters.com](https://clawfilters.com).
+For deployment assistance, contact your TelsonBase account representative or visit [telsonbase.com](https://telsonbase.com).
 
 ---
 
-*This document is part of the ClawFilters deployment package. Keep it updated when infrastructure changes are made.*
+*This document is part of the TelsonBase deployment package. Keep it updated when infrastructure changes are made.*
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 20, 2026*

@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/config.py
+# TelsonBase/core/config.py
 # REM: =======================================================================================
-# REM: CENTRALIZED CONFIGURATION FOR CLAWFILTERS
+# REM: CENTRALIZED CONFIGURATION FOR TELSONBASE
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026
@@ -161,12 +161,12 @@ class Settings(BaseSettings):
     
     # --- Database ---
     database_url: str = Field(
-        default="postgresql://clawfilters:clawfilters_dev@postgres:5432/clawfilters",
+        default="postgresql://telsonbase:telsonbase_dev@postgres:5432/telsonbase",
         env="DATABASE_URL"
     )
 
     # --- Service URLs (Internal Docker Network) ---
-    redis_password: str = Field(default="clawfilters_redis_dev", env="REDIS_PASSWORD")
+    redis_password: str = Field(default="telsonbase_redis_dev", env="REDIS_PASSWORD")
     redis_url: str = Field(default="redis://redis:6379/0", env="REDIS_URL")
 
     @field_validator('redis_url')
@@ -368,16 +368,16 @@ def validate_production_secrets(settings: Settings) -> list:
     # REM: v6.2.0CC — Infrastructure password checks for production
     # REM: Extract PostgreSQL password from DATABASE_URL
     db_url = settings.database_url or ""
-    if "clawfilters_dev" in db_url:
+    if "telsonbase_dev" in db_url:
         errors.append(
-            "POSTGRES_PASSWORD: must not be 'clawfilters_dev' in production — "
+            "POSTGRES_PASSWORD: must not be 'telsonbase_dev' in production — "
             "run scripts/generate_secrets.sh and update DATABASE_URL"
         )
 
     # REM: Redis password must not be the dev default
-    if settings.redis_password == "clawfilters_redis_dev":
+    if settings.redis_password == "telsonbase_redis_dev":
         errors.append(
-            "REDIS_PASSWORD: must not be 'clawfilters_redis_dev' in production — "
+            "REDIS_PASSWORD: must not be 'telsonbase_redis_dev' in production — "
             "run scripts/generate_secrets.sh and set REDIS_PASSWORD"
         )
 

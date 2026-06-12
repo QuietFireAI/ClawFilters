@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/tests/test_api.py
+# TelsonBase/tests/test_api.py
 # REM: =======================================================================================
 # REM: TESTS FOR API ENDPOINTS
 # REM: =======================================================================================
@@ -214,8 +214,8 @@ class TestFederationEndpoints:
             "/v1/federation/invitations",
             headers=auth_headers,
             json={
-                "name": "Acme ClawFilters Node",
-                "remote_url": "https://clawfilters.acme.com",
+                "name": "Acme TelsonBase Node",
+                "remote_url": "https://telsonbase.acme.com",
                 "description": "Branch office",
                 "trust_level": "standard",
                 "expires_in_hours": 48

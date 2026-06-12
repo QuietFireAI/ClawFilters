@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/anomaly.py
+# TelsonBase/core/anomaly.py
 # REM: =======================================================================================
 # REM: BEHAVIORAL ANOMALY DETECTION FOR AGENTS
 # REM: =======================================================================================

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/agents/memory_agent.py
+# TelsonBase/agents/memory_agent.py
 # REM: =======================================================================================
 # REM: CONVERSATION MEMORY AGENT
 # REM: =======================================================================================

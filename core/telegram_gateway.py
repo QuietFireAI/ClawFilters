@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/telegram_gateway.py
+# TelsonBase/core/telegram_gateway.py
 # REM: =======================================================================================
 # REM: TELEGRAM GATEWAY — REMOTE OPERATOR COMMUNICATION
 # REM: =======================================================================================
@@ -301,7 +301,7 @@ class TelegramGateway:
                 instances = openclaw_manager.list_instances()
                 active_count = len(instances)
                 lines = [
-                    "📊 <b>ClawFilters Status</b>",
+                    "📊 <b>TelsonBase Status</b>",
                     f"  Pending HITL gates: {pending_count}",
                     f"  Active OpenClaw instances: {active_count}",
                 ]
@@ -318,7 +318,7 @@ class TelegramGateway:
 
         elif cmd == "/help":
             self.send_notification(
-                "🦞 <b>ClawFilters Telegram Commands</b>\n"
+                "🦞 <b>TelsonBase Telegram Commands</b>\n"
                 "/pending — list pending approval requests\n"
                 "/status — system summary\n"
                 "/kill &lt;agent_id&gt; — suspend an agent immediately\n"
@@ -432,7 +432,7 @@ class TelegramGateway:
         else:
             self.delete_webhook()  # clear any stale webhook
             self.start_polling()
-        self.send_notification("🦞 <b>ClawFilters online</b> — governance gateway active.")
+        self.send_notification("🦞 <b>TelsonBase online</b> — governance gateway active.")
         logger.info("REM: Telegram gateway started_Thank_You")
 
     def shutdown(self) -> None:
@@ -440,7 +440,7 @@ class TelegramGateway:
         if not self._enabled:
             return
         self.stop_polling()
-        self.send_notification("🔴 <b>ClawFilters offline</b> — gateway shutting down.")
+        self.send_notification("🔴 <b>TelsonBase offline</b> — gateway shutting down.")
 
 
 # REM: Global singleton

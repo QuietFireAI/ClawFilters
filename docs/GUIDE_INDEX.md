@@ -1,4 +1,4 @@
-# ClawFilters — Guide Index
+# TelsonBase — Guide Index
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI · **Updated:** March 25, 2026
 
@@ -19,7 +19,7 @@ Operations → Dashboard → Restore & Recover.
 
 ### 1. Your First Agent
 **File:** `docs/YOUR_FIRST_AGENT.md`
-**Audience:** Developers and new users — first hands-on contact with ClawFilters
+**Audience:** Developers and new users — first hands-on contact with TelsonBase
 **What it covers:** 10 sequential curl commands that walk a fresh agent through the
 full governance lifecycle: register → get blocked at QUARANTINE → admin approves → read
 audit trail → test kill switch → promote to PROBATION → confirm new permissions → hit
@@ -33,7 +33,7 @@ a running stack. Perfect README embed and YouTube onboarding video. Recommended 
 
 ### 2. Deployment Guide
 **File:** `docs/Operation Documents/DEPLOYMENT_GUIDE.md`
-**Audience:** IT administrators deploying ClawFilters to a server (DigitalOcean, AWS, bare metal)
+**Audience:** IT administrators deploying TelsonBase to a server (DigitalOcean, AWS, bare metal)
 **What it covers:** End-to-end server deployment in 9 sections: clone repo → configure
 `.env` → run `generate_secrets.sh` → configure TLS (Let's Encrypt or self-signed) → start
 12 Docker services → verify health → run Alembic migration → run security battery (96
@@ -50,7 +50,7 @@ YouTube. Segment into Part 1 (clone/secrets/env) and Part 2 (start/verify/migrat
 
 ### 3. Windows Installation Guide
 **File:** `docs/Operation Documents/INSTALLATION_GUIDE_WINDOWS.md`
-**Audience:** Windows developers running ClawFilters locally via Docker Desktop
+**Audience:** Windows developers running TelsonBase locally via Docker Desktop
 **What it covers:** Windows-specific path through Docker Desktop installation, Git Bash
 setup, WSL2 requirements, secrets generation on Windows, and first `docker compose up`.
 **Accuracy:** Accurate against current setup.
@@ -69,16 +69,16 @@ first API calls, agent types (ground level / mezzanine / upper floor).
 **Accuracy:** Accurate. 11-container production count correct (MailHog excluded). Dashboard
 tab list matches current frontend. Auth method descriptions match current API.
 **Video potential:** MEDIUM. Good orientation video for operators who are not deploying.
-Pairs well with the Dashboard Registration guide. Recommend as a "ClawFilters Tour" video.
+Pairs well with the Dashboard Registration guide. Recommend as a "TelsonBase Tour" video.
 
 ---
 
 ### 5. OpenClaw Integration Guide
 **File:** `docs/Operation Documents/OPENCLAW_INTEGRATION_GUIDE.md`
-**Audience:** Developers integrating an OpenClaw agent with ClawFilters governance
+**Audience:** Developers integrating an OpenClaw agent with TelsonBase governance
 **What it covers:** What OpenClaw is and why it needs governance, enabling
 `OPENCLAW_ENABLED=true`, the 8-step governance pipeline as it applies to OpenClaw,
-wrapping pattern (ClawFilters wraps OpenClaw, never modifies it), trust level permissions
+wrapping pattern (TelsonBase wraps OpenClaw, never modifies it), trust level permissions
 table, configuration reference.
 **Accuracy:** Accurate. Pipeline description matches `core/openclaw.py`. Trust level
 permissions table aligns with codebase behavior. 8-step order (registered → suspended →
@@ -123,7 +123,7 @@ operators. Screen recording of the actual dashboard. 5–8 minutes.
 
 ### 8. Troubleshooting Guide
 **File:** `docs/Operation Documents/TROUBLESHOOTING.md`
-**Audience:** Anyone operating ClawFilters who hits an error
+**Audience:** Anyone operating TelsonBase who hits an error
 **What it covers:** 14 common failure scenarios with diagnosis and fix commands: Docker
 daemon not starting (Win/Linux/macOS), ValidationError on startup, 401/403 auth failures,
 Redis connection errors, port conflicts, test failures, federation SSL issues, anomaly
@@ -141,7 +141,7 @@ pinned resource for GitHub issues triage.
 ### 9. Telegram Integration Guide
 **File:** `docs/Operation Documents/TELEGRAM_GUIDE.md`
 **Audience:** Operators who want real-time governance alerts via Telegram
-**What it covers:** Setting up the Telegram bot, configuring ClawFilters to push governance
+**What it covers:** Setting up the Telegram bot, configuring TelsonBase to push governance
 events (agent promotions, suspensions, kill switch activations, anomaly alerts) to a
 Telegram channel.
 **Accuracy:** **VERSION ERROR — needs fix before video.** The guide states "v11.1.0+" as
@@ -162,7 +162,7 @@ Redis, Traefik, Mosquitto), the 6-step restore procedure (down → identify → 
 drills, off-host backups, Drobo NAS reference, backup frequency tuning).
 **Accuracy:** Accurate. The n8n legacy note is correctly handled with a prominent callout
 ("n8n removed at v8.0.2, replaced by MCP gateway — procedure applies to any volume").
-Volume naming convention (`ClawFilters_[volume_name]`) is correct. The alpine container
+Volume naming convention (`TelsonBase_[volume_name]`) is correct. The alpine container
 restore pattern is the right approach.
 **Video potential:** MEDIUM. A "how to recover from a broken deploy" video has real utility
 for self-hosters. 8–12 minutes. Recommend pairing with BACKUP_RECOVERY.md content.
@@ -200,8 +200,8 @@ security attack response, MCP compatibility, mobile app compatibility, external 
 data sharing, HIPAA/SOC 2/HITRUST status, pen test status, maintainer credibility, scale,
 model support, license, performance, 8-step pipeline, Manners system, and trust promotion.
 **Accuracy:** Anchor IDs in the table of contents still use `telsonbase` slug format
-(e.g., `#8-can-telsonbase-track-token-usage`). The display text is correct ("ClawFilters").
-Markdown anchor resolution depends on heading text — if headings were updated to ClawFilters,
+(e.g., `#8-can-telsonbase-track-token-usage`). The display text is correct ("TelsonBase").
+Markdown anchor resolution depends on heading text — if headings were updated to TelsonBase,
 TOC links may be broken. Verify link resolution before publishing.
 **Video potential:** Not a video. Excellent README resource and GitHub Discussions pinned
 post. Quote selected Q&A answers in video narration for credibility.
@@ -335,12 +335,12 @@ One minor style inconsistency (not a blocker):
 |---|---|---|---|---|
 | 1 | Your First Agent — Zero to Governed in 15 Minutes | YOUR_FIRST_AGENT.md | 12–15 min | README + YouTube |
 | 2 | Full Governance Cycle — OpenClaw Operations | OPENCLAW_OPERATIONS.md | 15–18 min | YouTube |
-| 3 | Deploying ClawFilters — Server Setup | DEPLOYMENT_GUIDE.md | 20–25 min (2-part) | YouTube |
-| 4 | ClawFilters Tour — Dashboard and User Console | USER_GUIDE.md + DASHBOARD_agent_registration.md | 8–12 min | YouTube |
+| 3 | Deploying TelsonBase — Server Setup | DEPLOYMENT_GUIDE.md | 20–25 min (2-part) | YouTube |
+| 4 | TelsonBase Tour — Dashboard and User Console | USER_GUIDE.md + DASHBOARD_agent_registration.md | 8–12 min | YouTube |
 | 5 | Integrating OpenClaw — The Governance Wrapper | OPENCLAW_INTEGRATION_GUIDE.md | 8–10 min | YouTube |
 | 6 | Disaster Recovery — Backup and Restore | Restore_and_Recover_Guide.md | 8–12 min | YouTube |
 | 7 | Windows Local Setup | INSTALLATION_GUIDE_WINDOWS.md | 5–8 min | YouTube |
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 2026*

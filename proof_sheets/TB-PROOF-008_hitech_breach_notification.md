@@ -1,7 +1,7 @@
 # TB-PROOF-008: HITECH Breach Notification (60-Day Tracking)
 
 **Sheet ID:** TB-PROOF-008
-**Claim Source:** clawfilters.com - Compliance Section
+**Claim Source:** telsonbase.com - Compliance Section
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- 7 depth tests added March 15 + 2 security battery tests
 **Last Verified:** March 8, 2026
@@ -46,4 +46,4 @@ References to 60-day deadline, notification workflows, and HITECH Act compliance
 
 ---
 
-*Sheet TB-PROOF-008 | ClawFilters v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-008 | TelsonBase v11.0.3 | March 20, 2026*

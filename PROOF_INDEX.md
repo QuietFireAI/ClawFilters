@@ -1,12 +1,12 @@
-# ClawFilters - Proof Index
+# TelsonBase - Proof Index
 
 **Every claim is backed by evidence.**
 
-**Last Verified:** March 20, 2026 &nbsp;|&nbsp; **Version:** v11.0.3 &nbsp;|&nbsp; **Tests Passing:** 6,254 &nbsp;|&nbsp; **Proof Documents:** 788
+**Last Verified:** March 20, 2026 &nbsp;|&nbsp; **Version:** v11.0.4 &nbsp;|&nbsp; **Tests Passing:** 6,404 &nbsp;|&nbsp; **Proof Documents:** 788
 
 ---
 
-ClawFilters publishes evidence for every security and compliance claim in the project.
+TelsonBase publishes evidence for every security and compliance claim in the project.
 If a claim is in the README, there is a verifiable source behind it.
 If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
@@ -74,4 +74,4 @@ Question any claim. Run the command. That is the point.
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · Apache 2.0*
+*TelsonBase v11.0.3 · Quietfire AI · Apache 2.0*

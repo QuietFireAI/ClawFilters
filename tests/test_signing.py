@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/tests/test_signing.py
+# TelsonBase/tests/test_signing.py
 # REM: =======================================================================================
 # REM: TESTS FOR CRYPTOGRAPHIC MESSAGE SIGNING
 # REM: =======================================================================================

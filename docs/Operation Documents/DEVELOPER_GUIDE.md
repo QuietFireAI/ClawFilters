@@ -1,8 +1,8 @@
-# ClawFilters - Developer Guide
+# TelsonBase - Developer Guide
 
 **Version:** v11.0.3 · **Maintainer:** Quietfire AI
 
-This guide explains how to build AI agents that run within the ClawFilters zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside ClawFilters.
+This guide explains how to build AI agents that run within the TelsonBase zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside TelsonBase.
 
 > **External agents (Goose, Claude Desktop, any HTTP client)** use a different path - the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
 
@@ -324,7 +324,7 @@ The approval record includes the full payload so the reviewer knows exactly what
 
 ## QMS Logging Conventions
 
-ClawFilters uses the Qualified Message Standard (QMS™) in logs for human readability. Your agent's base class appends these suffixes automatically. Understanding them helps when reading audit logs.
+TelsonBase uses the Qualified Message Standard (QMS™) in logs for human readability. Your agent's base class appends these suffixes automatically. Understanding them helps when reading audit logs.
 
 | Suffix | Meaning | Example |
 |---|---|---|
@@ -522,8 +522,8 @@ docker run -d -p 6379:6379 --name redis-dev redis:7-alpine
 ### Setup
 
 ```bash
-git clone https://github.com/QuietFireAI/ClawFilters.git
-cd ClawFilters
+git clone https://github.com/QuietFireAI/TelsonBase.git
+cd TelsonBase
 
 python -m venv venv
 
@@ -586,8 +586,8 @@ pytest --cov=core --cov=agents --cov-report=html tests/
 4. Read [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) if you need external agents (Goose, Claude Desktop, HTTP clients)
 5. See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common issues
 
-For questions: support@clawfilters.com
+For questions: support@telsonbase.com
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 20, 2026*

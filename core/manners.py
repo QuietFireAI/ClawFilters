@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/manners.py
+# TelsonBase/core/manners.py
 # REM: =======================================================================================
 # REM: MANNERS COMPLIANCE ENGINE — RUNTIME PRINCIPLE ENFORCEMENT
 # REM: =======================================================================================

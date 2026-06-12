@@ -13,8 +13,8 @@ Self-hosted. Open source. Apache 2.0. [TelsonBase.com](https://TelsonBase.com)
 > *"The industry gave AI agents the keys to everything before anyone asked who was watching."*
 
 <p align="center">
-  <strong>v11.0.3</strong> &nbsp;|&nbsp;
-  <strong>6,254 tests passing</strong> &nbsp;|&nbsp;
+  <strong>v11.0.4</strong> &nbsp;|&nbsp;
+  <strong>6,404 tests passing</strong> &nbsp;|&nbsp;
   <strong>64 SOC 2 controls</strong> &nbsp;|&nbsp;
   <strong>162 API endpoints</strong> &nbsp;|&nbsp;
   <strong>0 data shared</strong>
@@ -46,7 +46,7 @@ Self-hosted. Open source. Apache 2.0. [TelsonBase.com](https://TelsonBase.com)
 
 ## Status: Live
 
-**6,254 tests passing. ≥80% coverage. 0 high-severity findings. Everything described in this README is built and running.**
+**6,404 tests passing. ≥80% coverage. 0 high-severity static-analysis findings (bandit). Everything described in this README is built and running.**
 
 **Try the live demo:** [huggingface.co/spaces/QuietFireAI/TelsonBase](https://huggingface.co/spaces/QuietFireAI/TelsonBase)
 

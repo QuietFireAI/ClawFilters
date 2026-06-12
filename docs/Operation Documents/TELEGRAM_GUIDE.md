@@ -1,4 +1,4 @@
-# ClawFilters — Telegram Gateway Guide
+# TelsonBase — Telegram Gateway Guide
 
 **Govern your agents from anywhere. Approve, reject, and suspend from your phone.**
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-The Telegram Gateway connects ClawFilters's HITL approval system to a Telegram bot. When an agent action hits a governance gate, a message fires to your configured chat with inline Approve and Reject buttons. Tap to decide. The gate resolves. The action proceeds or is blocked — before execution.
+The Telegram Gateway connects TelsonBase's HITL approval system to a Telegram bot. When an agent action hits a governance gate, a message fires to your configured chat with inline Approve and Reject buttons. Tap to decide. The gate resolves. The action proceeds or is blocked — before execution.
 
 This is not a notification add-on. It is a full governance channel. Every decision made through Telegram is recorded in the audit chain with the same weight as a web UI decision.
 
@@ -16,14 +16,14 @@ This is not a notification add-on. It is a full governance channel. Every decisi
 - `/kill <agent_id>` — suspends an agent instantly from anywhere
 - `/pending` — lists all open approval requests
 - `/status` — active agents, trust tiers, Manners scores, pending gate count
-- Sends "ClawFilters online" on startup and "offline" on shutdown
+- Sends "TelsonBase online" on startup and "offline" on shutdown
 - Operates in polling mode (default) or webhook mode (for HTTPS deployments)
 
 ---
 
 ## Prerequisites
 
-- A running ClawFilters deployment (v11.0.3+)
+- A running TelsonBase deployment (v11.0.3+)
 - A Telegram account
 - Access to [@BotFather](https://t.me/BotFather) on Telegram
 
@@ -33,8 +33,8 @@ This is not a notification add-on. It is a full governance channel. Every decisi
 
 1. Open Telegram and start a conversation with **@BotFather**
 2. Send `/newbot`
-3. Choose a name (e.g. `ClawFilters Governance`)
-4. Choose a username ending in `bot` (e.g. `clawfilters_ops_bot`)
+3. Choose a name (e.g. `TelsonBase Governance`)
+4. Choose a username ending in `bot` (e.g. `telsonbase_ops_bot`)
 5. BotFather returns a token — copy it. This is your `TELEGRAM_BOT_TOKEN`.
 
 Keep this token private. It gives full control of the bot.
@@ -43,11 +43,11 @@ Keep this token private. It gives full control of the bot.
 
 ## Step 2 — Create a Private Channel or Group
 
-ClawFilters sends governance messages to a single configured chat. A private group with only you (and the bot) is the recommended setup for operator use.
+TelsonBase sends governance messages to a single configured chat. A private group with only you (and the bot) is the recommended setup for operator use.
 
 **Create a private group:**
 1. In Telegram, create a new group
-2. Name it (e.g. `ClawFilters Ops`)
+2. Name it (e.g. `TelsonBase Ops`)
 3. Add your bot to the group
 
 **Get the Chat ID:**
@@ -62,7 +62,7 @@ Option B — add `@RawDataBot` or `@userinfobot` to the group temporarily, send 
 
 ---
 
-## Step 3 — Configure ClawFilters
+## Step 3 — Configure TelsonBase
 
 Add to your `.env` file:
 
@@ -76,14 +76,14 @@ TELEGRAM_CHAT_ID=-1001234567890
 For **webhook mode** (HTTPS deployments — recommended for production):
 
 ```env
-TELEGRAM_WEBHOOK_URL=https://your-clawfilters-domain.com
+TELEGRAM_WEBHOOK_URL=https://your-telsonbase-domain.com
 ```
 
 Leave `TELEGRAM_WEBHOOK_URL` empty to use polling mode (default). Polling works on any deployment including localhost and non-HTTPS setups.
 
 ---
 
-## Step 4 — Restart ClawFilters
+## Step 4 — Restart TelsonBase
 
 ```bash
 docker compose up -d mcp_server
@@ -91,7 +91,7 @@ docker compose up -d mcp_server
 
 On startup, the bot sends a message to your chat:
 
-> 🦞 **ClawFilters online** — governance gateway active.
+> 🦞 **TelsonBase online** — governance gateway active.
 
 If you do not see this message, check the logs:
 
@@ -151,7 +151,7 @@ Response:
 ```
 Response:
 ```
-📊 ClawFilters Status
+📊 TelsonBase Status
   Pending HITL gates: 2
   Active OpenClaw instances: 5
   • demo_quarantine [quarantine] score=1.00
@@ -173,9 +173,9 @@ Response:
 | **Latency** | ~1–2 seconds | Near-instant |
 | **Recommended for** | Local, dev, homelab | Production (DigitalOcean, VPS with domain) |
 
-In polling mode, ClawFilters runs a background thread that long-polls Telegram every 20 seconds. In webhook mode, Telegram pushes updates to `POST /v1/telegram/webhook` on your ClawFilters instance.
+In polling mode, TelsonBase runs a background thread that long-polls Telegram every 20 seconds. In webhook mode, Telegram pushes updates to `POST /v1/telegram/webhook` on your TelsonBase instance.
 
-ClawFilters automatically switches modes based on whether `TELEGRAM_WEBHOOK_URL` is set.
+TelsonBase automatically switches modes based on whether `TELEGRAM_WEBHOOK_URL` is set.
 
 ---
 
@@ -184,7 +184,7 @@ ClawFilters automatically switches modes based on whether `TELEGRAM_WEBHOOK_URL`
 - **Keep the bot private.** Only add it to a channel you control. Anyone in the channel can send commands.
 - **Bot token = full bot control.** Treat it like a password. Store it in `.env` (never in source code).
 - **Decisions are audited.** Every Telegram approve/reject is recorded in the cryptographic audit chain with `decided_by: telegram:<username>`.
-- **The bot does not have ClawFilters API credentials.** It communicates only through the internal `approval_gate` and `openclaw_manager` — no external API exposure.
+- **The bot does not have TelsonBase API credentials.** It communicates only through the internal `approval_gate` and `openclaw_manager` — no external API exposure.
 
 ---
 
@@ -218,13 +218,13 @@ Kill-switch events:
 **Bot is configured but no startup message received:**
 - Verify `TELEGRAM_BOT_TOKEN` is correct (test: `curl https://api.telegram.org/bot<TOKEN>/getMe`)
 - Verify `TELEGRAM_CHAT_ID` is correct — group IDs are negative numbers
-- Confirm the bot was added to the group before ClawFilters started
+- Confirm the bot was added to the group before TelsonBase started
 - Check logs: `docker compose logs mcp_server | grep -i telegram`
 
 **Webhook mode not receiving updates:**
 - Verify `TELEGRAM_WEBHOOK_URL` is publicly reachable over HTTPS
 - Check webhook status: `curl https://api.telegram.org/bot<TOKEN>/getWebhookInfo`
-- ClawFilters registers the webhook at `<TELEGRAM_WEBHOOK_URL>/v1/telegram/webhook`
+- TelsonBase registers the webhook at `<TELEGRAM_WEBHOOK_URL>/v1/telegram/webhook`
 
 **Tap on Approve/Reject does nothing:**
 - The request may have already been resolved (web UI or timeout)
@@ -237,4 +237,4 @@ Kill-switch events:
 
 ---
 
-*ClawFilters v11.1.0+ · Quietfire AI · Apache 2.0*
+*TelsonBase v11.1.0+ · Quietfire AI · Apache 2.0*

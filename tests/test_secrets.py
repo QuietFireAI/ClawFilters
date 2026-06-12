@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/tests/test_secrets.py
+# TelsonBase/tests/test_secrets.py
 # REM: =======================================================================================
 # REM: TEST SUITE — SECRETS MANAGEMENT
 # REM: =======================================================================================

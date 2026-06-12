@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/gateway/egress_proxy.py
+# TelsonBase/gateway/egress_proxy.py
 # REM: =======================================================================================
 # REM: EGRESS GATEWAY - EXTERNAL COMMUNICATION FIREWALL
 # REM: =======================================================================================
@@ -206,4 +206,4 @@ async def shutdown():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    uvicorn.run(app, host="0.0.0.0", port=8080)  # nosec B104 -- REM: intentional; proxy runs inside the Docker network, never host-exposed (see docker-compose network config)

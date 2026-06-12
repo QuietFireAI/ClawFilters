@@ -1,5 +1,5 @@
 ---
-title: ClawFilters
+title: TelsonBase
 emoji: 🦞
 colorFrom: purple
 colorTo: indigo
@@ -26,15 +26,15 @@ tags:
 short_description: "Every agent call: allow, gate, or block. Five tiers."
 ---
 
-# ClawFilters - Active Decision Making
+# TelsonBase - Active Decision Making
 
-**Every OpenClaw tool call passes through ClawFilters before execution. Allow, gate for human approval, or block. Every time.**
+**Every OpenClaw tool call passes through TelsonBase before execution. Allow, gate for human approval, or block. Every time.**
 
-This Space connects to a live ClawFilters deployment running the full governance pipeline. Select a demo agent, pick an action, and see an actual governance decision.
+This Space connects to a live TelsonBase deployment running the full governance pipeline. Select a demo agent, pick an action, and see an actual governance decision.
 
 ## What You're Seeing
 
-This is not a simulation. The decisions come from a live ClawFilters instance running the full stack — trust tier enforcement, Manners Engine scoring in real time, HITL approval gates, and a cryptographic audit chain recording every event.
+This is not a simulation. The decisions come from a live TelsonBase instance running the full stack — trust tier enforcement, Manners Engine scoring in real time, HITL approval gates, and a cryptographic audit chain recording every event.
 
 - **Active decision making** — every call evaluated before execution. Allow, gate, or block.
 - **Five trust tiers** — QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT, earned by behavior
@@ -54,15 +54,15 @@ No agent arrives at AGENT tier. Every agent starts at QUARANTINE and earns its w
 
 ## The Agent Autonomy SLA
 
-ClawFilters is the working implementation of the Agent Autonomy SLA — a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux and Cabot identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)) and defined `OversightLevel` as a first-class quality metric for AI agent services. ClawFilters makes it runtime-enforced and behaviorally dynamic.
+TelsonBase is the working implementation of the Agent Autonomy SLA — a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux and Cabot identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)) and defined `OversightLevel` as a first-class quality metric for AI agent services. TelsonBase makes it runtime-enforced and behaviorally dynamic.
 
 ## Full Repository
 
-**[github.com/QuietFireAI/ClawFilters](https://github.com/QuietFireAI/ClawFilters)**
+**[github.com/QuietFireAI/TelsonBase](https://github.com/QuietFireAI/TelsonBase)**
 
 Source code, documentation, proof sheets, deployment guide, and full test suite.
 6,254 tests passing. 0 high-severity findings. Apache 2.0. Self-hosted.
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · Apache 2.0*
+*TelsonBase v11.0.3 · Quietfire AI · Apache 2.0*

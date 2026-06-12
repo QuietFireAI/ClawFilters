@@ -1,7 +1,7 @@
 # TB-PROOF-039: Earned Trust Model
 
 **Sheet ID:** TB-PROOF-039
-**Claim Source:** clawfilters.com - Control Your Claw
+**Claim Source:** telsonbase.com - Control Your Claw
 **Status:** VERIFIED
 **Test Coverage:** VERIFIED -- test_openclaw.py -- default QUARANTINE, sequential promotion required, demotion instant
 **Last Verified:** March 8, 2026
@@ -83,4 +83,4 @@ References to VALID_PROMOTIONS dictionary (sequential), VALID_DEMOTIONS dictiona
 
 ---
 
-*Sheet TB-PROOF-039 | ClawFilters v11.0.3 | March 20, 2026*
+*Sheet TB-PROOF-039 | TelsonBase v11.0.3 | March 20, 2026*

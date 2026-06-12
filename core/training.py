@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/training.py
+# TelsonBase/core/training.py
 # REM: =======================================================================================
 # REM: HIPAA SECURITY AWARENESS TRAINING TRACKING
 # REM: =======================================================================================

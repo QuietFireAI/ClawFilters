@@ -1,4 +1,4 @@
-# ClawFilters Testing Guide
+# TelsonBase Testing Guide
 
 **Version:** v11.0.3 | **Tests Passing:** 720 (1 skipped*) | **Updated:** March 8, 2026
 
@@ -530,4 +530,20 @@ docker compose exec mcp_server alembic upgrade head
 
 ---
 
-*ClawFilters v11.0.3 - Quietfire AI - March 8, 2026*
+*TelsonBase v11.0.3 - Quietfire AI - March 8, 2026*
+
+---
+
+## Test Environment Requirements (verified June 2026)
+
+The full suite expects a live Redis instance with the development password:
+
+```bash
+redis-server --daemonize yes
+redis-cli config set requirepass telsonbase_redis_dev
+export REDIS_URL="redis://:telsonbase_redis_dev@localhost:6379/0"
+export REDIS_PASSWORD="telsonbase_redis_dev"
+python -m pytest -q
+```
+
+Without authenticated Redis, ~7 e2e tests (user lifecycle, tenant isolation) fail with 401s: JWT/session validation depends on Redis and fails **closed** -- requests are rejected, never allowed. The suite uses Redis DB 15 and flushes it per test; it never touches DB 0. PostgreSQL is not required for the suite.

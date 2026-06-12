@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/auth.py
+# TelsonBase/core/auth.py
 # REM: =======================================================================================
-# REM: AUTHENTICATION & AUTHORIZATION FOR CLAWFILTERS
+# REM: AUTHENTICATION & AUTHORIZATION FOR TELSONBASE
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026

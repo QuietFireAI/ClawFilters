@@ -1,4 +1,4 @@
-# ClawFilters Troubleshooting Guide
+# TelsonBase Troubleshooting Guide
 
 **Version:** v11.0.3 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 
@@ -383,7 +383,7 @@ pip install --force-reinstall -r requirements.txt
 
 **Pydantic v1 vs v2 issues:**
 ```bash
-# ClawFilters uses Pydantic v2 with pydantic-settings
+# TelsonBase uses Pydantic v2 with pydantic-settings
 pip install pydantic>=2.0.0 pydantic-settings>=2.0.0
 ```
 
@@ -452,7 +452,7 @@ sudo ufw allow 8000/tcp
 Get-NetFirewallRule | Where-Object { $_.LocalPort -eq 8000 }
 
 # Add rule if needed
-New-NetFirewallRule -DisplayName "ClawFilters API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "TelsonBase API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
 ```
 
 **Docker network issues:**
@@ -509,13 +509,13 @@ Ensure `TRAEFIK_ACME_EMAIL` is set in `.env` for automatic certificate provision
 
 ## Getting Help
 
-1. **Check existing issues:** [GitHub Issues](https://github.com/QuietFireAI/ClawFilters/issues)
+1. **Check existing issues:** [GitHub Issues](https://github.com/QuietFireAI/TelsonBase/issues)
 2. **Search documentation:** Check `docs/` folder
 3. **Open new issue:** Use bug report template
-4. **Email:** support@clawfilters.com
+4. **Email:** support@telsonbase.com
 
 When reporting issues, include:
-- ClawFilters version (`curl http://localhost:8000/health`)
+- TelsonBase version (`curl http://localhost:8000/health`)
 - Docker version (`docker --version`)
 - Python version (`python --version`)
 - Relevant logs (`docker compose logs --tail=100 mcp_server`)
@@ -527,4 +527,4 @@ When reporting issues, include:
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 20, 2026*

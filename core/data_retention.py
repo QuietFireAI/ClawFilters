@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/data_retention.py
+# TelsonBase/core/data_retention.py
 # REM: =======================================================================================
 # REM: DATA RETENTION AND DELETION ENGINE
 # REM: =======================================================================================

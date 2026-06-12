@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/mfa.py
+# TelsonBase/core/mfa.py
 # REM: =======================================================================================
 # REM: TOTP MULTI-FACTOR AUTHENTICATION MODULE
 # REM: =======================================================================================
@@ -160,7 +160,7 @@ class MFAManager:
         totp = pyotp.TOTP(secret)
         provisioning_uri = totp.provisioning_uri(
             name=username,
-            issuer_name="ClawFilters"
+            issuer_name="TelsonBase"
         )
 
         # REM: Generate one-time backup codes using cryptographic randomness

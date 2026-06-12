@@ -1,4 +1,4 @@
-# ClawFilters - Commercial License (Retired)
+# TelsonBase - Commercial License (Retired)
 
 **Effective:** March 2026
 
@@ -16,4 +16,4 @@ This file is retained for archival purposes. The dual-license model described in
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 2026*

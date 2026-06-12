@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/email_sender.py
+# TelsonBase/core/email_sender.py
 # REM: =======================================================================================
 # REM: SMTP EMAIL SENDER MODULE
 # REM: =======================================================================================
@@ -131,7 +131,7 @@ async def send_verification_email(
               border-radius:12px;padding:32px;">
     <h2 style="color:#22d3ee;margin-top:0;">Verify your email</h2>
     <p>Hi <strong>{safe_username}</strong>,</p>
-    <p>You've been registered on <strong>ClawFilters</strong>.
+    <p>You've been registered on <strong>TelsonBase</strong>.
        Please verify your email address to activate your account:</p>
     <p style="text-align:center;margin:32px 0;">
       <a href="{verify_url}"
@@ -142,12 +142,12 @@ async def send_verification_email(
       </a>
     </p>
     <p style="font-size:12px;color:#64748b;">
-      This link expires in 24 hours. If you did not register for ClawFilters,
+      This link expires in 24 hours. If you did not register for TelsonBase,
       you can safely ignore this email.
     </p>
     <hr style="border:none;border-top:1px solid #334155;margin:24px 0;"/>
     <p style="font-size:11px;color:#475569;margin:0;">
-      ClawFilters by Quietfire AI &mdash; Real-Time Behavioral Filters for AI Agents
+      TelsonBase by Quietfire AI &mdash; Real-Time Behavioral Filters for AI Agents
     </p>
   </div>
 </body>
@@ -155,5 +155,5 @@ async def send_verification_email(
 """
 
     return await asyncio.to_thread(
-        _send_sync, to_email, "Verify your ClawFilters email address", html_body
+        _send_sync, to_email, "Verify your TelsonBase email address", html_body
     )

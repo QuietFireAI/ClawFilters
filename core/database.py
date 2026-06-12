@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/database.py
+# TelsonBase/core/database.py
 # REM: =======================================================================================
 # REM: POSTGRESQL DATABASE LAYER
 # REM: =======================================================================================

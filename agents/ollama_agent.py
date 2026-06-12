@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/agents/ollama_agent.py
+# TelsonBase/agents/ollama_agent.py
 # REM: =======================================================================================
 # REM: SOVEREIGN AI ENGINE AGENT FOR TELSONBASE
 # REM: =======================================================================================

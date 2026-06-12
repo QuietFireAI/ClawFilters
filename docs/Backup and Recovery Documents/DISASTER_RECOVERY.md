@@ -1,4 +1,4 @@
-# ClawFilters Disaster Recovery Plan
+# TelsonBase Disaster Recovery Plan
 
 **Version:** v11.0.3 · **Updated:** March 8, 2026 · **Maintainer:** Quietfire AI
 
@@ -6,7 +6,7 @@
 
 ## 1. Overview
 
-This document outlines disaster recovery procedures for ClawFilters deployments. It covers backup strategies, recovery procedures, and business continuity measures.
+This document outlines disaster recovery procedures for TelsonBase deployments. It covers backup strategies, recovery procedures, and business continuity measures.
 
 ### Recovery Objectives
 
@@ -158,7 +158,7 @@ curl -H "X-API-Key: $API_KEY" http://localhost:8000/v1/agents/
 **Step 1: Infrastructure Recovery**
 ```bash
 # Clone repository
-git clone https://github.com/QuietFireAI/ClawFilters.git
+git clone https://github.com/QuietFireAI/TelsonBase.git
 cd telsonbase
 
 # Restore environment
@@ -168,8 +168,8 @@ cp /secure-backup/.env .env
 **Step 2: Restore Encryption Keys**
 ```bash
 # Restore from secure vault
-export ClawFilters_ENCRYPTION_KEY="<from vault>"
-export ClawFilters_ENCRYPTION_SALT="<from vault>"
+export TelsonBase_ENCRYPTION_KEY="<from vault>"
+export TelsonBase_ENCRYPTION_SALT="<from vault>"
 ```
 
 **Step 3: Restore Redis Data**
@@ -301,4 +301,4 @@ After any recovery operation, verify:
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 20, 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 20, 2026*

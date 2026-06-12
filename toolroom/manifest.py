@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/toolroom/manifest.py
+# TelsonBase/toolroom/manifest.py
 # REM: =======================================================================================
 # REM: TOOL MANIFEST — THE CONTRACT EVERY TOOL MUST FULFILL
 # REM: =======================================================================================

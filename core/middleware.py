@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/middleware.py
+# TelsonBase/core/middleware.py
 # REM: =======================================================================================
-# REM: PRODUCTION HARDENING MIDDLEWARE FOR CLAWFILTERS
+# REM: PRODUCTION HARDENING MIDDLEWARE FOR TELSONBASE
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026

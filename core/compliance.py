@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/compliance.py
+# TelsonBase/core/compliance.py
 # REM: =======================================================================================
 # REM: COMPLIANCE EXPORT AND REPORTING
 # REM: =======================================================================================

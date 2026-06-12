@@ -1,4 +1,4 @@
-# ClawFilters Toolroom
+# TelsonBase Toolroom
 **Version:** v11.0.3
 
 ---
@@ -403,4 +403,4 @@ Non-QMS messages received by the Foreman are rejected and logged as `NON_QMS_MES
 
 ---
 
-*ClawFilters v11.0.3 · Quietfire AI · March 2026*
+*TelsonBase v11.0.3 · Quietfire AI · March 2026*

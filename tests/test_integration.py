@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/tests/test_integration.py
+# TelsonBase/tests/test_integration.py
 # REM: =======================================================================================
 # REM: INTEGRATION TESTS FOR SECURITY FEATURES
 # REM: =======================================================================================

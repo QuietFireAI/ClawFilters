@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/trust_levels.py
+# TelsonBase/core/trust_levels.py
 # REM: =======================================================================================
 # REM: AGENT TRUST LEVEL MANAGEMENT SYSTEM
 # REM: =======================================================================================

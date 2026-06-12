@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/core/approval.py
+# TelsonBase/core/approval.py
 # REM: =======================================================================================
 # REM: HUMAN-IN-THE-LOOP APPROVAL GATES
 # REM: =======================================================================================

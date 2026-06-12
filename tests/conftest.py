@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
-# ClawFilters/tests/conftest.py
+# TelsonBase/tests/conftest.py
 # REM: =======================================================================================
 # REM: PYTEST FIXTURES AND CONFIGURATION
 # REM: =======================================================================================
@@ -130,7 +130,7 @@ def client() -> Generator:
         audit._chain_entries.clear()
         audit._chain_state = ChainState(
             chain_id=hashlib.sha256(
-                f"clawfilters_{datetime.now(timezone.utc).isoformat()}".encode()
+                f"telsonbase_{datetime.now(timezone.utc).isoformat()}".encode()
             ).hexdigest()[:16],
             created_at=datetime.now(timezone.utc).isoformat()
         )
