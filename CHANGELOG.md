@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/).
 
+## [12.0.0] - 2026-07-19 (Security hardening, MIT license switch, SSRF + path-traversal fixes, CI dependency repair)
+
+**Major:** Version bumped 11.0.4 -> 12.0.0 (commit cab0af5, 2026-06-12): completed the MIT license switch, adversarial security suite, mcp CVE bump (GHSA-9h52-p55h-vw2f), pytest 9 security bump (GHSA-6w46-j5rx-g56g), CodeQL SSRF and path-traversal fixes, and the ClawFilters -> TelsonBase rename.
+
+**CI repair (2026-07-19):** Those security bumps left three transitive dependency conflicts that broke `pip install -r requirements.txt` — CI's first step — so no job ran and the badge went red on 2026-06-12. Resolved: `pytest-asyncio` 0.23.4 -> 1.4.0 (pytest 9 support), `pydantic` 2.9.2 -> 2.11.10 (mcp>=1.23.0 requires >=2.11.0), `uvicorn[standard]` 0.27.1 -> 0.34.0 (mcp requires >=0.31.1). This CHANGELOG entry also resolves the version-consistency check that surfaced once CI could run again (version.py/config.py were at 12.0.0 with no matching CHANGELOG heading). Clean-venv verification: both CI install steps pass; suite 6,339 passed / 0 failed excluding service-integration e2e (which requires CI-provisioned Redis/MQTT).
+
 ---
 
 ## [11.0.4] - 2026-03-27 (Security hardening H1–H13, branding sweep, zero-tolerance threat response, product rebrand ClawCoat → TelsonBase)
